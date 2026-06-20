@@ -19,6 +19,9 @@ UTDATA_FIL = os.path.join(UTDATA_DIR, "index.html")
 # Ark som skal hoppes over (interne/tomme)
 HOPP_OVER_ARK = set()
 
+# Disse arkene vises alltid sist, i denne rekkefølgen
+SIST = ["Spillere etter klubbland", "Klubber", "Nivå 2 og lavere", "Aldersfordeling", "Alder"]
+
 # Maks kolonner å vise per ark (None = alle)
 MAKS_KOLS = None
 
@@ -234,7 +237,9 @@ def main():
     print(f"Leser {EXCEL_FIL} ...")
     wb = load_workbook(EXCEL_FIL, data_only=True)
 
-    ark_navn = [n for n in wb.sheetnames if n not in HOPP_OVER_ARK]
+    alle = [n for n in wb.sheetnames if n not in HOPP_OVER_ARK]
+    sist_sett = set(SIST)
+    ark_navn = [n for n in alle if n not in sist_sett] + [n for n in SIST if n in sist_sett and n in alle]
     print(f"  Fant {len(ark_navn)} ark: {', '.join(ark_navn)}")
 
     # Bygg innhold per ark
