@@ -8,9 +8,13 @@
   /* ── Grunnstiler (ikke rediger under her) ───────────────────── */
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: Calibri, 'Segoe UI', Arial, sans-serif; font-size: 10pt; background: #f4f6f9; color: #1a1a2e; }
-  .tab-bar { display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 3px; padding: 10px 12px 0; background: #1A3C6B; position: sticky; top: 0; z-index: 100; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
-  .tab-bar::-webkit-scrollbar { display: none; }
-  .tab-bar button { background: rgba(255,255,255,0.15); color: #fff; border: none; padding: 8px 12px; min-height: 44px; cursor: pointer; border-radius: 4px 4px 0 0; font-size: 9pt; font-family: inherit; white-space: nowrap; flex-shrink: 0; transition: background 0.15s; }
+  .tab-bar { display: flex; flex-wrap: wrap; gap: 3px; padding: 10px 12px 0; background: #1A3C6B; position: sticky; top: 0; z-index: 100; }
+  .tab-bar button { background: rgba(255,255,255,0.15); color: #fff; border: none; padding: 8px 12px; min-height: 44px; cursor: pointer; border-radius: 4px 4px 0 0; font-size: 9pt; font-family: inherit; white-space: nowrap; transition: background 0.15s; }
+  @media (max-width: 768px) {
+    .tab-bar { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    .tab-bar::-webkit-scrollbar { display: none; }
+    .tab-bar button { flex-shrink: 0; }
+  }
   .tab-bar button:hover { background: rgba(255,255,255,0.3); }
   .tab-bar button.aktiv { background: #fff; color: #0F2044; font-weight: bold; }
   .ark-innhold { padding: 16px 12px; }
