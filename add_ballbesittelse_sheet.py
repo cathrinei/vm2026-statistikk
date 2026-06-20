@@ -2,7 +2,7 @@
 """
 add_ballbesittelse_sheet.py
 Lager arket "Ballbesittelse" med kampstatistikk: besittelse, skudd (totalt,
-på mål, utenfor, blokkert) per kamp. Kilde: wc2026_stats.json.
+på mål, utenfor, blokkert) per kamp. Kilde: wc2026_stats3.json.
 """
 import io, json, re, shutil, sys, unicodedata
 from pathlib import Path
