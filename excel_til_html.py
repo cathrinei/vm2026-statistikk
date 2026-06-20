@@ -123,8 +123,8 @@ def formater_verdi(celle):
     return str(v)
 
 
-def bygg_tabell(ws):
-    """Bygger HTML-tabell fra et ark."""
+def bygg_tabell(ws, legg_til_anker=False):
+    """Bygger HTML-tabell fra et ark. Med legg_til_anker=True returneres (html, seksjoner)."""
     # Finn brukt område
     min_rad = ws.min_row or 1
     max_rad = ws.max_row or 1
@@ -132,7 +132,12 @@ def bygg_tabell(ws):
     max_kol = ws.max_column or 1
 
     if max_rad < min_rad or max_kol < min_kol:
+        if legg_til_anker:
+            return "<p><em>Tomt ark</em></p>", []
         return "<p><em>Tomt ark</em></p>"
+
+    seksjon_nr = 0
+    seksjoner = []
 
     # Bygg merged cell-kart: (rad, kol) → (rowspan, colspan) for master-celler
     # og sett med (rad, kol) for celler som skal hoppes over
@@ -169,7 +174,19 @@ def bygg_tabell(ws):
     html.append("</colgroup>")
 
     for r in range(min_rad, max_rad + 1):
-        html.append("<tr>")
+        tr_id = ""
+        if legg_til_anker:
+            første_celle = ws.cell(row=r, column=min_kol)
+            bg_første = rgb_fra_fill(første_celle.fill)
+            val_første = formater_verdi(første_celle)
+            if bg_første and bg_første.lstrip("#").upper() == "0F2044" and val_første:
+                seksjon_nr += 1
+                anchor_id = f"lagstat-seksjon-{seksjon_nr}"
+                raw = val_første.split("—")[-1].strip() if "—" in val_første else val_første.strip()
+                tittel = raw.split("   ")[0].strip()
+                seksjoner.append((anchor_id, tittel))
+                tr_id = f' id="{anchor_id}"'
+        html.append(f"<tr{tr_id}>")
         for c in range(min_kol, max_kol + 1):
             if (r, c) in skip_celler:
                 continue
@@ -228,7 +245,20 @@ def bygg_tabell(ws):
         html.append("</tr>")
 
     html.append("</table></div>")
+    if legg_til_anker:
+        return "\n".join(html), seksjoner
     return "\n".join(html)
+
+
+def generer_lagstat_nav(seksjoner):
+    """Genererer en navigasjonsbar med lenker til seksjoner i Lagstatistikk."""
+    if not seksjoner:
+        return ""
+    lenker = "".join(
+        f'<a href="#{anchor_id}">{escape(tittel)}</a>'
+        for anchor_id, tittel in seksjoner
+    )
+    return f'<nav class="lagstat-nav">{lenker}</nav>'
 
 
 def main():
@@ -247,7 +277,12 @@ def main():
     for navn in ark_navn:
         print(f"  Konverterer ark: {navn}")
         ws = wb[navn]
-        ark_html[navn] = bygg_tabell(ws)
+        if navn == "Lagstatistikk":
+            tabell_html, seksjoner = bygg_tabell(ws, legg_til_anker=True)
+            nav_html = generer_lagstat_nav(seksjoner)
+            ark_html[navn] = nav_html + "\n" + tabell_html
+        else:
+            ark_html[navn] = bygg_tabell(ws)
 
     # Tab-knapper
     tab_knapper = []

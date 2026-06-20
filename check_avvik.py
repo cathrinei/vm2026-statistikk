@@ -35,7 +35,7 @@ _FIFA_COMP   = "17"
 _FIFA_SEASON = "285023"
 
 GROUPS = [f"Gruppe {x}" for x in "ABCDEFGHIJKL"]
-BLOCKS = [(1, 3, 28), (30, 32, 57), (59, 61, 86), (88, 90, 115)]
+BLOCKS = [(17, 19, 44), (46, 48, 73), (75, 77, 102), (104, 106, 131)]
 
 COL_MÅL    = 17
 COL_ASSIST = 18
@@ -393,14 +393,14 @@ def skriv_kort_sheet(kort: list[dict]) -> None:
 
     # Tittelrad
     ws.row_dimensions[1].height = 28
-    ws.merge_cells("A1:F1")
+    ws.merge_cells("A1:E1")
     sortert = sorted(kort, key=lambda x: (-(x["rode"] + x["gule_rode"]), -x["gule"], x["name"]))
     c = ws.cell(row=1, column=1, value=f"VM 2026 — Kort  ({len(sortert)} spillere)")
     c.font = S["f_title"]; c.fill = S["NAVY"]; c.alignment = S["lft"]
 
     # Kolonneoverskrifter
     ws.row_dimensions[2].height = 20
-    for col, label in enumerate(["#", "Spiller", "Lag", "Gule", "Røde", "Tot. røde"], 1):
+    for col, label in enumerate(["#", "Spiller", "Lag", "Gule", "Røde"], 1):
         c = ws.cell(row=2, column=col, value=label)
         c.font = S["f_hdr"]; c.fill = S["BLUE"]
         c.alignment = S["lft"] if col == 2 else S["ctr"]
@@ -419,7 +419,6 @@ def skriv_kort_sheet(kort: list[dict]) -> None:
 
     for i, (p, rang) in enumerate(zip(sortert, ranger)):
         row  = i + 3
-        totalt_rode = p["rode"] + p["gule_rode"]
         ws.row_dimensions[row].height = 17
 
         if rang == 1:
@@ -431,7 +430,7 @@ def skriv_kort_sheet(kort: list[dict]) -> None:
         else:
             bg, f_rank = (S["EVEN"] if i % 2 == 0 else S["ODD"]), S["f_muted"]
 
-        data = [rang, p["name"], p["land"], p["gule"] or None, p["rode"] or None, totalt_rode or None]
+        data = [rang, p["name"], p["land"], p["gule"] or None, p["rode"] or None]
         for col, val in enumerate(data, 1):
             c = ws.cell(row=row, column=col, value=val)
             c.border = S["bot"]
@@ -442,10 +441,10 @@ def skriv_kort_sheet(kort: list[dict]) -> None:
                 c.font = f_rank
             elif col == 4 and val:
                 c.fill = S["YLW_PILL"]; c.font = S["f_ylw"]
-            elif col in (5, 6) and val:
+            elif col == 5 and val:
                 c.fill = S["RED_PILL"]; c.font = S["f_red"]
 
-    for col, w in enumerate([5, 28, 20, 8, 8, 10], 1):
+    for col, w in enumerate([5, 28, 20, 8, 8], 1):
         ws.column_dimensions[get_column_letter(col)].width = w
 
     try:
