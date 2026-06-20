@@ -64,17 +64,12 @@ sheet_name = 'Nivå 2 og lavere'
 if sheet_name in wb.sheetnames:
     del wb[sheet_name]
 ws = wb.create_sheet(sheet_name)
-ws.auto_filter.ref = "A3:F3"
+ws.auto_filter.ref = "A1:F1"
 
 thin  = Side(style='thin', color='CCCCCC')
 brd   = Border(left=thin, right=thin, top=thin, bottom=thin)
 ctr   = Alignment(horizontal='center', vertical='center')
 lft   = Alignment(horizontal='left', vertical='center')
-
-ws['A1'] = 'FIFA World Cup 2026 — Spillere på nivå 2 og lavere'
-ws['A1'].font      = Font(name='Arial', bold=True, size=14, color='1F4E79')
-ws['A1'].alignment = ctr
-ws.merge_cells('A1:F1')
 
 headers = ['Nivå', 'Klubb', 'Land', 'Liga', 'Spiller', 'Nasjonallag']
 FILLS = {
@@ -86,14 +81,14 @@ FILLS = {
     6:        PatternFill('solid', start_color='E8E0F0'),
 }
 for col, h in enumerate(headers, 1):
-    c = ws.cell(row=3, column=col, value=h)
+    c = ws.cell(row=1, column=col, value=h)
     c.font      = Font(name='Arial', bold=True, size=11, color='FFFFFF')
     c.fill      = FILLS['header']
     c.alignment = ctr
     c.border    = brd
 
 for i, (niva, club, land, liga, spiller, nasjonallag) in enumerate(rows, 1):
-    row = i + 3
+    row = i + 1
     fill = FILLS.get(niva, PatternFill('solid', start_color='FFFFFF'))
     for col, (val, al) in enumerate(zip([niva, club, land, liga, spiller, nasjonallag],
                                          [ctr, lft, lft, lft, lft, lft]), 1):
@@ -106,7 +101,7 @@ for i, (niva, club, land, liga, spiller, nasjonallag) in enumerate(rows, 1):
 for col, width in zip('ABCDEF', [8, 26, 16, 22, 30, 22]):
     ws.column_dimensions[col].width = width
 
-legend_row = len(rows) + 5
+legend_row = len(rows) + 3
 ws.cell(row=legend_row, column=1, value='Fargeforklaring:').font = Font(name='Arial', bold=True, size=10)
 
 for offset, (niva_l, label) in enumerate([(2,'Nivå 2'), (3,'Nivå 3'), (4,'Nivå 4'), (5,'Nivå 5'), (6,'Nivå 6')], 1):
