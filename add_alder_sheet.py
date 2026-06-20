@@ -450,6 +450,7 @@ def skriv_alder_sheet(alle: list[dict], n_spillere: int) -> None:
             value=f"* Alder beregnet per {TURNERING_START.strftime('%d.%m.%Y')} (første kampdag)."
                   f"  Kun spillere fra lag som har spilt kamp er inkludert ({n_spillere} spillere totalt).")
     ws.cell(row=note_row, column=1).font = Font(name="Calibri", size=9, color="6B7A99", italic=True)
+    ws.merge_cells(f"A{note_row}:{get_column_letter(ncols)}{note_row}")
 
     for col, (_, width, _) in enumerate(col_defs, 1):
         ws.column_dimensions[get_column_letter(col)].width = width
