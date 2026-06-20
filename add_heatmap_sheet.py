@@ -5,6 +5,7 @@ Lager arket "Heatmap" med ett minutt per celle (1–90 + tilleggstid),
 fargekodet etter antall mål. Kilde: lagstatistikk_cache.json.
 """
 import io, json, shutil, sys
+from dataclasses import dataclass, field
 from pathlib import Path
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 BASE_DIR = Path(__file__).parent
@@ -37,39 +38,53 @@ def _colors(count: int) -> tuple[str, str]:
     return GRADIENT[idx]
 
 
-def _parse_min(s: str) -> int | None:
+def _parse_min(s: str) -> tuple[int, int] | None:
     if not s:
         return None
     s = str(s).strip().rstrip("'")
     if "'+" in s:
         parts = s.replace("'", "").split("+")
         try:
-            return int(parts[0]) + int(parts[1])
+            return int(parts[0]), int(parts[1])
         except Exception:
             return None
     try:
-        return int(s)
+        return int(s), 0
     except Exception:
         return None
 
 
-def tell_per_minutt() -> dict[int, int]:
+@dataclass
+class GoalCounts:
+    regular: dict[int, int] = field(default_factory=dict)  # ekte min 1–90
+    ht_et:   dict[int, int] = field(default_factory=dict)  # 45+N, nøkkel=N
+    ft_et:   dict[int, int] = field(default_factory=dict)  # 90+N, nøkkel=N
+
+
+def tell_per_minutt() -> GoalCounts:
     if not Path(STAT_CACHE).exists():
         sys.exit(f"FEIL: {STAT_CACHE} finnes ikke.")
     with open(STAT_CACHE, encoding="utf-8") as f:
         cache = json.load(f)
-    counts: dict[int, int] = {}
+    result = GoalCounts()
     for mid, events in cache.items():
         for e in events:
             if e.get("TypeLocalized") not in GOAL_TYPES:
                 continue
-            m = _parse_min(e.get("MatchMinute"))
-            if m and m >= 1:
-                counts[m] = counts.get(m, 0) + 1
-    return counts
+            parsed = _parse_min(e.get("MatchMinute"))
+            if parsed is None:
+                continue
+            base, extra = parsed
+            if extra == 0 and base >= 1:
+                result.regular[base] = result.regular.get(base, 0) + 1
+            elif base == 45 and extra >= 1:
+                result.ht_et[extra] = result.ht_et.get(extra, 0) + 1
+            elif base == 90 and extra >= 1:
+                result.ft_et[extra] = result.ft_et.get(extra, 0) + 1
+    return result
 
 
-def skriv_ark(counts: dict[int, int]) -> None:
+def skriv_ark(counts: GoalCounts) -> None:
     backup = Path(str(EXCEL_PATH) + ".bak")
     shutil.copy2(EXCEL_PATH, backup)
     wb = load_workbook(EXCEL_PATH)
@@ -138,7 +153,7 @@ def skriv_ark(counts: dict[int, int]) -> None:
         for col_i in range(10):
             col    = col_i + 2
             minutt = row_start + col_i
-            n      = counts.get(minutt, 0)
+            n      = counts.regular.get(minutt, 0)
             bg, fg = _colors(n)
 
             cell = ws.cell(row=row, column=col, value=n if n > 0 else None)
@@ -154,15 +169,15 @@ def skriv_ark(counts: dict[int, int]) -> None:
             cell.border = Border(left=left_side, right=right_side,
                                  top=top_side, bottom=bot_side)
 
-    # ── Rad 12: separator ─────────────────────────────────────────────────────
+    # ── Rad 12: separator (før 45+ tilleggstid) ───────────────────────────────
     ws.row_dimensions[12].height = 8
     for col in range(1, 12):
         c = ws.cell(row=12, column=col)
         c.fill = GRAY
 
-    # ── Rad 13: tilleggstid-header ────────────────────────────────────────────
+    # ── Rad 13: 45+ tilleggstid-header ────────────────────────────────────────
     ws.row_dimensions[13].height = 16
-    lc = ws.cell(row=13, column=1, value="ET")
+    lc = ws.cell(row=13, column=1, value="45+")
     lc.font = f_hdr; lc.fill = NAVY; lc.alignment = ctr
 
     for col_i in range(10):
@@ -170,25 +185,57 @@ def skriv_ark(counts: dict[int, int]) -> None:
         c = ws.cell(row=13, column=col, value=f"+{col_i + 1}")
         c.font = f_sub; c.fill = BLUE; c.alignment = ctr
 
-    # ── Rad 14: tilleggstid-data (minutt 91–100) ──────────────────────────────
+    # ── Rad 14: 45+ tilleggstid-data (45'+1 … 45'+10) ────────────────────────
     ws.row_dimensions[14].height = CELL_H
-    lc = ws.cell(row=14, column=1, value="90+")
+    lc = ws.cell(row=14, column=1, value="HT")
     lc.font = f_hdr; lc.fill = NAVY; lc.alignment = ctr
 
     for col_i in range(10):
-        col    = col_i + 2
-        minutt = 91 + col_i
-        n      = counts.get(minutt, 0)
-        bg, fg = _colors(n)
+        col       = col_i + 2
+        extra_min = col_i + 1
+        n         = counts.ht_et.get(extra_min, 0)
+        bg, fg    = _colors(n)
         cell = ws.cell(row=14, column=col, value=n if n > 0 else None)
         cell.fill      = PatternFill("solid", fgColor=bg)
         cell.font      = Font(name="Calibri", bold=(n > 0), size=10, color=fg)
         cell.alignment = ctr
         cell.border    = Border(left=thin, right=thin, top=thin, bottom=thin)
 
-    # ── Rad 16–17: Forklaring ─────────────────────────────────────────────────
-    ws.row_dimensions[16].height = 14
-    ws.cell(row=16, column=1, value="Fargeskala:").font = Font(name="Calibri", bold=True, size=9, color="1A1A2E")
+    # ── Rad 15: separator (før ET/90+ tilleggstid) ────────────────────────────
+    ws.row_dimensions[15].height = 8
+    for col in range(1, 12):
+        c = ws.cell(row=15, column=col)
+        c.fill = GRAY
+
+    # ── Rad 16: ET tilleggstid-header ─────────────────────────────────────────
+    ws.row_dimensions[16].height = 16
+    lc = ws.cell(row=16, column=1, value="ET")
+    lc.font = f_hdr; lc.fill = NAVY; lc.alignment = ctr
+
+    for col_i in range(10):
+        col = col_i + 2
+        c = ws.cell(row=16, column=col, value=f"+{col_i + 1}")
+        c.font = f_sub; c.fill = BLUE; c.alignment = ctr
+
+    # ── Rad 17: 90+ tilleggstid-data (90'+1 … 90'+10) ────────────────────────
+    ws.row_dimensions[17].height = CELL_H
+    lc = ws.cell(row=17, column=1, value="90+")
+    lc.font = f_hdr; lc.fill = NAVY; lc.alignment = ctr
+
+    for col_i in range(10):
+        col       = col_i + 2
+        extra_min = col_i + 1
+        n         = counts.ft_et.get(extra_min, 0)
+        bg, fg    = _colors(n)
+        cell = ws.cell(row=17, column=col, value=n if n > 0 else None)
+        cell.fill      = PatternFill("solid", fgColor=bg)
+        cell.font      = Font(name="Calibri", bold=(n > 0), size=10, color=fg)
+        cell.alignment = ctr
+        cell.border    = Border(left=thin, right=thin, top=thin, bottom=thin)
+
+    # ── Rad 19–20: Forklaring ─────────────────────────────────────────────────
+    ws.row_dimensions[19].height = 14
+    ws.cell(row=19, column=1, value="Fargeskala:").font = Font(name="Calibri", bold=True, size=9, color="1A1A2E")
 
     legend_items = [
         ("0 mål",  "FFFFFF", "AAAAAA"),
@@ -199,18 +246,18 @@ def skriv_ark(counts: dict[int, int]) -> None:
         ("5 mål",  "1A3C6B", "FFFFFF"),
         ("6+ mål", "0F2044", "FFFFFF"),
     ]
-    ws.row_dimensions[17].height = 18
+    ws.row_dimensions[20].height = 18
     for i, (label, bg, fg) in enumerate(legend_items):
         col = i + 2
-        c = ws.cell(row=17, column=col, value=label)
+        c = ws.cell(row=20, column=col, value=label)
         c.fill      = PatternFill("solid", fgColor=bg)
         c.font      = Font(name="Calibri", size=8, color=fg)
         c.alignment = ctr
         c.border    = Border(left=thin, right=thin, top=thin, bottom=thin)
 
     # ── Halvtidsmarkeringsforklaring ───────────────────────────────────────────
-    ws.row_dimensions[19].height = 14
-    note = ws.cell(row=19, column=1,
+    ws.row_dimensions[22].height = 14
+    note = ws.cell(row=22, column=1,
                    value="| Tykk strek markerer halvtidspausen (mellom minutt 45 og 46)")
     note.font = Font(name="Calibri", italic=True, size=8, color="6B7A99")
 
@@ -235,10 +282,17 @@ def main():
 
     print("\n[1/2] Teller mål per minutt fra cache...")
     counts = tell_per_minutt()
-    totalt = sum(counts.values())
-    maks   = max(counts.values()) if counts else 0
-    print(f"  {totalt} mål fordelt over {len(counts)} forskjellige minutter")
-    print(f"  Maks i ett minutt: {maks} mål (minutt {max(counts, key=counts.get)})")
+    totalt_regular = sum(counts.regular.values())
+    totalt_ht_et   = sum(counts.ht_et.values())
+    totalt_ft_et   = sum(counts.ft_et.values())
+    totalt         = totalt_regular + totalt_ht_et + totalt_ft_et
+    print(f"  {totalt} mål totalt")
+    print(f"    - {totalt_regular} i ordinær tid (minutt 1–90)")
+    print(f"    - {totalt_ht_et} i HT tilleggstid (45'+N): {dict(sorted(counts.ht_et.items()))}")
+    print(f"    - {totalt_ft_et} i FT tilleggstid (90'+N): {dict(sorted(counts.ft_et.items()))}")
+    if counts.regular:
+        maks_min = max(counts.regular, key=counts.regular.get)
+        print(f"  Maks i ett minutt (ordinær tid): {counts.regular[maks_min]} mål (minutt {maks_min})")
 
     print(f"\n[2/2] Skriver ark '{SHEET_NAME}' til Excel...")
     skriv_ark(counts)
