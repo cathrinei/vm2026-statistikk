@@ -5,16 +5,17 @@ Daglig oppdatering av VM2026_avansert_gruppetabeller_og_sluttspill.xlsx.
 
 Kjørerekkefølge:
   1. add_kamper_sheets.py           — kampresultater + gruppetabeller (inkl. tilskuere + stadion)
-  2–5. (hoppes over hvis ingen nye kamper siden sist)
-  2. check_avvik.py --fix           — mål, assist, gule/røde kort; Toppscorere/Assists/Kort-ark
-  3. add_alder_sheet.py             — oppdaterer Alder-ark; henter dato for ev. nye spillere
-  4. add_birthdate_column.py        — fyll inn fødselsdatoer i gruppearkene (ev. nye spillere)
-  5. add_minutter_column.py         — minutter spilt per spiller i gruppearkene
-  6. add_lagstatistikk_sheet.py     — mål/nullere/straffespark/selvmål/skudd/formasjoner/bytter
-  7. add_scoringstidspunkt_sheet.py — mål per 15-min intervall + søylediagram
-  8. add_heatmap_sheet.py           — mål per minutt som fargekodet heatmap
-  9. add_ballbesittelse_sheet.py    — ballbesittelse og skudd per kamp (leser wc2026_possession.json)
- 10. add_club_column.py             — fyll inn klubbnavn i gruppearkene (alltid — caches internt)
+  2. add_sluttspill_sheet.py        — sluttspill-ark (32-delsfinale → Finale); alltid
+  3–6. (hoppes over hvis ingen nye kamper siden sist)
+  3. check_avvik.py --fix           — mål, assist, gule/røde kort; Toppscorere/Assists/Kort-ark
+  4. add_alder_sheet.py             — oppdaterer Alder-ark; henter dato for ev. nye spillere
+  5. add_birthdate_column.py        — fyll inn fødselsdatoer i gruppearkene (ev. nye spillere)
+  6. add_minutter_column.py         — minutter spilt per spiller i gruppearkene
+  7. add_lagstatistikk_sheet.py     — mål/nullere/straffespark/selvmål/skudd/formasjoner/bytter
+  8. add_scoringstidspunkt_sheet.py — mål per 15-min intervall + søylediagram
+  9. add_heatmap_sheet.py           — mål per minutt som fargekodet heatmap
+ 10. add_ballbesittelse_sheet.py    — ballbesittelse og skudd per kamp (leser wc2026_possession.json)
+ 11. add_club_column.py             — fyll inn klubbnavn i gruppearkene (alltid — caches internt)
 
 Flagg:
   --full          tvinger full gjeninnlesing av alle kamper
@@ -119,7 +120,10 @@ def main():
     spilte_etter = count_spilte()
     nye_kamper   = spilte_etter - spilte_før
 
-    # ── Steg 2–5: kun ved nye kamper ─────────────────────────────────────────
+    # ── Steg 2: Sluttspill-ark (alltid) ─────────────────────────────────────
+    kjør_steg("Sluttspill-ark", [PYTHON, "add_sluttspill_sheet.py"])
+
+    # ── Steg 3–6: kun ved nye kamper ─────────────────────────────────────────
     if nye_kamper == 0 and not full:
         print(f"\n  Ingen nye kamper siden sist ({spilte_etter} totalt) — "
               f"hopper over statistikk-oppdatering.")
@@ -132,19 +136,19 @@ def main():
         kjør_steg("Fødselsdato-kolonne i gruppeark", [PYTHON, "add_birthdate_column.py"])
         kjør_steg("Minutter spilt i gruppeark",      [PYTHON, "add_minutter_column.py"])
 
-    # ── Steg 5: Lagstatistikk (alltid — caches internt) ──────────────────────
+    # ── Steg 7: Lagstatistikk (alltid — caches internt) ──────────────────────
     kjør_steg("Lagstatistikk", [PYTHON, "add_lagstatistikk_sheet.py"])
 
-    # ── Steg 6: Scoringstidspunkt (alltid — leser fra lagstatistikk_cache.json) ──
+    # ── Steg 8: Scoringstidspunkt (alltid — leser fra lagstatistikk_cache.json) ──
     kjør_steg("Scoringstidspunkt", [PYTHON, "add_scoringstidspunkt_sheet.py"])
 
-    # ── Steg 7: Heatmap (alltid — leser fra lagstatistikk_cache.json) ────────
+    # ── Steg 9: Heatmap (alltid — leser fra lagstatistikk_cache.json) ────────
     kjør_steg("Heatmap", [PYTHON, "add_heatmap_sheet.py"])
 
-    # ── Steg 8: Ballbesittelse (alltid — leser fra wc2026_possession.json) ─────
+    # ── Steg 10: Ballbesittelse (alltid — leser fra wc2026_possession.json) ─────
     kjør_steg("Ballbesittelse", [PYTHON, "add_ballbesittelse_sheet.py"])
 
-    # ── Steg 9: Klubb-kolonne (alltid — fyller bare tomme celler) ────────────
+    # ── Steg 11: Klubb-kolonne (alltid — fyller bare tomme celler) ────────────
     kjør_steg("Klubb-kolonne i gruppeark", [PYTHON, "add_club_column.py"])
 
     # ── Steg 10–11: Klubber- og Spillere etter klubbland-ark (ved endringer) ──────

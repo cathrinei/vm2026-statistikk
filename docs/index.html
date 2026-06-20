@@ -10,6 +10,11 @@
   body { font-family: Calibri, 'Segoe UI', Arial, sans-serif; font-size: 10pt; background: #f4f6f9; color: #1a1a2e; }
   .tab-bar { display: flex; flex-wrap: wrap; gap: 3px; padding: 10px 12px 0; background: #1A3C6B; position: sticky; top: 0; z-index: 100; }
   .tab-bar button { background: rgba(255,255,255,0.15); color: #fff; border: none; padding: 8px 12px; min-height: 44px; cursor: pointer; border-radius: 4px 4px 0 0; font-size: 9pt; font-family: inherit; white-space: nowrap; transition: background 0.15s; }
+  @media (max-width: 768px) {
+    .tab-bar { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    .tab-bar::-webkit-scrollbar { display: none; }
+    .tab-bar button { flex-shrink: 0; }
+  }
   .tab-bar button:hover { background: rgba(255,255,255,0.3); }
   .tab-bar button.aktiv { background: #fff; color: #0F2044; font-weight: bold; }
   .ark-innhold { padding: 16px 12px; }
@@ -19,11 +24,6 @@
   td { padding: 3px 6px; border-bottom: 1px solid #e8edf5; border-right: 1px solid #edf0f5; white-space: nowrap; vertical-align: middle; min-width: 30px; }
   tr:last-child td { border-bottom: none; }
   td:last-child { border-right: none; }
-  @media (max-width: 768px) {
-    .tab-bar { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
-    .tab-bar::-webkit-scrollbar { display: none; }
-    .tab-bar button { flex-shrink: 0; }
-  }
   @media (max-width: 600px) {
     header { padding: 12px 16px 10px; }
     header h1 { font-size: 1.2em; }
@@ -73,6 +73,12 @@
 <button onclick="visArk('Gruppe_J')">Gruppe J</button>
 <button onclick="visArk('Gruppe_K')">Gruppe K</button>
 <button onclick="visArk('Gruppe_L')">Gruppe L</button>
+<button onclick="visArk('32-delsfinale')">32-delsfinale</button>
+<button onclick="visArk('8-delsfinale')">8-delsfinale</button>
+<button onclick="visArk('Kvartfinaler')">Kvartfinaler</button>
+<button onclick="visArk('Semifinaler')">Semifinaler</button>
+<button onclick="visArk('Bronsefinale')">Bronsefinale</button>
+<button onclick="visArk('Finale')">Finale</button>
 <button onclick="visArk('Klubber')">Klubber</button>
 <button onclick="visArk('Aldersfordeling')">Aldersfordeling</button>
 <button onclick="visArk('Niv__2_og_lavere')">Nivå 2 og lavere</button>
@@ -31604,6 +31610,450 @@
 <td style="color:#6B7A99;text-align:center"></td>
 <td style="color:#6B7A99;text-align:center"></td>
 <td style="color:#C0C0C0;text-align:center">0</td>
+</tr>
+</table></div>
+</div>
+<div id="ark_32-delsfinale" class="ark-innhold" style="display:none">
+<h2>32-delsfinale</h2>
+<div class="tabell-wrapper"><table>
+<colgroup>
+<col style="width:56px">
+<col style="width:140px">
+<col style="width:70px">
+<col style="width:140px">
+<col style="width:84px">
+<col style="width:168px">
+<col style="width:126px">
+</colgroup>
+<tr>
+<td colspan="7" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">VM 2026 — 32-delsfinale</td>
+</tr>
+<tr>
+<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Dato</td>
+<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Hjemmelag</td>
+<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Resultat</td>
+<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Bortelag</td>
+<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Tilskuere</td>
+<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Stadion</td>
+<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Dommer</td>
+</tr>
+<tr>
+<td style="background:#F0F5FB;color:#6B7A99;text-align:center">28.06</td>
+<td style="background:#F0F5FB;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#F0F5FB;color:#1A1A2E;text-align:center"></td>
+<td style="background:#F0F5FB;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#F0F5FB;color:#6B7A99;text-align:center"></td>
+<td style="background:#F0F5FB;color:#1A1A2E"></td>
+<td style="background:#F0F5FB;color:#1A1A2E"></td>
+</tr>
+<tr>
+<td style="background:#FFFFFF;color:#6B7A99;text-align:center">29.06</td>
+<td style="background:#FFFFFF;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#FFFFFF;color:#1A1A2E;text-align:center"></td>
+<td style="background:#FFFFFF;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#FFFFFF;color:#6B7A99;text-align:center"></td>
+<td style="background:#FFFFFF;color:#1A1A2E"></td>
+<td style="background:#FFFFFF;color:#1A1A2E"></td>
+</tr>
+<tr>
+<td style="background:#F0F5FB;color:#6B7A99;text-align:center">29.06</td>
+<td style="background:#F0F5FB;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#F0F5FB;color:#1A1A2E;text-align:center"></td>
+<td style="background:#F0F5FB;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#F0F5FB;color:#6B7A99;text-align:center"></td>
+<td style="background:#F0F5FB;color:#1A1A2E"></td>
+<td style="background:#F0F5FB;color:#1A1A2E"></td>
+</tr>
+<tr>
+<td style="background:#FFFFFF;color:#6B7A99;text-align:center">29.06</td>
+<td style="background:#FFFFFF;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#FFFFFF;color:#1A1A2E;text-align:center"></td>
+<td style="background:#FFFFFF;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#FFFFFF;color:#6B7A99;text-align:center"></td>
+<td style="background:#FFFFFF;color:#1A1A2E"></td>
+<td style="background:#FFFFFF;color:#1A1A2E"></td>
+</tr>
+<tr>
+<td style="background:#F0F5FB;color:#6B7A99;text-align:center">30.06</td>
+<td style="background:#F0F5FB;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#F0F5FB;color:#1A1A2E;text-align:center"></td>
+<td style="background:#F0F5FB;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#F0F5FB;color:#6B7A99;text-align:center"></td>
+<td style="background:#F0F5FB;color:#1A1A2E"></td>
+<td style="background:#F0F5FB;color:#1A1A2E"></td>
+</tr>
+<tr>
+<td style="background:#FFFFFF;color:#6B7A99;text-align:center">30.06</td>
+<td style="background:#FFFFFF;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#FFFFFF;color:#1A1A2E;text-align:center"></td>
+<td style="background:#FFFFFF;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#FFFFFF;color:#6B7A99;text-align:center"></td>
+<td style="background:#FFFFFF;color:#1A1A2E"></td>
+<td style="background:#FFFFFF;color:#1A1A2E"></td>
+</tr>
+<tr>
+<td style="background:#F0F5FB;color:#6B7A99;text-align:center">30.06</td>
+<td style="background:#F0F5FB;font-style:italic;color:#9AA5B4">Mexico</td>
+<td style="background:#F0F5FB;color:#1A1A2E;text-align:center"></td>
+<td style="background:#F0F5FB;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#F0F5FB;color:#6B7A99;text-align:center"></td>
+<td style="background:#F0F5FB;color:#1A1A2E"></td>
+<td style="background:#F0F5FB;color:#1A1A2E"></td>
+</tr>
+<tr>
+<td style="background:#FFFFFF;color:#6B7A99;text-align:center">01.07</td>
+<td style="background:#FFFFFF;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#FFFFFF;color:#1A1A2E;text-align:center"></td>
+<td style="background:#FFFFFF;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#FFFFFF;color:#6B7A99;text-align:center"></td>
+<td style="background:#FFFFFF;color:#1A1A2E"></td>
+<td style="background:#FFFFFF;color:#1A1A2E"></td>
+</tr>
+<tr>
+<td style="background:#F0F5FB;color:#6B7A99;text-align:center">01.07</td>
+<td style="background:#F0F5FB;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#F0F5FB;color:#1A1A2E;text-align:center"></td>
+<td style="background:#F0F5FB;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#F0F5FB;color:#6B7A99;text-align:center"></td>
+<td style="background:#F0F5FB;color:#1A1A2E"></td>
+<td style="background:#F0F5FB;color:#1A1A2E"></td>
+</tr>
+<tr>
+<td style="background:#FFFFFF;color:#6B7A99;text-align:center">01.07</td>
+<td style="background:#FFFFFF;font-style:italic;color:#9AA5B4">USA</td>
+<td style="background:#FFFFFF;color:#1A1A2E;text-align:center"></td>
+<td style="background:#FFFFFF;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#FFFFFF;color:#6B7A99;text-align:center"></td>
+<td style="background:#FFFFFF;color:#1A1A2E"></td>
+<td style="background:#FFFFFF;color:#1A1A2E"></td>
+</tr>
+<tr>
+<td style="background:#F0F5FB;color:#6B7A99;text-align:center">02.07</td>
+<td style="background:#F0F5FB;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#F0F5FB;color:#1A1A2E;text-align:center"></td>
+<td style="background:#F0F5FB;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#F0F5FB;color:#6B7A99;text-align:center"></td>
+<td style="background:#F0F5FB;color:#1A1A2E"></td>
+<td style="background:#F0F5FB;color:#1A1A2E"></td>
+</tr>
+<tr>
+<td style="background:#FFFFFF;color:#6B7A99;text-align:center">02.07</td>
+<td style="background:#FFFFFF;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#FFFFFF;color:#1A1A2E;text-align:center"></td>
+<td style="background:#FFFFFF;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#FFFFFF;color:#6B7A99;text-align:center"></td>
+<td style="background:#FFFFFF;color:#1A1A2E"></td>
+<td style="background:#FFFFFF;color:#1A1A2E"></td>
+</tr>
+<tr>
+<td style="background:#F0F5FB;color:#6B7A99;text-align:center">02.07</td>
+<td style="background:#F0F5FB;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#F0F5FB;color:#1A1A2E;text-align:center"></td>
+<td style="background:#F0F5FB;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#F0F5FB;color:#6B7A99;text-align:center"></td>
+<td style="background:#F0F5FB;color:#1A1A2E"></td>
+<td style="background:#F0F5FB;color:#1A1A2E"></td>
+</tr>
+<tr>
+<td style="background:#FFFFFF;color:#6B7A99;text-align:center">03.07</td>
+<td style="background:#FFFFFF;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#FFFFFF;color:#1A1A2E;text-align:center"></td>
+<td style="background:#FFFFFF;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#FFFFFF;color:#6B7A99;text-align:center"></td>
+<td style="background:#FFFFFF;color:#1A1A2E"></td>
+<td style="background:#FFFFFF;color:#1A1A2E"></td>
+</tr>
+<tr>
+<td style="background:#F0F5FB;color:#6B7A99;text-align:center">03.07</td>
+<td style="background:#F0F5FB;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#F0F5FB;color:#1A1A2E;text-align:center"></td>
+<td style="background:#F0F5FB;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#F0F5FB;color:#6B7A99;text-align:center"></td>
+<td style="background:#F0F5FB;color:#1A1A2E"></td>
+<td style="background:#F0F5FB;color:#1A1A2E"></td>
+</tr>
+<tr>
+<td style="background:#FFFFFF;color:#6B7A99;text-align:center">03.07</td>
+<td style="background:#FFFFFF;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#FFFFFF;color:#1A1A2E;text-align:center"></td>
+<td style="background:#FFFFFF;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#FFFFFF;color:#6B7A99;text-align:center"></td>
+<td style="background:#FFFFFF;color:#1A1A2E"></td>
+<td style="background:#FFFFFF;color:#1A1A2E"></td>
+</tr>
+</table></div>
+</div>
+<div id="ark_8-delsfinale" class="ark-innhold" style="display:none">
+<h2>8-delsfinale</h2>
+<div class="tabell-wrapper"><table>
+<colgroup>
+<col style="width:56px">
+<col style="width:140px">
+<col style="width:70px">
+<col style="width:140px">
+<col style="width:84px">
+<col style="width:168px">
+<col style="width:126px">
+</colgroup>
+<tr>
+<td colspan="7" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">VM 2026 — 8-delsfinale</td>
+</tr>
+<tr>
+<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Dato</td>
+<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Hjemmelag</td>
+<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Resultat</td>
+<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Bortelag</td>
+<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Tilskuere</td>
+<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Stadion</td>
+<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Dommer</td>
+</tr>
+<tr>
+<td style="background:#F0F5FB;color:#6B7A99;text-align:center">04.07</td>
+<td style="background:#F0F5FB;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#F0F5FB;color:#1A1A2E;text-align:center"></td>
+<td style="background:#F0F5FB;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#F0F5FB;color:#6B7A99;text-align:center"></td>
+<td style="background:#F0F5FB;color:#1A1A2E"></td>
+<td style="background:#F0F5FB;color:#1A1A2E"></td>
+</tr>
+<tr>
+<td style="background:#FFFFFF;color:#6B7A99;text-align:center">04.07</td>
+<td style="background:#FFFFFF;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#FFFFFF;color:#1A1A2E;text-align:center"></td>
+<td style="background:#FFFFFF;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#FFFFFF;color:#6B7A99;text-align:center"></td>
+<td style="background:#FFFFFF;color:#1A1A2E"></td>
+<td style="background:#FFFFFF;color:#1A1A2E"></td>
+</tr>
+<tr>
+<td style="background:#F0F5FB;color:#6B7A99;text-align:center">05.07</td>
+<td style="background:#F0F5FB;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#F0F5FB;color:#1A1A2E;text-align:center"></td>
+<td style="background:#F0F5FB;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#F0F5FB;color:#6B7A99;text-align:center"></td>
+<td style="background:#F0F5FB;color:#1A1A2E"></td>
+<td style="background:#F0F5FB;color:#1A1A2E"></td>
+</tr>
+<tr>
+<td style="background:#FFFFFF;color:#6B7A99;text-align:center">05.07</td>
+<td style="background:#FFFFFF;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#FFFFFF;color:#1A1A2E;text-align:center"></td>
+<td style="background:#FFFFFF;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#FFFFFF;color:#6B7A99;text-align:center"></td>
+<td style="background:#FFFFFF;color:#1A1A2E"></td>
+<td style="background:#FFFFFF;color:#1A1A2E"></td>
+</tr>
+<tr>
+<td style="background:#F0F5FB;color:#6B7A99;text-align:center">06.07</td>
+<td style="background:#F0F5FB;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#F0F5FB;color:#1A1A2E;text-align:center"></td>
+<td style="background:#F0F5FB;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#F0F5FB;color:#6B7A99;text-align:center"></td>
+<td style="background:#F0F5FB;color:#1A1A2E"></td>
+<td style="background:#F0F5FB;color:#1A1A2E"></td>
+</tr>
+<tr>
+<td style="background:#FFFFFF;color:#6B7A99;text-align:center">06.07</td>
+<td style="background:#FFFFFF;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#FFFFFF;color:#1A1A2E;text-align:center"></td>
+<td style="background:#FFFFFF;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#FFFFFF;color:#6B7A99;text-align:center"></td>
+<td style="background:#FFFFFF;color:#1A1A2E"></td>
+<td style="background:#FFFFFF;color:#1A1A2E"></td>
+</tr>
+<tr>
+<td style="background:#F0F5FB;color:#6B7A99;text-align:center">07.07</td>
+<td style="background:#F0F5FB;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#F0F5FB;color:#1A1A2E;text-align:center"></td>
+<td style="background:#F0F5FB;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#F0F5FB;color:#6B7A99;text-align:center"></td>
+<td style="background:#F0F5FB;color:#1A1A2E"></td>
+<td style="background:#F0F5FB;color:#1A1A2E"></td>
+</tr>
+<tr>
+<td style="background:#FFFFFF;color:#6B7A99;text-align:center">07.07</td>
+<td style="background:#FFFFFF;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#FFFFFF;color:#1A1A2E;text-align:center"></td>
+<td style="background:#FFFFFF;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#FFFFFF;color:#6B7A99;text-align:center"></td>
+<td style="background:#FFFFFF;color:#1A1A2E"></td>
+<td style="background:#FFFFFF;color:#1A1A2E"></td>
+</tr>
+</table></div>
+</div>
+<div id="ark_Kvartfinaler" class="ark-innhold" style="display:none">
+<h2>Kvartfinaler</h2>
+<div class="tabell-wrapper"><table>
+<colgroup>
+<col style="width:56px">
+<col style="width:140px">
+<col style="width:70px">
+<col style="width:140px">
+<col style="width:84px">
+<col style="width:168px">
+<col style="width:126px">
+</colgroup>
+<tr>
+<td colspan="7" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">VM 2026 — Kvartfinaler</td>
+</tr>
+<tr>
+<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Dato</td>
+<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Hjemmelag</td>
+<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Resultat</td>
+<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Bortelag</td>
+<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Tilskuere</td>
+<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Stadion</td>
+<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Dommer</td>
+</tr>
+<tr>
+<td style="background:#F0F5FB;color:#6B7A99;text-align:center">09.07</td>
+<td style="background:#F0F5FB;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#F0F5FB;color:#1A1A2E;text-align:center"></td>
+<td style="background:#F0F5FB;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#F0F5FB;color:#6B7A99;text-align:center"></td>
+<td style="background:#F0F5FB;color:#1A1A2E"></td>
+<td style="background:#F0F5FB;color:#1A1A2E"></td>
+</tr>
+<tr>
+<td style="background:#FFFFFF;color:#6B7A99;text-align:center">10.07</td>
+<td style="background:#FFFFFF;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#FFFFFF;color:#1A1A2E;text-align:center"></td>
+<td style="background:#FFFFFF;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#FFFFFF;color:#6B7A99;text-align:center"></td>
+<td style="background:#FFFFFF;color:#1A1A2E"></td>
+<td style="background:#FFFFFF;color:#1A1A2E"></td>
+</tr>
+<tr>
+<td style="background:#F0F5FB;color:#6B7A99;text-align:center">11.07</td>
+<td style="background:#F0F5FB;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#F0F5FB;color:#1A1A2E;text-align:center"></td>
+<td style="background:#F0F5FB;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#F0F5FB;color:#6B7A99;text-align:center"></td>
+<td style="background:#F0F5FB;color:#1A1A2E"></td>
+<td style="background:#F0F5FB;color:#1A1A2E"></td>
+</tr>
+<tr>
+<td style="background:#FFFFFF;color:#6B7A99;text-align:center">11.07</td>
+<td style="background:#FFFFFF;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#FFFFFF;color:#1A1A2E;text-align:center"></td>
+<td style="background:#FFFFFF;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#FFFFFF;color:#6B7A99;text-align:center"></td>
+<td style="background:#FFFFFF;color:#1A1A2E"></td>
+<td style="background:#FFFFFF;color:#1A1A2E"></td>
+</tr>
+</table></div>
+</div>
+<div id="ark_Semifinaler" class="ark-innhold" style="display:none">
+<h2>Semifinaler</h2>
+<div class="tabell-wrapper"><table>
+<colgroup>
+<col style="width:56px">
+<col style="width:140px">
+<col style="width:70px">
+<col style="width:140px">
+<col style="width:84px">
+<col style="width:168px">
+<col style="width:126px">
+</colgroup>
+<tr>
+<td colspan="7" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">VM 2026 — Semifinaler</td>
+</tr>
+<tr>
+<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Dato</td>
+<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Hjemmelag</td>
+<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Resultat</td>
+<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Bortelag</td>
+<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Tilskuere</td>
+<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Stadion</td>
+<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Dommer</td>
+</tr>
+<tr>
+<td style="background:#F0F5FB;color:#6B7A99;text-align:center">14.07</td>
+<td style="background:#F0F5FB;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#F0F5FB;color:#1A1A2E;text-align:center"></td>
+<td style="background:#F0F5FB;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#F0F5FB;color:#6B7A99;text-align:center"></td>
+<td style="background:#F0F5FB;color:#1A1A2E"></td>
+<td style="background:#F0F5FB;color:#1A1A2E"></td>
+</tr>
+<tr>
+<td style="background:#FFFFFF;color:#6B7A99;text-align:center">15.07</td>
+<td style="background:#FFFFFF;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#FFFFFF;color:#1A1A2E;text-align:center"></td>
+<td style="background:#FFFFFF;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#FFFFFF;color:#6B7A99;text-align:center"></td>
+<td style="background:#FFFFFF;color:#1A1A2E"></td>
+<td style="background:#FFFFFF;color:#1A1A2E"></td>
+</tr>
+</table></div>
+</div>
+<div id="ark_Bronsefinale" class="ark-innhold" style="display:none">
+<h2>Bronsefinale</h2>
+<div class="tabell-wrapper"><table>
+<colgroup>
+<col style="width:56px">
+<col style="width:140px">
+<col style="width:70px">
+<col style="width:140px">
+<col style="width:84px">
+<col style="width:168px">
+<col style="width:126px">
+</colgroup>
+<tr>
+<td colspan="7" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">VM 2026 — Bronsefinale</td>
+</tr>
+<tr>
+<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Dato</td>
+<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Hjemmelag</td>
+<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Resultat</td>
+<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Bortelag</td>
+<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Tilskuere</td>
+<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Stadion</td>
+<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Dommer</td>
+</tr>
+<tr>
+<td style="background:#F0F5FB;color:#6B7A99;text-align:center">18.07</td>
+<td style="background:#F0F5FB;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#F0F5FB;color:#1A1A2E;text-align:center"></td>
+<td style="background:#F0F5FB;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#F0F5FB;color:#6B7A99;text-align:center"></td>
+<td style="background:#F0F5FB;color:#1A1A2E"></td>
+<td style="background:#F0F5FB;color:#1A1A2E"></td>
+</tr>
+</table></div>
+</div>
+<div id="ark_Finale" class="ark-innhold" style="display:none">
+<h2>Finale</h2>
+<div class="tabell-wrapper"><table>
+<colgroup>
+<col style="width:56px">
+<col style="width:140px">
+<col style="width:70px">
+<col style="width:140px">
+<col style="width:84px">
+<col style="width:168px">
+<col style="width:126px">
+</colgroup>
+<tr>
+<td colspan="7" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">VM 2026 — Finale</td>
+</tr>
+<tr>
+<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Dato</td>
+<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Hjemmelag</td>
+<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Resultat</td>
+<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Bortelag</td>
+<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Tilskuere</td>
+<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Stadion</td>
+<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Dommer</td>
+</tr>
+<tr>
+<td style="background:#F0F5FB;color:#6B7A99;text-align:center">19.07</td>
+<td style="background:#F0F5FB;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#F0F5FB;color:#1A1A2E;text-align:center"></td>
+<td style="background:#F0F5FB;font-style:italic;color:#9AA5B4">TBA</td>
+<td style="background:#F0F5FB;color:#6B7A99;text-align:center"></td>
+<td style="background:#F0F5FB;color:#1A1A2E"></td>
+<td style="background:#F0F5FB;color:#1A1A2E"></td>
 </tr>
 </table></div>
 </div>
