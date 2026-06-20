@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 add_heatmap_sheet.py
 Lager arket "Heatmap" med ett minutt per celle (1–90 + tilleggstid),
@@ -70,7 +70,7 @@ def tell_per_minutt() -> dict[int, int]:
 
 
 def skriv_ark(counts: dict[int, int]) -> None:
-    backup = EXCEL_PATH + ".bak"
+    backup = Path(str(EXCEL_PATH) + ".bak")
     shutil.copy2(EXCEL_PATH, backup)
     wb = load_workbook(EXCEL_PATH)
 

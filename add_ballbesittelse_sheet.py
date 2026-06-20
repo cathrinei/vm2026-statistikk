@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 add_ballbesittelse_sheet.py
 Lager arket "Ballbesittelse" med kampstatistikk: besittelse, skudd (totalt,
@@ -119,7 +119,7 @@ def bygg_data() -> list[dict]:
 
 
 def skriv_ark(rader: list[dict]) -> None:
-    backup = EXCEL_PATH + ".bak"
+    backup = Path(str(EXCEL_PATH) + ".bak")
     shutil.copy2(EXCEL_PATH, backup)
     wb = load_workbook(EXCEL_PATH)
 

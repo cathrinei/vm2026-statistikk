@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 add_scoringstidspunkt_sheet.py
 Lager arket "Scoringstidspunkt" med fordeling av mål per 15-minutters intervall
@@ -81,7 +81,7 @@ def tell_maal() -> tuple[list[int], int, list[dict]]:
 
 
 def skriv_ark(counts: list[int], totalt: int) -> None:
-    backup = EXCEL_PATH + ".bak"
+    backup = Path(str(EXCEL_PATH) + ".bak")
     shutil.copy2(EXCEL_PATH, backup)
     wb = load_workbook(EXCEL_PATH)
 
@@ -186,7 +186,7 @@ def skriv_ark(counts: list[int], totalt: int) -> None:
 
     # Fiks openpyxl-bugs i chart-XML
     import zipfile, re as _re, os
-    tmp = EXCEL_PATH + ".tmp"
+    tmp = Path(str(EXCEL_PATH) + ".tmp")
     with zipfile.ZipFile(EXCEL_PATH, "r") as zin, zipfile.ZipFile(tmp, "w", zipfile.ZIP_DEFLATED) as zout:
         for item in zin.infolist():
             data = zin.read(item.filename)

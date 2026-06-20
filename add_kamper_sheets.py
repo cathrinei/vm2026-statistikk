@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 add_kamper_sheets.py
 Leser kamper fra VM_fotball_menn_2026_kamper.xlsx, henter resultater fra
@@ -500,7 +500,7 @@ def skriv_kamper_til_excel(grupper: dict[str, list[dict]],
                            trenere: dict | None = None,
                            team_id_map: dict | None = None) -> None:
     S = _xl_styles()
-    backup = EXCEL_PATH + ".bak"
+    backup = Path(str(EXCEL_PATH) + ".bak")
     shutil.copy2(EXCEL_PATH, backup)
 
     try:

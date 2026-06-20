@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 add_lagstatistikk_sheet.py
 Legger til "Lagstatistikk"-ark med sju seksjoner:
@@ -565,7 +565,7 @@ def skriv_lagstatistikk(maal, nullere, kamper, straffe, selvmål, skudd, formasj
     S = _styles()
     ncols = 8
 
-    backup = EXCEL_PATH + ".bak"
+    backup = Path(str(EXCEL_PATH) + ".bak")
     shutil.copy2(EXCEL_PATH, backup)
     wb = load_workbook(EXCEL_PATH)
 

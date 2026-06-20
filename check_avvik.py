@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 check_avvik.py
 Sjekker avvik mellom Excel-data og offisiell VM-statistikk (mål/assist).
@@ -380,7 +380,7 @@ def skriv_kort_sheet(kort: list[dict]) -> None:
     from openpyxl.utils import get_column_letter
 
     S = _xl_styles()
-    backup = EXCEL_PATH + ".bak"
+    backup = Path(str(EXCEL_PATH) + ".bak")
     shutil.copy2(EXCEL_PATH, backup)
     try:
         wb = load_workbook(EXCEL_PATH)
@@ -568,7 +568,7 @@ def skriv_toppscore_sheets(excel: list[dict]) -> None:
     from openpyxl.utils import get_column_letter
 
     S = _xl_styles()
-    backup = EXCEL_PATH + ".bak"
+    backup = Path(str(EXCEL_PATH) + ".bak")
     shutil.copy2(EXCEL_PATH, backup)
     try:
         wb = load_workbook(EXCEL_PATH)
@@ -678,7 +678,7 @@ def oppdater_excel(avvik: list[dict]) -> int:
     rettelser = [a for a in avvik if "_sheet" in a and "_row" in a and "_col" in a]
     if not rettelser:
         return 0
-    backup = EXCEL_PATH + ".bak"
+    backup = Path(str(EXCEL_PATH) + ".bak")
     shutil.copy2(EXCEL_PATH, backup)
     try:
         wb = load_workbook(EXCEL_PATH)

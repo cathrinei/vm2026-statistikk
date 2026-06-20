@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 add_stats_sheets.py
 Legger til to statistikkark i Excel-filen:
@@ -291,7 +291,7 @@ def main():
     print("  VM 2026 — Statistikkark (aldersfordeling)")
     print("=" * 55)
 
-    backup = EXCEL_PATH + ".bak"
+    backup = Path(str(EXCEL_PATH) + ".bak")
     shutil.copy2(EXCEL_PATH, backup)
     print(f"\nBackup: {backup}")
 

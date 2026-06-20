@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 add_clubs_sheet.py
 Legger til "Klubber"-ark i Excel med klubber rangert etter antall VM-spillere.
@@ -123,7 +123,7 @@ def skriv_klubb_sheet(klubber: list[dict]) -> None:
     ]
     ncols = len(col_defs)
 
-    backup = EXCEL_PATH + ".bak"
+    backup = Path(str(EXCEL_PATH) + ".bak")
     shutil.copy2(EXCEL_PATH, backup)
     try:
         wb = load_workbook(EXCEL_PATH)

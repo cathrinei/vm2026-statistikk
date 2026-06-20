@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 add_birthdate_column.py
 Setter inn "Fødselsdato"-kolonne (O=15) mellom N (Klubb) og Pos i alle 12 gruppeark.
@@ -88,7 +88,7 @@ if missing_bd:
 
 FORVENTET = 1248
 
-backup = EXCEL_PATH + ".bak"
+backup = Path(str(EXCEL_PATH) + ".bak")
 shutil.copy2(EXCEL_PATH, backup)
 print(f"\nBackup: {backup}")
 

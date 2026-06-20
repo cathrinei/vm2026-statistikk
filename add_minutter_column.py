@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 add_minutter_column.py
 Legger til "Min" (minutter spilt) som kolonne U (21) i gruppearkene.
@@ -182,7 +182,7 @@ def hent_minutter() -> dict[str, int]:
 
 
 def skriv_minutter(minutter: dict[str, int]) -> None:
-    backup = EXCEL_PATH + ".bak"
+    backup = Path(str(EXCEL_PATH) + ".bak")
     shutil.copy2(EXCEL_PATH, backup)
     wb = load_workbook(EXCEL_PATH)
 

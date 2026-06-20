@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 add_club_column.py
 Setter inn "Klubb"-kolonne (N=14) mellom M (Navn) og O (Fødselsdato) i alle 12 gruppeark.
@@ -81,7 +81,7 @@ NAVNEKOLLISJONER: dict[str, dict[str, str]] = {
 
 FORVENTET = 1248
 
-backup = EXCEL_PATH + ".bak"
+backup = Path(str(EXCEL_PATH) + ".bak")
 shutil.copy2(EXCEL_PATH, backup)
 print(f"Backup: {backup}")
 

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 add_alder_sheet.py
 Henter fødselsdato for alle spillere i VM-tropper (via FIFA API lineup-data),
@@ -386,7 +386,7 @@ def skriv_alder_sheet(alle: list[dict], n_spillere: int) -> None:
     yngste = list(reversed(alle))[:10]   # yngst = høyest fødselsdato
     eldste = alle[:10]                    # eldst = lavest fødselsdato
 
-    backup = EXCEL_PATH + ".bak"
+    backup = Path(str(EXCEL_PATH) + ".bak")
     shutil.copy2(EXCEL_PATH, backup)
     try:
         wb = load_workbook(EXCEL_PATH)
