@@ -376,9 +376,11 @@
       "borte": "Sverige",
       "hjemme_en": "Netherlands",
       "borte_en": "Sweden",
-      "score_h": null,
-      "score_a": null,
-      "spilt": false
+      "score_h": 5,
+      "score_a": 1,
+      "spilt": true,
+      "id": "400021472",
+      "dommer": "Michael OLIVER"
     },
     {
       "dato": "2026-06-21",
