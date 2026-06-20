@@ -28,7 +28,7 @@ PLAYERS_JSON = BASE_DIR / "players.json"
 
 GROUPS     = [f"Gruppe {x}" for x in "ABCDEFGHIJKL"]
 BLOCKS     = [(17, 19, 44), (46, 48, 73), (75, 77, 102), (104, 106, 131)]
-COL_BDAY   = 15   # O
+COL_BDAY   = 4    # D
 BDAY_WIDTH = 13
 
 
@@ -126,7 +126,7 @@ for gruppe in GROUPS:
             c.alignment = CTR
 
         for row in range(start_row, end_row + 1):
-            name_val  = ws.cell(row=row, column=13).value   # M = Navn
+            name_val  = ws.cell(row=row, column=2).value    # B = Navn
             bday_cell = ws.cell(row=row, column=COL_BDAY)
 
             if already_inserted and bday_cell.value:
@@ -137,9 +137,9 @@ for gruppe in GROUPS:
             if not bd_str:
                 continue   # ingen dato å sette inn
 
-            # Bakgrunnsfarge fra Pos-nabocellen (P=16)
+            # Bakgrunnsfarge fra Pos-nabocellen (E=5)
             try:
-                rgb = ws.cell(row=row, column=16).fill.fgColor.rgb
+                rgb = ws.cell(row=row, column=5).fill.fgColor.rgb
                 bg  = PatternFill("solid", fgColor=rgb) if rgb and rgb != "00000000" \
                       else (EVEN if (row - start_row) % 2 == 0 else ODD)
             except Exception:
@@ -157,7 +157,7 @@ for gruppe in GROUPS:
                 inserted += 1
 
     if not already_inserted:
-        ws.column_dimensions["O"].width = BDAY_WIDTH
+        ws.column_dimensions["D"].width = BDAY_WIDTH
 
     tot_inserted += inserted
     tot_updated  += updated

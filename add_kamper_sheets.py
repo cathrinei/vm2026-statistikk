@@ -417,16 +417,16 @@ def _xl_styles():
     }
 
 _COL_HEADERS = [
-    (12, "Nr",          "center"),
-    (13, "Navn",        "left"),
-    (14, "Klubb",       "left"),
-    (15, "Fødselsdato", "center"),
-    (16, "Pos",         "center"),
-    (17, "Mål",         "center"),
-    (18, "Assist",      "center"),
-    (19, "Gule",        "center"),
-    (20, "Røde",        "center"),
-    (21, "Min",         "center"),
+    (1,  "Nr",          "center"),
+    (2,  "Navn",        "left"),
+    (3,  "Klubb",       "left"),
+    (4,  "Fødselsdato", "center"),
+    (5,  "Pos",         "center"),
+    (6,  "Mål",         "center"),
+    (7,  "Assist",      "center"),
+    (8,  "Gule",        "center"),
+    (9,  "Røde",        "center"),
+    (10, "Min",         "center"),
 ]
 
 
@@ -437,7 +437,7 @@ def _skriv_trenere(ws, block_header_rows, team_id_map, trenere):
     BLUE = PF2("solid", fgColor="1A3C6B")
 
     for h_row in block_header_rows:
-        raw_name = ws.cell(row=h_row, column=12).value
+        raw_name = ws.cell(row=h_row, column=1).value
         if not raw_name:
             continue
 
@@ -450,30 +450,30 @@ def _skriv_trenere(ws, block_header_rows, team_id_map, trenere):
         coach   = trenere.get(team_id, "")
         base    = til_norsk(base)   # vis norsk lagnavn i cellen
 
-        # Fjern alle eksisterende merges i h_row som starter i col 12
+        # Fjern alle eksisterende merges i h_row som starter i col 1
         to_remove = [mc for mc in ws.merged_cells.ranges
-                     if mc.min_row == h_row and mc.min_col == 12]
+                     if mc.min_row == h_row and mc.min_col == 1]
         for mc in to_remove:
             ws.unmerge_cells(str(mc))
-        # Fjern også P–U-merge fra forrige kjøring (starter i col 16)
+        # Fjern også E–J-merge fra forrige kjøring (starter i col 5)
         to_remove2 = [mc for mc in ws.merged_cells.ranges
-                      if mc.min_row == h_row and mc.min_col == 16]
+                      if mc.min_row == h_row and mc.min_col == 5]
         for mc in to_remove2:
             ws.unmerge_cells(str(mc))
 
         ws.row_dimensions[h_row].height = 24
 
-        # Lagnavn: merge L–O (cols 12–15) — bold, stor, NAVY
-        ws.merge_cells(f"L{h_row}:O{h_row}")
-        c = ws.cell(row=h_row, column=12)
+        # Lagnavn: merge A–D (cols 1–4) — bold, stor, NAVY
+        ws.merge_cells(f"A{h_row}:D{h_row}")
+        c = ws.cell(row=h_row, column=1)
         c.value     = base
         c.font      = F2(name="Calibri", bold=True, size=13, color="FFFFFF")
         c.fill      = NAVY
         c.alignment = A2(horizontal="left", vertical="center")
 
-        # Trenernavn: merge P–U (cols 16–21) — kursiv, liten, NAVY
-        ws.merge_cells(f"P{h_row}:U{h_row}")
-        ct = ws.cell(row=h_row, column=16,
+        # Trenernavn: merge E–J (cols 5–10) — kursiv, liten, NAVY
+        ws.merge_cells(f"E{h_row}:J{h_row}")
+        ct = ws.cell(row=h_row, column=5,
                      value=f"Trener: {_tittel(coach)}" if coach else "")
         ct.font      = F2(name="Calibri", italic=True, size=9, color="FFFFFF")
         ct.fill      = NAVY
@@ -482,7 +482,7 @@ def _skriv_trenere(ws, block_header_rows, team_id_map, trenere):
         # Gjenopprett kolonneoverskrifter på h_row+1
         col_row = h_row + 1
         to_remove2 = [mc for mc in ws.merged_cells.ranges
-                      if mc.min_row == col_row and mc.min_col == 12]
+                      if mc.min_row == col_row and mc.min_col == 1]
         for mc in to_remove2:
             ws.unmerge_cells(str(mc))
         ws.row_dimensions[col_row].height = 18

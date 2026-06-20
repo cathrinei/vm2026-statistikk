@@ -127,7 +127,7 @@ def valider_excel(size_before: int, mtime_before: float, md5_before: str) -> lis
         ws = wb[gruppe]
         for _, start_row, end_row in BLOCKS:
             for row in range(start_row, end_row + 1):
-                if isinstance(ws.cell(row=row, column=12).value, int):
+                if isinstance(ws.cell(row=row, column=1).value, int):
                     antall += 1
     wb.close()
     sjekk(antall == FORVENTET_SPILLERE,
