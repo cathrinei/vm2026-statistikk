@@ -8,15 +8,35 @@
   /* ── Grunnstiler (ikke rediger under her) ───────────────────── */
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: Calibri, 'Segoe UI', Arial, sans-serif; font-size: 10pt; background: #f4f6f9; color: #1a1a2e; }
-  .tab-bar { display: flex; flex-wrap: wrap; gap: 3px; padding: 10px 12px 0; background: #1A3C6B; position: sticky; top: 0; z-index: 100; }
+  .nav-wrapper { position: sticky; top: 0; z-index: 100; }
+  .tab-bar { display: flex; flex-wrap: wrap; gap: 3px; padding: 10px 12px 0; background: #1A3C6B; }
   .tab-bar button { background: rgba(255,255,255,0.15); color: #fff; border: none; padding: 8px 12px; min-height: 44px; cursor: pointer; border-radius: 4px 4px 0 0; font-size: 9pt; font-family: inherit; white-space: nowrap; transition: background 0.15s; }
   @media (max-width: 768px) {
     .tab-bar { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
     .tab-bar::-webkit-scrollbar { display: none; }
     .tab-bar button { flex-shrink: 0; }
+    .nav-wrapper::after { content: ''; position: absolute; top: 0; right: 0; width: 48px; height: calc(100% - 46px); background: linear-gradient(to right, transparent, #1A3C6B); pointer-events: none; }
   }
   .tab-bar button:hover { background: rgba(255,255,255,0.3); }
   .tab-bar button.aktiv { background: #fff; color: #0F2044; font-weight: bold; }
+  .sok-rad { display: flex; align-items: center; gap: 8px; padding: 6px 12px; background: #0F2044; }
+  #sokefelt { flex: 1; padding: 7px 12px; border: none; border-radius: 20px; font-size: 10pt; font-family: inherit; background: rgba(255,255,255,0.12); color: #fff; outline: none; }
+  #sokefelt::placeholder { color: rgba(255,255,255,0.45); }
+  #sokefelt:focus { background: rgba(255,255,255,0.22); }
+  #sok-info { color: rgba(255,255,255,0.55); font-size: 8.5pt; white-space: nowrap; min-width: 38px; text-align: right; }
+  .fane-meny-knapp { display: none; background: rgba(255,255,255,0.15); color: #fff; border: none; border-radius: 20px; padding: 7px 12px; font-size: 9pt; font-family: inherit; cursor: pointer; white-space: nowrap; max-width: 170px; overflow: hidden; text-overflow: ellipsis; align-items: center; gap: 5px; flex-shrink: 0; }
+  @media (max-width: 768px) { .fane-meny-knapp { display: inline-flex; } }
+  .fane-overlay { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,0.55); }
+  .fane-overlay.synlig { display: flex; align-items: flex-end; }
+  .fane-overlay-innhold { background: #fff; width: 100%; max-height: 85vh; overflow-y: auto; border-radius: 16px 16px 0 0; padding-bottom: env(safe-area-inset-bottom, 0px); }
+  .fane-overlay-topp { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; border-bottom: 1px solid #e0e8f0; font-weight: bold; color: #0F2044; font-size: 1.05em; position: sticky; top: 0; background: #fff; z-index: 1; }
+  .fane-overlay-topp button { background: #f0f4f8; border: none; border-radius: 50%; width: 30px; height: 30px; font-size: 1em; cursor: pointer; color: #0F2044; line-height: 1; }
+  .fane-gruppe { padding: 12px 16px 4px; }
+  .fane-gruppe-tittel { font-size: 7.5pt; font-weight: bold; letter-spacing: 0.08em; color: #1A3C6B; text-transform: uppercase; margin-bottom: 8px; }
+  .fane-gruppe-knapper { display: flex; flex-wrap: wrap; gap: 6px; padding-bottom: 12px; border-bottom: 1px solid #edf0f5; }
+  .fane-gruppe:last-child .fane-gruppe-knapper { border-bottom: none; }
+  .fane-gruppe-knapper button { background: #f0f4f8; border: none; border-radius: 20px; padding: 7px 14px; font-size: 9.5pt; font-family: inherit; cursor: pointer; color: #1a1a2e; }
+  .fane-gruppe-knapper button.aktiv { background: #0F2044; color: #fff; font-weight: bold; }
   .ark-innhold { padding: 16px 12px; }
   .ark-innhold h2 { font-size: 1.1em; color: #0F2044; margin-bottom: 10px; padding-bottom: 5px; border-bottom: 2px solid #1A3C6B; }
   .tabell-wrapper { overflow-x: auto; border: 1px solid #d0d8e8; border-radius: 4px; background: #fff; -webkit-overflow-scrolling: touch; }
@@ -59,8 +79,9 @@
   <p>Sist oppdatert: 2026-06-20</p>
 </header>
 
-<!-- ── FANENE genereres automatisk — ikke endre denne linjen ─── -->
-<div class="tab-bar">
+<!-- ── NAVIGASJON: fanene + søk genereres automatisk ────────── -->
+<div class="nav-wrapper">
+  <div class="tab-bar">
 <button class="aktiv" onclick="visArk('Gruppe_A')">Gruppe A</button>
 <button onclick="visArk('Gruppe_B')">Gruppe B</button>
 <button onclick="visArk('Gruppe_C')">Gruppe C</button>
@@ -91,6 +112,23 @@
 <button onclick="visArk('Niv__2_og_lavere')">Nivå 2 og lavere</button>
 <button onclick="visArk('Aldersfordeling')">Aldersfordeling</button>
 <button onclick="visArk('Alder')">Alder</button>
+  </div>
+  <div class="sok-rad">
+    <input type="search" id="sokefelt" placeholder="Søk i aktiv fane…" autocomplete="off" oninput="sokITabell(this.value)">
+    <span id="sok-info"></span>
+    <button class="fane-meny-knapp" onclick="toggleFaneMeny()" aria-label="Velg fane">☰ <span id="aktiv-fane-tekst">Gruppe A</span></button>
+  </div>
+</div>
+
+<!-- ── FANE-OVERLAY (kun mobil) ──────────────────────────────── -->
+<div id="fane-overlay" class="fane-overlay" role="dialog" aria-modal="true">
+  <div class="fane-overlay-innhold">
+    <div class="fane-overlay-topp">
+      <span>Velg fane</span>
+      <button onclick="toggleFaneMeny()" aria-label="Lukk">✕</button>
+    </div>
+    <div id="fane-grupper"></div>
+  </div>
 </div>
 
 <!-- ── EGENDEFINERT INNHOLD: rediger fritt, vises over tabellene ─ -->
@@ -42674,13 +42712,93 @@
 
 <!-- ── SCRIPT: ikke endre ────────────────────────────────────── -->
 <script>
+function finnTabKnapp(id) {
+  for (const k of document.querySelectorAll('.tab-bar button')) {
+    if ((k.getAttribute('onclick') || '').includes("'" + id + "'")) return k;
+  }
+  return null;
+}
+
 function visArk(id) {
   document.querySelectorAll('.ark-innhold').forEach(el => el.style.display = 'none');
-  document.querySelectorAll('.tab-bar button').forEach(btn => btn.classList.remove('aktiv'));
+  document.querySelectorAll('.tab-bar button').forEach(b => b.classList.remove('aktiv'));
   const ark = document.getElementById('ark_' + id);
   if (ark) ark.style.display = 'block';
-  event.currentTarget.classList.add('aktiv');
+  const knapp = finnTabKnapp(id);
+  if (knapp) {
+    knapp.classList.add('aktiv');
+    knapp.scrollIntoView({behavior: 'smooth', block: 'nearest', inline: 'center'});
+    const aktivTekst = document.getElementById('aktiv-fane-tekst');
+    if (aktivTekst) aktivTekst.textContent = knapp.textContent.trim();
+  }
+  document.querySelectorAll('.fane-gruppe-knapper button').forEach(b => b.classList.remove('aktiv'));
+  const overlayKnapp = document.querySelector('.fane-gruppe-knapper button[data-id="' + id + '"]');
+  if (overlayKnapp) overlayKnapp.classList.add('aktiv');
+  const sok = document.getElementById('sokefelt');
+  if (sok) { sok.value = ''; sokITabell(''); }
 }
+
+function sokITabell(q) {
+  const tekst = q.toLowerCase().trim();
+  const synligArk = document.querySelector('.ark-innhold[style*="block"]');
+  if (!synligArk) return;
+  let treff = 0, total = 0;
+  synligArk.querySelectorAll('tr').forEach(rad => {
+    if (rad.querySelector('th')) { rad.style.display = ''; return; }
+    total++;
+    if (!tekst || rad.textContent.toLowerCase().includes(tekst)) {
+      rad.style.display = ''; treff++;
+    } else {
+      rad.style.display = 'none';
+    }
+  });
+  const info = document.getElementById('sok-info');
+  if (info) info.textContent = tekst ? treff + '/' + total : '';
+}
+
+function toggleFaneMeny() {
+  document.getElementById('fane-overlay').classList.toggle('synlig');
+}
+
+function byggFaneMeny() {
+  const kategorier = [
+    { navn: 'Gruppespill',        test: function(n) { return /^Gruppe [A-L]$/.test(n); } },
+    { navn: 'Sluttspill',         test: function(n) { return /(delsfinale|kvartfinaler|semifinaler|bronsefinale|^finale$)/i.test(n); } },
+    { navn: 'Lagstatistikk',      test: function(n) { return /(scoringstidspunkt|heatmap|ballbesittelse|lagstatistikk)/i.test(n); } },
+    { navn: 'Spillere & Klubber', test: function() { return true; } },
+  ];
+  var data = [];
+  document.querySelectorAll('.tab-bar button').forEach(function(k) {
+    var m = (k.getAttribute('onclick') || '').match(/visArk\('([^']+)'\)/);
+    if (m) data.push({ id: m[1], navn: k.textContent.trim(), aktiv: k.classList.contains('aktiv') });
+  });
+  var container = document.getElementById('fane-grupper');
+  kategorier.forEach(function(kat) {
+    var btns = data.filter(function(d) { return kat.test(d.navn); });
+    if (!btns.length) return;
+    var seksjon = document.createElement('div');
+    seksjon.className = 'fane-gruppe';
+    seksjon.innerHTML = '<div class="fane-gruppe-tittel">' + kat.navn + '</div>';
+    var rad = document.createElement('div');
+    rad.className = 'fane-gruppe-knapper';
+    btns.forEach(function(d) {
+      var b = document.createElement('button');
+      b.textContent = d.navn;
+      b.dataset.id = d.id;
+      if (d.aktiv) b.classList.add('aktiv');
+      b.onclick = function() { visArk(d.id); toggleFaneMeny(); };
+      rad.appendChild(b);
+    });
+    seksjon.appendChild(rad);
+    container.appendChild(seksjon);
+  });
+  var aktiv = data.find(function(d) { return d.aktiv; });
+  if (aktiv) {
+    var el = document.getElementById('aktiv-fane-tekst');
+    if (el) el.textContent = aktiv.navn;
+  }
+}
+document.addEventListener('DOMContentLoaded', byggFaneMeny);
 </script>
 </body>
 </html>
