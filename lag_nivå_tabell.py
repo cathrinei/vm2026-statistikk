@@ -66,8 +66,10 @@ if sheet_name in wb.sheetnames:
 ws = wb.create_sheet(sheet_name)
 ws.auto_filter.ref = "A2:F2"
 
-thin  = Side(style='thin', color='CCCCCC')
-brd   = Border(left=thin, right=thin, top=thin, bottom=thin)
+thin  = Side(style='thin', color='E2E8F0')
+brd   = Border(bottom=thin)
+brd_hdr = Border(left=Side(style='thin', color='CCCCCC'), right=Side(style='thin', color='CCCCCC'),
+                 top=Side(style='thin', color='CCCCCC'), bottom=Side(style='thin', color='CCCCCC'))
 ctr   = Alignment(horizontal='center', vertical='center')
 lft   = Alignment(horizontal='left', vertical='center')
 
@@ -94,15 +96,15 @@ for col, h in enumerate(headers, 1):
     c.font      = Font(name='Calibri', bold=True, size=10, color='FFFFFF')
     c.fill      = FILLS['header']
     c.alignment = ctr
-    c.border    = brd
 
 for i, (niva, club, land, liga, spiller, nasjonallag) in enumerate(rows, 1):
     row = i + 2
+    ws.row_dimensions[row].height = 17
     fill = FILLS.get(niva, PatternFill('solid', start_color='FFFFFF'))
     for col, (val, al) in enumerate(zip([niva, club, land, liga, spiller, nasjonallag],
                                          [ctr, lft, lft, lft, lft, lft]), 1):
         c = ws.cell(row=row, column=col, value=val)
-        c.font      = Font(name='Arial', size=11)
+        c.font      = Font(name='Calibri', size=10, color='1A1A2E')
         c.fill      = fill
         c.alignment = al
         c.border    = brd
@@ -111,13 +113,12 @@ for col, width in zip('ABCDEF', [8, 26, 16, 22, 30, 22]):
     ws.column_dimensions[col].width = width
 
 legend_row = len(rows) + 4
-ws.cell(row=legend_row, column=1, value='Fargeforklaring:').font = Font(name='Arial', bold=True, size=10)
+ws.cell(row=legend_row, column=1, value='Fargeforklaring:').font = Font(name='Calibri', bold=True, size=10, color='1A1A2E')
 
 for offset, (niva_l, label) in enumerate([(2,'Nivå 2'), (3,'Nivå 3'), (4,'Nivå 4'), (5,'Nivå 5'), (6,'Nivå 6')], 1):
     c = ws.cell(row=legend_row + offset, column=1, value=label)
     c.fill = FILLS[niva_l]
-    c.font = Font(name='Arial', size=10)
-    c.border = brd
+    c.font = Font(name='Calibri', size=10, color='1A1A2E')
 
 wb.save(EXCEL_PATH)
 
