@@ -37,10 +37,10 @@ _FIFA_SEASON = "285023"
 GROUPS = [f"Gruppe {x}" for x in "ABCDEFGHIJKL"]
 BLOCKS = [(17, 19, 44), (46, 48, 73), (75, 77, 102), (104, 106, 131)]
 
-COL_MÅL    = 17
-COL_ASSIST = 18
-COL_GULT   = 19
-COL_RØDT   = 20
+COL_MÅL    = 6
+COL_ASSIST = 7
+COL_GULT   = 8
+COL_RØDT   = 9
 
 # ── Normalisering ─────────────────────────────────────────────────────────────
 
@@ -462,9 +462,9 @@ def les_excel() -> list[dict]:
     for g in GROUPS:
         ws = wb[g]
         for header_row, start, end in BLOCKS:
-            lag = (ws.cell(row=header_row, column=12).value or "").strip()
+            lag = (ws.cell(row=header_row, column=1).value or "").strip()
             for r in range(start, end + 1):
-                name = ws.cell(row=r, column=13).value
+                name = ws.cell(row=r, column=2).value
                 if not name:
                     continue
                 def _int(v):

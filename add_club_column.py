@@ -27,7 +27,7 @@ CLUBS_JSON  = BASE_DIR / "clubs_new.json"
 
 GROUPS      = [f"Gruppe {x}" for x in "ABCDEFGHIJKL"]
 BLOCKS      = [(17, 19, 44), (46, 48, 73), (75, 77, 102), (104, 106, 131)]
-COL_KLUBB   = 14   # N
+COL_KLUBB   = 3    # C
 KLUBB_WIDTH = 22
 
 
@@ -94,8 +94,8 @@ for gruppe in GROUPS:
         continue
     ws = wb[gruppe]
 
-    # Sjekk om kolonnen allerede er satt inn (header-label på rad 2, kol 14)
-    existing_label = ws.cell(row=2, column=COL_KLUBB).value
+    # Sjekk om kolonnen allerede er satt inn (header-label på h_row+1)
+    existing_label = ws.cell(row=BLOCKS[0][0] + 1, column=COL_KLUBB).value
     already_inserted = (existing_label == "Klubb")
 
     if already_inserted:
@@ -115,10 +115,10 @@ for gruppe in GROUPS:
             c.fill      = BLUE
             c.alignment = LFT
 
-        lagnavn_norm = _norm(ws.cell(row=header_row, column=13).value or "")
+        lagnavn_norm = _norm(ws.cell(row=header_row, column=1).value or "")
 
         for row in range(start_row, end_row + 1):
-            name_val  = ws.cell(row=row, column=13).value   # M = Navn
+            name_val  = ws.cell(row=row, column=2).value    # B = Navn
             club_cell = ws.cell(row=row, column=COL_KLUBB)
 
             if already_inserted and club_cell.value:
@@ -133,9 +133,9 @@ for gruppe in GROUPS:
             if not club:
                 continue
 
-            # Bakgrunnsfarge fra Navn-nabocellen (M=13)
+            # Bakgrunnsfarge fra Navn-nabocellen (B=2)
             try:
-                rgb = ws.cell(row=row, column=13).fill.fgColor.rgb
+                rgb = ws.cell(row=row, column=2).fill.fgColor.rgb
                 bg  = PatternFill("solid", fgColor=rgb) if rgb and rgb != "00000000" \
                       else (EVEN if (row - start_row) % 2 == 0 else ODD)
             except Exception:
@@ -153,7 +153,7 @@ for gruppe in GROUPS:
                 inserted += 1
 
     if not already_inserted:
-        ws.column_dimensions["N"].width = KLUBB_WIDTH
+        ws.column_dimensions["C"].width = KLUBB_WIDTH
 
     tot_inserted += inserted
     tot_updated  += updated

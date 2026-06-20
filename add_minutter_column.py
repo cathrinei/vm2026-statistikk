@@ -28,8 +28,8 @@ _HEADERS     = {
 
 GROUPS = [f"Gruppe {x}" for x in "ABCDEFGHIJKL"]
 BLOCKS = [(17, 19, 44), (46, 48, 73), (75, 77, 102), (104, 106, 131)]
-COL_NAVN = 13   # M
-COL_MIN  = 21   # U
+COL_NAVN = 2    # B
+COL_MIN  = 10   # J
 
 
 _REPLACE = str.maketrans({
@@ -155,6 +155,8 @@ _ALIASES: dict[str, str] = {
     "musaaltaamari":         "mousaaltamari",         # Musa→MOUSA, Taamari→TAMARI
     "mohammadaldawoud":      "mohammadaldaoud",       # Dawoud → DAOUD
     "mohammadtaha":          "mohammadabughoush",     # to offisielle namn (Jordan)
+    # Namnekollisjoner
+    "emilianomartineztoranza": "emilianomartinez",   # Uruguay MF — FIFA API bruker kortforma
 
 }
 
@@ -197,7 +199,7 @@ def skriv_minutter(minutter: dict[str, int]) -> None:
         if g not in wb.sheetnames:
             continue
         ws = wb[g]
-        ws.column_dimensions[gcl(COL_MIN)].width = 6
+        ws.column_dimensions["J"].width = 6
 
         for (h_row, s_row, e_row) in BLOCKS:
             # "Min"-header i kolonneoverskriftsraden (h_row+1) — blå, bold

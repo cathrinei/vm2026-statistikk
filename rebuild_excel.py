@@ -33,15 +33,15 @@ RAPPORT_MD   = BASE_DIR / "avvik_rapport.md"
 GROUPS = [f"Gruppe {x}" for x in "ABCDEFGHIJKL"]
 BLOCKS = [(17, 19, 44), (46, 48, 73), (75, 77, 102), (104, 106, 131)]
 
-COL_NR     = 12
-COL_NAME   = 13
-COL_KLUBB  = 14
-COL_BDAY   = 15
-COL_POS    = 16
-COL_MÅL    = 17
-COL_ASSIST = 18
-COL_GULT   = 19
-COL_RØDT   = 20
+COL_NR     = 1
+COL_NAME   = 2
+COL_KLUBB  = 3
+COL_BDAY   = 4
+COL_POS    = 5
+COL_MÅL    = 6
+COL_ASSIST = 7
+COL_GULT   = 8
+COL_RØDT   = 9
 
 # ── Les players.json ──────────────────────────────────────────────────────────
 
@@ -200,15 +200,15 @@ for gruppe in GROUPS:
                 c.border    = bot_border
 
     # ── Kolonnebredder ────────────────────────────────────────────────
-    ws.column_dimensions["L"].width = 5    # Nr
-    ws.column_dimensions["M"].width = 26   # Navn
-    ws.column_dimensions["N"].width = 22   # Klubb
-    ws.column_dimensions["O"].width = 13   # Fødselsdato
-    ws.column_dimensions["P"].width = 5    # Pos
-    ws.column_dimensions["Q"].width = 6    # Mål
-    ws.column_dimensions["R"].width = 7    # Assist
-    ws.column_dimensions["S"].width = 6    # Gule
-    ws.column_dimensions["T"].width = 6    # Røde
+    ws.column_dimensions["A"].width = 5    # Nr
+    ws.column_dimensions["B"].width = 26   # Navn
+    ws.column_dimensions["C"].width = 22   # Klubb
+    ws.column_dimensions["D"].width = 13   # Fødselsdato
+    ws.column_dimensions["E"].width = 5    # Pos
+    ws.column_dimensions["F"].width = 6    # Mål
+    ws.column_dimensions["G"].width = 7    # Assist
+    ws.column_dimensions["H"].width = 6    # Gule
+    ws.column_dimensions["I"].width = 6    # Røde
 
     n_spillere = sum(len(v) for v in lag_i_gruppe.values())
     n_med_klubb = sum(
