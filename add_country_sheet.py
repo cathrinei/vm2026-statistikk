@@ -1,121 +1,195 @@
-import json, sys
+#!/usr/bin/env python3
+"""
+add_country_sheet.py
+Legger til "Spillere etter klubbland"-ark i Excel.
+"""
+import io, json, shutil, sys
 from collections import defaultdict
-from openpyxl import load_workbook
-from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
+from pathlib import Path
+BASE_DIR = Path(__file__).parent
 
-sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+
+try:
+    from openpyxl import load_workbook
+    from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
+    from openpyxl.utils import get_column_letter
+except ImportError as e:
+    sys.exit(f"Mangler pakke: {e}")
 
 from club_country_map import CLUB_COUNTRY
 from top_division import TOP_DIVISION_CLUBS
 from level_map import LEVEL_MAP, LAND_NO
 
-with open('clubs_new.json', 'r', encoding='utf-8') as f:
-    data = json.load(f)
+EXCEL_PATH  = BASE_DIR / "VM2026_avansert_gruppetabeller_og_sluttspill.xlsx"
+CLUBS_JSON  = BASE_DIR / "clubs_new.json"
+FORVENTET   = 1248
 
-country_total = defaultdict(int)
-country_lvl   = defaultdict(lambda: defaultdict(int))  # country → level → count
 
-for team, players in data.items():
-    for player, club in players.items():
-        if not club:
-            continue
-        club = club.strip()
-        country = LAND_NO.get(CLUB_COUNTRY.get(club, 'Unknown'), CLUB_COUNTRY.get(club, 'Unknown'))
-        country_total[country] += 1
+def _xl_styles():
+    thin = Side(style="thin", color="E2E8F0")
+    bot  = Border(bottom=thin)
+    ctr  = Alignment(horizontal="center", vertical="center")
+    lft  = Alignment(horizontal="left",   vertical="center")
+    return {
+        "NAVY":    PatternFill("solid", fgColor="0F2044"),
+        "BLUE":    PatternFill("solid", fgColor="1A3C6B"),
+        "GOLD_BG": PatternFill("solid", fgColor="FFFBE6"),
+        "SILV_BG": PatternFill("solid", fgColor="F8F8F8"),
+        "BRNZ_BG": PatternFill("solid", fgColor="FFF4EC"),
+        "EVEN":    PatternFill("solid", fgColor="F0F5FB"),
+        "ODD":     PatternFill("solid", fgColor="FFFFFF"),
+        "f_title": Font(name="Calibri", bold=True, size=13, color="FFFFFF"),
+        "f_hdr":   Font(name="Calibri", bold=True, size=10, color="FFFFFF"),
+        "f_data":  Font(name="Calibri",             size=10, color="1A1A2E"),
+        "f_muted": Font(name="Calibri",             size=10, color="6B7A99"),
+        "f_rank1": Font(name="Calibri", bold=True,  size=10, color="92680A"),
+        "f_rank2": Font(name="Calibri", bold=True,  size=10, color="5C5C5C"),
+        "f_rank3": Font(name="Calibri", bold=True,  size=10, color="8B4513"),
+        "f_bold":  Font(name="Calibri", bold=True,  size=10, color="1A1A2E"),
+        "ctr": ctr, "lft": lft, "bot": bot,
+    }
 
-        if club in TOP_DIVISION_CLUBS:
-            country_lvl[country][1] += 1
-        elif club in LEVEL_MAP:
-            lvl = LEVEL_MAP[club][0]
-            country_lvl[country][lvl] += 1
 
-ranked = sorted(country_total.items(), key=lambda x: -x[1])
+def bygg_land_data():
+    with open(CLUBS_JSON, encoding="utf-8") as f:
+        data = json.load(f)
 
-wb = load_workbook('VM2026_avansert_gruppetabeller_og_sluttspill.xlsx')
+    country_total = defaultdict(int)
+    country_lvl   = defaultdict(lambda: defaultdict(int))
 
-sheet_name = 'Spillere etter klubbland'
-if sheet_name in wb.sheetnames:
-    del wb[sheet_name]
-ws = wb.create_sheet(sheet_name)
-ws.auto_filter.ref = "A3:I3"
+    for team, players in data.items():
+        for player, club in players.items():
+            if not club:
+                continue
+            club = club.strip()
+            land_en = CLUB_COUNTRY.get(club, "Unknown")
+            land_no = LAND_NO.get(land_en, land_en)
+            country_total[land_no] += 1
 
-thin   = Side(style='thin', color='AAAAAA')
-border = Border(left=thin, right=thin, top=thin, bottom=thin)
-center = Alignment(horizontal='center', vertical='center')
-left_al = Alignment(horizontal='left', vertical='center')
+            if club in TOP_DIVISION_CLUBS:
+                country_lvl[land_no][1] += 1
+            elif club in LEVEL_MAP:
+                lvl = LEVEL_MAP[club][0]
+                country_lvl[land_no][lvl] += 1
 
-ws['A1'] = 'VM 2026 — Spillere etter klubbland'
-ws['A1'].font = Font(name='Arial', bold=True, size=14, color='1F4E79')
-ws.merge_cells('A1:I1')
-ws['A1'].alignment = center
+    ranked = sorted(country_total.items(), key=lambda x: -x[1])
+    return ranked, country_lvl
 
-for col, header in enumerate(['Plass','Land','Spillere','Nivå 1','Nivå 2','Nivå 3','Nivå 4','Nivå 5','Nivå 6'], 1):
-    cell = ws.cell(row=3, column=col, value=header)
-    cell.font = Font(name='Arial', bold=True, size=11, color='FFFFFF')
-    cell.fill = PatternFill('solid', start_color='1F4E79')
-    cell.alignment = center
-    cell.border = border
 
-for i, (country, total) in enumerate(ranked, 1):
-    row = i + 3
-    lvls = country_lvl.get(country, {})
-    fill = PatternFill('solid', start_color='D6E4F0') if i % 2 == 0 else PatternFill('solid', start_color='FFFFFF')
-    for col, (val, al) in enumerate(zip(
-        [i, country, total,
-         lvls.get(1,0), lvls.get(2,0), lvls.get(3,0), lvls.get(4,0), lvls.get(5,0), lvls.get(6,0)],
-        [center, left_al] + [center]*7
-    ), 1):
-        cell = ws.cell(row=row, column=col, value=val if val != 0 else '')
-        cell.font = Font(name='Arial', size=11)
-        cell.fill = fill
-        cell.alignment = al
-        cell.border = border
-    # Always show numeric 0-values for totals and rank
-    ws.cell(row=row, column=1).value = i
-    ws.cell(row=row, column=3).value = total
+def skriv_country_sheet(ranked, country_lvl):
+    S = _xl_styles()
 
-total_row = len(ranked) + 4
-for col, val, al in zip(range(1, 10),
-    ['', 'Totalt'] + [f'=SUM({chr(64+c)}4:{chr(64+c)}{total_row-1})' for c in range(3, 10)],
-    [center, left_al] + [center]*7):
-    cell = ws.cell(row=total_row, column=col, value=val)
-    cell.font = Font(name='Arial', bold=True, size=11)
-    cell.fill = PatternFill('solid', start_color='E2EFDA')
-    cell.alignment = al
-    cell.border = border
+    col_defs = [
+        ("#",        6,  S["ctr"]),
+        ("Land",    22,  S["lft"]),
+        ("Spillere", 9,  S["ctr"]),
+        ("Nivå 1",   8,  S["ctr"]),
+        ("Nivå 2",   8,  S["ctr"]),
+        ("Nivå 3",   8,  S["ctr"]),
+        ("Nivå 4",   8,  S["ctr"]),
+        ("Nivå 5",   8,  S["ctr"]),
+        ("Nivå 6",   8,  S["ctr"]),
+    ]
+    ncols = len(col_defs)
 
-ws.cell(row=total_row+2, column=1,
-        value='Kilde: clubs_new.json — VM 2026 registrerte tropper').font = \
-    Font(name='Arial', size=9, italic=True, color='888888')
+    backup = Path(str(EXCEL_PATH) + ".bak")
+    shutil.copy2(EXCEL_PATH, backup)
+    try:
+        wb = load_workbook(EXCEL_PATH)
+    except Exception:
+        raise
 
-for col, width in zip('ABCDEFGHI', [8, 22, 10, 10, 10, 10, 10, 10, 10]):
-    ws.column_dimensions[col].width = width
+    sheet_name = "Spillere etter klubbland"
+    if sheet_name in wb.sheetnames:
+        del wb[sheet_name]
+    ws = wb.create_sheet(sheet_name)
+    ws.auto_filter.ref = f"A3:{get_column_letter(ncols)}3"
 
-wb.save('VM2026_avansert_gruppetabeller_og_sluttspill.xlsx')
+    total_spillere = sum(v for _, v in ranked)
 
-total_spillere = sum(v for _, v in ranked)
-total_klassifisert = sum(sum(lvls.values()) for lvls in country_lvl.values())
-total_uklass = total_spillere - total_klassifisert
+    # Tittelrad
+    ws.row_dimensions[1].height = 28
+    ws.merge_cells(f"A1:{get_column_letter(ncols)}1")
+    c = ws.cell(row=1, column=1,
+                value=f"VM 2026 — Spillere etter klubbland   {len(ranked)} land, {total_spillere} spillere")
+    c.font = S["f_title"]; c.fill = S["NAVY"]; c.alignment = S["lft"]
 
-FORVENTET = 1248
-sjekk = '✓' if total_spillere == FORVENTET else f'ADVARSEL: forventet {FORVENTET}'
-print(f'\nLagret OK — {len(ranked)} land, {total_spillere} spillere ({sjekk})')
-if total_uklass:
-    print(f'  NB: {total_uklass} spillere uten nivåklassifisering')
-print()
-print(f'{"Land":<22} {"Tot":>5} {"L1":>5} {"L2":>5} {"L3":>5} {"L4":>5} {"L5":>5} {"Ukl":>5}')
-print('-' * 65)
-for country, total in ranked:
-    lvls = country_lvl.get(country, {})
-    klassifisert = sum(lvls.values())
-    uklass = total - klassifisert
-    ukl_str = str(uklass) if uklass else ''
-    print(f'{country:<22} {total:>5} {lvls.get(1,0) or "":>5} {lvls.get(2,0) or "":>5} '
-          f'{lvls.get(3,0) or "":>5} {lvls.get(4,0) or "":>5} {lvls.get(5,0) or "":>5} {ukl_str:>5}')
-print('-' * 65)
-tot_lvls = {}
-for lvls in country_lvl.values():
-    for k, v in lvls.items():
-        tot_lvls[k] = tot_lvls.get(k, 0) + v
-print(f'{"Totalt":<22} {total_spillere:>5} {tot_lvls.get(1,0):>5} {tot_lvls.get(2,0):>5} '
-      f'{tot_lvls.get(3,0):>5} {tot_lvls.get(4,0):>5} {tot_lvls.get(5,0):>5} {total_uklass or "":>5}')
+    # Rad 2: tom (filterseksjon visuelt adskilt)
+    ws.row_dimensions[2].height = 6
+
+    # Kolonneoverskrifter rad 3
+    ws.row_dimensions[3].height = 20
+    for col, (label, _, al) in enumerate(col_defs, 1):
+        c = ws.cell(row=3, column=col, value=label)
+        c.font = S["f_hdr"]; c.fill = S["BLUE"]; c.alignment = al
+
+    # Datarader fra rad 4
+    rang = 1
+    for i, (land, total) in enumerate(ranked):
+        row = i + 4
+        ws.row_dimensions[row].height = 17
+        lvls = country_lvl.get(land, {})
+
+        if i > 0 and total == ranked[i-1][1]:
+            pass
+        else:
+            rang = i + 1
+
+        if rang == 1:
+            bg, f_rang = S["GOLD_BG"], S["f_rank1"]
+        elif rang == 2:
+            bg, f_rang = S["SILV_BG"], S["f_rank2"]
+        elif rang == 3:
+            bg, f_rang = S["BRNZ_BG"], S["f_rank3"]
+        else:
+            bg, f_rang = (S["EVEN"] if i % 2 == 0 else S["ODD"]), S["f_muted"]
+
+        vals = [rang, land, total,
+                lvls.get(1, "") or "", lvls.get(2, "") or "",
+                lvls.get(3, "") or "", lvls.get(4, "") or "",
+                lvls.get(5, "") or "", lvls.get(6, "") or ""]
+
+        for col, (val, (_, _, al)) in enumerate(zip(vals, col_defs), 1):
+            c = ws.cell(row=row, column=col, value=val)
+            c.fill = bg
+            c.border = S["bot"]
+            c.alignment = al
+            if col == 1:
+                c.font = f_rang
+            elif col == 3:
+                c.font = S["f_bold"]
+            else:
+                c.font = S["f_data"]
+
+    for col, (_, width, _) in enumerate(col_defs, 1):
+        ws.column_dimensions[get_column_letter(col)].width = width
+
+    try:
+        wb.save(EXCEL_PATH)
+    except Exception:
+        shutil.copy2(backup, EXCEL_PATH)
+        raise
+
+    print(f"  → 'Spillere etter klubbland'-sheet skrevet ({len(ranked)} land)")
+
+
+def main():
+    print("=" * 55)
+    print("  VM 2026 — Spillere etter klubbland")
+    print("=" * 55)
+
+    print("\n[1/2] Bygger landdata fra clubs_new.json...")
+    ranked, country_lvl = bygg_land_data()
+    total_spillere = sum(v for _, v in ranked)
+    sjekk = "✓" if total_spillere == FORVENTET else f"ADVARSEL: forventet {FORVENTET}"
+    print(f"  {len(ranked)} land, {total_spillere} spillere ({sjekk})")
+
+    print("\n[2/2] Skriver Excel-ark...")
+    skriv_country_sheet(ranked, country_lvl)
+
+    print("\nFerdig.")
+
+
+if __name__ == "__main__":
+    main()
