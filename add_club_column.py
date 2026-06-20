@@ -94,8 +94,8 @@ for gruppe in GROUPS:
         continue
     ws = wb[gruppe]
 
-    # Sjekk om kolonnen allerede er satt inn (header-label på rad 2, kol 14)
-    existing_label = ws.cell(row=2, column=COL_KLUBB).value
+    # Sjekk om kolonnen allerede er satt inn (header-label på h_row+1)
+    existing_label = ws.cell(row=BLOCKS[0][0] + 1, column=COL_KLUBB).value
     already_inserted = (existing_label == "Klubb")
 
     if already_inserted:

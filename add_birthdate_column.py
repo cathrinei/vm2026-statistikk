@@ -102,8 +102,8 @@ for gruppe in GROUPS:
     ws = wb[gruppe]
 
     # ── Finn ut om kolonnen allerede er satt inn ──────────────────────────────
-    # Sjekk header-label i kolonne 15 (O) på rad 2 (første blokks kolonneoverskrift)
-    existing_label = ws.cell(row=2, column=COL_BDAY).value
+    # Sjekk header-label i kolonne 15 (O) på h_row+1
+    existing_label = ws.cell(row=BLOCKS[0][0] + 1, column=COL_BDAY).value
     already_inserted = (existing_label == "Fødselsdato")
 
     if already_inserted:
