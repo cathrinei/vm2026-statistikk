@@ -4,16 +4,17 @@ oppdater.py
 Daglig oppdatering av VM2026_avansert_gruppetabeller_og_sluttspill.xlsx.
 
 Kjørerekkefølge:
-  1. add_kamper_sheets.py          — kampresultater + gruppetabeller (inkl. tilskuere + stadion)
+  1. add_kamper_sheets.py           — kampresultater + gruppetabeller (inkl. tilskuere + stadion)
   2–5. (hoppes over hvis ingen nye kamper siden sist)
-  2. check_avvik.py --fix          — mål, assist, gule/røde kort
-  3. add_alder_sheet.py            — oppdaterer Alder-ark; henter dato for ev. nye spillere
-  4. add_birthdate_column.py       — fyll inn fødselsdatoer i gruppearkene (ev. nye spillere)
-  5. add_minutter_column.py        — minutter spilt per spiller i gruppearkene
-  6. add_lagstatistikk_sheet.py    — mål/nullere/straffespark/selvmål/skudd/formasjoner/bytter
+  2. check_avvik.py --fix           — mål, assist, gule/røde kort; Toppscorere/Assists/Kort-ark
+  3. add_alder_sheet.py             — oppdaterer Alder-ark; henter dato for ev. nye spillere
+  4. add_birthdate_column.py        — fyll inn fødselsdatoer i gruppearkene (ev. nye spillere)
+  5. add_minutter_column.py         — minutter spilt per spiller i gruppearkene
+  6. add_lagstatistikk_sheet.py     — mål/nullere/straffespark/selvmål/skudd/formasjoner/bytter
   7. add_scoringstidspunkt_sheet.py — mål per 15-min intervall + søylediagram
-  8. add_heatmap_sheet.py          — mål per minutt som fargekodet heatmap
-  9. add_club_column.py            — fyll inn klubbnavn i gruppearkene (alltid — caches internt)
+  8. add_heatmap_sheet.py           — mål per minutt som fargekodet heatmap
+  9. add_ballbesittelse_sheet.py    — ballbesittelse og skudd per kamp (leser wc2026_possession.json)
+ 10. add_club_column.py             — fyll inn klubbnavn i gruppearkene (alltid — caches internt)
 
 Flagg:
   --full          tvinger full gjeninnlesing av alle kamper
@@ -33,6 +34,7 @@ NB: Alle 1248 spillere har fødselsdato og klubb (100% dekningsgrad, per 2026-06
     standardisering (fix_clubs_names.py + standardiser_klubber.py, 2026-06-18).
     Kort-ark: rangeres nå røde kort øverst, deretter gule — med gull/sølv/bronse
     som Toppscorere/Assists (check_avvik.py skriv_kort_sheet, 2026-06-18).
+    Toppscorere/Assists: viser kun #, Spiller, Lag, Mål, Assist (Gule/Røde fjernet 2026-06-20).
     Skudd-seksjon: hentes fra FIFA /topseasonplayerstatistics via
     TotalAttempts + AttemptsOnTarget per spiller, aggregert per lag. Gratis, ingen cache.
     Formasjoner + spillerbytter (2026-06-19): henholdsvis /live/football/{mid} (cachet
@@ -117,7 +119,7 @@ def main():
     spilte_etter = count_spilte()
     nye_kamper   = spilte_etter - spilte_før
 
-    # ── Steg 2–4: kun ved nye kamper ─────────────────────────────────────────
+    # ── Steg 2–5: kun ved nye kamper ─────────────────────────────────────────
     if nye_kamper == 0 and not full:
         print(f"\n  Ingen nye kamper siden sist ({spilte_etter} totalt) — "
               f"hopper over statistikk-oppdatering.")
