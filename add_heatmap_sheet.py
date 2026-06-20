@@ -215,7 +215,7 @@ def skriv_ark(counts: dict[int, int]) -> None:
     note.font = Font(name="Calibri", italic=True, size=8, color="6B7A99")
 
     # ── Kolonnebredder ────────────────────────────────────────────────────────
-    ws.column_dimensions["A"].width = 7
+    ws.column_dimensions["A"].width = 6
     for col_i in range(10):
         letter = chr(ord("B") + col_i)
         ws.column_dimensions[letter].width = CELL_W

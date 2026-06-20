@@ -174,9 +174,9 @@ def skriv_ark(counts: list[int], totalt: int) -> None:
     ws.add_chart(chart, "E1")
 
     # ── Kolonnebredder ────────────────────────────────────────────────────────
-    ws.column_dimensions["A"].width = 12
-    ws.column_dimensions["B"].width = 8
-    ws.column_dimensions["C"].width = 10
+    ws.column_dimensions["A"].width = 9
+    ws.column_dimensions["B"].width = 9
+    ws.column_dimensions["C"].width = 9
 
     try:
         wb.save(EXCEL_PATH)

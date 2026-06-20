@@ -574,7 +574,7 @@ def skriv_lagstatistikk(maal, nullere, kamper, straffe, selvmål, skudd, formasj
         del wb[sheet]
     ws = wb.create_sheet(sheet)
 
-    for col, w in enumerate([5, 22, 9, 8, 14, 9, 8, 9], 1):
+    for col, w in enumerate([5, 18, 9, 8, 14, 9, 8, 9], 1):
         ws.column_dimensions[gcl(col)].width = w
 
     row = 1

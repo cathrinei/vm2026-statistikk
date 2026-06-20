@@ -374,7 +374,7 @@ def skriv_alder_sheet(alle: list[dict], n_spillere: int) -> None:
     S = _xl_styles()
 
     col_defs = [
-        ("#",           5,  S["ctr"]),
+        ("#",           4,  S["ctr"]),
         ("Spiller",    28,  S["lft"]),
         ("Lag",        20,  S["lft"]),
         ("Gruppe",      9,  S["ctr"]),

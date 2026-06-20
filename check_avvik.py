@@ -581,8 +581,6 @@ def skriv_toppscore_sheets(excel: list[dict]) -> None:
         ("Lag",     20, S["lft"]),
         ("Mål",     7,  S["ctr"]),
         ("Assist",  8,  S["ctr"]),
-        ("Gule",    7,  S["ctr"]),
-        ("Røde",    7,  S["ctr"]),
     ]
     ncols = len(col_defs)
 
@@ -625,8 +623,7 @@ def skriv_toppscore_sheets(excel: list[dict]) -> None:
                 bg, f_rank = (S["EVEN"] if i % 2 == 0 else S["ODD"]), S["f_muted"]
 
             vals = [rang, p["name"], p["lag"],
-                    p["goals"] or None, p["assists"] or None,
-                    p["gule"] or None, p["rode"] or None]
+                    p["goals"] or None, p["assists"] or None]
             for col, (val, (_, _, _)) in enumerate(zip(vals, col_defs), 1):
                 c = ws.cell(row=r, column=col, value=val)
                 c.fill = bg

@@ -82,7 +82,7 @@ def skriv_country_sheet(ranked, country_lvl):
 
     col_defs = [
         ("#",        6,  S["ctr"]),
-        ("Land",    22,  S["lft"]),
+        ("Land",    18,  S["lft"]),
         ("Spillere", 9,  S["ctr"]),
         ("Nivå 1",   8,  S["ctr"]),
         ("Nivå 2",   8,  S["ctr"]),
