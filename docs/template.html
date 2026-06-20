@@ -25,6 +25,19 @@
   header h1 { font-size: 1.4em; font-weight: bold; }
   header p { font-size: 0.85em; opacity: 0.75; margin-top: 4px; }
   footer { text-align: center; font-size: 8pt; color: #888; padding: 20px; }
+
+  /* Eksempel: infoboks som vises over tabellene */
+  .infoboks {
+    margin: 14px 12px 0;
+    padding: 12px 16px;
+    background: #fff;
+    border-left: 4px solid #1A3C6B;
+    border-radius: 0 4px 4px 0;
+    font-size: 9.5pt;
+    color: #1a1a2e;
+    line-height: 1.6;
+  }
+  .infoboks strong { color: #0F2044; }
 </style>
 </head>
 <body>
@@ -38,6 +51,13 @@
 <!-- ── FANENE genereres automatisk — ikke endre denne linjen ─── -->
 <div class="tab-bar">
 <!-- TABS -->
+</div>
+
+<!-- ── EGENDEFINERT INNHOLD: rediger fritt, vises over tabellene ─ -->
+<div class="infoboks">
+  <strong>Om statistikken:</strong> Tabellene oppdateres automatisk daglig fra FIFA sine offisielle data.
+  Statistikken dekker alle 48 lag og 64 kamper i VM 2026 (USA, Canada, Mexico).
+  Kilde: <a href="https://www.fifa.com/fifaplus/en/tournaments/mens/worldcup/canadamexicousa2026" target="_blank">FIFA.com</a>
 </div>
 
 <!-- ── TABELLDATA genereres automatisk — ikke endre denne linjen -->
