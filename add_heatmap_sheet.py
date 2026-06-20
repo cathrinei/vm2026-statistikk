@@ -59,6 +59,10 @@ class GoalCounts:
     regular: dict[int, int] = field(default_factory=dict)  # ekte min 1–90
     ht_et:   dict[int, int] = field(default_factory=dict)  # 45+N, nøkkel=N
     ft_et:   dict[int, int] = field(default_factory=dict)  # 90+N, nøkkel=N
+    et1:     dict[int, int] = field(default_factory=dict)  # ekstraomg. 1: abs. min 91–105
+    et1_et:  dict[int, int] = field(default_factory=dict)  # 105+N, nøkkel=N
+    et2:     dict[int, int] = field(default_factory=dict)  # ekstraomg. 2: abs. min 106–120
+    et2_et:  dict[int, int] = field(default_factory=dict)  # 120+N, nøkkel=N
 
 
 def tell_per_minutt() -> GoalCounts:
@@ -75,12 +79,20 @@ def tell_per_minutt() -> GoalCounts:
             if parsed is None:
                 continue
             base, extra = parsed
-            if extra == 0 and base >= 1:
+            if extra == 0 and 1 <= base <= 90:
                 result.regular[base] = result.regular.get(base, 0) + 1
             elif base == 45 and extra >= 1:
                 result.ht_et[extra] = result.ht_et.get(extra, 0) + 1
             elif base == 90 and extra >= 1:
                 result.ft_et[extra] = result.ft_et.get(extra, 0) + 1
+            elif extra == 0 and 91 <= base <= 105:
+                result.et1[base] = result.et1.get(base, 0) + 1
+            elif base == 105 and extra >= 1:
+                result.et1_et[extra] = result.et1_et.get(extra, 0) + 1
+            elif extra == 0 and 106 <= base <= 120:
+                result.et2[base] = result.et2.get(base, 0) + 1
+            elif base == 120 and extra >= 1:
+                result.et2_et[extra] = result.et2_et.get(extra, 0) + 1
     return result
 
 
@@ -207,9 +219,9 @@ def skriv_ark(counts: GoalCounts) -> None:
         c = ws.cell(row=15, column=col)
         c.fill = GRAY
 
-    # ── Rad 16: ET tilleggstid-header ─────────────────────────────────────────
+    # ── Rad 16: AT (Added Time) tilleggstid-header ────────────────────────────
     ws.row_dimensions[16].height = 16
-    lc = ws.cell(row=16, column=1, value="ET")
+    lc = ws.cell(row=16, column=1, value="AT")
     lc.font = f_hdr; lc.fill = NAVY; lc.alignment = ctr
 
     for col_i in range(10):
@@ -233,9 +245,99 @@ def skriv_ark(counts: GoalCounts) -> None:
         cell.alignment = ctr
         cell.border    = Border(left=thin, right=thin, top=thin, bottom=thin)
 
-    # ── Rad 19–20: Forklaring ─────────────────────────────────────────────────
-    ws.row_dimensions[19].height = 14
-    ws.cell(row=19, column=1, value="Fargeskala:").font = Font(name="Calibri", bold=True, size=9, color="1A1A2E")
+    # ── Rad 18: separator (før ekstraomganger) ────────────────────────────────
+    ws.row_dimensions[18].height = 8
+    for col in range(1, 12):
+        ws.cell(row=18, column=col).fill = GRAY
+
+    # ── Rad 19: EKSTRAOMGANGER-tittel ─────────────────────────────────────────
+    ws.row_dimensions[19].height = 20
+    ws.merge_cells("A19:K19")
+    c = ws.cell(row=19, column=1, value="EKSTRAOMGANGER (sluttspill)")
+    c.font = Font(name="Calibri", bold=True, size=10, color="FFFFFF")
+    c.fill = NAVY; c.alignment = lft
+
+    # ── Hjelpefunksjon: skriv ET-periode ──────────────────────────────────────
+    def _et_periode(first_row: int, label: str, min_start: int,
+                    et_data: dict[int, int], et_added: dict[int, int]) -> None:
+        """Skriver én ekstraomgangsperiode: to datarader + tilleggstid."""
+        LGRAY = PatternFill("solid", fgColor="F0F0F0")
+        # Header-rad: absolutte minutter som kolonneoverskrifter
+        ws.row_dimensions[first_row].height = 16
+        lc = ws.cell(row=first_row, column=1, value=label)
+        lc.font = f_hdr; lc.fill = NAVY; lc.alignment = ctr
+        for col_i in range(10):
+            c = ws.cell(row=first_row, column=col_i + 2, value=min_start + col_i)
+            c.font = f_sub; c.fill = BLUE; c.alignment = ctr
+
+        # Rad A: første 10 minutter av perioden
+        ws.row_dimensions[first_row + 1].height = CELL_H
+        lc = ws.cell(row=first_row + 1, column=1, value=f"{min_start}–{min_start+9}")
+        lc.font = f_hdr; lc.fill = NAVY; lc.alignment = ctr
+        for col_i in range(10):
+            minutt = min_start + col_i
+            n      = et_data.get(minutt, 0)
+            bg, fg = _colors(n)
+            cell = ws.cell(row=first_row + 1, column=col_i + 2, value=n if n > 0 else None)
+            cell.fill = PatternFill("solid", fgColor=bg)
+            cell.font = Font(name="Calibri", bold=(n > 0), size=10, color=fg)
+            cell.alignment = ctr
+            cell.border = Border(left=thin, right=thin, top=thin, bottom=thin)
+
+        # Rad B: siste 5 minutter (101-105 / 116-120), resten grå
+        ws.row_dimensions[first_row + 2].height = CELL_H
+        lc = ws.cell(row=first_row + 2, column=1, value=f"{min_start+10}–{min_start+14}")
+        lc.font = f_hdr; lc.fill = NAVY; lc.alignment = ctr
+        for col_i in range(10):
+            minutt = min_start + 10 + col_i
+            if col_i < 5:
+                n      = et_data.get(minutt, 0)
+                bg, fg = _colors(n)
+                cell = ws.cell(row=first_row + 2, column=col_i + 2, value=n if n > 0 else None)
+                cell.fill = PatternFill("solid", fgColor=bg)
+                cell.font = Font(name="Calibri", bold=(n > 0), size=10, color=fg)
+            else:
+                cell = ws.cell(row=first_row + 2, column=col_i + 2)
+                cell.fill = LGRAY
+                cell.font = Font(name="Calibri", size=10, color="CCCCCC")
+            cell.alignment = ctr
+            cell.border = Border(left=thin, right=thin, top=thin, bottom=thin)
+
+        # Tilleggstid-header
+        ws.row_dimensions[first_row + 3].height = 16
+        lc = ws.cell(row=first_row + 3, column=1, value=f"{min_start+14}+")
+        lc.font = f_hdr; lc.fill = NAVY; lc.alignment = ctr
+        for col_i in range(10):
+            c = ws.cell(row=first_row + 3, column=col_i + 2, value=f"+{col_i + 1}")
+            c.font = f_sub; c.fill = BLUE; c.alignment = ctr
+
+        # Tilleggstid-data
+        ws.row_dimensions[first_row + 4].height = CELL_H
+        lc = ws.cell(row=first_row + 4, column=1, value=f"{min_start+14}+")
+        lc.font = f_hdr; lc.fill = NAVY; lc.alignment = ctr
+        for col_i in range(10):
+            n      = et_added.get(col_i + 1, 0)
+            bg, fg = _colors(n)
+            cell = ws.cell(row=first_row + 4, column=col_i + 2, value=n if n > 0 else None)
+            cell.fill = PatternFill("solid", fgColor=bg)
+            cell.font = Font(name="Calibri", bold=(n > 0), size=10, color=fg)
+            cell.alignment = ctr
+            cell.border = Border(left=thin, right=thin, top=thin, bottom=thin)
+
+    # ── Rader 20–24: Ekstraomgang 1 (min 91–105 + 105+) ─────────────────────
+    _et_periode(20, "ET 1", 91, counts.et1, counts.et1_et)
+
+    # ── Rad 25: separator mellom ET-periodene ─────────────────────────────────
+    ws.row_dimensions[25].height = 8
+    for col in range(1, 12):
+        ws.cell(row=25, column=col).fill = GRAY
+
+    # ── Rader 26–30: Ekstraomgang 2 (min 106–120 + 120+) ────────────────────
+    _et_periode(26, "ET 2", 106, counts.et2, counts.et2_et)
+
+    # ── Rad 32–33: Forklaring ─────────────────────────────────────────────────
+    ws.row_dimensions[32].height = 14
+    ws.cell(row=32, column=1, value="Fargeskala:").font = Font(name="Calibri", bold=True, size=9, color="1A1A2E")
 
     legend_items = [
         ("0 mål",  "FFFFFF", "AAAAAA"),
@@ -246,18 +348,18 @@ def skriv_ark(counts: GoalCounts) -> None:
         ("5 mål",  "1A3C6B", "FFFFFF"),
         ("6+ mål", "0F2044", "FFFFFF"),
     ]
-    ws.row_dimensions[20].height = 18
+    ws.row_dimensions[33].height = 18
     for i, (label, bg, fg) in enumerate(legend_items):
         col = i + 2
-        c = ws.cell(row=20, column=col, value=label)
+        c = ws.cell(row=33, column=col, value=label)
         c.fill      = PatternFill("solid", fgColor=bg)
         c.font      = Font(name="Calibri", size=8, color=fg)
         c.alignment = ctr
         c.border    = Border(left=thin, right=thin, top=thin, bottom=thin)
 
     # ── Halvtidsmarkeringsforklaring ───────────────────────────────────────────
-    ws.row_dimensions[22].height = 14
-    note = ws.cell(row=22, column=1,
+    ws.row_dimensions[35].height = 14
+    note = ws.cell(row=35, column=1,
                    value="| Tykk strek markerer halvtidspausen (mellom minutt 45 og 46)")
     note.font = Font(name="Calibri", italic=True, size=8, color="6B7A99")
 
@@ -285,11 +387,17 @@ def main():
     totalt_regular = sum(counts.regular.values())
     totalt_ht_et   = sum(counts.ht_et.values())
     totalt_ft_et   = sum(counts.ft_et.values())
-    totalt         = totalt_regular + totalt_ht_et + totalt_ft_et
+    totalt_et1     = sum(counts.et1.values()) + sum(counts.et1_et.values())
+    totalt_et2     = sum(counts.et2.values()) + sum(counts.et2_et.values())
+    totalt         = totalt_regular + totalt_ht_et + totalt_ft_et + totalt_et1 + totalt_et2
     print(f"  {totalt} mål totalt")
     print(f"    - {totalt_regular} i ordinær tid (minutt 1–90)")
     print(f"    - {totalt_ht_et} i HT tilleggstid (45'+N): {dict(sorted(counts.ht_et.items()))}")
     print(f"    - {totalt_ft_et} i FT tilleggstid (90'+N): {dict(sorted(counts.ft_et.items()))}")
+    if totalt_et1:
+        print(f"    - {totalt_et1} i ekstraomgang 1 (91–105 + 105'+N): {dict(sorted(counts.et1.items()))}")
+    if totalt_et2:
+        print(f"    - {totalt_et2} i ekstraomgang 2 (106–120 + 120'+N): {dict(sorted(counts.et2.items()))}")
     if counts.regular:
         maks_min = max(counts.regular, key=counts.regular.get)
         print(f"  Maks i ett minutt (ordinær tid): {counts.regular[maks_min]} mål (minutt {maks_min})")
