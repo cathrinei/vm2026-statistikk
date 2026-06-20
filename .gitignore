@@ -7,6 +7,11 @@ __pycache__/
 test_rapport.txt
 "Test av funksjonalitet.xlsx"
 
+# Genererte Excel- og rapportfiler (oppdateres av skriptene, ikke i git)
+VM2026_avansert_gruppetabeller_og_sluttspill.xlsx
+VM2026_avansert_gruppetabeller_og_sluttspill_FULL_200626.xlsx
+avvik_rapport.md
+
 # Midlertidige Excel-kopier
 *.noChart.xlsx
 
