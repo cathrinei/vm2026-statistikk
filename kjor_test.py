@@ -120,7 +120,7 @@ def valider_excel(size_before: int, mtime_before: float, md5_before: str) -> lis
     # 7. Spillertelling = 1248
     FORVENTET_SPILLERE = 1248
     antall = 0
-    BLOCKS = [(1, 3, 28), (30, 32, 57), (59, 61, 86), (88, 90, 115)]
+    BLOCKS = [(17, 19, 44), (46, 48, 73), (75, 77, 102), (104, 106, 131)]
     for gruppe in [f"Gruppe {x}" for x in "ABCDEFGHIJKL"]:
         if gruppe not in faktiske_ark:
             continue
