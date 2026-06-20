@@ -1,5 +1,5 @@
 # VM 2026 — Avviksrapport
-*Generert: 2026-06-20 12:32*
+*Generert: 2026-06-20 17:24*
 
 **Kilde:** [FIFA API](https://api.fifa.com/api/v3/calendar/matches)
 **Status:** ✅ 114 spillere hentet (32 kamper)

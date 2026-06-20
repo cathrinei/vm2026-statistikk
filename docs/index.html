@@ -49,6 +49,17 @@
     line-height: 1.6;
   }
   .infoboks strong { color: #0F2044; }
+
+  /* ── Lag-søk ─────────────────────────────────────────────────── */
+  .lag-sok-wrapper { position: relative; margin-left: auto; align-self: center; padding-bottom: 4px; }
+  #lagSok { padding: 5px 8px; border-radius: 4px; border: none; font-size: 11px; width: 150px; outline: none; background: rgba(255,255,255,0.9); color: #0F2044; }
+  #lagSok::placeholder { color: #888; }
+  #lagSokResultater { position: absolute; right: 0; top: calc(100% + 2px); background: #fff; border: 1px solid #ccc; list-style: none; margin: 0; padding: 0; z-index: 200; min-width: 190px; box-shadow: 0 3px 8px rgba(0,0,0,.2); border-radius: 4px; overflow: hidden; }
+  #lagSokResultater li { padding: 7px 12px; cursor: pointer; font-size: 12px; color: #1a1a2e; border-bottom: 1px solid #eee; }
+  #lagSokResultater li:last-child { border-bottom: none; }
+  #lagSokResultater li:hover { background: #EBF8F2; }
+  @keyframes lagFlash { 0%,100% { outline: none; } 15%,85% { outline: 3px solid #FFD700; outline-offset: -2px; } }
+  .lag-highlight { animation: lagFlash 1.8s ease; }
 </style>
 </head>
 <body>
@@ -91,6 +102,10 @@
 <button onclick="visArk('Niv__2_og_lavere')">Nivå 2 og lavere</button>
 <button onclick="visArk('Aldersfordeling')">Aldersfordeling</button>
 <button onclick="visArk('Alder')">Alder</button>
+<div class="lag-sok-wrapper">
+  <input id="lagSok" type="search" placeholder="🔍 Finn lag…" autocomplete="off">
+  <ul id="lagSokResultater"></ul>
+</div>
 </div>
 
 <!-- ── EGENDEFINERT INNHOLD: rediger fritt, vises over tabellene ─ -->
@@ -42399,6 +42414,79 @@ function visArk(id) {
   if (ark) ark.style.display = 'block';
   event.currentTarget.classList.add('aktiv');
 }
+
+function initLagSok() {
+  const lagKart = {};
+
+  document.querySelectorAll('.ark-innhold').forEach(ark => {
+    const id = ark.id;
+    if (!id.startsWith('ark_Gruppe_')) return;
+    const gruppeId = id.replace('ark_', '');
+
+    let tabellTable = null;
+    ark.querySelectorAll('table').forEach(tbl => {
+      tbl.querySelectorAll('td[colspan]').forEach(cell => {
+        if (cell.textContent.includes('— Tabell')) tabellTable = tbl;
+      });
+    });
+    if (!tabellTable) return;
+
+    tabellTable.querySelectorAll('tr').forEach(row => {
+      const firstTd = row.querySelector('td');
+      if (!firstTd) return;
+      const bg = firstTd.style.background || '';
+      if (bg.includes('#0F2044') || bg.includes('#1A3C6B')) return;
+      const lagNavn = firstTd.textContent.trim();
+      if (lagNavn && lagNavn !== 'Lag') lagKart[lagNavn] = { gruppeId, ark };
+    });
+  });
+
+  const input = document.getElementById('lagSok');
+  const liste = document.getElementById('lagSokResultater');
+  if (!input || !liste) return;
+
+  function lukkDropdown() { liste.innerHTML = ''; }
+
+  input.addEventListener('keyup', () => {
+    const q = input.value.trim().toLowerCase();
+    liste.innerHTML = '';
+    if (q.length < 1) return;
+    const treff = Object.keys(lagKart).filter(n => n.toLowerCase().includes(q)).slice(0, 8);
+    treff.forEach(navn => {
+      const li = document.createElement('li');
+      li.textContent = navn;
+      li.addEventListener('click', () => {
+        const { gruppeId, ark } = lagKart[navn];
+        const btn = [...document.querySelectorAll('.tab-bar button')]
+          .find(b => (b.getAttribute('onclick') || '').includes(gruppeId));
+        if (btn) btn.click();
+        setTimeout(() => {
+          let targetRow = null;
+          ark.querySelectorAll('tr').forEach(row => {
+            const firstTd = row.querySelector('td');
+            if (firstTd && firstTd.textContent.trim() === navn) targetRow = row;
+          });
+          if (targetRow) {
+            targetRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            targetRow.classList.add('lag-highlight');
+            setTimeout(() => targetRow.classList.remove('lag-highlight'), 1900);
+          }
+        }, 60);
+        input.value = '';
+        lukkDropdown();
+      });
+      liste.appendChild(li);
+    });
+  });
+
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.lag-sok-wrapper')) lukkDropdown();
+  });
+
+  input.addEventListener('keydown', e => { if (e.key === 'Escape') lukkDropdown(); });
+}
+
+initLagSok();
 </script>
 </body>
 </html>
