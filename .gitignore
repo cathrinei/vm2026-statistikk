@@ -3,15 +3,25 @@
 __pycache__/
 *.pyc
 
-# Cache-filer (regenereres automatisk)
-*.json
-!package.json
-
-# Excel-filer (store binærfiler, ikke egnet for git)
-*.xlsx
-
 # Testfiler
 test_rapport.txt
+"Test av funksjonalitet.xlsx"
+
+# Midlertidige Excel-kopier
+*.noChart.xlsx
+
+# Sikkerhet
+.env
+
+# Backup-filer
+*.bak
+*.bak2
+*.pre_repair.bak
+
+# Interne/midlertidige filer
+_styles_dump.xml
+api_football_todo.md
+excel_innhold.md
 
 # Editor
 .vscode/

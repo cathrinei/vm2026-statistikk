@@ -1,0 +1,7610 @@
+{
+  "Gruppe A": {
+    "Mexico": [
+      {
+        "nr": 1,
+        "name": "Raúl Rangel",
+        "pos": "GK",
+        "birthdate": "2000-02-25"
+      },
+      {
+        "nr": 2,
+        "name": "Jorge Sánchez",
+        "pos": "DF",
+        "birthdate": "1997-12-10"
+      },
+      {
+        "nr": 3,
+        "name": "César Montes",
+        "pos": "DF",
+        "birthdate": "1997-02-24"
+      },
+      {
+        "nr": 4,
+        "name": "Edson Álvarez",
+        "pos": "DF",
+        "birthdate": "1997-10-24"
+      },
+      {
+        "nr": 5,
+        "name": "Johan Vásquez",
+        "pos": "DF",
+        "birthdate": "1998-10-22"
+      },
+      {
+        "nr": 6,
+        "name": "Érik Lira",
+        "pos": "MF",
+        "birthdate": "2000-05-08"
+      },
+      {
+        "nr": 7,
+        "name": "Luis Romo",
+        "pos": "MF",
+        "birthdate": "1995-06-05"
+      },
+      {
+        "nr": 8,
+        "name": "Álvaro Fidalgo",
+        "pos": "MF",
+        "birthdate": "1997-04-09"
+      },
+      {
+        "nr": 9,
+        "name": "Raúl Jiménez",
+        "pos": "FW",
+        "birthdate": "1991-05-05"
+      },
+      {
+        "nr": 10,
+        "name": "Alexis Vega",
+        "pos": "FW",
+        "birthdate": "1997-11-25"
+      },
+      {
+        "nr": 11,
+        "name": "Santiago Giménez",
+        "pos": "FW",
+        "birthdate": "2001-04-18"
+      },
+      {
+        "nr": 12,
+        "name": "Carlos Acevedo",
+        "pos": "GK",
+        "birthdate": "1996-04-19"
+      },
+      {
+        "nr": 13,
+        "name": "Guillermo Ochoa",
+        "pos": "GK",
+        "birthdate": "1985-07-13"
+      },
+      {
+        "nr": 14,
+        "name": "Armando González",
+        "pos": "FW",
+        "birthdate": "2003-04-20"
+      },
+      {
+        "nr": 15,
+        "name": "Israel Reyes",
+        "pos": "DF",
+        "birthdate": "2000-05-23"
+      },
+      {
+        "nr": 16,
+        "name": "Julián Quiñones",
+        "pos": "FW",
+        "birthdate": "1997-03-24"
+      },
+      {
+        "nr": 17,
+        "name": "Orbelín Pineda",
+        "pos": "MF",
+        "birthdate": "1996-03-24"
+      },
+      {
+        "nr": 18,
+        "name": "Obed Vargas",
+        "pos": "MF",
+        "birthdate": "2005-08-05"
+      },
+      {
+        "nr": 19,
+        "name": "Gilberto Mora",
+        "pos": "MF",
+        "birthdate": "2008-10-14"
+      },
+      {
+        "nr": 20,
+        "name": "Mateo Chávez",
+        "pos": "DF",
+        "birthdate": "2004-05-12"
+      },
+      {
+        "nr": 21,
+        "name": "César Huerta",
+        "pos": "FW",
+        "birthdate": "2000-12-03"
+      },
+      {
+        "nr": 22,
+        "name": "Guillermo Martínez",
+        "pos": "FW",
+        "birthdate": "1995-03-15"
+      },
+      {
+        "nr": 23,
+        "name": "Jesús Gallardo",
+        "pos": "DF",
+        "birthdate": "1994-08-15"
+      },
+      {
+        "nr": 24,
+        "name": "Luis Chávez",
+        "pos": "MF",
+        "birthdate": "1996-01-15"
+      },
+      {
+        "nr": 25,
+        "name": "Roberto Alvarado",
+        "pos": "FW",
+        "birthdate": "1998-09-07"
+      },
+      {
+        "nr": 26,
+        "name": "Brian Gutiérrez",
+        "pos": "MF",
+        "birthdate": "2003-06-17"
+      }
+    ],
+    "South Africa": [
+      {
+        "nr": 1,
+        "name": "Ronwen Williams",
+        "pos": "GK",
+        "birthdate": "1992-01-21"
+      },
+      {
+        "nr": 2,
+        "name": "Thabang Matuludi",
+        "pos": "DF",
+        "birthdate": "1999-01-14"
+      },
+      {
+        "nr": 3,
+        "name": "Khulumani Ndamane",
+        "pos": "DF",
+        "birthdate": "2004-02-05"
+      },
+      {
+        "nr": 4,
+        "name": "Teboho Mokoena",
+        "pos": "MF",
+        "birthdate": "1997-01-24"
+      },
+      {
+        "nr": 5,
+        "name": "Thalente Mbatha",
+        "pos": "MF",
+        "birthdate": "2000-03-06"
+      },
+      {
+        "nr": 6,
+        "name": "Aubrey Modiba",
+        "pos": "DF",
+        "birthdate": "1995-07-22"
+      },
+      {
+        "nr": 7,
+        "name": "Oswin Appollis",
+        "pos": "FW",
+        "birthdate": "2001-08-25"
+      },
+      {
+        "nr": 8,
+        "name": "Tshepang Moremi",
+        "pos": "FW",
+        "birthdate": "2000-10-02"
+      },
+      {
+        "nr": 9,
+        "name": "Lyle Foster",
+        "pos": "FW",
+        "birthdate": "2000-09-03"
+      },
+      {
+        "nr": 10,
+        "name": "Relebohile Mofokeng",
+        "pos": "FW",
+        "birthdate": "2004-10-23"
+      },
+      {
+        "nr": 11,
+        "name": "Themba Zwane",
+        "pos": "MF",
+        "birthdate": "1989-08-03"
+      },
+      {
+        "nr": 12,
+        "name": "Thapelo Maseko",
+        "pos": "FW",
+        "birthdate": "2003-11-11"
+      },
+      {
+        "nr": 13,
+        "name": "Sphephelo Sithole",
+        "pos": "MF",
+        "birthdate": "1999-03-03"
+      },
+      {
+        "nr": 14,
+        "name": "Mbekezeli Mbokazi",
+        "pos": "DF",
+        "birthdate": "2005-09-19"
+      },
+      {
+        "nr": 15,
+        "name": "Iqraam Rayners",
+        "pos": "FW",
+        "birthdate": "1995-12-19"
+      },
+      {
+        "nr": 16,
+        "name": "Sipho Chaine",
+        "pos": "GK",
+        "birthdate": "1996-12-14"
+      },
+      {
+        "nr": 17,
+        "name": "Evidence Makgopa",
+        "pos": "FW",
+        "birthdate": "2000-06-05"
+      },
+      {
+        "nr": 18,
+        "name": "Samukele Kabini",
+        "pos": "DF",
+        "birthdate": "2004-03-15"
+      },
+      {
+        "nr": 19,
+        "name": "Nkosinathi Sibisi",
+        "pos": "DF",
+        "birthdate": "1995-09-22"
+      },
+      {
+        "nr": 20,
+        "name": "Khuliso Mudau",
+        "pos": "DF",
+        "birthdate": "1995-04-26"
+      },
+      {
+        "nr": 21,
+        "name": "Ime Okon",
+        "pos": "DF",
+        "birthdate": "2004-02-20"
+      },
+      {
+        "nr": 22,
+        "name": "Ricardo Goss",
+        "pos": "GK",
+        "birthdate": "1994-04-02"
+      },
+      {
+        "nr": 23,
+        "name": "Jayden Adams",
+        "pos": "MF",
+        "birthdate": "2001-05-05"
+      },
+      {
+        "nr": 24,
+        "name": "Olwethu Makhanya",
+        "pos": "DF",
+        "birthdate": "2004-04-30"
+      },
+      {
+        "nr": 25,
+        "name": "Kamogelo Sebelebele",
+        "pos": "FW",
+        "birthdate": "2002-07-21"
+      },
+      {
+        "nr": 26,
+        "name": "Bradley Cross",
+        "pos": "DF",
+        "birthdate": "2001-01-30"
+      }
+    ],
+    "Sør-Korea": [
+      {
+        "nr": 1,
+        "name": "Kim Seung-gyu",
+        "pos": "GK",
+        "birthdate": "1990-09-30"
+      },
+      {
+        "nr": 2,
+        "name": "Lee Han-beom",
+        "pos": "DF",
+        "birthdate": "2002-06-17"
+      },
+      {
+        "nr": 3,
+        "name": "Lee Gi-hyuk",
+        "pos": "MF",
+        "birthdate": "2000-07-07"
+      },
+      {
+        "nr": 4,
+        "name": "Kim Min-jae",
+        "pos": "DF",
+        "birthdate": "1996-11-15"
+      },
+      {
+        "nr": 5,
+        "name": "Kim Tae-hyeon",
+        "pos": "DF",
+        "birthdate": "2000-09-17"
+      },
+      {
+        "nr": 6,
+        "name": "Hwang In-beom",
+        "pos": "MF",
+        "birthdate": "1996-09-20"
+      },
+      {
+        "nr": 7,
+        "name": "Son Heung-min",
+        "pos": "FW",
+        "birthdate": "1992-07-08"
+      },
+      {
+        "nr": 8,
+        "name": "Paik Seung-ho",
+        "pos": "MF",
+        "birthdate": "1997-03-17"
+      },
+      {
+        "nr": 9,
+        "name": "Cho Gue-sung",
+        "pos": "FW",
+        "birthdate": "1998-01-25"
+      },
+      {
+        "nr": 10,
+        "name": "Lee Jae-sung",
+        "pos": "MF",
+        "birthdate": "1992-08-10"
+      },
+      {
+        "nr": 11,
+        "name": "Hwang Hee-chan",
+        "pos": "MF",
+        "birthdate": "1996-01-26"
+      },
+      {
+        "nr": 12,
+        "name": "Song Bum-keun",
+        "pos": "GK",
+        "birthdate": "1997-10-15"
+      },
+      {
+        "nr": 13,
+        "name": "Lee Tae-seok",
+        "pos": "DF",
+        "birthdate": "2002-07-28"
+      },
+      {
+        "nr": 14,
+        "name": "Cho Wi-je",
+        "pos": "DF",
+        "birthdate": "2001-08-25"
+      },
+      {
+        "nr": 15,
+        "name": "Kim Moon-hwan",
+        "pos": "DF",
+        "birthdate": "1995-08-01"
+      },
+      {
+        "nr": 16,
+        "name": "Park Jin-seob",
+        "pos": "DF",
+        "birthdate": "1995-10-23"
+      },
+      {
+        "nr": 17,
+        "name": "Bae Jun-ho",
+        "pos": "MF",
+        "birthdate": "2003-08-21"
+      },
+      {
+        "nr": 18,
+        "name": "Oh Hyeon-gyu",
+        "pos": "FW",
+        "birthdate": "2001-04-12"
+      },
+      {
+        "nr": 19,
+        "name": "Lee Kang-in",
+        "pos": "MF",
+        "birthdate": "2001-02-19"
+      },
+      {
+        "nr": 20,
+        "name": "Yang Hyun-jun",
+        "pos": "MF",
+        "birthdate": "2002-05-25"
+      },
+      {
+        "nr": 21,
+        "name": "Jo Hyeon-woo",
+        "pos": "GK",
+        "birthdate": "1991-09-25"
+      },
+      {
+        "nr": 22,
+        "name": "Seol Young-woo",
+        "pos": "DF",
+        "birthdate": "1998-12-05"
+      },
+      {
+        "nr": 23,
+        "name": "Jens Castrop",
+        "pos": "DF",
+        "birthdate": "2003-07-29"
+      },
+      {
+        "nr": 24,
+        "name": "Kim Jin-gyu",
+        "pos": "MF",
+        "birthdate": "1997-02-24"
+      },
+      {
+        "nr": 25,
+        "name": "Eom Ji-sung",
+        "pos": "MF",
+        "birthdate": "2002-05-09"
+      },
+      {
+        "nr": 26,
+        "name": "Lee Dong-gyeong",
+        "pos": "MF",
+        "birthdate": "1997-09-20"
+      }
+    ],
+    "Tsjekkia": [
+      {
+        "nr": 1,
+        "name": "Matěj Kovář",
+        "pos": "GK",
+        "birthdate": "2000-05-17"
+      },
+      {
+        "nr": 2,
+        "name": "David Zima",
+        "pos": "DF",
+        "birthdate": "2000-11-08"
+      },
+      {
+        "nr": 3,
+        "name": "Tomáš Holeš",
+        "pos": "DF",
+        "birthdate": "1993-03-31"
+      },
+      {
+        "nr": 4,
+        "name": "Robin Hranáč",
+        "pos": "DF",
+        "birthdate": "2000-01-29"
+      },
+      {
+        "nr": 5,
+        "name": "Vladimír Coufal",
+        "pos": "DF",
+        "birthdate": "1992-08-22"
+      },
+      {
+        "nr": 6,
+        "name": "Štěpán Chaloupek",
+        "pos": "DF",
+        "birthdate": "2003-03-08"
+      },
+      {
+        "nr": 7,
+        "name": "Ladislav Krejčí",
+        "pos": "DF",
+        "birthdate": "1999-04-20"
+      },
+      {
+        "nr": 8,
+        "name": "Vladimír Darida",
+        "pos": "MF",
+        "birthdate": "1990-08-08"
+      },
+      {
+        "nr": 9,
+        "name": "Adam Hložek",
+        "pos": "FW",
+        "birthdate": "2002-07-25"
+      },
+      {
+        "nr": 10,
+        "name": "Patrik Schick",
+        "pos": "FW",
+        "birthdate": "1996-01-24"
+      },
+      {
+        "nr": 11,
+        "name": "Jan Kuchta",
+        "pos": "FW",
+        "birthdate": "1997-01-08"
+      },
+      {
+        "nr": 12,
+        "name": "Lukáš Červ",
+        "pos": "MF",
+        "birthdate": "2001-04-10"
+      },
+      {
+        "nr": 13,
+        "name": "Mojmír Chytil",
+        "pos": "FW",
+        "birthdate": "1999-04-29"
+      },
+      {
+        "nr": 14,
+        "name": "David Jurásek",
+        "pos": "DF",
+        "birthdate": "2000-08-07"
+      },
+      {
+        "nr": 15,
+        "name": "Pavel Šulc",
+        "pos": "FW",
+        "birthdate": "2000-12-29"
+      },
+      {
+        "nr": 16,
+        "name": "Jindřich Staněk",
+        "pos": "GK",
+        "birthdate": "1996-04-27"
+      },
+      {
+        "nr": 17,
+        "name": "Lukáš Provod",
+        "pos": "MF",
+        "birthdate": "1996-10-23"
+      },
+      {
+        "nr": 18,
+        "name": "Michal Sadílek",
+        "pos": "MF",
+        "birthdate": "1999-05-31"
+      },
+      {
+        "nr": 19,
+        "name": "Tomáš Chorý",
+        "pos": "FW",
+        "birthdate": "1995-01-26"
+      },
+      {
+        "nr": 20,
+        "name": "Jaroslav Zelený",
+        "pos": "DF",
+        "birthdate": "1992-08-20"
+      },
+      {
+        "nr": 21,
+        "name": "David Douděra",
+        "pos": "DF",
+        "birthdate": "1998-05-31"
+      },
+      {
+        "nr": 22,
+        "name": "Tomáš Souček",
+        "pos": "MF",
+        "birthdate": "1995-02-27"
+      },
+      {
+        "nr": 23,
+        "name": "Lukáš Horníček",
+        "pos": "GK",
+        "birthdate": "2002-07-13"
+      },
+      {
+        "nr": 24,
+        "name": "Alexandr Sojka",
+        "pos": "MF",
+        "birthdate": "2003-04-02"
+      },
+      {
+        "nr": 25,
+        "name": "Hugo Sochůrek",
+        "pos": "MF",
+        "birthdate": "2008-06-07"
+      },
+      {
+        "nr": 26,
+        "name": "Denis Višinský",
+        "pos": "FW",
+        "birthdate": "2003-03-21"
+      }
+    ]
+  },
+  "Gruppe B": {
+    "Canada": [
+      {
+        "nr": 1,
+        "name": "Dayne St. Clair",
+        "pos": "GK",
+        "birthdate": "1997-05-09"
+      },
+      {
+        "nr": 2,
+        "name": "Alistair Johnston",
+        "pos": "DF",
+        "birthdate": "1998-10-08"
+      },
+      {
+        "nr": 3,
+        "name": "Alfie Jones",
+        "pos": "DF",
+        "birthdate": "1997-10-07"
+      },
+      {
+        "nr": 4,
+        "name": "Luc de Fougerolles",
+        "pos": "DF",
+        "birthdate": "2005-10-12"
+      },
+      {
+        "nr": 5,
+        "name": "Joel Waterman",
+        "pos": "DF",
+        "birthdate": "1996-01-24"
+      },
+      {
+        "nr": 6,
+        "name": "Mathieu Choinière",
+        "pos": "MF",
+        "birthdate": "1999-02-07"
+      },
+      {
+        "nr": 7,
+        "name": "Stephen Eustáquio",
+        "pos": "MF",
+        "birthdate": "1996-12-21"
+      },
+      {
+        "nr": 8,
+        "name": "Ismaël Koné",
+        "pos": "MF",
+        "birthdate": "2002-06-16"
+      },
+      {
+        "nr": 9,
+        "name": "Cyle Larin",
+        "pos": "FW",
+        "birthdate": "1995-04-17"
+      },
+      {
+        "nr": 10,
+        "name": "Jonathan David",
+        "pos": "FW",
+        "birthdate": "2000-01-14"
+      },
+      {
+        "nr": 11,
+        "name": "Liam Millar",
+        "pos": "MF",
+        "birthdate": "1999-09-27"
+      },
+      {
+        "nr": 12,
+        "name": "Tani Oluwaseyi",
+        "pos": "FW",
+        "birthdate": "2000-05-15"
+      },
+      {
+        "nr": 13,
+        "name": "Derek Cornelius",
+        "pos": "DF",
+        "birthdate": "1997-11-25"
+      },
+      {
+        "nr": 14,
+        "name": "Jacob Shaffelburg",
+        "pos": "MF",
+        "birthdate": "1999-11-26"
+      },
+      {
+        "nr": 15,
+        "name": "Moïse Bombito",
+        "pos": "DF",
+        "birthdate": "2000-03-30"
+      },
+      {
+        "nr": 16,
+        "name": "Maxime Crépeau",
+        "pos": "GK",
+        "birthdate": "1994-05-11"
+      },
+      {
+        "nr": 17,
+        "name": "Tajon Buchanan",
+        "pos": "FW",
+        "birthdate": "1999-02-08"
+      },
+      {
+        "nr": 18,
+        "name": "Owen Goodman",
+        "pos": "GK",
+        "birthdate": "2003-11-27"
+      },
+      {
+        "nr": 19,
+        "name": "Alphonso Davies",
+        "pos": "DF",
+        "birthdate": "2000-11-02"
+      },
+      {
+        "nr": 20,
+        "name": "Ali Ahmed",
+        "pos": "FW",
+        "birthdate": "2000-10-10"
+      },
+      {
+        "nr": 21,
+        "name": "Jonathan Osorio",
+        "pos": "MF",
+        "birthdate": "1992-06-12"
+      },
+      {
+        "nr": 22,
+        "name": "Richie Laryea",
+        "pos": "DF",
+        "birthdate": "1995-01-07"
+      },
+      {
+        "nr": 23,
+        "name": "Niko Sigur",
+        "pos": "DF",
+        "birthdate": "2003-09-09"
+      },
+      {
+        "nr": 24,
+        "name": "Promise David",
+        "pos": "FW",
+        "birthdate": "2001-07-03"
+      },
+      {
+        "nr": 25,
+        "name": "Nathan Saliba",
+        "pos": "MF",
+        "birthdate": "2004-02-07"
+      },
+      {
+        "nr": 26,
+        "name": "Jayden Nelson",
+        "pos": "FW",
+        "birthdate": "2002-09-26"
+      }
+    ],
+    "Bosnia and Herzegovina": [
+      {
+        "nr": 1,
+        "name": "Nikola Vasilj",
+        "pos": "GK",
+        "birthdate": "1995-12-02"
+      },
+      {
+        "nr": 2,
+        "name": "Nihad Mujakić",
+        "pos": "DF",
+        "birthdate": "1998-04-15"
+      },
+      {
+        "nr": 3,
+        "name": "Dennis Hadžikadunić",
+        "pos": "DF",
+        "birthdate": "1998-07-09"
+      },
+      {
+        "nr": 4,
+        "name": "Tarik Muharemović",
+        "pos": "DF",
+        "birthdate": "2003-02-28"
+      },
+      {
+        "nr": 5,
+        "name": "Sead Kolašinac",
+        "pos": "DF",
+        "birthdate": "1993-06-20"
+      },
+      {
+        "nr": 6,
+        "name": "Benjamin Tahirović",
+        "pos": "MF",
+        "birthdate": "2003-03-03"
+      },
+      {
+        "nr": 7,
+        "name": "Amar Dedić",
+        "pos": "DF",
+        "birthdate": "2002-08-18"
+      },
+      {
+        "nr": 8,
+        "name": "Armin Gigović",
+        "pos": "MF",
+        "birthdate": "2002-04-06"
+      },
+      {
+        "nr": 9,
+        "name": "Samed Baždar",
+        "pos": "FW",
+        "birthdate": "2004-01-31"
+      },
+      {
+        "nr": 10,
+        "name": "Ermedin Demirović",
+        "pos": "FW",
+        "birthdate": "1998-03-25"
+      },
+      {
+        "nr": 11,
+        "name": "Edin Džeko",
+        "pos": "FW",
+        "birthdate": "1986-03-17"
+      },
+      {
+        "nr": 12,
+        "name": "Mladen Jurkas",
+        "pos": "GK",
+        "birthdate": "2007-10-07"
+      },
+      {
+        "nr": 13,
+        "name": "Ivan Bašić",
+        "pos": "MF",
+        "birthdate": "2002-04-30"
+      },
+      {
+        "nr": 14,
+        "name": "Ivan Šunjić",
+        "pos": "MF",
+        "birthdate": "1996-10-09"
+      },
+      {
+        "nr": 15,
+        "name": "Amar Memić",
+        "pos": "MF",
+        "birthdate": "2001-01-20"
+      },
+      {
+        "nr": 16,
+        "name": "Amir Hadžiahmetović",
+        "pos": "MF",
+        "birthdate": "1997-03-08"
+      },
+      {
+        "nr": 17,
+        "name": "Dženis Burnić",
+        "pos": "MF",
+        "birthdate": "1998-05-22"
+      },
+      {
+        "nr": 18,
+        "name": "Nikola Katić",
+        "pos": "DF",
+        "birthdate": "1996-10-10"
+      },
+      {
+        "nr": 19,
+        "name": "Kerim Alajbegović",
+        "pos": "FW",
+        "birthdate": "2007-09-21"
+      },
+      {
+        "nr": 20,
+        "name": "Esmir Bajraktarević",
+        "pos": "MF",
+        "birthdate": "2005-03-10"
+      },
+      {
+        "nr": 21,
+        "name": "Stjepan Radeljić",
+        "pos": "DF",
+        "birthdate": "1997-09-05"
+      },
+      {
+        "nr": 22,
+        "name": "Martin Zlomislić",
+        "pos": "GK",
+        "birthdate": "1998-08-16"
+      },
+      {
+        "nr": 23,
+        "name": "Haris Tabaković",
+        "pos": "FW",
+        "birthdate": "1994-06-20"
+      },
+      {
+        "nr": 24,
+        "name": "Arjan Malić",
+        "pos": "DF",
+        "birthdate": "2005-08-28"
+      },
+      {
+        "nr": 25,
+        "name": "Jovo Lukić",
+        "pos": "FW",
+        "birthdate": "1998-11-28"
+      },
+      {
+        "nr": 26,
+        "name": "Ermin Mahmić",
+        "pos": "MF",
+        "birthdate": "2005-03-14"
+      }
+    ],
+    "Qatar": [
+      {
+        "nr": 1,
+        "name": "Mahmoud Abunada",
+        "pos": "GK",
+        "birthdate": "2000-02-05"
+      },
+      {
+        "nr": 2,
+        "name": "Pedro Miguel",
+        "pos": "DF",
+        "birthdate": "1990-08-06"
+      },
+      {
+        "nr": 3,
+        "name": "Lucas Mendes",
+        "pos": "DF",
+        "birthdate": "1990-07-03"
+      },
+      {
+        "nr": 4,
+        "name": "Issa Laye",
+        "pos": "DF",
+        "birthdate": "1997-12-22"
+      },
+      {
+        "nr": 5,
+        "name": "Jassem Gaber",
+        "pos": "DF",
+        "birthdate": "2002-02-20"
+      },
+      {
+        "nr": 6,
+        "name": "Abdulaziz Hatem",
+        "pos": "MF",
+        "birthdate": "1990-01-01"
+      },
+      {
+        "nr": 7,
+        "name": "Ahmed Alaaeldin",
+        "pos": "FW",
+        "birthdate": "1993-01-31"
+      },
+      {
+        "nr": 8,
+        "name": "Edmilson Junior",
+        "pos": "FW",
+        "birthdate": "1994-08-19"
+      },
+      {
+        "nr": 9,
+        "name": "Mohammed Muntari",
+        "pos": "FW",
+        "birthdate": "1993-12-20"
+      },
+      {
+        "nr": 10,
+        "name": "Hassan Al-Haydos",
+        "pos": "FW",
+        "birthdate": "1990-12-11"
+      },
+      {
+        "nr": 11,
+        "name": "Akram Afif",
+        "pos": "FW",
+        "birthdate": "1996-11-18"
+      },
+      {
+        "nr": 12,
+        "name": "Karim Boudiaf",
+        "pos": "MF",
+        "birthdate": "1990-09-16"
+      },
+      {
+        "nr": 13,
+        "name": "Ayoub Al-Oui",
+        "pos": "DF",
+        "birthdate": "2005-03-11"
+      },
+      {
+        "nr": 14,
+        "name": "Ahmed Fathi",
+        "pos": "DF",
+        "birthdate": "1993-01-25"
+      },
+      {
+        "nr": 15,
+        "name": "Yusuf Abdurisag",
+        "pos": "FW",
+        "birthdate": "1999-08-06"
+      },
+      {
+        "nr": 16,
+        "name": "Boualem Khoukhi",
+        "pos": "DF",
+        "birthdate": "1990-07-09"
+      },
+      {
+        "nr": 17,
+        "name": "Ahmed Al-Ganehi",
+        "pos": "FW",
+        "birthdate": "2000-09-22"
+      },
+      {
+        "nr": 18,
+        "name": "Sultan Al-Brake",
+        "pos": "FW",
+        "birthdate": "1996-04-07"
+      },
+      {
+        "nr": 19,
+        "name": "Almoez Ali",
+        "pos": "FW",
+        "birthdate": "1996-08-19"
+      },
+      {
+        "nr": 20,
+        "name": "Homam Al-Amin",
+        "pos": "DF",
+        "birthdate": "1999-08-25"
+      },
+      {
+        "nr": 21,
+        "name": "Salah Zakaria",
+        "pos": "GK",
+        "birthdate": "1999-04-24"
+      },
+      {
+        "nr": 22,
+        "name": "Meshaal Barsham",
+        "pos": "GK",
+        "birthdate": "1998-02-14"
+      },
+      {
+        "nr": 23,
+        "name": "Assim Madibo",
+        "pos": "MF",
+        "birthdate": "1996-10-22"
+      },
+      {
+        "nr": 24,
+        "name": "Tahsin Jamshid",
+        "pos": "DF",
+        "birthdate": "2006-06-16"
+      },
+      {
+        "nr": 25,
+        "name": "Al-Hashmi Al-Hussain",
+        "pos": "MF",
+        "birthdate": "2003-08-15"
+      },
+      {
+        "nr": 26,
+        "name": "Mohamed Al-Mannai",
+        "pos": "FW",
+        "birthdate": "2002-10-25"
+      }
+    ],
+    "Switzerland": [
+      {
+        "nr": 1,
+        "name": "Gregor Kobel",
+        "pos": "GK",
+        "birthdate": "1997-12-06"
+      },
+      {
+        "nr": 2,
+        "name": "Miro Muheim",
+        "pos": "DF",
+        "birthdate": "1998-03-24"
+      },
+      {
+        "nr": 3,
+        "name": "Silvan Widmer",
+        "pos": "DF",
+        "birthdate": "1993-03-05"
+      },
+      {
+        "nr": 4,
+        "name": "Nico Elvedi",
+        "pos": "DF",
+        "birthdate": "1996-09-30"
+      },
+      {
+        "nr": 5,
+        "name": "Manuel Akanji",
+        "pos": "DF",
+        "birthdate": "1995-07-19"
+      },
+      {
+        "nr": 6,
+        "name": "Denis Zakaria",
+        "pos": "MF",
+        "birthdate": "1996-11-20"
+      },
+      {
+        "nr": 7,
+        "name": "Breel Embolo",
+        "pos": "FW",
+        "birthdate": "1997-02-14"
+      },
+      {
+        "nr": 8,
+        "name": "Remo Freuler",
+        "pos": "MF",
+        "birthdate": "1992-04-15"
+      },
+      {
+        "nr": 9,
+        "name": "Johan Manzambi",
+        "pos": "FW",
+        "birthdate": "2005-10-14"
+      },
+      {
+        "nr": 10,
+        "name": "Granit Xhaka",
+        "pos": "MF",
+        "birthdate": "1992-09-27"
+      },
+      {
+        "nr": 11,
+        "name": "Dan Ndoye",
+        "pos": "FW",
+        "birthdate": "2000-10-25"
+      },
+      {
+        "nr": 12,
+        "name": "Yvon Mvogo",
+        "pos": "GK",
+        "birthdate": "1994-06-06"
+      },
+      {
+        "nr": 13,
+        "name": "Ricardo Rodriguez",
+        "pos": "DF",
+        "birthdate": "1992-08-25"
+      },
+      {
+        "nr": 14,
+        "name": "Ardon Jashari",
+        "pos": "MF",
+        "birthdate": "2002-07-30"
+      },
+      {
+        "nr": 15,
+        "name": "Djibril Sow",
+        "pos": "MF",
+        "birthdate": "1997-02-06"
+      },
+      {
+        "nr": 16,
+        "name": "Christian Fassnacht",
+        "pos": "FW",
+        "birthdate": "1993-11-11"
+      },
+      {
+        "nr": 17,
+        "name": "Rubén Vargas",
+        "pos": "FW",
+        "birthdate": "1998-08-05"
+      },
+      {
+        "nr": 18,
+        "name": "Eray Cömert",
+        "pos": "DF",
+        "birthdate": "1998-02-04"
+      },
+      {
+        "nr": 19,
+        "name": "Noah Okafor",
+        "pos": "FW",
+        "birthdate": "2000-05-24"
+      },
+      {
+        "nr": 20,
+        "name": "Michel Aebischer",
+        "pos": "MF",
+        "birthdate": "1997-01-06"
+      },
+      {
+        "nr": 21,
+        "name": "Marvin Keller",
+        "pos": "GK",
+        "birthdate": "2002-07-03"
+      },
+      {
+        "nr": 22,
+        "name": "Fabian Rieder",
+        "pos": "MF",
+        "birthdate": "2002-02-16"
+      },
+      {
+        "nr": 23,
+        "name": "Zeki Amdouni",
+        "pos": "FW",
+        "birthdate": "2000-12-04"
+      },
+      {
+        "nr": 24,
+        "name": "Aurèle Amenda",
+        "pos": "DF",
+        "birthdate": "2003-07-31"
+      },
+      {
+        "nr": 25,
+        "name": "Luca Jaquez",
+        "pos": "MF",
+        "birthdate": "2003-06-02"
+      },
+      {
+        "nr": 26,
+        "name": "Cedric Itten",
+        "pos": "FW",
+        "birthdate": "1996-12-27"
+      }
+    ]
+  },
+  "Gruppe C": {
+    "Brazil": [
+      {
+        "nr": 1,
+        "name": "Alisson Becker",
+        "pos": "GK",
+        "birthdate": "1992-10-02"
+      },
+      {
+        "nr": 2,
+        "name": "Éderson Militão",
+        "pos": "DF",
+        "birthdate": "1993-08-17"
+      },
+      {
+        "nr": 3,
+        "name": "Gabriel Magalhães",
+        "pos": "DF",
+        "birthdate": "1997-12-19"
+      },
+      {
+        "nr": 4,
+        "name": "Marquinhos",
+        "pos": "DF",
+        "birthdate": "1994-05-14"
+      },
+      {
+        "nr": 5,
+        "name": "Casemiro",
+        "pos": "MF",
+        "birthdate": "1992-02-23"
+      },
+      {
+        "nr": 6,
+        "name": "Alex Sandro",
+        "pos": "DF",
+        "birthdate": "1991-01-26"
+      },
+      {
+        "nr": 7,
+        "name": "Vinícius Júnior",
+        "pos": "FW",
+        "birthdate": "2000-07-12"
+      },
+      {
+        "nr": 8,
+        "name": "Bruno Guimarães",
+        "pos": "MF",
+        "birthdate": "1997-11-16"
+      },
+      {
+        "nr": 9,
+        "name": "Matheus Cunha",
+        "pos": "FW",
+        "birthdate": "1999-05-27"
+      },
+      {
+        "nr": 10,
+        "name": "Neymar",
+        "pos": "FW",
+        "birthdate": "1992-02-05"
+      },
+      {
+        "nr": 11,
+        "name": "Raphinha",
+        "pos": "FW",
+        "birthdate": "1996-12-14"
+      },
+      {
+        "nr": 12,
+        "name": "Weverton",
+        "pos": "GK",
+        "birthdate": "1987-12-13"
+      },
+      {
+        "nr": 13,
+        "name": "Danilo Luiz",
+        "pos": "DF",
+        "birthdate": "1991-07-15"
+      },
+      {
+        "nr": 14,
+        "name": "Gleison Bremer",
+        "pos": "DF",
+        "birthdate": "1997-03-18"
+      },
+      {
+        "nr": 15,
+        "name": "Léo Pereira",
+        "pos": "DF",
+        "birthdate": "1996-01-31"
+      },
+      {
+        "nr": 16,
+        "name": "Douglas Santos",
+        "pos": "DF",
+        "birthdate": "1994-03-22"
+      },
+      {
+        "nr": 17,
+        "name": "Fabinho",
+        "pos": "MF",
+        "birthdate": "1993-10-23"
+      },
+      {
+        "nr": 18,
+        "name": "Danilo Santos",
+        "pos": "MF",
+        "birthdate": "2001-04-29"
+      },
+      {
+        "nr": 19,
+        "name": "Endrick",
+        "pos": "FW",
+        "birthdate": "2006-07-21"
+      },
+      {
+        "nr": 20,
+        "name": "Lucas Paquetá",
+        "pos": "MF",
+        "birthdate": "1997-08-27"
+      },
+      {
+        "nr": 21,
+        "name": "Luiz Henrique",
+        "pos": "FW",
+        "birthdate": "2001-01-02"
+      },
+      {
+        "nr": 22,
+        "name": "Gabriel Martinelli",
+        "pos": "FW",
+        "birthdate": "2001-06-18"
+      },
+      {
+        "nr": 23,
+        "name": "Ederson",
+        "pos": "GK",
+        "birthdate": "1993-08-17"
+      },
+      {
+        "nr": 24,
+        "name": "Roger Ibañez",
+        "pos": "DF",
+        "birthdate": "1998-11-23"
+      },
+      {
+        "nr": 25,
+        "name": "Igor Thiago",
+        "pos": "MF",
+        "birthdate": "2001-06-26"
+      },
+      {
+        "nr": 26,
+        "name": "Rayan",
+        "pos": "FW",
+        "birthdate": "2006-08-03"
+      }
+    ],
+    "Morocco": [
+      {
+        "nr": 1,
+        "name": "Yassine Bounou",
+        "pos": "GK",
+        "birthdate": "1991-04-05"
+      },
+      {
+        "nr": 2,
+        "name": "Achraf Hakimi",
+        "pos": "DF",
+        "birthdate": "1998-11-04"
+      },
+      {
+        "nr": 3,
+        "name": "Noussair Mazraoui",
+        "pos": "DF",
+        "birthdate": "1997-11-14"
+      },
+      {
+        "nr": 4,
+        "name": "Sofyan Amrabat",
+        "pos": "MF",
+        "birthdate": "1996-08-21"
+      },
+      {
+        "nr": 5,
+        "name": "Marwane Saâdane",
+        "pos": "DF",
+        "birthdate": "1992-01-17"
+      },
+      {
+        "nr": 6,
+        "name": "Ayyoub Bouaddi",
+        "pos": "DF",
+        "birthdate": "2007-10-02"
+      },
+      {
+        "nr": 7,
+        "name": "Chemsdine Talbi",
+        "pos": "MF",
+        "birthdate": "2005-05-09"
+      },
+      {
+        "nr": 8,
+        "name": "Azzedine Ounahi",
+        "pos": "MF",
+        "birthdate": "2000-04-19"
+      },
+      {
+        "nr": 9,
+        "name": "Soufiane Rahimi",
+        "pos": "FW",
+        "birthdate": "1996-06-02"
+      },
+      {
+        "nr": 10,
+        "name": "Brahim Díaz",
+        "pos": "MF",
+        "birthdate": "1999-08-03"
+      },
+      {
+        "nr": 11,
+        "name": "Ismael Saibari",
+        "pos": "MF",
+        "birthdate": "2001-01-28"
+      },
+      {
+        "nr": 12,
+        "name": "Munir Mohamedi",
+        "pos": "GK",
+        "birthdate": "1989-05-10"
+      },
+      {
+        "nr": 13,
+        "name": "Zakaria El Ouahdi",
+        "pos": "DF",
+        "birthdate": "2001-12-31"
+      },
+      {
+        "nr": 14,
+        "name": "Issa Diop",
+        "pos": "DF",
+        "birthdate": "1997-01-09"
+      },
+      {
+        "nr": 15,
+        "name": "Samir El Mourabet",
+        "pos": "DF",
+        "birthdate": "2005-10-06"
+      },
+      {
+        "nr": 16,
+        "name": "Ahmed Reda Tagnaouti",
+        "pos": "GK",
+        "birthdate": "1996-04-05"
+      },
+      {
+        "nr": 17,
+        "name": "Amine Sbaï",
+        "pos": "MF",
+        "birthdate": "2000-11-05"
+      },
+      {
+        "nr": 18,
+        "name": "Chadi Riad",
+        "pos": "DF",
+        "birthdate": "2003-06-17"
+      },
+      {
+        "nr": 19,
+        "name": "Youssef Belammari",
+        "pos": "DF",
+        "birthdate": "1998-09-20"
+      },
+      {
+        "nr": 20,
+        "name": "Ayoub El Kaabi",
+        "pos": "FW",
+        "birthdate": "1993-06-25"
+      },
+      {
+        "nr": 21,
+        "name": "Ayoube Amaimouni",
+        "pos": "FW",
+        "birthdate": "2004-11-30"
+      },
+      {
+        "nr": 22,
+        "name": "Gessime Yassine",
+        "pos": "GK",
+        "birthdate": "2005-11-22"
+      },
+      {
+        "nr": 23,
+        "name": "Bilal El Khannouss",
+        "pos": "MF",
+        "birthdate": "2004-05-10"
+      },
+      {
+        "nr": 24,
+        "name": "Neil El Aynaoui",
+        "pos": "MF",
+        "birthdate": "2001-07-02"
+      },
+      {
+        "nr": 25,
+        "name": "Redouane Halhal",
+        "pos": "MF",
+        "birthdate": "2003-03-05"
+      },
+      {
+        "nr": 26,
+        "name": "Anass Salah-Eddine",
+        "pos": "MF",
+        "birthdate": "2002-01-18"
+      }
+    ],
+    "Haiti": [
+      {
+        "nr": 1,
+        "name": "Johny Placide",
+        "pos": "GK",
+        "birthdate": "1988-01-29"
+      },
+      {
+        "nr": 2,
+        "name": "Carlens Arcus",
+        "pos": "DF",
+        "birthdate": "1996-06-28"
+      },
+      {
+        "nr": 3,
+        "name": "Keeto Thermoncy",
+        "pos": "DF",
+        "birthdate": "2006-03-29"
+      },
+      {
+        "nr": 4,
+        "name": "Ricardo Adé",
+        "pos": "DF",
+        "birthdate": "1990-05-21"
+      },
+      {
+        "nr": 5,
+        "name": "Hannes Delcroix",
+        "pos": "DF",
+        "birthdate": "1999-02-28"
+      },
+      {
+        "nr": 6,
+        "name": "Carl Sainté",
+        "pos": "MF",
+        "birthdate": "2002-08-09"
+      },
+      {
+        "nr": 7,
+        "name": "Derrick Etienne Jr.",
+        "pos": "FW",
+        "birthdate": "1996-11-25"
+      },
+      {
+        "nr": 8,
+        "name": "Martin Expérience",
+        "pos": "DF",
+        "birthdate": "1999-03-09"
+      },
+      {
+        "nr": 9,
+        "name": "Duckens Nazon",
+        "pos": "FW",
+        "birthdate": "1994-04-07"
+      },
+      {
+        "nr": 10,
+        "name": "Jean-Ricner Bellegarde",
+        "pos": "MF",
+        "birthdate": "1998-06-27"
+      },
+      {
+        "nr": 11,
+        "name": "Louicius Deedson",
+        "pos": "FW",
+        "birthdate": "2001-02-11"
+      },
+      {
+        "nr": 12,
+        "name": "Alexandre Pierre",
+        "pos": "GK",
+        "birthdate": "2001-02-25"
+      },
+      {
+        "nr": 13,
+        "name": "Duke Lacroix",
+        "pos": "DF",
+        "birthdate": "1993-10-14"
+      },
+      {
+        "nr": 14,
+        "name": "Garven Metusala",
+        "pos": "MF",
+        "birthdate": "1999-12-31"
+      },
+      {
+        "nr": 15,
+        "name": "Ruben Providence",
+        "pos": "FW",
+        "birthdate": "2001-07-07"
+      },
+      {
+        "nr": 16,
+        "name": "Lenny Joseph",
+        "pos": "FW",
+        "birthdate": "2000-10-12"
+      },
+      {
+        "nr": 17,
+        "name": "Danley Jean Jacques",
+        "pos": "MF",
+        "birthdate": "2000-05-20"
+      },
+      {
+        "nr": 18,
+        "name": "Wilson Isidor",
+        "pos": "FW",
+        "birthdate": "2000-08-27"
+      },
+      {
+        "nr": 19,
+        "name": "Yassin Fortuné",
+        "pos": "FW",
+        "birthdate": "1999-01-30"
+      },
+      {
+        "nr": 20,
+        "name": "Frantzdy Pierrot",
+        "pos": "FW",
+        "birthdate": "1995-03-29"
+      },
+      {
+        "nr": 21,
+        "name": "Josué Casimir",
+        "pos": "FW",
+        "birthdate": "2001-09-24"
+      },
+      {
+        "nr": 22,
+        "name": "Jean-Kévin Duverne",
+        "pos": "DF",
+        "birthdate": "1997-07-12"
+      },
+      {
+        "nr": 23,
+        "name": "Josué Duverger",
+        "pos": "GK",
+        "birthdate": "2000-04-27"
+      },
+      {
+        "nr": 24,
+        "name": "Wilguens Paugain",
+        "pos": "DF",
+        "birthdate": "2001-08-24"
+      },
+      {
+        "nr": 25,
+        "name": "Dominique Simon",
+        "pos": "MF",
+        "birthdate": "2000-07-29"
+      },
+      {
+        "nr": 26,
+        "name": "Woodensky Pierre",
+        "pos": "MF",
+        "birthdate": "2004-12-30"
+      }
+    ],
+    "Scotland": [
+      {
+        "nr": 1,
+        "name": "Angus Gunn",
+        "pos": "GK",
+        "birthdate": "1996-01-22"
+      },
+      {
+        "nr": 2,
+        "name": "Aaron Hickey",
+        "pos": "DF",
+        "birthdate": "2002-06-10"
+      },
+      {
+        "nr": 3,
+        "name": "Andy Robertson",
+        "pos": "DF",
+        "birthdate": "1994-03-11"
+      },
+      {
+        "nr": 4,
+        "name": "Scott McTominay",
+        "pos": "MF",
+        "birthdate": "1996-12-08"
+      },
+      {
+        "nr": 5,
+        "name": "Grant Hanley",
+        "pos": "DF",
+        "birthdate": "1991-11-20"
+      },
+      {
+        "nr": 6,
+        "name": "Kieran Tierney",
+        "pos": "DF",
+        "birthdate": "1997-06-05"
+      },
+      {
+        "nr": 7,
+        "name": "John McGinn",
+        "pos": "MF",
+        "birthdate": "1994-10-18"
+      },
+      {
+        "nr": 8,
+        "name": "Tyler Fletcher",
+        "pos": "MF",
+        "birthdate": "2007-03-19"
+      },
+      {
+        "nr": 9,
+        "name": "Lyndon Dykes",
+        "pos": "FW",
+        "birthdate": "1995-10-07"
+      },
+      {
+        "nr": 10,
+        "name": "Ché Adams",
+        "pos": "FW",
+        "birthdate": "1996-07-13"
+      },
+      {
+        "nr": 11,
+        "name": "Ryan Christie",
+        "pos": "MF",
+        "birthdate": "1995-02-22"
+      },
+      {
+        "nr": 12,
+        "name": "Liam Kelly",
+        "pos": "GK",
+        "birthdate": "1996-01-23"
+      },
+      {
+        "nr": 13,
+        "name": "Jack Hendry",
+        "pos": "DF",
+        "birthdate": "1995-05-07"
+      },
+      {
+        "nr": 14,
+        "name": "Ross Stewart",
+        "pos": "FW",
+        "birthdate": "1996-07-11"
+      },
+      {
+        "nr": 15,
+        "name": "John Souttar",
+        "pos": "DF",
+        "birthdate": "1996-09-25"
+      },
+      {
+        "nr": 16,
+        "name": "Dominic Hyam",
+        "pos": "DF",
+        "birthdate": "1995-12-20"
+      },
+      {
+        "nr": 17,
+        "name": "Ben Gannon-Doak",
+        "pos": "MF",
+        "birthdate": "2005-11-11"
+      },
+      {
+        "nr": 18,
+        "name": "George Hirst",
+        "pos": "FW",
+        "birthdate": "1999-02-15"
+      },
+      {
+        "nr": 19,
+        "name": "Lewis Ferguson",
+        "pos": "MF",
+        "birthdate": "1999-08-24"
+      },
+      {
+        "nr": 20,
+        "name": "Lawrence Shankland",
+        "pos": "FW",
+        "birthdate": "1995-08-10"
+      },
+      {
+        "nr": 21,
+        "name": "Craig Gordon",
+        "pos": "GK",
+        "birthdate": "1982-12-31"
+      },
+      {
+        "nr": 22,
+        "name": "Nathan Patterson",
+        "pos": "DF",
+        "birthdate": "2001-10-16"
+      },
+      {
+        "nr": 23,
+        "name": "Kenny McLean",
+        "pos": "MF",
+        "birthdate": "1992-01-08"
+      },
+      {
+        "nr": 24,
+        "name": "Anthony Ralston",
+        "pos": "DF",
+        "birthdate": "1998-11-16"
+      },
+      {
+        "nr": 25,
+        "name": "Findlay Curtis",
+        "pos": "DF",
+        "birthdate": "2006-06-09"
+      },
+      {
+        "nr": 26,
+        "name": "Scott McKenna",
+        "pos": "DF",
+        "birthdate": "1996-11-12"
+      }
+    ]
+  },
+  "Gruppe D": {
+    "United States": [
+      {
+        "nr": 1,
+        "name": "Matt Turner",
+        "pos": "GK",
+        "birthdate": "1994-06-24"
+      },
+      {
+        "nr": 2,
+        "name": "Sergiño Dest",
+        "pos": "DF",
+        "birthdate": "2000-11-03"
+      },
+      {
+        "nr": 3,
+        "name": "Chris Richards",
+        "pos": "DF",
+        "birthdate": "2000-03-28"
+      },
+      {
+        "nr": 4,
+        "name": "Tyler Adams",
+        "pos": "MF",
+        "birthdate": "1999-02-14"
+      },
+      {
+        "nr": 5,
+        "name": "Antonee Robinson",
+        "pos": "DF",
+        "birthdate": "1997-08-08"
+      },
+      {
+        "nr": 6,
+        "name": "Auston Trusty",
+        "pos": "DF",
+        "birthdate": "1998-08-12"
+      },
+      {
+        "nr": 7,
+        "name": "Giovanni Reyna",
+        "pos": "MF",
+        "birthdate": "2002-11-13"
+      },
+      {
+        "nr": 8,
+        "name": "Weston McKennie",
+        "pos": "MF",
+        "birthdate": "1998-08-28"
+      },
+      {
+        "nr": 9,
+        "name": "Ricardo Pepi",
+        "pos": "FW",
+        "birthdate": "2003-01-09"
+      },
+      {
+        "nr": 10,
+        "name": "Christian Pulisic",
+        "pos": "FW",
+        "birthdate": "1998-09-18"
+      },
+      {
+        "nr": 11,
+        "name": "Brenden Aaronson",
+        "pos": "FW",
+        "birthdate": "2000-10-22"
+      },
+      {
+        "nr": 12,
+        "name": "Miles Robinson",
+        "pos": "DF",
+        "birthdate": "1997-03-14"
+      },
+      {
+        "nr": 13,
+        "name": "Tim Ream",
+        "pos": "DF",
+        "birthdate": "1987-10-05"
+      },
+      {
+        "nr": 14,
+        "name": "Sebastian Berhalter",
+        "pos": "MF",
+        "birthdate": "2001-05-10"
+      },
+      {
+        "nr": 15,
+        "name": "Cristian Roldan",
+        "pos": "MF",
+        "birthdate": "1995-06-03"
+      },
+      {
+        "nr": 16,
+        "name": "Alex Freeman",
+        "pos": "GK",
+        "birthdate": "2004-08-09"
+      },
+      {
+        "nr": 17,
+        "name": "Malik Tillman",
+        "pos": "MF",
+        "birthdate": "2002-05-28"
+      },
+      {
+        "nr": 18,
+        "name": "Max Arfsten",
+        "pos": "MF",
+        "birthdate": "2001-04-19"
+      },
+      {
+        "nr": 19,
+        "name": "Haji Wright",
+        "pos": "FW",
+        "birthdate": "1998-03-27"
+      },
+      {
+        "nr": 20,
+        "name": "Folarin Balogun",
+        "pos": "FW",
+        "birthdate": "2001-07-03"
+      },
+      {
+        "nr": 21,
+        "name": "Timothy Weah",
+        "pos": "MF",
+        "birthdate": "2000-02-22"
+      },
+      {
+        "nr": 22,
+        "name": "Mark McKenzie",
+        "pos": "DF",
+        "birthdate": "1999-02-25"
+      },
+      {
+        "nr": 23,
+        "name": "Joe Scally",
+        "pos": "DF",
+        "birthdate": "2002-12-31"
+      },
+      {
+        "nr": 24,
+        "name": "Matt Freese",
+        "pos": "GK",
+        "birthdate": "1998-09-02"
+      },
+      {
+        "nr": 25,
+        "name": "Chris Brady",
+        "pos": "GK",
+        "birthdate": "2004-03-03"
+      },
+      {
+        "nr": 26,
+        "name": "Alejandro Zendejas",
+        "pos": "FW",
+        "birthdate": "1998-02-07"
+      }
+    ],
+    "Paraguay": [
+      {
+        "nr": 1,
+        "name": "Gatito Fernández",
+        "pos": "GK",
+        "birthdate": "1988-03-29"
+      },
+      {
+        "nr": 2,
+        "name": "Gustavo Velázquez",
+        "pos": "DF",
+        "birthdate": "1991-04-17"
+      },
+      {
+        "nr": 3,
+        "name": "Omar Alderete",
+        "pos": "DF",
+        "birthdate": "1996-12-26"
+      },
+      {
+        "nr": 4,
+        "name": "Juan José Cáceres",
+        "pos": "DF",
+        "birthdate": "2000-06-01"
+      },
+      {
+        "nr": 5,
+        "name": "Fabián Balbuena",
+        "pos": "DF",
+        "birthdate": "1991-08-23"
+      },
+      {
+        "nr": 6,
+        "name": "Júnior Alonso",
+        "pos": "DF",
+        "birthdate": "1993-02-09"
+      },
+      {
+        "nr": 7,
+        "name": "Ramón Sosa",
+        "pos": "MF",
+        "birthdate": "1999-08-31"
+      },
+      {
+        "nr": 8,
+        "name": "Diego Gómez",
+        "pos": "MF",
+        "birthdate": "2003-03-27"
+      },
+      {
+        "nr": 9,
+        "name": "Antonio Sanabria",
+        "pos": "FW",
+        "birthdate": "1996-03-04"
+      },
+      {
+        "nr": 10,
+        "name": "Miguel Almirón",
+        "pos": "MF",
+        "birthdate": "1994-02-10"
+      },
+      {
+        "nr": 11,
+        "name": "Maurício",
+        "pos": "MF",
+        "birthdate": "2001-06-22"
+      },
+      {
+        "nr": 12,
+        "name": "Orlando Gill",
+        "pos": "GK",
+        "birthdate": "2000-06-11"
+      },
+      {
+        "nr": 13,
+        "name": "José Canale",
+        "pos": "DF",
+        "birthdate": "1996-07-20"
+      },
+      {
+        "nr": 14,
+        "name": "Andrés Cubas",
+        "pos": "MF",
+        "birthdate": "1996-05-11"
+      },
+      {
+        "nr": 15,
+        "name": "Gustavo Gómez",
+        "pos": "DF",
+        "birthdate": "1993-05-06"
+      },
+      {
+        "nr": 16,
+        "name": "Damián Bobadilla",
+        "pos": "MF",
+        "birthdate": "2001-07-11"
+      },
+      {
+        "nr": 17,
+        "name": "Kaku",
+        "pos": "MF",
+        "birthdate": "1995-01-11"
+      },
+      {
+        "nr": 18,
+        "name": "Álex Arce",
+        "pos": "FW",
+        "birthdate": "1995-06-16"
+      },
+      {
+        "nr": 19,
+        "name": "Julio Enciso",
+        "pos": "FW",
+        "birthdate": "2004-01-23"
+      },
+      {
+        "nr": 20,
+        "name": "Braian Ojeda",
+        "pos": "MF",
+        "birthdate": "2000-06-27"
+      },
+      {
+        "nr": 21,
+        "name": "Gabriel Ávalos",
+        "pos": "FW",
+        "birthdate": "1991-07-09"
+      },
+      {
+        "nr": 22,
+        "name": "Gastón Olveira",
+        "pos": "DF",
+        "birthdate": "1993-04-21"
+      },
+      {
+        "nr": 23,
+        "name": "Matías Galarza",
+        "pos": "MF",
+        "birthdate": "2002-02-11"
+      },
+      {
+        "nr": 24,
+        "name": "Gustavo Caballero",
+        "pos": "GK",
+        "birthdate": "2001-09-21"
+      },
+      {
+        "nr": 25,
+        "name": "Isidro Pitta",
+        "pos": "FW",
+        "birthdate": "1999-08-14"
+      },
+      {
+        "nr": 26,
+        "name": "Alexandro Maidana",
+        "pos": "DF",
+        "birthdate": "2005-07-26"
+      }
+    ],
+    "Australia": [
+      {
+        "nr": 1,
+        "name": "Mathew Ryan",
+        "pos": "GK",
+        "birthdate": "1992-04-08"
+      },
+      {
+        "nr": 2,
+        "name": "Miloš Degenek",
+        "pos": "DF",
+        "birthdate": "1994-04-28"
+      },
+      {
+        "nr": 3,
+        "name": "Alessandro Circati",
+        "pos": "DF",
+        "birthdate": "2003-10-10"
+      },
+      {
+        "nr": 4,
+        "name": "Jacob Italiano",
+        "pos": "DF",
+        "birthdate": "2001-07-30"
+      },
+      {
+        "nr": 5,
+        "name": "Jordan Bos",
+        "pos": "DF",
+        "birthdate": "2002-10-29"
+      },
+      {
+        "nr": 6,
+        "name": "Jason Geria",
+        "pos": "DF",
+        "birthdate": "1993-05-10"
+      },
+      {
+        "nr": 7,
+        "name": "Mathew Leckie",
+        "pos": "FW",
+        "birthdate": "1991-02-04"
+      },
+      {
+        "nr": 8,
+        "name": "Connor Metcalfe",
+        "pos": "MF",
+        "birthdate": "1999-11-05"
+      },
+      {
+        "nr": 9,
+        "name": "Mohamed Touré",
+        "pos": "FW",
+        "birthdate": "2004-03-26"
+      },
+      {
+        "nr": 10,
+        "name": "Ajdin Hrustic",
+        "pos": "MF",
+        "birthdate": "1996-07-05"
+      },
+      {
+        "nr": 11,
+        "name": "Awer Mabil",
+        "pos": "FW",
+        "birthdate": "1995-09-15"
+      },
+      {
+        "nr": 12,
+        "name": "Paul Izzo",
+        "pos": "GK",
+        "birthdate": "1995-01-06"
+      },
+      {
+        "nr": 13,
+        "name": "Aiden O'Neill",
+        "pos": "FW",
+        "birthdate": "1998-07-04"
+      },
+      {
+        "nr": 14,
+        "name": "Cammy Devlin",
+        "pos": "MF",
+        "birthdate": "1998-06-07"
+      },
+      {
+        "nr": 15,
+        "name": "Kai Trewin",
+        "pos": "MF",
+        "birthdate": "2001-05-18"
+      },
+      {
+        "nr": 16,
+        "name": "Aziz Behich",
+        "pos": "DF",
+        "birthdate": "1990-12-16"
+      },
+      {
+        "nr": 17,
+        "name": "Nestory Irankunda",
+        "pos": "FW",
+        "birthdate": "2006-02-09"
+      },
+      {
+        "nr": 18,
+        "name": "Patrick Beach",
+        "pos": "FW",
+        "birthdate": "2003-08-06"
+      },
+      {
+        "nr": 19,
+        "name": "Harry Souttar",
+        "pos": "DF",
+        "birthdate": "1998-10-22"
+      },
+      {
+        "nr": 20,
+        "name": "Cristian Volpato",
+        "pos": "FW",
+        "birthdate": "2003-11-15"
+      },
+      {
+        "nr": 21,
+        "name": "Cameron Burgess",
+        "pos": "DF",
+        "birthdate": "1995-10-21"
+      },
+      {
+        "nr": 22,
+        "name": "Jackson Irvine",
+        "pos": "MF",
+        "birthdate": "1993-03-07"
+      },
+      {
+        "nr": 23,
+        "name": "Nishan Velupillay",
+        "pos": "FW",
+        "birthdate": "2001-05-07"
+      },
+      {
+        "nr": 24,
+        "name": "Paul Okon-Engstler",
+        "pos": "MF",
+        "birthdate": "2005-01-24"
+      },
+      {
+        "nr": 25,
+        "name": "Lucas Herrington",
+        "pos": "DF",
+        "birthdate": "2007-09-05"
+      },
+      {
+        "nr": 26,
+        "name": "Tete Yengi",
+        "pos": "FW",
+        "birthdate": "2000-11-28"
+      }
+    ],
+    "Turkey": [
+      {
+        "nr": 1,
+        "name": "Mert Günok",
+        "pos": "GK",
+        "birthdate": "1989-03-01"
+      },
+      {
+        "nr": 2,
+        "name": "Zeki Çelik",
+        "pos": "DF",
+        "birthdate": "1997-02-17"
+      },
+      {
+        "nr": 3,
+        "name": "Merih Demiral",
+        "pos": "DF",
+        "birthdate": "1998-03-05"
+      },
+      {
+        "nr": 4,
+        "name": "Çağlar Söyüncü",
+        "pos": "DF",
+        "birthdate": "1996-05-23"
+      },
+      {
+        "nr": 5,
+        "name": "Salih Özcan",
+        "pos": "MF",
+        "birthdate": "1998-01-11"
+      },
+      {
+        "nr": 6,
+        "name": "Orkun Kökçü",
+        "pos": "MF",
+        "birthdate": "2000-12-29"
+      },
+      {
+        "nr": 7,
+        "name": "Kerem Aktürkoğlu",
+        "pos": "FW",
+        "birthdate": "1998-10-21"
+      },
+      {
+        "nr": 8,
+        "name": "Arda Güler",
+        "pos": "MF",
+        "birthdate": "2005-02-25"
+      },
+      {
+        "nr": 9,
+        "name": "Deniz Gül",
+        "pos": "FW",
+        "birthdate": "2004-07-02"
+      },
+      {
+        "nr": 10,
+        "name": "Hakan Çalhanoğlu",
+        "pos": "MF",
+        "birthdate": "1994-02-08"
+      },
+      {
+        "nr": 11,
+        "name": "Kenan Yıldız",
+        "pos": "FW",
+        "birthdate": "2005-05-04"
+      },
+      {
+        "nr": 12,
+        "name": "Altay Bayındır",
+        "pos": "GK",
+        "birthdate": "1998-04-14"
+      },
+      {
+        "nr": 13,
+        "name": "Eren Elmalı",
+        "pos": "DF",
+        "birthdate": "2000-07-07"
+      },
+      {
+        "nr": 14,
+        "name": "Abdülkerim Bardakcı",
+        "pos": "DF",
+        "birthdate": "1994-09-07"
+      },
+      {
+        "nr": 15,
+        "name": "Ozan Kabak",
+        "pos": "DF",
+        "birthdate": "2000-03-25"
+      },
+      {
+        "nr": 16,
+        "name": "İsmail Yüksek",
+        "pos": "MF",
+        "birthdate": "1999-01-26"
+      },
+      {
+        "nr": 17,
+        "name": "İrfan Can Kahveci",
+        "pos": "MF",
+        "birthdate": "1995-07-15"
+      },
+      {
+        "nr": 18,
+        "name": "Mert Müldür",
+        "pos": "DF",
+        "birthdate": "1999-04-03"
+      },
+      {
+        "nr": 19,
+        "name": "Yunus Akgün",
+        "pos": "FW",
+        "birthdate": "2000-07-07"
+      },
+      {
+        "nr": 20,
+        "name": "Ferdi Kadıoğlu",
+        "pos": "DF",
+        "birthdate": "1999-10-07"
+      },
+      {
+        "nr": 21,
+        "name": "Barış Alper Yılmaz",
+        "pos": "FW",
+        "birthdate": "2000-05-23"
+      },
+      {
+        "nr": 22,
+        "name": "Kaan Ayhan",
+        "pos": "DF",
+        "birthdate": "1994-11-10"
+      },
+      {
+        "nr": 23,
+        "name": "Uğurcan Çakır",
+        "pos": "GK",
+        "birthdate": "1996-04-05"
+      },
+      {
+        "nr": 24,
+        "name": "Oğuz Aydın",
+        "pos": "MF",
+        "birthdate": "2000-10-27"
+      },
+      {
+        "nr": 25,
+        "name": "Samet Akaydin",
+        "pos": "DF",
+        "birthdate": "1994-03-13"
+      },
+      {
+        "nr": 26,
+        "name": "Can Uzun",
+        "pos": "FW",
+        "birthdate": "2005-11-11"
+      }
+    ]
+  },
+  "Gruppe E": {
+    "Germany": [
+      {
+        "nr": 1,
+        "name": "Manuel Neuer",
+        "pos": "GK",
+        "birthdate": "1986-03-27"
+      },
+      {
+        "nr": 2,
+        "name": "Antonio Rüdiger",
+        "pos": "DF",
+        "birthdate": "1993-03-03"
+      },
+      {
+        "nr": 3,
+        "name": "Waldemar Anton",
+        "pos": "DF",
+        "birthdate": "1996-07-20"
+      },
+      {
+        "nr": 4,
+        "name": "Jonathan Tah",
+        "pos": "DF",
+        "birthdate": "1996-02-11"
+      },
+      {
+        "nr": 5,
+        "name": "Aleksandar Pavlović",
+        "pos": "DF",
+        "birthdate": "2004-05-03"
+      },
+      {
+        "nr": 6,
+        "name": "Joshua Kimmich",
+        "pos": "MF",
+        "birthdate": "1995-02-08"
+      },
+      {
+        "nr": 7,
+        "name": "Kai Havertz",
+        "pos": "FW",
+        "birthdate": "1999-06-11"
+      },
+      {
+        "nr": 8,
+        "name": "Leon Goretzka",
+        "pos": "MF",
+        "birthdate": "1995-02-06"
+      },
+      {
+        "nr": 9,
+        "name": "Jamie Leweling",
+        "pos": "FW",
+        "birthdate": "2001-02-26"
+      },
+      {
+        "nr": 10,
+        "name": "Jamal Musiala",
+        "pos": "FW",
+        "birthdate": "2003-02-26"
+      },
+      {
+        "nr": 11,
+        "name": "Nick Woltemade",
+        "pos": "FW",
+        "birthdate": "2002-02-14"
+      },
+      {
+        "nr": 12,
+        "name": "Oliver Baumann",
+        "pos": "GK",
+        "birthdate": "1990-06-02"
+      },
+      {
+        "nr": 13,
+        "name": "Pascal Groß",
+        "pos": "MF",
+        "birthdate": "1991-06-15"
+      },
+      {
+        "nr": 14,
+        "name": "Maximilian Beier",
+        "pos": "FW",
+        "birthdate": "2002-10-17"
+      },
+      {
+        "nr": 15,
+        "name": "Nico Schlotterbeck",
+        "pos": "DF",
+        "birthdate": "1999-12-01"
+      },
+      {
+        "nr": 16,
+        "name": "Angelo Stiller",
+        "pos": "MF",
+        "birthdate": "2001-04-04"
+      },
+      {
+        "nr": 17,
+        "name": "Florian Wirtz",
+        "pos": "FW",
+        "birthdate": "2003-05-03"
+      },
+      {
+        "nr": 18,
+        "name": "Nathaniel Brown",
+        "pos": "DF",
+        "birthdate": "2003-06-16"
+      },
+      {
+        "nr": 19,
+        "name": "Leroy Sané",
+        "pos": "FW",
+        "birthdate": "1996-01-11"
+      },
+      {
+        "nr": 20,
+        "name": "Nadiem Amiri",
+        "pos": "MF",
+        "birthdate": "1996-10-27"
+      },
+      {
+        "nr": 21,
+        "name": "Alexander Nübel",
+        "pos": "GK",
+        "birthdate": "1996-09-30"
+      },
+      {
+        "nr": 22,
+        "name": "David Raum",
+        "pos": "DF",
+        "birthdate": "1998-04-22"
+      },
+      {
+        "nr": 23,
+        "name": "Felix Nmecha",
+        "pos": "MF",
+        "birthdate": "2000-10-10"
+      },
+      {
+        "nr": 24,
+        "name": "Malick Thiaw",
+        "pos": "DF",
+        "birthdate": "2001-08-08"
+      },
+      {
+        "nr": 25,
+        "name": "Assan Ouédraogo",
+        "pos": "DF",
+        "birthdate": "2006-05-09"
+      },
+      {
+        "nr": 26,
+        "name": "Deniz Undav",
+        "pos": "FW",
+        "birthdate": "1996-07-19"
+      }
+    ],
+    "Curacao": [
+      {
+        "nr": 1,
+        "name": "Eloy Room",
+        "pos": "GK",
+        "birthdate": "1989-02-06"
+      },
+      {
+        "nr": 2,
+        "name": "Shurandy Sambo",
+        "pos": "DF",
+        "birthdate": "2001-08-19"
+      },
+      {
+        "nr": 3,
+        "name": "Juriën Gaari",
+        "pos": "DF",
+        "birthdate": "1993-12-23"
+      },
+      {
+        "nr": 4,
+        "name": "Roshon van Eijma",
+        "pos": "DF",
+        "birthdate": "1998-06-09"
+      },
+      {
+        "nr": 5,
+        "name": "Sherel Floranus",
+        "pos": "DF",
+        "birthdate": "1998-08-23"
+      },
+      {
+        "nr": 6,
+        "name": "Godfried Roemeratoe",
+        "pos": "DF",
+        "birthdate": "1999-08-19"
+      },
+      {
+        "nr": 7,
+        "name": "Juninho Bacuna",
+        "pos": "MF",
+        "birthdate": "1997-08-07"
+      },
+      {
+        "nr": 8,
+        "name": "Livano Comenencia",
+        "pos": "MF",
+        "birthdate": "2004-02-03"
+      },
+      {
+        "nr": 9,
+        "name": "Jürgen Locadia",
+        "pos": "FW",
+        "birthdate": "1993-11-07"
+      },
+      {
+        "nr": 10,
+        "name": "Leandro Bacuna",
+        "pos": "MF",
+        "birthdate": "1991-08-21"
+      },
+      {
+        "nr": 11,
+        "name": "Jeremy Antonisse",
+        "pos": "FW",
+        "birthdate": "2002-03-29"
+      },
+      {
+        "nr": 12,
+        "name": "Sontje Hansen",
+        "pos": "FW",
+        "birthdate": "2002-05-18"
+      },
+      {
+        "nr": 13,
+        "name": "Tyrese Noslin",
+        "pos": "FW",
+        "birthdate": "2002-09-11"
+      },
+      {
+        "nr": 14,
+        "name": "Kenji Gorré",
+        "pos": "MF",
+        "birthdate": "1994-09-29"
+      },
+      {
+        "nr": 15,
+        "name": "Ar'jany Martha",
+        "pos": "MF",
+        "birthdate": "2003-09-04"
+      },
+      {
+        "nr": 16,
+        "name": "Jearl Margaritha",
+        "pos": "MF",
+        "birthdate": "2000-04-10"
+      },
+      {
+        "nr": 17,
+        "name": "Brandley Kuwas",
+        "pos": "MF",
+        "birthdate": "1992-09-19"
+      },
+      {
+        "nr": 18,
+        "name": "Armando Obispo",
+        "pos": "MF",
+        "birthdate": "1999-03-05"
+      },
+      {
+        "nr": 19,
+        "name": "Gervane Kastaneer",
+        "pos": "MF",
+        "birthdate": "1996-06-09"
+      },
+      {
+        "nr": 20,
+        "name": "Joshua Brenet",
+        "pos": "DF",
+        "birthdate": "1994-03-20"
+      },
+      {
+        "nr": 21,
+        "name": "Tahith Chong",
+        "pos": "MF",
+        "birthdate": "1999-12-04"
+      },
+      {
+        "nr": 22,
+        "name": "Kevin Felida",
+        "pos": "FW",
+        "birthdate": "1999-11-11"
+      },
+      {
+        "nr": 23,
+        "name": "Riechedly Bazoer",
+        "pos": "MF",
+        "birthdate": "1996-10-12"
+      },
+      {
+        "nr": 24,
+        "name": "Deveron Fonville",
+        "pos": "FW",
+        "birthdate": "2003-05-16"
+      },
+      {
+        "nr": 25,
+        "name": "Tyrick Bodak",
+        "pos": "FW",
+        "birthdate": "2002-05-15"
+      },
+      {
+        "nr": 26,
+        "name": "Trevor Doornbusch",
+        "pos": "FW",
+        "birthdate": "1999-07-06"
+      }
+    ],
+    "Ivory Coast": [
+      {
+        "nr": 1,
+        "name": "Yahia Fofana",
+        "pos": "GK",
+        "birthdate": "2000-08-21"
+      },
+      {
+        "nr": 2,
+        "name": "Ousmane Diomande",
+        "pos": "DF",
+        "birthdate": "2003-12-04"
+      },
+      {
+        "nr": 3,
+        "name": "Ghislain Konan",
+        "pos": "DF",
+        "birthdate": "1995-12-27"
+      },
+      {
+        "nr": 4,
+        "name": "Jean-Michaël Seri",
+        "pos": "MF",
+        "birthdate": "1991-07-19"
+      },
+      {
+        "nr": 5,
+        "name": "Wilfried Singo",
+        "pos": "DF",
+        "birthdate": "2000-12-25"
+      },
+      {
+        "nr": 6,
+        "name": "Seko Fofana",
+        "pos": "MF",
+        "birthdate": "1995-05-07"
+      },
+      {
+        "nr": 7,
+        "name": "Odilon Kossounou",
+        "pos": "DF",
+        "birthdate": "2001-01-04"
+      },
+      {
+        "nr": 8,
+        "name": "Franck Kessié",
+        "pos": "MF",
+        "birthdate": "1996-12-19"
+      },
+      {
+        "nr": 9,
+        "name": "Ange-Yoan Bonny",
+        "pos": "FW",
+        "birthdate": "2003-10-25"
+      },
+      {
+        "nr": 10,
+        "name": "Simon Adingra",
+        "pos": "FW",
+        "birthdate": "2002-01-01"
+      },
+      {
+        "nr": 11,
+        "name": "Yan Diomande",
+        "pos": "FW",
+        "birthdate": "2006-11-14"
+      },
+      {
+        "nr": 12,
+        "name": "Elye Wahi",
+        "pos": "FW",
+        "birthdate": "2003-01-02"
+      },
+      {
+        "nr": 13,
+        "name": "Christopher Opéri",
+        "pos": "DF",
+        "birthdate": "1997-04-29"
+      },
+      {
+        "nr": 14,
+        "name": "Oumar Diakité",
+        "pos": "MF",
+        "birthdate": "2003-12-20"
+      },
+      {
+        "nr": 15,
+        "name": "Amad Diallo",
+        "pos": "FW",
+        "birthdate": "2002-07-11"
+      },
+      {
+        "nr": 16,
+        "name": "Mohamed Koné",
+        "pos": "GK",
+        "birthdate": "2002-03-07"
+      },
+      {
+        "nr": 17,
+        "name": "Guéla Doué",
+        "pos": "DF",
+        "birthdate": "2002-10-17"
+      },
+      {
+        "nr": 18,
+        "name": "Ibrahim Sangaré",
+        "pos": "MF",
+        "birthdate": "1997-12-02"
+      },
+      {
+        "nr": 19,
+        "name": "Nicolas Pépé",
+        "pos": "FW",
+        "birthdate": "1995-05-29"
+      },
+      {
+        "nr": 20,
+        "name": "Emmanuel Agbadou",
+        "pos": "DF",
+        "birthdate": "1997-06-17"
+      },
+      {
+        "nr": 21,
+        "name": "Evan Ndicka",
+        "pos": "DF",
+        "birthdate": "1999-08-20"
+      },
+      {
+        "nr": 22,
+        "name": "Evann Guessand",
+        "pos": "FW",
+        "birthdate": "2001-07-01"
+      },
+      {
+        "nr": 23,
+        "name": "Alban Lafont",
+        "pos": "GK",
+        "birthdate": "1999-01-23"
+      },
+      {
+        "nr": 24,
+        "name": "Bazoumana Touré",
+        "pos": "GK",
+        "birthdate": "2006-03-02"
+      },
+      {
+        "nr": 25,
+        "name": "Parfait Guiagon",
+        "pos": "MF",
+        "birthdate": "2001-02-22"
+      },
+      {
+        "nr": 26,
+        "name": "Christ Inao Oulaï",
+        "pos": "MF",
+        "birthdate": "2006-04-06"
+      }
+    ],
+    "Ecuador": [
+      {
+        "nr": 1,
+        "name": "Hernán Galíndez",
+        "pos": "GK",
+        "birthdate": "1987-03-30"
+      },
+      {
+        "nr": 2,
+        "name": "Félix Torres",
+        "pos": "DF",
+        "birthdate": "1997-01-11"
+      },
+      {
+        "nr": 3,
+        "name": "Piero Hincapié",
+        "pos": "DF",
+        "birthdate": "2002-01-09"
+      },
+      {
+        "nr": 4,
+        "name": "Joel Ordóñez",
+        "pos": "DF",
+        "birthdate": "2004-04-21"
+      },
+      {
+        "nr": 5,
+        "name": "Jordy Alcívar",
+        "pos": "DF",
+        "birthdate": "1999-08-05"
+      },
+      {
+        "nr": 6,
+        "name": "Willian Pacho",
+        "pos": "DF",
+        "birthdate": "2001-10-16"
+      },
+      {
+        "nr": 7,
+        "name": "Pervis Estupiñán",
+        "pos": "DF",
+        "birthdate": "1998-01-21"
+      },
+      {
+        "nr": 8,
+        "name": "Anthony Valencia",
+        "pos": "MF",
+        "birthdate": "2003-07-21"
+      },
+      {
+        "nr": 9,
+        "name": "John Yeboah",
+        "pos": "FW",
+        "birthdate": "2000-06-23"
+      },
+      {
+        "nr": 10,
+        "name": "Kendry Páez",
+        "pos": "MF",
+        "birthdate": "2007-05-04"
+      },
+      {
+        "nr": 11,
+        "name": "Kevin Rodríguez",
+        "pos": "MF",
+        "birthdate": "2000-03-04"
+      },
+      {
+        "nr": 12,
+        "name": "Moisés Ramírez",
+        "pos": "MF",
+        "birthdate": "2000-09-09"
+      },
+      {
+        "nr": 13,
+        "name": "Enner Valencia",
+        "pos": "FW",
+        "birthdate": "1989-11-04"
+      },
+      {
+        "nr": 14,
+        "name": "Alan Minda",
+        "pos": "MF",
+        "birthdate": "2003-05-14"
+      },
+      {
+        "nr": 15,
+        "name": "Pedro Vite",
+        "pos": "MF",
+        "birthdate": "2002-03-09"
+      },
+      {
+        "nr": 16,
+        "name": "Jordy Caicedo",
+        "pos": "MF",
+        "birthdate": "1997-11-18"
+      },
+      {
+        "nr": 17,
+        "name": "Ángelo Preciado",
+        "pos": "DF",
+        "birthdate": "1998-02-18"
+      },
+      {
+        "nr": 18,
+        "name": "Denil Castillo",
+        "pos": "MF",
+        "birthdate": "2004-03-24"
+      },
+      {
+        "nr": 19,
+        "name": "Gonzalo Plata",
+        "pos": "FW",
+        "birthdate": "2000-11-01"
+      },
+      {
+        "nr": 20,
+        "name": "Nilson Angulo",
+        "pos": "MF",
+        "birthdate": "2003-06-19"
+      },
+      {
+        "nr": 21,
+        "name": "Alan Franco",
+        "pos": "DF",
+        "birthdate": "1998-08-21"
+      },
+      {
+        "nr": 22,
+        "name": "Gonzalo Valle",
+        "pos": "MF",
+        "birthdate": "1996-02-28"
+      },
+      {
+        "nr": 23,
+        "name": "Moisés Caicedo",
+        "pos": "MF",
+        "birthdate": "2001-11-02"
+      },
+      {
+        "nr": 24,
+        "name": "Jeremy Arévalo",
+        "pos": "GK",
+        "birthdate": "2005-03-19"
+      },
+      {
+        "nr": 25,
+        "name": "Jackson Porozo",
+        "pos": "DF",
+        "birthdate": "2000-08-04"
+      },
+      {
+        "nr": 26,
+        "name": "Yaimar Medina",
+        "pos": "DF",
+        "birthdate": "2004-11-05"
+      }
+    ]
+  },
+  "Gruppe F": {
+    "Netherlands": [
+      {
+        "nr": 1,
+        "name": "Bart Verbruggen",
+        "pos": "GK",
+        "birthdate": "2002-08-18"
+      },
+      {
+        "nr": 2,
+        "name": "Lutsharel Geertruida",
+        "pos": "DF",
+        "birthdate": "2000-07-18"
+      },
+      {
+        "nr": 3,
+        "name": "Marten de Roon",
+        "pos": "DF",
+        "birthdate": "1991-03-29"
+      },
+      {
+        "nr": 4,
+        "name": "Virgil van Dijk",
+        "pos": "DF",
+        "birthdate": "1991-07-08"
+      },
+      {
+        "nr": 5,
+        "name": "Nathan Aké",
+        "pos": "DF",
+        "birthdate": "1995-02-18"
+      },
+      {
+        "nr": 6,
+        "name": "Jan Paul van Hecke",
+        "pos": "DF",
+        "birthdate": "2000-06-08"
+      },
+      {
+        "nr": 7,
+        "name": "Justin Kluivert",
+        "pos": "FW",
+        "birthdate": "1999-05-05"
+      },
+      {
+        "nr": 8,
+        "name": "Ryan Gravenberch",
+        "pos": "MF",
+        "birthdate": "2002-05-16"
+      },
+      {
+        "nr": 9,
+        "name": "Wout Weghorst",
+        "pos": "FW",
+        "birthdate": "1992-08-07"
+      },
+      {
+        "nr": 10,
+        "name": "Memphis Depay",
+        "pos": "FW",
+        "birthdate": "1994-02-13"
+      },
+      {
+        "nr": 11,
+        "name": "Cody Gakpo",
+        "pos": "FW",
+        "birthdate": "1999-05-07"
+      },
+      {
+        "nr": 12,
+        "name": "Mats Wieffer",
+        "pos": "MF",
+        "birthdate": "1999-11-16"
+      },
+      {
+        "nr": 13,
+        "name": "Robin Roefs",
+        "pos": "GK",
+        "birthdate": "2003-01-17"
+      },
+      {
+        "nr": 14,
+        "name": "Tijjani Reijnders",
+        "pos": "MF",
+        "birthdate": "1998-07-29"
+      },
+      {
+        "nr": 15,
+        "name": "Micky van de Ven",
+        "pos": "DF",
+        "birthdate": "2001-04-19"
+      },
+      {
+        "nr": 16,
+        "name": "Guus Til",
+        "pos": "MF",
+        "birthdate": "1997-12-22"
+      },
+      {
+        "nr": 17,
+        "name": "Noa Lang",
+        "pos": "FW",
+        "birthdate": "1999-06-17"
+      },
+      {
+        "nr": 18,
+        "name": "Donyell Malen",
+        "pos": "FW",
+        "birthdate": "1999-01-19"
+      },
+      {
+        "nr": 19,
+        "name": "Brian Brobbey",
+        "pos": "FW",
+        "birthdate": "2002-02-01"
+      },
+      {
+        "nr": 20,
+        "name": "Teun Koopmeiners",
+        "pos": "MF",
+        "birthdate": "1998-02-28"
+      },
+      {
+        "nr": 21,
+        "name": "Frenkie de Jong",
+        "pos": "MF",
+        "birthdate": "1997-05-12"
+      },
+      {
+        "nr": 22,
+        "name": "Denzel Dumfries",
+        "pos": "DF",
+        "birthdate": "1996-04-18"
+      },
+      {
+        "nr": 23,
+        "name": "Mark Flekken",
+        "pos": "GK",
+        "birthdate": "1993-06-13"
+      },
+      {
+        "nr": 24,
+        "name": "Crysencio Summerville",
+        "pos": "FW",
+        "birthdate": "2001-10-30"
+      },
+      {
+        "nr": 25,
+        "name": "Jorrel Hato",
+        "pos": "DF",
+        "birthdate": "2006-03-07"
+      },
+      {
+        "nr": 26,
+        "name": "Quinten Timber",
+        "pos": "DF",
+        "birthdate": "2001-06-17"
+      }
+    ],
+    "Japan": [
+      {
+        "nr": 1,
+        "name": "Zion Suzuki",
+        "pos": "GK",
+        "birthdate": "2002-08-21"
+      },
+      {
+        "nr": 2,
+        "name": "Yukinari Sugawara",
+        "pos": "DF",
+        "birthdate": "2000-06-28"
+      },
+      {
+        "nr": 3,
+        "name": "Shogo Taniguchi",
+        "pos": "DF",
+        "birthdate": "1991-07-15"
+      },
+      {
+        "nr": 4,
+        "name": "Ko Itakura",
+        "pos": "DF",
+        "birthdate": "1997-01-27"
+      },
+      {
+        "nr": 5,
+        "name": "Yuto Nagatomo",
+        "pos": "DF",
+        "birthdate": "1986-09-12"
+      },
+      {
+        "nr": 6,
+        "name": "Shuto Machino",
+        "pos": "MF",
+        "birthdate": "1999-09-30"
+      },
+      {
+        "nr": 7,
+        "name": "Ao Tanaka",
+        "pos": "MF",
+        "birthdate": "1998-09-10"
+      },
+      {
+        "nr": 8,
+        "name": "Takefusa Kubo",
+        "pos": "MF",
+        "birthdate": "2001-06-04"
+      },
+      {
+        "nr": 9,
+        "name": "Keisuke Goto",
+        "pos": "FW",
+        "birthdate": "2005-06-03"
+      },
+      {
+        "nr": 10,
+        "name": "Ritsu Doan",
+        "pos": "FW",
+        "birthdate": "1998-06-16"
+      },
+      {
+        "nr": 11,
+        "name": "Daizen Maeda",
+        "pos": "FW",
+        "birthdate": "1997-10-20"
+      },
+      {
+        "nr": 12,
+        "name": "Keisuke Osako",
+        "pos": "GK",
+        "birthdate": "1999-07-28"
+      },
+      {
+        "nr": 13,
+        "name": "Keito Nakamura",
+        "pos": "MF",
+        "birthdate": "2000-07-28"
+      },
+      {
+        "nr": 14,
+        "name": "Junya Ito",
+        "pos": "FW",
+        "birthdate": "1993-03-09"
+      },
+      {
+        "nr": 15,
+        "name": "Daichi Kamada",
+        "pos": "MF",
+        "birthdate": "1996-08-05"
+      },
+      {
+        "nr": 16,
+        "name": "Tsuyoshi Watanabe",
+        "pos": "MF",
+        "birthdate": "1997-02-05"
+      },
+      {
+        "nr": 17,
+        "name": "Yuito Suzuki",
+        "pos": "MF",
+        "birthdate": "2001-10-25"
+      },
+      {
+        "nr": 18,
+        "name": "Ayase Ueda",
+        "pos": "FW",
+        "birthdate": "1998-08-28"
+      },
+      {
+        "nr": 19,
+        "name": "Koki Ogawa",
+        "pos": "FW",
+        "birthdate": "1997-08-08"
+      },
+      {
+        "nr": 20,
+        "name": "Ayumu Seko",
+        "pos": "MF",
+        "birthdate": "2000-06-07"
+      },
+      {
+        "nr": 21,
+        "name": "Hiroki Ito",
+        "pos": "DF",
+        "birthdate": "1999-05-12"
+      },
+      {
+        "nr": 22,
+        "name": "Takehiro Tomiyasu",
+        "pos": "DF",
+        "birthdate": "1998-11-05"
+      },
+      {
+        "nr": 23,
+        "name": "Tomoki Hayakawa",
+        "pos": "GK",
+        "birthdate": "1999-03-03"
+      },
+      {
+        "nr": 24,
+        "name": "Kaishu Sano",
+        "pos": "DF",
+        "birthdate": "2000-12-30"
+      },
+      {
+        "nr": 25,
+        "name": "Junnosuke Suzuki",
+        "pos": "MF",
+        "birthdate": "2003-07-12"
+      },
+      {
+        "nr": 26,
+        "name": "Kento Shiogai",
+        "pos": "DF",
+        "birthdate": "2005-03-26"
+      }
+    ],
+    "Sweden": [
+      {
+        "nr": 1,
+        "name": "Jacob Widell Zetterström",
+        "pos": "GK",
+        "birthdate": "1998-07-11"
+      },
+      {
+        "nr": 2,
+        "name": "Gustaf Lagerbielke",
+        "pos": "DF",
+        "birthdate": "2000-04-10"
+      },
+      {
+        "nr": 3,
+        "name": "Victor Lindelöf",
+        "pos": "DF",
+        "birthdate": "1994-07-17"
+      },
+      {
+        "nr": 4,
+        "name": "Isak Hien",
+        "pos": "DF",
+        "birthdate": "1999-01-13"
+      },
+      {
+        "nr": 5,
+        "name": "Gabriel Gudmundsson",
+        "pos": "DF",
+        "birthdate": "1999-04-29"
+      },
+      {
+        "nr": 6,
+        "name": "Herman Johansson",
+        "pos": "MF",
+        "birthdate": "1997-10-16"
+      },
+      {
+        "nr": 7,
+        "name": "Lucas Bergvall",
+        "pos": "MF",
+        "birthdate": "2006-02-02"
+      },
+      {
+        "nr": 8,
+        "name": "Daniel Svensson",
+        "pos": "MF",
+        "birthdate": "2002-02-12"
+      },
+      {
+        "nr": 9,
+        "name": "Alexander Isak",
+        "pos": "FW",
+        "birthdate": "1999-09-21"
+      },
+      {
+        "nr": 10,
+        "name": "Benjamin Nygren",
+        "pos": "FW",
+        "birthdate": "2001-07-08"
+      },
+      {
+        "nr": 11,
+        "name": "Anthony Elanga",
+        "pos": "FW",
+        "birthdate": "2002-04-27"
+      },
+      {
+        "nr": 12,
+        "name": "Viktor Johansson",
+        "pos": "GK",
+        "birthdate": "1998-09-14"
+      },
+      {
+        "nr": 13,
+        "name": "Ken Sema",
+        "pos": "MF",
+        "birthdate": "1993-09-30"
+      },
+      {
+        "nr": 14,
+        "name": "Hjalmar Ekdal",
+        "pos": "MF",
+        "birthdate": "1998-10-21"
+      },
+      {
+        "nr": 15,
+        "name": "Carl Starfelt",
+        "pos": "DF",
+        "birthdate": "1995-06-01"
+      },
+      {
+        "nr": 16,
+        "name": "Jesper Karlström",
+        "pos": "MF",
+        "birthdate": "1995-06-21"
+      },
+      {
+        "nr": 17,
+        "name": "Viktor Gyökeres",
+        "pos": "FW",
+        "birthdate": "1998-06-04"
+      },
+      {
+        "nr": 18,
+        "name": "Yasin Ayari",
+        "pos": "MF",
+        "birthdate": "2003-10-06"
+      },
+      {
+        "nr": 19,
+        "name": "Mattias Svanberg",
+        "pos": "MF",
+        "birthdate": "1999-01-05"
+      },
+      {
+        "nr": 20,
+        "name": "Eric Smith",
+        "pos": "DF",
+        "birthdate": "1997-01-08"
+      },
+      {
+        "nr": 21,
+        "name": "Alexander Bernhardsson",
+        "pos": "FW",
+        "birthdate": "1998-09-08"
+      },
+      {
+        "nr": 22,
+        "name": "Besfort Zeneli",
+        "pos": "MF",
+        "birthdate": "2002-11-21"
+      },
+      {
+        "nr": 23,
+        "name": "Kristoffer Nordfeldt",
+        "pos": "GK",
+        "birthdate": "1989-06-23"
+      },
+      {
+        "nr": 24,
+        "name": "Elliot Stroud",
+        "pos": "DF",
+        "birthdate": "2002-06-22"
+      },
+      {
+        "nr": 25,
+        "name": "Gustaf Nilsson",
+        "pos": "FW",
+        "birthdate": "1997-05-23"
+      },
+      {
+        "nr": 26,
+        "name": "Taha Ali",
+        "pos": "MF",
+        "birthdate": "1998-07-01"
+      }
+    ],
+    "Tunisia": [
+      {
+        "nr": 1,
+        "name": "Mouhib Chamakh",
+        "pos": "GK",
+        "birthdate": "2001-08-25"
+      },
+      {
+        "nr": 2,
+        "name": "Ali Abdi",
+        "pos": "DF",
+        "birthdate": "1993-12-20"
+      },
+      {
+        "nr": 3,
+        "name": "Montassar Talbi",
+        "pos": "DF",
+        "birthdate": "1998-05-26"
+      },
+      {
+        "nr": 4,
+        "name": "Omar Rekik",
+        "pos": "DF",
+        "birthdate": "2001-12-20"
+      },
+      {
+        "nr": 5,
+        "name": "Adem Arous",
+        "pos": "DF",
+        "birthdate": "2004-07-17"
+      },
+      {
+        "nr": 6,
+        "name": "Dylan Bronn",
+        "pos": "DF",
+        "birthdate": "1995-06-19"
+      },
+      {
+        "nr": 7,
+        "name": "Elias Achouri",
+        "pos": "MF",
+        "birthdate": "1999-02-10"
+      },
+      {
+        "nr": 8,
+        "name": "Elias Saad",
+        "pos": "MF",
+        "birthdate": "1999-12-27"
+      },
+      {
+        "nr": 9,
+        "name": "Hazem Mastouri",
+        "pos": "FW",
+        "birthdate": "1997-06-18"
+      },
+      {
+        "nr": 10,
+        "name": "Hannibal Mejbri",
+        "pos": "MF",
+        "birthdate": "2003-01-21"
+      },
+      {
+        "nr": 11,
+        "name": "Ismaël Gharbi",
+        "pos": "FW",
+        "birthdate": "2004-04-10"
+      },
+      {
+        "nr": 12,
+        "name": "Mortadha Ben Ouanes",
+        "pos": "FW",
+        "birthdate": "1994-07-02"
+      },
+      {
+        "nr": 13,
+        "name": "Rani Khedira",
+        "pos": "MF",
+        "birthdate": "1994-01-27"
+      },
+      {
+        "nr": 14,
+        "name": "Khalil Ayari",
+        "pos": "MF",
+        "birthdate": "2005-02-02"
+      },
+      {
+        "nr": 15,
+        "name": "Hadj Mahmoud",
+        "pos": "MF",
+        "birthdate": "2000-04-24"
+      },
+      {
+        "nr": 16,
+        "name": "Aymen Dahmen",
+        "pos": "MF",
+        "birthdate": "1997-01-28"
+      },
+      {
+        "nr": 17,
+        "name": "Ellyes Skhiri",
+        "pos": "MF",
+        "birthdate": "1995-05-10"
+      },
+      {
+        "nr": 18,
+        "name": "Rayan Elloumi",
+        "pos": "MF",
+        "birthdate": "2007-09-17"
+      },
+      {
+        "nr": 19,
+        "name": "Firas Chaouat",
+        "pos": "FW",
+        "birthdate": "1996-05-08"
+      },
+      {
+        "nr": 20,
+        "name": "Yan Valery",
+        "pos": "DF",
+        "birthdate": "1999-02-22"
+      },
+      {
+        "nr": 21,
+        "name": "Mohamed Amine Ben Hamida",
+        "pos": "MF",
+        "birthdate": "1995-12-15"
+      },
+      {
+        "nr": 22,
+        "name": "Sabri Ben Hessen",
+        "pos": "DF",
+        "birthdate": "1996-06-13"
+      },
+      {
+        "nr": 23,
+        "name": "Moutaz Neffati",
+        "pos": "DF",
+        "birthdate": "2004-04-09"
+      },
+      {
+        "nr": 24,
+        "name": "Raed Chikhaoui",
+        "pos": "DF",
+        "birthdate": "2004-06-09"
+      },
+      {
+        "nr": 25,
+        "name": "Anis Slimane",
+        "pos": "MF",
+        "birthdate": "2001-03-16"
+      },
+      {
+        "nr": 26,
+        "name": "Sebastian Tounekti",
+        "pos": "MF",
+        "birthdate": "2002-07-13"
+      }
+    ]
+  },
+  "Gruppe G": {
+    "Belgium": [
+      {
+        "nr": 1,
+        "name": "Thibaut Courtois",
+        "pos": "GK",
+        "birthdate": "1992-05-11"
+      },
+      {
+        "nr": 2,
+        "name": "Zeno Debast",
+        "pos": "DF",
+        "birthdate": "2003-10-24"
+      },
+      {
+        "nr": 3,
+        "name": "Arthur Theate",
+        "pos": "DF",
+        "birthdate": "2000-05-25"
+      },
+      {
+        "nr": 4,
+        "name": "Brandon Mechele",
+        "pos": "DF",
+        "birthdate": "1993-01-28"
+      },
+      {
+        "nr": 5,
+        "name": "Maxim De Cuyper",
+        "pos": "DF",
+        "birthdate": "2000-12-22"
+      },
+      {
+        "nr": 6,
+        "name": "Axel Witsel",
+        "pos": "MF",
+        "birthdate": "1989-01-12"
+      },
+      {
+        "nr": 7,
+        "name": "Kevin De Bruyne",
+        "pos": "MF",
+        "birthdate": "1991-06-28"
+      },
+      {
+        "nr": 8,
+        "name": "Youri Tielemans",
+        "pos": "MF",
+        "birthdate": "1997-05-07"
+      },
+      {
+        "nr": 9,
+        "name": "Romelu Lukaku",
+        "pos": "FW",
+        "birthdate": "1993-05-13"
+      },
+      {
+        "nr": 10,
+        "name": "Leandro Trossard",
+        "pos": "FW",
+        "birthdate": "1994-12-04"
+      },
+      {
+        "nr": 11,
+        "name": "Jérémy Doku",
+        "pos": "FW",
+        "birthdate": "2002-05-27"
+      },
+      {
+        "nr": 12,
+        "name": "Senne Lammens",
+        "pos": "GK",
+        "birthdate": "2002-07-07"
+      },
+      {
+        "nr": 13,
+        "name": "Mike Penders",
+        "pos": "GK",
+        "birthdate": "2005-07-31"
+      },
+      {
+        "nr": 14,
+        "name": "Dodi Lukébakio",
+        "pos": "FW",
+        "birthdate": "1997-09-24"
+      },
+      {
+        "nr": 15,
+        "name": "Thomas Meunier",
+        "pos": "DF",
+        "birthdate": "1991-09-12"
+      },
+      {
+        "nr": 16,
+        "name": "Koni De Winter",
+        "pos": "DF",
+        "birthdate": "2002-06-12"
+      },
+      {
+        "nr": 17,
+        "name": "Charles De Ketelaere",
+        "pos": "MF",
+        "birthdate": "2001-03-10"
+      },
+      {
+        "nr": 18,
+        "name": "Joaquin Seys",
+        "pos": "DF",
+        "birthdate": "2005-03-28"
+      },
+      {
+        "nr": 19,
+        "name": "Diego Moreira",
+        "pos": "FW",
+        "birthdate": "2004-08-06"
+      },
+      {
+        "nr": 20,
+        "name": "Hans Vanaken",
+        "pos": "MF",
+        "birthdate": "1992-08-24"
+      },
+      {
+        "nr": 21,
+        "name": "Timothy Castagne",
+        "pos": "DF",
+        "birthdate": "1995-12-05"
+      },
+      {
+        "nr": 22,
+        "name": "Alexis Saelemaekers",
+        "pos": "MF",
+        "birthdate": "1999-06-27"
+      },
+      {
+        "nr": 23,
+        "name": "Nicolas Raskin",
+        "pos": "MF",
+        "birthdate": "2001-02-23"
+      },
+      {
+        "nr": 24,
+        "name": "Amadou Onana",
+        "pos": "MF",
+        "birthdate": "2001-08-16"
+      },
+      {
+        "nr": 25,
+        "name": "Nathan Ngoy",
+        "pos": "FW",
+        "birthdate": "2003-06-10"
+      },
+      {
+        "nr": 26,
+        "name": "Matias Fernandez-Pardo",
+        "pos": "FW",
+        "birthdate": "2005-02-03"
+      }
+    ],
+    "Egypt": [
+      {
+        "nr": 1,
+        "name": "Mohamed El Shenawy",
+        "pos": "GK",
+        "birthdate": "1988-12-18"
+      },
+      {
+        "nr": 2,
+        "name": "Yasser Ibrahim",
+        "pos": "DF",
+        "birthdate": "1993-02-10"
+      },
+      {
+        "nr": 3,
+        "name": "Mohamed Hany",
+        "pos": "DF",
+        "birthdate": "1996-02-02"
+      },
+      {
+        "nr": 4,
+        "name": "Hossam Abdelmaguid",
+        "pos": "DF",
+        "birthdate": "2001-04-30"
+      },
+      {
+        "nr": 5,
+        "name": "Ramy Rabia",
+        "pos": "DF",
+        "birthdate": "1993-05-20"
+      },
+      {
+        "nr": 6,
+        "name": "Mohamed Abdelmonem",
+        "pos": "DF",
+        "birthdate": "1999-02-01"
+      },
+      {
+        "nr": 7,
+        "name": "Trézéguet",
+        "pos": "FW",
+        "birthdate": "1994-10-01"
+      },
+      {
+        "nr": 8,
+        "name": "Emam Ashour",
+        "pos": "MF",
+        "birthdate": "1998-02-20"
+      },
+      {
+        "nr": 9,
+        "name": "Hamza Abdelkarim",
+        "pos": "FW",
+        "birthdate": "2008-01-01"
+      },
+      {
+        "nr": 10,
+        "name": "Mohamed Salah",
+        "pos": "FW",
+        "birthdate": "1992-06-15"
+      },
+      {
+        "nr": 11,
+        "name": "Mostafa Ziko",
+        "pos": "MF",
+        "birthdate": "1997-04-27"
+      },
+      {
+        "nr": 12,
+        "name": "Haissem Hassan",
+        "pos": "MF",
+        "birthdate": "2002-02-08"
+      },
+      {
+        "nr": 13,
+        "name": "Ahmed Fatouh",
+        "pos": "FW",
+        "birthdate": "1998-03-22"
+      },
+      {
+        "nr": 14,
+        "name": "Hamdy Fathy",
+        "pos": "DF",
+        "birthdate": "1994-09-29"
+      },
+      {
+        "nr": 15,
+        "name": "Karim Hafez",
+        "pos": "MF",
+        "birthdate": "1996-03-12"
+      },
+      {
+        "nr": 16,
+        "name": "El Mahdy Soliman",
+        "pos": "MF",
+        "birthdate": "1987-06-08"
+      },
+      {
+        "nr": 17,
+        "name": "Mohanad Lasheen",
+        "pos": "DF",
+        "birthdate": "1996-05-29"
+      },
+      {
+        "nr": 18,
+        "name": "Nabil Emad",
+        "pos": "MF",
+        "birthdate": "1996-04-06"
+      },
+      {
+        "nr": 19,
+        "name": "Marwan Attia",
+        "pos": "MF",
+        "birthdate": "1998-08-01"
+      },
+      {
+        "nr": 20,
+        "name": "Ibrahim Adel",
+        "pos": "MF",
+        "birthdate": "2001-04-23"
+      },
+      {
+        "nr": 21,
+        "name": "Mahmoud Saber",
+        "pos": "MF",
+        "birthdate": "2001-07-30"
+      },
+      {
+        "nr": 22,
+        "name": "Omar Marmoush",
+        "pos": "FW",
+        "birthdate": "1999-02-07"
+      },
+      {
+        "nr": 23,
+        "name": "Mostafa Shobeir",
+        "pos": "DF",
+        "birthdate": "2000-05-15"
+      },
+      {
+        "nr": 24,
+        "name": "Tarek Alaa",
+        "pos": "MF",
+        "birthdate": "2002-01-05"
+      },
+      {
+        "nr": 25,
+        "name": "Zizo",
+        "pos": "MF",
+        "birthdate": "1996-01-10"
+      },
+      {
+        "nr": 26,
+        "name": "Mohamed Alaa",
+        "pos": "MF",
+        "birthdate": "1999-01-01"
+      }
+    ],
+    "Iran": [
+      {
+        "nr": 1,
+        "name": "Alireza Beiranvand",
+        "pos": "GK",
+        "birthdate": "1992-09-21"
+      },
+      {
+        "nr": 2,
+        "name": "Saleh Hardani",
+        "pos": "DF",
+        "birthdate": "1998-12-26"
+      },
+      {
+        "nr": 3,
+        "name": "Ehsan Hajsafi",
+        "pos": "DF",
+        "birthdate": "1990-02-25"
+      },
+      {
+        "nr": 4,
+        "name": "Shojae Khalilzadeh",
+        "pos": "DF",
+        "birthdate": "1989-05-14"
+      },
+      {
+        "nr": 5,
+        "name": "Milad Mohammadi",
+        "pos": "DF",
+        "birthdate": "1993-09-29"
+      },
+      {
+        "nr": 6,
+        "name": "Saeid Ezatolahi",
+        "pos": "MF",
+        "birthdate": "1996-10-01"
+      },
+      {
+        "nr": 7,
+        "name": "Alireza Jahanbakhsh",
+        "pos": "MF",
+        "birthdate": "1993-08-11"
+      },
+      {
+        "nr": 8,
+        "name": "Mohammad Mohebi",
+        "pos": "MF",
+        "birthdate": "1998-12-20"
+      },
+      {
+        "nr": 9,
+        "name": "Mehdi Taremi",
+        "pos": "FW",
+        "birthdate": "1992-07-18"
+      },
+      {
+        "nr": 10,
+        "name": "Mehdi Ghayedi",
+        "pos": "MF",
+        "birthdate": "1998-12-05"
+      },
+      {
+        "nr": 11,
+        "name": "Ali Alipour",
+        "pos": "FW",
+        "birthdate": "1995-11-11"
+      },
+      {
+        "nr": 12,
+        "name": "Payam Niazmand",
+        "pos": "GK",
+        "birthdate": "1995-04-06"
+      },
+      {
+        "nr": 13,
+        "name": "Hossein Kanaanizadegan",
+        "pos": "MF",
+        "birthdate": "1994-03-23"
+      },
+      {
+        "nr": 14,
+        "name": "Saman Ghoddos",
+        "pos": "MF",
+        "birthdate": "1993-09-06"
+      },
+      {
+        "nr": 15,
+        "name": "Rouzbeh Cheshmi",
+        "pos": "DF",
+        "birthdate": "1993-07-24"
+      },
+      {
+        "nr": 16,
+        "name": "Mehdi Torabi",
+        "pos": "MF",
+        "birthdate": "1994-09-10"
+      },
+      {
+        "nr": 17,
+        "name": "Aria Yousefi",
+        "pos": "MF",
+        "birthdate": "2002-04-22"
+      },
+      {
+        "nr": 18,
+        "name": "Amirhossein Hosseinzadeh",
+        "pos": "FW",
+        "birthdate": "2000-10-30"
+      },
+      {
+        "nr": 19,
+        "name": "Ali Nemati",
+        "pos": "DF",
+        "birthdate": "1996-02-08"
+      },
+      {
+        "nr": 20,
+        "name": "Shahriyar Moghanlou",
+        "pos": "MF",
+        "birthdate": "1994-12-21"
+      },
+      {
+        "nr": 21,
+        "name": "Mohammad Ghorbani",
+        "pos": "MF",
+        "birthdate": "2001-10-07"
+      },
+      {
+        "nr": 22,
+        "name": "Hossein Hosseini",
+        "pos": "DF",
+        "birthdate": "1992-06-30"
+      },
+      {
+        "nr": 23,
+        "name": "Ramin Rezaeian",
+        "pos": "DF",
+        "birthdate": "1990-03-21"
+      },
+      {
+        "nr": 24,
+        "name": "Dennis Eckert",
+        "pos": "GK",
+        "birthdate": "1997-01-09"
+      },
+      {
+        "nr": 25,
+        "name": "Danial Eiri",
+        "pos": "GK",
+        "birthdate": "2003-10-26"
+      },
+      {
+        "nr": 26,
+        "name": "Amirmohammad Razzaghinia",
+        "pos": "MF",
+        "birthdate": "2006-04-11"
+      }
+    ],
+    "New Zealand": [
+      {
+        "nr": 1,
+        "name": "Max Crocombe",
+        "pos": "GK",
+        "birthdate": "1993-08-12"
+      },
+      {
+        "nr": 2,
+        "name": "Tim Payne",
+        "pos": "DF",
+        "birthdate": "1994-01-10"
+      },
+      {
+        "nr": 3,
+        "name": "Francis de Vries",
+        "pos": "DF",
+        "birthdate": "1994-11-28"
+      },
+      {
+        "nr": 4,
+        "name": "Tyler Bindon",
+        "pos": "DF",
+        "birthdate": "2005-01-27"
+      },
+      {
+        "nr": 5,
+        "name": "Michael Boxall",
+        "pos": "DF",
+        "birthdate": "1988-08-18"
+      },
+      {
+        "nr": 6,
+        "name": "Joe Bell",
+        "pos": "MF",
+        "birthdate": "1999-04-27"
+      },
+      {
+        "nr": 7,
+        "name": "Logan Rogerson",
+        "pos": "FW",
+        "birthdate": "1998-05-28"
+      },
+      {
+        "nr": 8,
+        "name": "Marko Stamenić",
+        "pos": "MF",
+        "birthdate": "2002-02-19"
+      },
+      {
+        "nr": 9,
+        "name": "Chris Wood",
+        "pos": "FW",
+        "birthdate": "1991-12-07"
+      },
+      {
+        "nr": 10,
+        "name": "Sarpreet Singh",
+        "pos": "MF",
+        "birthdate": "1999-02-20"
+      },
+      {
+        "nr": 11,
+        "name": "Elijah Just",
+        "pos": "FW",
+        "birthdate": "2000-05-01"
+      },
+      {
+        "nr": 12,
+        "name": "Alex Paulsen",
+        "pos": "FW",
+        "birthdate": "2002-07-04"
+      },
+      {
+        "nr": 13,
+        "name": "Liberato Cacace",
+        "pos": "DF",
+        "birthdate": "2000-09-27"
+      },
+      {
+        "nr": 14,
+        "name": "Alex Rufer",
+        "pos": "MF",
+        "birthdate": "1996-06-12"
+      },
+      {
+        "nr": 15,
+        "name": "Nando Pijnaker",
+        "pos": "MF",
+        "birthdate": "1999-02-25"
+      },
+      {
+        "nr": 16,
+        "name": "Finn Surman",
+        "pos": "MF",
+        "birthdate": "2003-09-23"
+      },
+      {
+        "nr": 17,
+        "name": "Kosta Barbarouses",
+        "pos": "FW",
+        "birthdate": "1990-02-19"
+      },
+      {
+        "nr": 18,
+        "name": "Ben Waine",
+        "pos": "FW",
+        "birthdate": "2001-06-11"
+      },
+      {
+        "nr": 19,
+        "name": "Ben Old",
+        "pos": "FW",
+        "birthdate": "2002-08-13"
+      },
+      {
+        "nr": 20,
+        "name": "Callum McCowatt",
+        "pos": "MF",
+        "birthdate": "1999-04-30"
+      },
+      {
+        "nr": 21,
+        "name": "Jesse Randall",
+        "pos": "MF",
+        "birthdate": "2002-08-19"
+      },
+      {
+        "nr": 22,
+        "name": "Michael Woud",
+        "pos": "FW",
+        "birthdate": "1999-01-16"
+      },
+      {
+        "nr": 23,
+        "name": "Ryan Thomas",
+        "pos": "MF",
+        "birthdate": "1994-12-20"
+      },
+      {
+        "nr": 24,
+        "name": "Callan Elliot",
+        "pos": "FW",
+        "birthdate": "1999-07-07"
+      },
+      {
+        "nr": 25,
+        "name": "Lachlan Bayliss",
+        "pos": "FW",
+        "birthdate": "2002-07-24"
+      },
+      {
+        "nr": 26,
+        "name": "Tommy Smith",
+        "pos": "FW",
+        "birthdate": "1990-03-31"
+      }
+    ]
+  },
+  "Gruppe H": {
+    "Spain": [
+      {
+        "nr": 1,
+        "name": "David Raya",
+        "pos": "GK",
+        "birthdate": "1995-09-15"
+      },
+      {
+        "nr": 2,
+        "name": "Marc Pubill",
+        "pos": "DF",
+        "birthdate": "2003-06-20"
+      },
+      {
+        "nr": 3,
+        "name": "Álex Grimaldo",
+        "pos": "DF",
+        "birthdate": "1995-09-20"
+      },
+      {
+        "nr": 4,
+        "name": "Eric García",
+        "pos": "DF",
+        "birthdate": "2001-01-09"
+      },
+      {
+        "nr": 5,
+        "name": "Marcos Llorente",
+        "pos": "MF",
+        "birthdate": "1995-01-30"
+      },
+      {
+        "nr": 6,
+        "name": "Mikel Merino",
+        "pos": "MF",
+        "birthdate": "1996-06-22"
+      },
+      {
+        "nr": 7,
+        "name": "Ferran Torres",
+        "pos": "FW",
+        "birthdate": "2000-02-29"
+      },
+      {
+        "nr": 8,
+        "name": "Fabián Ruiz",
+        "pos": "MF",
+        "birthdate": "1996-04-03"
+      },
+      {
+        "nr": 9,
+        "name": "Gavi",
+        "pos": "MF",
+        "birthdate": "2004-08-05"
+      },
+      {
+        "nr": 10,
+        "name": "Dani Olmo",
+        "pos": "MF",
+        "birthdate": "1998-05-07"
+      },
+      {
+        "nr": 11,
+        "name": "Yéremy Pino",
+        "pos": "FW",
+        "birthdate": "2002-10-20"
+      },
+      {
+        "nr": 12,
+        "name": "Pedro Porro",
+        "pos": "FW",
+        "birthdate": "1999-09-13"
+      },
+      {
+        "nr": 13,
+        "name": "Joan Garcia",
+        "pos": "GK",
+        "birthdate": "2001-05-04"
+      },
+      {
+        "nr": 14,
+        "name": "Aymeric Laporte",
+        "pos": "DF",
+        "birthdate": "1994-05-27"
+      },
+      {
+        "nr": 15,
+        "name": "Álex Baena",
+        "pos": "MF",
+        "birthdate": "2001-07-20"
+      },
+      {
+        "nr": 16,
+        "name": "Rodri",
+        "pos": "MF",
+        "birthdate": "1996-06-22"
+      },
+      {
+        "nr": 17,
+        "name": "Nico Williams",
+        "pos": "FW",
+        "birthdate": "2002-07-12"
+      },
+      {
+        "nr": 18,
+        "name": "Martín Zubimendi",
+        "pos": "MF",
+        "birthdate": "1999-02-02"
+      },
+      {
+        "nr": 19,
+        "name": "Lamine Yamal",
+        "pos": "FW",
+        "birthdate": "2007-07-13"
+      },
+      {
+        "nr": 20,
+        "name": "Pedri",
+        "pos": "MF",
+        "birthdate": "2002-11-25"
+      },
+      {
+        "nr": 21,
+        "name": "Mikel Oyarzabal",
+        "pos": "FW",
+        "birthdate": "1997-04-21"
+      },
+      {
+        "nr": 22,
+        "name": "Pau Cubarsí",
+        "pos": "DF",
+        "birthdate": "2007-01-22"
+      },
+      {
+        "nr": 23,
+        "name": "Unai Simón",
+        "pos": "GK",
+        "birthdate": "1997-06-11"
+      },
+      {
+        "nr": 24,
+        "name": "Marc Cucurella",
+        "pos": "DF",
+        "birthdate": "1998-07-22"
+      },
+      {
+        "nr": 25,
+        "name": "Víctor Muñoz",
+        "pos": "DF",
+        "birthdate": "2003-07-13"
+      },
+      {
+        "nr": 26,
+        "name": "Borja Iglesias",
+        "pos": "FW",
+        "birthdate": "1993-01-17"
+      }
+    ],
+    "Cape Verde": [
+      {
+        "nr": 1,
+        "name": "Vozinha",
+        "pos": "GK",
+        "birthdate": "1986-06-03"
+      },
+      {
+        "nr": 2,
+        "name": "Stopira",
+        "pos": "DF",
+        "birthdate": "1988-05-20"
+      },
+      {
+        "nr": 3,
+        "name": "Diney",
+        "pos": "DF",
+        "birthdate": "1995-01-17"
+      },
+      {
+        "nr": 4,
+        "name": "Roberto Lopes",
+        "pos": "DF",
+        "birthdate": "1992-06-17"
+      },
+      {
+        "nr": 5,
+        "name": "Logan Costa",
+        "pos": "DF",
+        "birthdate": "2001-04-01"
+      },
+      {
+        "nr": 6,
+        "name": "Kevin Pina",
+        "pos": "MF",
+        "birthdate": "1997-01-27"
+      },
+      {
+        "nr": 7,
+        "name": "Jovane Cabral",
+        "pos": "FW",
+        "birthdate": "1998-06-14"
+      },
+      {
+        "nr": 8,
+        "name": "João Paulo Fernandes",
+        "pos": "MF",
+        "birthdate": "1998-05-26"
+      },
+      {
+        "nr": 9,
+        "name": "Gilson Benchimol",
+        "pos": "FW",
+        "birthdate": "2001-12-29"
+      },
+      {
+        "nr": 10,
+        "name": "Jamiro Monteiro",
+        "pos": "MF",
+        "birthdate": "1993-11-23"
+      },
+      {
+        "nr": 11,
+        "name": "Garry Rodrigues",
+        "pos": "FW",
+        "birthdate": "1990-11-27"
+      },
+      {
+        "nr": 12,
+        "name": "Márcio Rosa",
+        "pos": "GK",
+        "birthdate": "1997-02-23"
+      },
+      {
+        "nr": 13,
+        "name": "Sidny Lopes Cabral",
+        "pos": "DF",
+        "birthdate": "2002-09-18"
+      },
+      {
+        "nr": 14,
+        "name": "Deroy Duarte",
+        "pos": "MF",
+        "birthdate": "1999-07-04"
+      },
+      {
+        "nr": 15,
+        "name": "Laros Duarte",
+        "pos": "MF",
+        "birthdate": "1997-02-28"
+      },
+      {
+        "nr": 16,
+        "name": "Yannick Semedo",
+        "pos": "MF",
+        "birthdate": "1995-12-29"
+      },
+      {
+        "nr": 17,
+        "name": "Willy Semedo",
+        "pos": "FW",
+        "birthdate": "1994-04-27"
+      },
+      {
+        "nr": 18,
+        "name": "Telmo Arcanjo",
+        "pos": "MF",
+        "birthdate": "2001-06-21"
+      },
+      {
+        "nr": 19,
+        "name": "Dailon Livramento",
+        "pos": "FW",
+        "birthdate": "2001-05-04"
+      },
+      {
+        "nr": 20,
+        "name": "Ryan Mendes",
+        "pos": "FW",
+        "birthdate": "1990-01-08"
+      },
+      {
+        "nr": 21,
+        "name": "Nuno da Costa",
+        "pos": "FW",
+        "birthdate": "1991-02-10"
+      },
+      {
+        "nr": 22,
+        "name": "Steven Moreira",
+        "pos": "DF",
+        "birthdate": "1994-08-13"
+      },
+      {
+        "nr": 23,
+        "name": "CJ dos Santos",
+        "pos": "GK",
+        "birthdate": "2000-08-24"
+      },
+      {
+        "nr": 24,
+        "name": "Wagner Pina",
+        "pos": "DF",
+        "birthdate": "2002-11-03"
+      },
+      {
+        "nr": 25,
+        "name": "Kelvin Pires",
+        "pos": "MF",
+        "birthdate": "2000-06-05"
+      },
+      {
+        "nr": 26,
+        "name": "Hélio Varela",
+        "pos": "FW",
+        "birthdate": "2002-05-03"
+      }
+    ],
+    "Saudi Arabia": [
+      {
+        "nr": 1,
+        "name": "Nawaf Al-Aqidi",
+        "pos": "GK",
+        "birthdate": "2000-05-10"
+      },
+      {
+        "nr": 2,
+        "name": "Ali Majrashi",
+        "pos": "DF",
+        "birthdate": "1999-10-02"
+      },
+      {
+        "nr": 3,
+        "name": "Ali Lajami",
+        "pos": "DF",
+        "birthdate": "1996-04-24"
+      },
+      {
+        "nr": 4,
+        "name": "Abdulelah Al-Amri",
+        "pos": "DF",
+        "birthdate": "1997-01-15"
+      },
+      {
+        "nr": 5,
+        "name": "Hassan Al-Tambakti",
+        "pos": "DF",
+        "birthdate": "1999-02-09"
+      },
+      {
+        "nr": 6,
+        "name": "Nasser Al-Dawsari",
+        "pos": "MF",
+        "birthdate": "1998-12-19"
+      },
+      {
+        "nr": 7,
+        "name": "Musab Al-Juwayr",
+        "pos": "MF",
+        "birthdate": "2003-06-20"
+      },
+      {
+        "nr": 8,
+        "name": "Ayman Yahya",
+        "pos": "MF",
+        "birthdate": "2001-05-14"
+      },
+      {
+        "nr": 9,
+        "name": "Firas Al-Buraikan",
+        "pos": "FW",
+        "birthdate": "2000-05-14"
+      },
+      {
+        "nr": 10,
+        "name": "Salem Al-Dawsari",
+        "pos": "FW",
+        "birthdate": "1991-08-19"
+      },
+      {
+        "nr": 11,
+        "name": "Saleh Al-Shehri",
+        "pos": "FW",
+        "birthdate": "1993-11-01"
+      },
+      {
+        "nr": 12,
+        "name": "Saud Abdulhamid",
+        "pos": "DF",
+        "birthdate": "1999-07-18"
+      },
+      {
+        "nr": 13,
+        "name": "Nawaf Boushal",
+        "pos": "MF",
+        "birthdate": "1999-09-16"
+      },
+      {
+        "nr": 14,
+        "name": "Hassan Kadesh",
+        "pos": "MF",
+        "birthdate": "1992-09-26"
+      },
+      {
+        "nr": 15,
+        "name": "Abdullah Al-Khaibari",
+        "pos": "MF",
+        "birthdate": "1996-08-16"
+      },
+      {
+        "nr": 16,
+        "name": "Ziyad Al-Johani",
+        "pos": "MF",
+        "birthdate": "2001-11-11"
+      },
+      {
+        "nr": 17,
+        "name": "Khalid Al-Ghannam",
+        "pos": "DF",
+        "birthdate": "2000-11-08"
+      },
+      {
+        "nr": 18,
+        "name": "Alaa Al-Hejji",
+        "pos": "MF",
+        "birthdate": "1995-12-03"
+      },
+      {
+        "nr": 19,
+        "name": "Abdullah Al-Hamdan",
+        "pos": "MF",
+        "birthdate": "1999-09-13"
+      },
+      {
+        "nr": 20,
+        "name": "Sultan Mandash",
+        "pos": "MF",
+        "birthdate": "1994-10-17"
+      },
+      {
+        "nr": 21,
+        "name": "Mohammed Al-Owais",
+        "pos": "GK",
+        "birthdate": "1991-10-10"
+      },
+      {
+        "nr": 22,
+        "name": "Ahmed Al-Kassar",
+        "pos": "GK",
+        "birthdate": "1991-05-08"
+      },
+      {
+        "nr": 23,
+        "name": "Mohammed Kanno",
+        "pos": "MF",
+        "birthdate": "1994-09-22"
+      },
+      {
+        "nr": 24,
+        "name": "Moteb Al-Harbi",
+        "pos": "MF",
+        "birthdate": "2000-02-20"
+      },
+      {
+        "nr": 25,
+        "name": "Jehad Thakri",
+        "pos": "DF",
+        "birthdate": "2001-07-21"
+      },
+      {
+        "nr": 26,
+        "name": "Mohammed Abu Al-Shamat",
+        "pos": "DF",
+        "birthdate": "2002-08-11"
+      }
+    ],
+    "Uruguay": [
+      {
+        "nr": 1,
+        "name": "Sergio Rochet",
+        "pos": "GK",
+        "birthdate": "1993-03-23"
+      },
+      {
+        "nr": 2,
+        "name": "José María Giménez",
+        "pos": "DF",
+        "birthdate": "1995-01-20"
+      },
+      {
+        "nr": 3,
+        "name": "Sebastián Cáceres",
+        "pos": "DF",
+        "birthdate": "1999-08-18"
+      },
+      {
+        "nr": 4,
+        "name": "Ronald Araújo",
+        "pos": "DF",
+        "birthdate": "1999-03-07"
+      },
+      {
+        "nr": 5,
+        "name": "Manuel Ugarte",
+        "pos": "MF",
+        "birthdate": "2001-04-11"
+      },
+      {
+        "nr": 6,
+        "name": "Rodrigo Bentancur",
+        "pos": "MF",
+        "birthdate": "1997-06-25"
+      },
+      {
+        "nr": 7,
+        "name": "Nicolás de la Cruz",
+        "pos": "MF",
+        "birthdate": "1997-06-01"
+      },
+      {
+        "nr": 8,
+        "name": "Federico Valverde",
+        "pos": "MF",
+        "birthdate": "1998-07-22"
+      },
+      {
+        "nr": 9,
+        "name": "Darwin Núñez",
+        "pos": "FW",
+        "birthdate": "1999-06-24"
+      },
+      {
+        "nr": 10,
+        "name": "Giorgian de Arrascaeta",
+        "pos": "MF",
+        "birthdate": "1994-06-01"
+      },
+      {
+        "nr": 11,
+        "name": "Facundo Pellistri",
+        "pos": "FW",
+        "birthdate": "2001-12-20"
+      },
+      {
+        "nr": 12,
+        "name": "Santiago Mele",
+        "pos": "GK",
+        "birthdate": "1997-09-06"
+      },
+      {
+        "nr": 13,
+        "name": "Guillermo Varela",
+        "pos": "DF",
+        "birthdate": "1993-03-24"
+      },
+      {
+        "nr": 14,
+        "name": "Agustín Canobbio",
+        "pos": "MF",
+        "birthdate": "1998-10-01"
+      },
+      {
+        "nr": 15,
+        "name": "Emiliano Martínez",
+        "pos": "MF",
+        "birthdate": "1992-09-02"
+      },
+      {
+        "nr": 16,
+        "name": "Mathías Olivera",
+        "pos": "DF",
+        "birthdate": "1997-10-31"
+      },
+      {
+        "nr": 17,
+        "name": "Matías Viña",
+        "pos": "DF",
+        "birthdate": "1997-11-09"
+      },
+      {
+        "nr": 18,
+        "name": "Brian Rodríguez",
+        "pos": "MF",
+        "birthdate": "2000-05-20"
+      },
+      {
+        "nr": 19,
+        "name": "Rodrigo Aguirre",
+        "pos": "FW",
+        "birthdate": "1994-10-01"
+      },
+      {
+        "nr": 20,
+        "name": "Maximiliano Araújo",
+        "pos": "MF",
+        "birthdate": "2000-02-15"
+      },
+      {
+        "nr": 21,
+        "name": "Federico Viñas",
+        "pos": "FW",
+        "birthdate": "1998-06-30"
+      },
+      {
+        "nr": 22,
+        "name": "Joaquín Piquerez",
+        "pos": "DF",
+        "birthdate": "1998-08-24"
+      },
+      {
+        "nr": 23,
+        "name": "Fernando Muslera",
+        "pos": "GK",
+        "birthdate": "1986-06-16"
+      },
+      {
+        "nr": 24,
+        "name": "Santiago Bueno",
+        "pos": "DF",
+        "birthdate": "1998-11-09"
+      },
+      {
+        "nr": 25,
+        "name": "Juan Manuel Sanabria",
+        "pos": "MF",
+        "birthdate": "2000-03-29"
+      },
+      {
+        "nr": 26,
+        "name": "Rodrigo Zalazar",
+        "pos": "MF",
+        "birthdate": "1999-08-12"
+      }
+    ]
+  },
+  "Gruppe I": {
+    "France": [
+      {
+        "nr": 1,
+        "name": "Brice Samba",
+        "pos": "GK",
+        "birthdate": "1994-04-25"
+      },
+      {
+        "nr": 2,
+        "name": "Malo Gusto",
+        "pos": "DF",
+        "birthdate": "2003-05-19"
+      },
+      {
+        "nr": 3,
+        "name": "Lucas Digne",
+        "pos": "DF",
+        "birthdate": "1993-07-20"
+      },
+      {
+        "nr": 4,
+        "name": "Dayot Upamecano",
+        "pos": "DF",
+        "birthdate": "1998-10-27"
+      },
+      {
+        "nr": 5,
+        "name": "Jules Koundé",
+        "pos": "DF",
+        "birthdate": "1998-11-12"
+      },
+      {
+        "nr": 6,
+        "name": "Manu Koné",
+        "pos": "MF",
+        "birthdate": "2001-05-17"
+      },
+      {
+        "nr": 7,
+        "name": "Ousmane Dembélé",
+        "pos": "FW",
+        "birthdate": "1997-05-15"
+      },
+      {
+        "nr": 8,
+        "name": "Aurélien Tchouaméni",
+        "pos": "MF",
+        "birthdate": "2000-01-27"
+      },
+      {
+        "nr": 9,
+        "name": "Marcus Thuram",
+        "pos": "FW",
+        "birthdate": "1997-08-06"
+      },
+      {
+        "nr": 10,
+        "name": "Kylian Mbappé",
+        "pos": "FW",
+        "birthdate": "1998-12-20"
+      },
+      {
+        "nr": 11,
+        "name": "Michael Olise",
+        "pos": "FW",
+        "birthdate": "2001-12-12"
+      },
+      {
+        "nr": 12,
+        "name": "Bradley Barcola",
+        "pos": "FW",
+        "birthdate": "2002-09-02"
+      },
+      {
+        "nr": 13,
+        "name": "N'Golo Kanté",
+        "pos": "MF",
+        "birthdate": "1991-03-29"
+      },
+      {
+        "nr": 14,
+        "name": "Adrien Rabiot",
+        "pos": "MF",
+        "birthdate": "1995-04-03"
+      },
+      {
+        "nr": 15,
+        "name": "Ibrahima Konaté",
+        "pos": "DF",
+        "birthdate": "1999-05-25"
+      },
+      {
+        "nr": 16,
+        "name": "Mike Maignan",
+        "pos": "GK",
+        "birthdate": "1995-07-03"
+      },
+      {
+        "nr": 17,
+        "name": "William Saliba",
+        "pos": "DF",
+        "birthdate": "2001-03-24"
+      },
+      {
+        "nr": 18,
+        "name": "Warren Zaïre-Emery",
+        "pos": "MF",
+        "birthdate": "2006-03-08"
+      },
+      {
+        "nr": 19,
+        "name": "Theo Hernandez",
+        "pos": "DF",
+        "birthdate": "1997-10-06"
+      },
+      {
+        "nr": 20,
+        "name": "Désiré Doué",
+        "pos": "FW",
+        "birthdate": "2005-06-03"
+      },
+      {
+        "nr": 21,
+        "name": "Lucas Hernandez",
+        "pos": "DF",
+        "birthdate": "1996-02-14"
+      },
+      {
+        "nr": 22,
+        "name": "Jean-Philippe Mateta",
+        "pos": "FW",
+        "birthdate": "1997-06-28"
+      },
+      {
+        "nr": 23,
+        "name": "Robin Risser",
+        "pos": "GK",
+        "birthdate": "2004-12-02"
+      },
+      {
+        "nr": 24,
+        "name": "Rayan Cherki",
+        "pos": "FW",
+        "birthdate": "2003-08-17"
+      },
+      {
+        "nr": 25,
+        "name": "Maghnes Akliouche",
+        "pos": "FW",
+        "birthdate": "2002-02-25"
+      },
+      {
+        "nr": 26,
+        "name": "Maxence Lacroix",
+        "pos": "DF",
+        "birthdate": "2000-04-06"
+      }
+    ],
+    "Senegal": [
+      {
+        "nr": 1,
+        "name": "Yehvann Diouf",
+        "pos": "GK",
+        "birthdate": "1999-11-16"
+      },
+      {
+        "nr": 2,
+        "name": "Mamadou Sarr",
+        "pos": "DF",
+        "birthdate": "2005-08-29"
+      },
+      {
+        "nr": 3,
+        "name": "Kalidou Koulibaly",
+        "pos": "DF",
+        "birthdate": "1991-06-20"
+      },
+      {
+        "nr": 4,
+        "name": "Abdoulaye Seck",
+        "pos": "DF",
+        "birthdate": "1992-06-04"
+      },
+      {
+        "nr": 5,
+        "name": "Idrissa Gueye",
+        "pos": "MF",
+        "birthdate": "1989-09-26"
+      },
+      {
+        "nr": 6,
+        "name": "Pathé Ciss",
+        "pos": "MF",
+        "birthdate": "1994-03-16"
+      },
+      {
+        "nr": 7,
+        "name": "Assane Diao",
+        "pos": "MF",
+        "birthdate": "2005-09-07"
+      },
+      {
+        "nr": 8,
+        "name": "Lamine Camara",
+        "pos": "MF",
+        "birthdate": "2004-01-01"
+      },
+      {
+        "nr": 9,
+        "name": "Bamba Dieng",
+        "pos": "FW",
+        "birthdate": "2000-03-23"
+      },
+      {
+        "nr": 10,
+        "name": "Sadio Mané",
+        "pos": "FW",
+        "birthdate": "1992-04-10"
+      },
+      {
+        "nr": 11,
+        "name": "Nicolas Jackson",
+        "pos": "FW",
+        "birthdate": "2001-06-20"
+      },
+      {
+        "nr": 12,
+        "name": "Cherif Ndiaye",
+        "pos": "DF",
+        "birthdate": "1996-01-23"
+      },
+      {
+        "nr": 13,
+        "name": "Iliman Ndiaye",
+        "pos": "MF",
+        "birthdate": "2000-03-06"
+      },
+      {
+        "nr": 14,
+        "name": "Ismail Jakobs",
+        "pos": "DF",
+        "birthdate": "1999-08-17"
+      },
+      {
+        "nr": 15,
+        "name": "Krépin Diatta",
+        "pos": "MF",
+        "birthdate": "1999-02-25"
+      },
+      {
+        "nr": 16,
+        "name": "Édouard Mendy",
+        "pos": "GK",
+        "birthdate": "1992-03-01"
+      },
+      {
+        "nr": 17,
+        "name": "Pape Matar Sarr",
+        "pos": "MF",
+        "birthdate": "2002-09-14"
+      },
+      {
+        "nr": 18,
+        "name": "Ismaïla Sarr",
+        "pos": "FW",
+        "birthdate": "1998-02-25"
+      },
+      {
+        "nr": 19,
+        "name": "Moussa Niakhaté",
+        "pos": "DF",
+        "birthdate": "1996-03-08"
+      },
+      {
+        "nr": 20,
+        "name": "Ibrahim Mbaye",
+        "pos": "DF",
+        "birthdate": "2008-01-24"
+      },
+      {
+        "nr": 21,
+        "name": "Habib Diarra",
+        "pos": "MF",
+        "birthdate": "2004-01-03"
+      },
+      {
+        "nr": 22,
+        "name": "Bara Sapoko Ndiaye",
+        "pos": "GK",
+        "birthdate": "2007-12-31"
+      },
+      {
+        "nr": 23,
+        "name": "Mory Diaw",
+        "pos": "DF",
+        "birthdate": "1993-06-22"
+      },
+      {
+        "nr": 24,
+        "name": "Antoine Mendy",
+        "pos": "DF",
+        "birthdate": "2004-05-27"
+      },
+      {
+        "nr": 25,
+        "name": "El Hadji Malick Diouf",
+        "pos": "FW",
+        "birthdate": "2004-12-29"
+      },
+      {
+        "nr": 26,
+        "name": "Pape Gueye",
+        "pos": "MF",
+        "birthdate": "1999-01-24"
+      }
+    ],
+    "Iraq": [
+      {
+        "nr": 1,
+        "name": "Fahad Talib",
+        "pos": "GK",
+        "birthdate": "1994-10-21"
+      },
+      {
+        "nr": 2,
+        "name": "Rebin Sulaka",
+        "pos": "DF",
+        "birthdate": "1992-04-12"
+      },
+      {
+        "nr": 3,
+        "name": "Hussein Ali",
+        "pos": "DF",
+        "birthdate": "2002-03-01"
+      },
+      {
+        "nr": 4,
+        "name": "Zaid Tahseen",
+        "pos": "DF",
+        "birthdate": "2001-01-29"
+      },
+      {
+        "nr": 5,
+        "name": "Akam Hashim",
+        "pos": "DF",
+        "birthdate": "1998-08-16"
+      },
+      {
+        "nr": 6,
+        "name": "Manaf Younis",
+        "pos": "MF",
+        "birthdate": "1996-11-16"
+      },
+      {
+        "nr": 7,
+        "name": "Youssef Amyn",
+        "pos": "MF",
+        "birthdate": "2003-08-21"
+      },
+      {
+        "nr": 8,
+        "name": "Ibrahim Bayesh",
+        "pos": "MF",
+        "birthdate": "2000-05-01"
+      },
+      {
+        "nr": 9,
+        "name": "Ali Al-Hamadi",
+        "pos": "FW",
+        "birthdate": "2002-03-01"
+      },
+      {
+        "nr": 10,
+        "name": "Mohanad Ali",
+        "pos": "MF",
+        "birthdate": "2000-06-20"
+      },
+      {
+        "nr": 11,
+        "name": "Ahmed Qasem",
+        "pos": "FW",
+        "birthdate": "2003-07-12"
+      },
+      {
+        "nr": 12,
+        "name": "Jalal Hassan",
+        "pos": "MF",
+        "birthdate": "1991-05-18"
+      },
+      {
+        "nr": 13,
+        "name": "Ali Yousif",
+        "pos": "MF",
+        "birthdate": "1996-01-19"
+      },
+      {
+        "nr": 14,
+        "name": "Zidane Iqbal",
+        "pos": "MF",
+        "birthdate": "2003-04-27"
+      },
+      {
+        "nr": 15,
+        "name": "Ahmed Maknzi",
+        "pos": "MF",
+        "birthdate": "2001-09-24"
+      },
+      {
+        "nr": 16,
+        "name": "Amir Al-Ammari",
+        "pos": "DF",
+        "birthdate": "1997-07-27"
+      },
+      {
+        "nr": 17,
+        "name": "Ali Jasim",
+        "pos": "MF",
+        "birthdate": "2004-01-20"
+      },
+      {
+        "nr": 18,
+        "name": "Aymen Hussein",
+        "pos": "FW",
+        "birthdate": "1996-03-22"
+      },
+      {
+        "nr": 19,
+        "name": "Kevin Yakob",
+        "pos": "DF",
+        "birthdate": "2000-10-10"
+      },
+      {
+        "nr": 20,
+        "name": "Aimar Sher",
+        "pos": "MF",
+        "birthdate": "2002-12-20"
+      },
+      {
+        "nr": 21,
+        "name": "Marko Farji",
+        "pos": "MF",
+        "birthdate": "2004-03-16"
+      },
+      {
+        "nr": 22,
+        "name": "Ahmed Basil",
+        "pos": "DF",
+        "birthdate": "1996-08-19"
+      },
+      {
+        "nr": 23,
+        "name": "Merchas Doski",
+        "pos": "DF",
+        "birthdate": "1999-12-07"
+      },
+      {
+        "nr": 24,
+        "name": "Zaid Ismail",
+        "pos": "GK",
+        "birthdate": "2002-01-03"
+      },
+      {
+        "nr": 25,
+        "name": "Mustafa Saadoon",
+        "pos": "GK",
+        "birthdate": "2001-05-25"
+      },
+      {
+        "nr": 26,
+        "name": "Frans Putros",
+        "pos": "FW",
+        "birthdate": "1993-07-14"
+      }
+    ],
+    "Norway": [
+      {
+        "nr": 1,
+        "name": "Ørjan Nyland",
+        "pos": "GK",
+        "birthdate": "1990-09-10"
+      },
+      {
+        "nr": 2,
+        "name": "Morten Thorsby",
+        "pos": "DF",
+        "birthdate": "1996-05-05"
+      },
+      {
+        "nr": 3,
+        "name": "Kristoffer Ajer",
+        "pos": "DF",
+        "birthdate": "1998-04-17"
+      },
+      {
+        "nr": 4,
+        "name": "Leo Østigård",
+        "pos": "DF",
+        "birthdate": "1999-11-28"
+      },
+      {
+        "nr": 5,
+        "name": "David Møller Wolfe",
+        "pos": "DF",
+        "birthdate": "2002-04-23"
+      },
+      {
+        "nr": 6,
+        "name": "Patrick Berg",
+        "pos": "MF",
+        "birthdate": "1997-11-24"
+      },
+      {
+        "nr": 7,
+        "name": "Alexander Sørloth",
+        "pos": "FW",
+        "birthdate": "1995-12-05"
+      },
+      {
+        "nr": 8,
+        "name": "Sander Berge",
+        "pos": "MF",
+        "birthdate": "1998-02-14"
+      },
+      {
+        "nr": 9,
+        "name": "Erling Haaland",
+        "pos": "FW",
+        "birthdate": "2000-07-21"
+      },
+      {
+        "nr": 10,
+        "name": "Martin Ødegaard",
+        "pos": "MF",
+        "birthdate": "1998-12-17"
+      },
+      {
+        "nr": 11,
+        "name": "Jørgen Strand Larsen",
+        "pos": "FW",
+        "birthdate": "2000-02-06"
+      },
+      {
+        "nr": 12,
+        "name": "Sander Tangvik",
+        "pos": "GK",
+        "birthdate": "2002-11-29"
+      },
+      {
+        "nr": 13,
+        "name": "Egil Selvik",
+        "pos": "GK",
+        "birthdate": "1997-07-30"
+      },
+      {
+        "nr": 14,
+        "name": "Fredrik Aursnes",
+        "pos": "MF",
+        "birthdate": "1995-12-10"
+      },
+      {
+        "nr": 15,
+        "name": "Fredrik André Bjørkan",
+        "pos": "DF",
+        "birthdate": "1998-08-21"
+      },
+      {
+        "nr": 16,
+        "name": "Marcus Holmgren Pedersen",
+        "pos": "DF",
+        "birthdate": "2000-07-16"
+      },
+      {
+        "nr": 17,
+        "name": "Torbjørn Heggem",
+        "pos": "DF",
+        "birthdate": "1999-01-12"
+      },
+      {
+        "nr": 18,
+        "name": "Kristian Thorstvedt",
+        "pos": "MF",
+        "birthdate": "1999-03-13"
+      },
+      {
+        "nr": 19,
+        "name": "Thelo Aasgaard",
+        "pos": "MF",
+        "birthdate": "2002-05-02"
+      },
+      {
+        "nr": 20,
+        "name": "Antonio Nusa",
+        "pos": "FW",
+        "birthdate": "2005-04-17"
+      },
+      {
+        "nr": 21,
+        "name": "Andreas Schjelderup",
+        "pos": "FW",
+        "birthdate": "2004-06-01"
+      },
+      {
+        "nr": 22,
+        "name": "Oscar Bobb",
+        "pos": "MF",
+        "birthdate": "2003-07-12"
+      },
+      {
+        "nr": 23,
+        "name": "Jens Petter Hauge",
+        "pos": "MF",
+        "birthdate": "1999-10-12"
+      },
+      {
+        "nr": 24,
+        "name": "Sondre Langas",
+        "pos": "DF",
+        "birthdate": "2001-02-02"
+      },
+      {
+        "nr": 25,
+        "name": "Henrik Falchener",
+        "pos": "GK",
+        "birthdate": "2003-05-08"
+      },
+      {
+        "nr": 26,
+        "name": "Julian Ryerson",
+        "pos": "DF",
+        "birthdate": "1997-11-17"
+      }
+    ]
+  },
+  "Gruppe J": {
+    "Argentina": [
+      {
+        "nr": 1,
+        "name": "Juan Musso",
+        "pos": "GK",
+        "birthdate": "1994-05-06"
+      },
+      {
+        "nr": 2,
+        "name": "Marcos Senesi",
+        "pos": "DF",
+        "birthdate": "1997-05-10"
+      },
+      {
+        "nr": 3,
+        "name": "Nicolás Tagliafico",
+        "pos": "DF",
+        "birthdate": "1992-08-31"
+      },
+      {
+        "nr": 4,
+        "name": "Gonzalo Montiel",
+        "pos": "DF",
+        "birthdate": "1997-01-01"
+      },
+      {
+        "nr": 5,
+        "name": "Leandro Paredes",
+        "pos": "MF",
+        "birthdate": "1994-06-29"
+      },
+      {
+        "nr": 6,
+        "name": "Lisandro Martínez",
+        "pos": "DF",
+        "birthdate": "1998-01-18"
+      },
+      {
+        "nr": 7,
+        "name": "Rodrigo De Paul",
+        "pos": "MF",
+        "birthdate": "1994-05-24"
+      },
+      {
+        "nr": 8,
+        "name": "Valentín Barco",
+        "pos": "DF",
+        "birthdate": "2004-07-23"
+      },
+      {
+        "nr": 9,
+        "name": "Julián Álvarez",
+        "pos": "FW",
+        "birthdate": "2000-01-31"
+      },
+      {
+        "nr": 10,
+        "name": "Lionel Messi",
+        "pos": "FW",
+        "birthdate": "1987-06-24"
+      },
+      {
+        "nr": 11,
+        "name": "Giovani Lo Celso",
+        "pos": "MF",
+        "birthdate": "1996-04-09"
+      },
+      {
+        "nr": 12,
+        "name": "Gerónimo Rulli",
+        "pos": "GK",
+        "birthdate": "1992-05-20"
+      },
+      {
+        "nr": 13,
+        "name": "Cristian Romero",
+        "pos": "DF",
+        "birthdate": "1998-04-27"
+      },
+      {
+        "nr": 14,
+        "name": "Exequiel Palacios",
+        "pos": "MF",
+        "birthdate": "1998-10-05"
+      },
+      {
+        "nr": 15,
+        "name": "Nicolás González",
+        "pos": "FW",
+        "birthdate": "1998-04-06"
+      },
+      {
+        "nr": 16,
+        "name": "Thiago Almada",
+        "pos": "MF",
+        "birthdate": "2001-04-26"
+      },
+      {
+        "nr": 17,
+        "name": "Giuliano Simeone",
+        "pos": "FW",
+        "birthdate": "2002-12-18"
+      },
+      {
+        "nr": 18,
+        "name": "Nico Paz",
+        "pos": "MF",
+        "birthdate": "2004-09-08"
+      },
+      {
+        "nr": 19,
+        "name": "Nicolás Otamendi",
+        "pos": "DF",
+        "birthdate": "1988-02-12"
+      },
+      {
+        "nr": 20,
+        "name": "Alexis Mac Allister",
+        "pos": "MF",
+        "birthdate": "1998-12-24"
+      },
+      {
+        "nr": 21,
+        "name": "José Manuel López",
+        "pos": "GK",
+        "birthdate": "2000-12-06"
+      },
+      {
+        "nr": 22,
+        "name": "Lautaro Martínez",
+        "pos": "FW",
+        "birthdate": "1997-08-22"
+      },
+      {
+        "nr": 23,
+        "name": "Emiliano Martínez",
+        "pos": "GK",
+        "birthdate": "1992-09-02"
+      },
+      {
+        "nr": 24,
+        "name": "Enzo Fernández",
+        "pos": "MF",
+        "birthdate": "2001-01-17"
+      },
+      {
+        "nr": 25,
+        "name": "Facundo Medina",
+        "pos": "DF",
+        "birthdate": "1999-05-28"
+      },
+      {
+        "nr": 26,
+        "name": "Nahuel Molina",
+        "pos": "DF",
+        "birthdate": "1998-04-06"
+      }
+    ],
+    "Algeria": [
+      {
+        "nr": 1,
+        "name": "Melvin Mastil",
+        "pos": "GK",
+        "birthdate": "2000-02-19"
+      },
+      {
+        "nr": 2,
+        "name": "Aïssa Mandi",
+        "pos": "DF",
+        "birthdate": "1991-10-22"
+      },
+      {
+        "nr": 3,
+        "name": "Achref Abada",
+        "pos": "DF",
+        "birthdate": "1999-06-15"
+      },
+      {
+        "nr": 4,
+        "name": "Mohamed Amine Tougai",
+        "pos": "DF",
+        "birthdate": "2000-01-22"
+      },
+      {
+        "nr": 5,
+        "name": "Zineddine Belaïd",
+        "pos": "DF",
+        "birthdate": "1999-03-20"
+      },
+      {
+        "nr": 6,
+        "name": "Ramiz Zerrouki",
+        "pos": "MF",
+        "birthdate": "1998-05-26"
+      },
+      {
+        "nr": 7,
+        "name": "Riyad Mahrez",
+        "pos": "FW",
+        "birthdate": "1991-02-21"
+      },
+      {
+        "nr": 8,
+        "name": "Houssem Aouar",
+        "pos": "MF",
+        "birthdate": "1998-06-30"
+      },
+      {
+        "nr": 9,
+        "name": "Amine Gouiri",
+        "pos": "FW",
+        "birthdate": "2000-02-16"
+      },
+      {
+        "nr": 10,
+        "name": "Farès Chaïbi",
+        "pos": "MF",
+        "birthdate": "2002-11-28"
+      },
+      {
+        "nr": 11,
+        "name": "Anis Hadj Moussa",
+        "pos": "FW",
+        "birthdate": "2002-02-11"
+      },
+      {
+        "nr": 12,
+        "name": "Nadhir Benbouali",
+        "pos": "FW",
+        "birthdate": "2000-04-17"
+      },
+      {
+        "nr": 13,
+        "name": "Jaouen Hadjam",
+        "pos": "DF",
+        "birthdate": "2003-03-26"
+      },
+      {
+        "nr": 14,
+        "name": "Hicham Boudaoui",
+        "pos": "MF",
+        "birthdate": "1999-09-23"
+      },
+      {
+        "nr": 15,
+        "name": "Rayan Aït-Nouri",
+        "pos": "DF",
+        "birthdate": "2001-06-06"
+      },
+      {
+        "nr": 16,
+        "name": "Oussama Benbot",
+        "pos": "GK",
+        "birthdate": "1994-10-11"
+      },
+      {
+        "nr": 17,
+        "name": "Rafik Belghali",
+        "pos": "DF",
+        "birthdate": "2002-06-07"
+      },
+      {
+        "nr": 18,
+        "name": "Mohamed Amoura",
+        "pos": "FW",
+        "birthdate": "2000-05-09"
+      },
+      {
+        "nr": 19,
+        "name": "Nabil Bentaleb",
+        "pos": "MF",
+        "birthdate": "1994-11-24"
+      },
+      {
+        "nr": 20,
+        "name": "Adil Boulbina",
+        "pos": "FW",
+        "birthdate": "2003-05-02"
+      },
+      {
+        "nr": 21,
+        "name": "Ramy Bensebaini",
+        "pos": "DF",
+        "birthdate": "1995-04-16"
+      },
+      {
+        "nr": 22,
+        "name": "Ibrahim Maza",
+        "pos": "MF",
+        "birthdate": "2005-11-24"
+      },
+      {
+        "nr": 23,
+        "name": "Luca Zidane",
+        "pos": "GK",
+        "birthdate": "1998-05-13"
+      },
+      {
+        "nr": 24,
+        "name": "Yacine Titraoui",
+        "pos": "MF",
+        "birthdate": "2003-07-26"
+      },
+      {
+        "nr": 25,
+        "name": "Farès Ghedjemis",
+        "pos": "FW",
+        "birthdate": "2002-09-06"
+      },
+      {
+        "nr": 26,
+        "name": "Samir Chergui",
+        "pos": "DF",
+        "birthdate": "1999-02-06"
+      }
+    ],
+    "Austria": [
+      {
+        "nr": 1,
+        "name": "Alexander Schlager",
+        "pos": "GK",
+        "birthdate": "1996-02-01"
+      },
+      {
+        "nr": 2,
+        "name": "David Affengruber",
+        "pos": "DF",
+        "birthdate": "2001-03-19"
+      },
+      {
+        "nr": 3,
+        "name": "Kevin Danso",
+        "pos": "DF",
+        "birthdate": "1998-09-19"
+      },
+      {
+        "nr": 4,
+        "name": "Xaver Schlager",
+        "pos": "MF",
+        "birthdate": "1997-09-28"
+      },
+      {
+        "nr": 5,
+        "name": "Stefan Posch",
+        "pos": "DF",
+        "birthdate": "1997-05-14"
+      },
+      {
+        "nr": 6,
+        "name": "Nicolas Seiwald",
+        "pos": "MF",
+        "birthdate": "2001-05-04"
+      },
+      {
+        "nr": 7,
+        "name": "Marko Arnautović",
+        "pos": "FW",
+        "birthdate": "1989-04-19"
+      },
+      {
+        "nr": 8,
+        "name": "David Alaba",
+        "pos": "DF",
+        "birthdate": "1992-06-24"
+      },
+      {
+        "nr": 9,
+        "name": "Marcel Sabitzer",
+        "pos": "MF",
+        "birthdate": "1994-03-17"
+      },
+      {
+        "nr": 10,
+        "name": "Florian Grillitsch",
+        "pos": "MF",
+        "birthdate": "1995-08-07"
+      },
+      {
+        "nr": 11,
+        "name": "Michael Gregoritsch",
+        "pos": "FW",
+        "birthdate": "1994-04-18"
+      },
+      {
+        "nr": 12,
+        "name": "Florian Wiegele",
+        "pos": "GK",
+        "birthdate": "2001-03-21"
+      },
+      {
+        "nr": 13,
+        "name": "Patrick Pentz",
+        "pos": "GK",
+        "birthdate": "1997-01-02"
+      },
+      {
+        "nr": 14,
+        "name": "Sasa Kalajdžić",
+        "pos": "FW",
+        "birthdate": "1997-07-07"
+      },
+      {
+        "nr": 15,
+        "name": "Philipp Lienhart",
+        "pos": "DF",
+        "birthdate": "1996-07-11"
+      },
+      {
+        "nr": 16,
+        "name": "Phillipp Mwene",
+        "pos": "DF",
+        "birthdate": "1994-01-29"
+      },
+      {
+        "nr": 17,
+        "name": "Carney Chukwuemeka",
+        "pos": "MF",
+        "birthdate": "2003-10-20"
+      },
+      {
+        "nr": 18,
+        "name": "Patrick Wimmer",
+        "pos": "MF",
+        "birthdate": "2001-05-30"
+      },
+      {
+        "nr": 19,
+        "name": "Dejan Ljubičić",
+        "pos": "MF",
+        "birthdate": "1997-10-08"
+      },
+      {
+        "nr": 20,
+        "name": "Konrad Laimer",
+        "pos": "MF",
+        "birthdate": "1997-05-27"
+      },
+      {
+        "nr": 21,
+        "name": "Romano Schmid",
+        "pos": "MF",
+        "birthdate": "2000-01-27"
+      },
+      {
+        "nr": 22,
+        "name": "Alexander Prass",
+        "pos": "DF",
+        "birthdate": "2001-05-26"
+      },
+      {
+        "nr": 23,
+        "name": "Marco Friedl",
+        "pos": "DF",
+        "birthdate": "1998-03-16"
+      },
+      {
+        "nr": 24,
+        "name": "Paul Wanner",
+        "pos": "MF",
+        "birthdate": "2005-12-23"
+      },
+      {
+        "nr": 25,
+        "name": "Michael Svoboda",
+        "pos": "DF",
+        "birthdate": "1998-10-15"
+      },
+      {
+        "nr": 26,
+        "name": "Alessandro Schöpf",
+        "pos": "MF",
+        "birthdate": "1994-02-07"
+      }
+    ],
+    "Jordan": [
+      {
+        "nr": 1,
+        "name": "Yazeed Abulaila",
+        "pos": "GK",
+        "birthdate": "1993-01-08"
+      },
+      {
+        "nr": 2,
+        "name": "Mohammad Abu Hashish",
+        "pos": "DF",
+        "birthdate": "1995-05-09"
+      },
+      {
+        "nr": 3,
+        "name": "Abdallah Nasib",
+        "pos": "DF",
+        "birthdate": "1994-02-25"
+      },
+      {
+        "nr": 4,
+        "name": "Husam Abu Dahab",
+        "pos": "DF",
+        "birthdate": "2000-05-13"
+      },
+      {
+        "nr": 5,
+        "name": "Yazan Al-Arab",
+        "pos": "DF",
+        "birthdate": "1996-01-31"
+      },
+      {
+        "nr": 6,
+        "name": "Amer Jamous",
+        "pos": "DF",
+        "birthdate": "2002-07-03"
+      },
+      {
+        "nr": 7,
+        "name": "Mohammad Abu Zrayq",
+        "pos": "MF",
+        "birthdate": "1997-12-30"
+      },
+      {
+        "nr": 8,
+        "name": "Noor Al-Rawabdeh",
+        "pos": "MF",
+        "birthdate": "1997-02-24"
+      },
+      {
+        "nr": 9,
+        "name": "Ali Olwan",
+        "pos": "FW",
+        "birthdate": "2000-03-26"
+      },
+      {
+        "nr": 10,
+        "name": "Musa Al-Taamari",
+        "pos": "FW",
+        "birthdate": "1997-06-10"
+      },
+      {
+        "nr": 11,
+        "name": "Odeh Al-Fakhouri",
+        "pos": "FW",
+        "birthdate": "2005-11-22"
+      },
+      {
+        "nr": 12,
+        "name": "Nour Bani Attiah",
+        "pos": "GK",
+        "birthdate": "1993-01-25"
+      },
+      {
+        "nr": 13,
+        "name": "Mahmoud Al-Mardi",
+        "pos": "MF",
+        "birthdate": "1993-10-06"
+      },
+      {
+        "nr": 14,
+        "name": "Rajaei Ayed",
+        "pos": "MF",
+        "birthdate": "1993-07-25"
+      },
+      {
+        "nr": 15,
+        "name": "Ibrahim Sadeh",
+        "pos": "DF",
+        "birthdate": "2000-04-27"
+      },
+      {
+        "nr": 16,
+        "name": "Mo Abualnadi",
+        "pos": "GK",
+        "birthdate": "2001-02-08"
+      },
+      {
+        "nr": 17,
+        "name": "Salim Obaid",
+        "pos": "MF",
+        "birthdate": "1992-01-17"
+      },
+      {
+        "nr": 18,
+        "name": "Mohammad Taha",
+        "pos": "MF",
+        "birthdate": "2005-07-13"
+      },
+      {
+        "nr": 19,
+        "name": "Saed Al-Rosan",
+        "pos": "FW",
+        "birthdate": "1997-02-01"
+      },
+      {
+        "nr": 20,
+        "name": "Mohannad Abu Taha",
+        "pos": "FW",
+        "birthdate": "2003-02-02"
+      },
+      {
+        "nr": 21,
+        "name": "Nizar Al-Rashdan",
+        "pos": "MF",
+        "birthdate": "1999-03-23"
+      },
+      {
+        "nr": 22,
+        "name": "Abdallah Al-Fakhouri",
+        "pos": "DF",
+        "birthdate": "2000-01-22"
+      },
+      {
+        "nr": 23,
+        "name": "Ihsan Haddad",
+        "pos": "FW",
+        "birthdate": "1994-02-05"
+      },
+      {
+        "nr": 24,
+        "name": "Ali Azaizeh",
+        "pos": "FW",
+        "birthdate": "2004-04-13"
+      },
+      {
+        "nr": 25,
+        "name": "Mohammad Al-Dawoud",
+        "pos": "MF",
+        "birthdate": "1992-04-12"
+      },
+      {
+        "nr": 26,
+        "name": "Anas Badawi",
+        "pos": "FW",
+        "birthdate": "1997-09-13"
+      }
+    ]
+  },
+  "Gruppe K": {
+    "Portugal": [
+      {
+        "nr": 1,
+        "name": "Diogo Costa",
+        "pos": "GK",
+        "birthdate": "1999-09-19"
+      },
+      {
+        "nr": 2,
+        "name": "Nélson Semedo",
+        "pos": "DF",
+        "birthdate": "1993-11-16"
+      },
+      {
+        "nr": 3,
+        "name": "Rúben Dias",
+        "pos": "DF",
+        "birthdate": "1997-05-14"
+      },
+      {
+        "nr": 4,
+        "name": "Tomás Araújo",
+        "pos": "DF",
+        "birthdate": "2002-05-16"
+      },
+      {
+        "nr": 5,
+        "name": "Diogo Dalot",
+        "pos": "DF",
+        "birthdate": "1999-03-18"
+      },
+      {
+        "nr": 6,
+        "name": "Matheus Nunes",
+        "pos": "MF",
+        "birthdate": "1998-08-27"
+      },
+      {
+        "nr": 7,
+        "name": "Cristiano Ronaldo",
+        "pos": "FW",
+        "birthdate": "1985-02-05"
+      },
+      {
+        "nr": 8,
+        "name": "Bruno Fernandes",
+        "pos": "MF",
+        "birthdate": "1994-09-08"
+      },
+      {
+        "nr": 9,
+        "name": "Gonçalo Ramos",
+        "pos": "FW",
+        "birthdate": "2001-06-20"
+      },
+      {
+        "nr": 10,
+        "name": "Bernardo Silva",
+        "pos": "MF",
+        "birthdate": "1994-08-10"
+      },
+      {
+        "nr": 11,
+        "name": "João Félix",
+        "pos": "FW",
+        "birthdate": "1999-11-10"
+      },
+      {
+        "nr": 12,
+        "name": "José Sá",
+        "pos": "GK",
+        "birthdate": "1993-01-17"
+      },
+      {
+        "nr": 13,
+        "name": "Renato Veiga",
+        "pos": "DF",
+        "birthdate": "2003-07-29"
+      },
+      {
+        "nr": 14,
+        "name": "Gonçalo Inácio",
+        "pos": "DF",
+        "birthdate": "2001-08-25"
+      },
+      {
+        "nr": 15,
+        "name": "João Neves",
+        "pos": "MF",
+        "birthdate": "2004-09-27"
+      },
+      {
+        "nr": 16,
+        "name": "Francisco Trincão",
+        "pos": "FW",
+        "birthdate": "1999-12-29"
+      },
+      {
+        "nr": 17,
+        "name": "Rafael Leão",
+        "pos": "FW",
+        "birthdate": "1999-06-10"
+      },
+      {
+        "nr": 18,
+        "name": "Pedro Neto",
+        "pos": "MF",
+        "birthdate": "2000-03-09"
+      },
+      {
+        "nr": 19,
+        "name": "Gonçalo Guedes",
+        "pos": "FW",
+        "birthdate": "1996-11-29"
+      },
+      {
+        "nr": 20,
+        "name": "João Cancelo",
+        "pos": "DF",
+        "birthdate": "1994-05-27"
+      },
+      {
+        "nr": 21,
+        "name": "Rúben Neves",
+        "pos": "MF",
+        "birthdate": "1997-03-13"
+      },
+      {
+        "nr": 22,
+        "name": "Rui Silva",
+        "pos": "GK",
+        "birthdate": "1994-02-07"
+      },
+      {
+        "nr": 23,
+        "name": "Vitinha",
+        "pos": "MF",
+        "birthdate": "2000-02-13"
+      },
+      {
+        "nr": 24,
+        "name": "Samú Costa",
+        "pos": "MF",
+        "birthdate": "2000-11-27"
+      },
+      {
+        "nr": 25,
+        "name": "Nuno Mendes",
+        "pos": "DF",
+        "birthdate": "2002-06-19"
+      },
+      {
+        "nr": 26,
+        "name": "Francisco Conceição",
+        "pos": "FW",
+        "birthdate": "2002-12-14"
+      }
+    ],
+    "DR Congo": [
+      {
+        "nr": 1,
+        "name": "Lionel Mpasi",
+        "pos": "GK",
+        "birthdate": "1994-08-01"
+      },
+      {
+        "nr": 2,
+        "name": "Aaron Wan-Bissaka",
+        "pos": "DF",
+        "birthdate": "1997-11-26"
+      },
+      {
+        "nr": 3,
+        "name": "Steve Kapuadi",
+        "pos": "DF",
+        "birthdate": "1998-04-30"
+      },
+      {
+        "nr": 4,
+        "name": "Axel Tuanzebe",
+        "pos": "DF",
+        "birthdate": "1997-11-14"
+      },
+      {
+        "nr": 5,
+        "name": "Dylan Batubinsika",
+        "pos": "DF",
+        "birthdate": "1996-02-15"
+      },
+      {
+        "nr": 6,
+        "name": "Ngal'ayel Mukau",
+        "pos": "DF",
+        "birthdate": "2004-11-03"
+      },
+      {
+        "nr": 7,
+        "name": "Nathanaël Mbuku",
+        "pos": "MF",
+        "birthdate": "2002-03-16"
+      },
+      {
+        "nr": 8,
+        "name": "Samuel Moutoussamy",
+        "pos": "MF",
+        "birthdate": "1996-08-12"
+      },
+      {
+        "nr": 9,
+        "name": "Brian Cipenga",
+        "pos": "FW",
+        "birthdate": "1998-03-11"
+      },
+      {
+        "nr": 10,
+        "name": "Théo Bongonda",
+        "pos": "MF",
+        "birthdate": "1995-11-20"
+      },
+      {
+        "nr": 11,
+        "name": "Gaël Kakuta",
+        "pos": "MF",
+        "birthdate": "1991-06-21"
+      },
+      {
+        "nr": 12,
+        "name": "Joris Kayembe",
+        "pos": "MF",
+        "birthdate": "1994-08-08"
+      },
+      {
+        "nr": 13,
+        "name": "Meschak Elia",
+        "pos": "FW",
+        "birthdate": "1997-08-06"
+      },
+      {
+        "nr": 14,
+        "name": "Noah Sadiki",
+        "pos": "MF",
+        "birthdate": "2004-12-17"
+      },
+      {
+        "nr": 15,
+        "name": "Aaron Tshibola",
+        "pos": "MF",
+        "birthdate": "1995-01-02"
+      },
+      {
+        "nr": 16,
+        "name": "Timothy Fayulu",
+        "pos": "GK",
+        "birthdate": "1999-07-24"
+      },
+      {
+        "nr": 17,
+        "name": "Cédric Bakambu",
+        "pos": "FW",
+        "birthdate": "1991-04-11"
+      },
+      {
+        "nr": 18,
+        "name": "Charles Pickel",
+        "pos": "FW",
+        "birthdate": "1997-05-15"
+      },
+      {
+        "nr": 19,
+        "name": "Fiston Mayele",
+        "pos": "FW",
+        "birthdate": "1994-06-24"
+      },
+      {
+        "nr": 20,
+        "name": "Yoane Wissa",
+        "pos": "FW",
+        "birthdate": "1996-09-03"
+      },
+      {
+        "nr": 21,
+        "name": "Matthieu Epolo",
+        "pos": "DF",
+        "birthdate": "2005-01-15"
+      },
+      {
+        "nr": 22,
+        "name": "Chancel Mbemba",
+        "pos": "DF",
+        "birthdate": "1994-08-08"
+      },
+      {
+        "nr": 23,
+        "name": "Simon Banza",
+        "pos": "FW",
+        "birthdate": "1996-08-13"
+      },
+      {
+        "nr": 24,
+        "name": "Gédéon Kalulu",
+        "pos": "MF",
+        "birthdate": "1997-08-29"
+      },
+      {
+        "nr": 25,
+        "name": "Edo Kayembe",
+        "pos": "MF",
+        "birthdate": "1998-06-03"
+      },
+      {
+        "nr": 26,
+        "name": "Arthur Masuaku",
+        "pos": "DF",
+        "birthdate": "1993-11-07"
+      }
+    ],
+    "Uzbekistan": [
+      {
+        "nr": 1,
+        "name": "Utkir Yusupov",
+        "pos": "GK",
+        "birthdate": "1991-01-04"
+      },
+      {
+        "nr": 2,
+        "name": "Abdukodir Khusanov",
+        "pos": "DF",
+        "birthdate": "2004-02-29"
+      },
+      {
+        "nr": 3,
+        "name": "Khojiakbar Alijonov",
+        "pos": "DF",
+        "birthdate": "1997-04-19"
+      },
+      {
+        "nr": 4,
+        "name": "Farrukh Sayfiev",
+        "pos": "DF",
+        "birthdate": "1991-01-17"
+      },
+      {
+        "nr": 5,
+        "name": "Rustam Ashurmatov",
+        "pos": "DF",
+        "birthdate": "1996-07-07"
+      },
+      {
+        "nr": 6,
+        "name": "Akmal Mozgovoy",
+        "pos": "MF",
+        "birthdate": "1999-04-02"
+      },
+      {
+        "nr": 7,
+        "name": "Otabek Shukurov",
+        "pos": "MF",
+        "birthdate": "1996-06-22"
+      },
+      {
+        "nr": 8,
+        "name": "Jamshid Iskanderov",
+        "pos": "MF",
+        "birthdate": "1993-10-16"
+      },
+      {
+        "nr": 9,
+        "name": "Odiljon Hamrobekov",
+        "pos": "FW",
+        "birthdate": "1996-02-13"
+      },
+      {
+        "nr": 10,
+        "name": "Ruslanbek Jiyanov",
+        "pos": "MF",
+        "birthdate": "2001-06-05"
+      },
+      {
+        "nr": 11,
+        "name": "Oston Urunov",
+        "pos": "FW",
+        "birthdate": "2000-12-19"
+      },
+      {
+        "nr": 12,
+        "name": "Abduvohid Nematov",
+        "pos": "GK",
+        "birthdate": "2001-03-20"
+      },
+      {
+        "nr": 13,
+        "name": "Sherzod Nasrullaev",
+        "pos": "DF",
+        "birthdate": "1998-07-23"
+      },
+      {
+        "nr": 14,
+        "name": "Eldor Shomurodov",
+        "pos": "FW",
+        "birthdate": "1995-06-29"
+      },
+      {
+        "nr": 15,
+        "name": "Umar Eshmurodov",
+        "pos": "DF",
+        "birthdate": "1992-11-30"
+      },
+      {
+        "nr": 16,
+        "name": "Botirali Ergashev",
+        "pos": "MF",
+        "birthdate": "1995-06-23"
+      },
+      {
+        "nr": 17,
+        "name": "Dostonbek Khamdamov",
+        "pos": "DF",
+        "birthdate": "1996-07-24"
+      },
+      {
+        "nr": 18,
+        "name": "Abdulla Abdullaev",
+        "pos": "DF",
+        "birthdate": "1997-09-01"
+      },
+      {
+        "nr": 19,
+        "name": "Azizjon Ganiev",
+        "pos": "FW",
+        "birthdate": "1998-02-22"
+      },
+      {
+        "nr": 20,
+        "name": "Azizbek Amonov",
+        "pos": "MF",
+        "birthdate": "1997-10-30"
+      },
+      {
+        "nr": 21,
+        "name": "Igor Sergeev",
+        "pos": "MF",
+        "birthdate": "1993-04-30"
+      },
+      {
+        "nr": 22,
+        "name": "Abbosbek Fayzullaev",
+        "pos": "MF",
+        "birthdate": "2003-10-03"
+      },
+      {
+        "nr": 23,
+        "name": "Sherzod Esanov",
+        "pos": "GK",
+        "birthdate": "2003-02-01"
+      },
+      {
+        "nr": 24,
+        "name": "Behruz Karimov",
+        "pos": "DF",
+        "birthdate": "2007-08-07"
+      },
+      {
+        "nr": 25,
+        "name": "Avazbek Ulmasaliev",
+        "pos": "MF",
+        "birthdate": "2000-03-27"
+      },
+      {
+        "nr": 26,
+        "name": "Jakhongir Urozov",
+        "pos": "DF",
+        "birthdate": "2004-01-18"
+      }
+    ],
+    "Colombia": [
+      {
+        "nr": 1,
+        "name": "David Ospina",
+        "pos": "GK",
+        "birthdate": "1988-08-31"
+      },
+      {
+        "nr": 2,
+        "name": "Daniel Muñoz",
+        "pos": "DF",
+        "birthdate": "1996-05-26"
+      },
+      {
+        "nr": 3,
+        "name": "Jhon Lucumí",
+        "pos": "DF",
+        "birthdate": "1998-06-26"
+      },
+      {
+        "nr": 4,
+        "name": "Santiago Arias",
+        "pos": "DF",
+        "birthdate": "1992-01-13"
+      },
+      {
+        "nr": 5,
+        "name": "Kevin Castaño",
+        "pos": "MF",
+        "birthdate": "2000-09-29"
+      },
+      {
+        "nr": 6,
+        "name": "Richard Ríos",
+        "pos": "MF",
+        "birthdate": "2000-06-02"
+      },
+      {
+        "nr": 7,
+        "name": "Luis Díaz",
+        "pos": "FW",
+        "birthdate": "1997-01-13"
+      },
+      {
+        "nr": 8,
+        "name": "Jorge Carrascal",
+        "pos": "MF",
+        "birthdate": "1998-05-25"
+      },
+      {
+        "nr": 9,
+        "name": "Jhon Córdoba",
+        "pos": "FW",
+        "birthdate": "1993-05-11"
+      },
+      {
+        "nr": 10,
+        "name": "James Rodríguez",
+        "pos": "MF",
+        "birthdate": "1991-07-12"
+      },
+      {
+        "nr": 11,
+        "name": "Jhon Arias",
+        "pos": "MF",
+        "birthdate": "1997-09-21"
+      },
+      {
+        "nr": 12,
+        "name": "Camilo Vargas",
+        "pos": "GK",
+        "birthdate": "1989-03-09"
+      },
+      {
+        "nr": 13,
+        "name": "Yerry Mina",
+        "pos": "DF",
+        "birthdate": "1994-09-23"
+      },
+      {
+        "nr": 14,
+        "name": "Gustavo Puerta",
+        "pos": "MF",
+        "birthdate": "2003-07-23"
+      },
+      {
+        "nr": 15,
+        "name": "Juan Portilla",
+        "pos": "MF",
+        "birthdate": "1998-09-12"
+      },
+      {
+        "nr": 16,
+        "name": "Jefferson Lerma",
+        "pos": "MF",
+        "birthdate": "1994-10-25"
+      },
+      {
+        "nr": 17,
+        "name": "Johan Mojica",
+        "pos": "DF",
+        "birthdate": "1992-08-21"
+      },
+      {
+        "nr": 18,
+        "name": "Willer Ditta",
+        "pos": "DF",
+        "birthdate": "1998-01-23"
+      },
+      {
+        "nr": 19,
+        "name": "Cucho Hernández",
+        "pos": "FW",
+        "birthdate": "1999-04-20"
+      },
+      {
+        "nr": 20,
+        "name": "Juan Fernando Quintero",
+        "pos": "MF",
+        "birthdate": "1993-01-18"
+      },
+      {
+        "nr": 21,
+        "name": "Jaminton Campaz",
+        "pos": "MF",
+        "birthdate": "2000-05-24"
+      },
+      {
+        "nr": 22,
+        "name": "Deiver Machado",
+        "pos": "DF",
+        "birthdate": "1993-09-02"
+      },
+      {
+        "nr": 23,
+        "name": "Davinson Sánchez",
+        "pos": "DF",
+        "birthdate": "1996-06-12"
+      },
+      {
+        "nr": 24,
+        "name": "Álvaro Montero",
+        "pos": "GK",
+        "birthdate": "1995-03-29"
+      },
+      {
+        "nr": 25,
+        "name": "Luis Suárez",
+        "pos": "FW",
+        "birthdate": "1997-12-02"
+      },
+      {
+        "nr": 26,
+        "name": "Andrés Gómez",
+        "pos": "MF",
+        "birthdate": "2002-09-12"
+      }
+    ]
+  },
+  "Gruppe L": {
+    "England": [
+      {
+        "nr": 1,
+        "name": "Jordan Pickford",
+        "pos": "GK",
+        "birthdate": "1994-03-07"
+      },
+      {
+        "nr": 2,
+        "name": "Ezri Konsa",
+        "pos": "DF",
+        "birthdate": "1997-10-23"
+      },
+      {
+        "nr": 3,
+        "name": "Nico O'Reilly",
+        "pos": "DF",
+        "birthdate": "2005-03-21"
+      },
+      {
+        "nr": 4,
+        "name": "Declan Rice",
+        "pos": "MF",
+        "birthdate": "1999-01-14"
+      },
+      {
+        "nr": 5,
+        "name": "John Stones",
+        "pos": "DF",
+        "birthdate": "1994-05-28"
+      },
+      {
+        "nr": 6,
+        "name": "Marc Guéhi",
+        "pos": "DF",
+        "birthdate": "2000-07-13"
+      },
+      {
+        "nr": 7,
+        "name": "Bukayo Saka",
+        "pos": "FW",
+        "birthdate": "2001-09-05"
+      },
+      {
+        "nr": 8,
+        "name": "Elliot Anderson",
+        "pos": "MF",
+        "birthdate": "2002-11-06"
+      },
+      {
+        "nr": 9,
+        "name": "Harry Kane",
+        "pos": "FW",
+        "birthdate": "1993-07-28"
+      },
+      {
+        "nr": 10,
+        "name": "Jude Bellingham",
+        "pos": "MF",
+        "birthdate": "2003-06-29"
+      },
+      {
+        "nr": 11,
+        "name": "Marcus Rashford",
+        "pos": "FW",
+        "birthdate": "1997-10-31"
+      },
+      {
+        "nr": 12,
+        "name": "Trevoh Chalobah",
+        "pos": "DF",
+        "birthdate": "1999-07-05"
+      },
+      {
+        "nr": 13,
+        "name": "Dean Henderson",
+        "pos": "GK",
+        "birthdate": "1997-03-12"
+      },
+      {
+        "nr": 14,
+        "name": "Jordan Henderson",
+        "pos": "MF",
+        "birthdate": "1990-06-17"
+      },
+      {
+        "nr": 15,
+        "name": "Dan Burn",
+        "pos": "DF",
+        "birthdate": "1992-05-09"
+      },
+      {
+        "nr": 16,
+        "name": "Kobbie Mainoo",
+        "pos": "MF",
+        "birthdate": "2005-04-19"
+      },
+      {
+        "nr": 17,
+        "name": "Morgan Rogers",
+        "pos": "MF",
+        "birthdate": "2002-07-26"
+      },
+      {
+        "nr": 18,
+        "name": "Anthony Gordon",
+        "pos": "FW",
+        "birthdate": "2001-02-24"
+      },
+      {
+        "nr": 19,
+        "name": "Ollie Watkins",
+        "pos": "FW",
+        "birthdate": "1995-12-30"
+      },
+      {
+        "nr": 20,
+        "name": "Noni Madueke",
+        "pos": "FW",
+        "birthdate": "2002-03-10"
+      },
+      {
+        "nr": 21,
+        "name": "Eberechi Eze",
+        "pos": "MF",
+        "birthdate": "1998-06-29"
+      },
+      {
+        "nr": 22,
+        "name": "Ivan Toney",
+        "pos": "FW",
+        "birthdate": "1996-03-16"
+      },
+      {
+        "nr": 23,
+        "name": "James Trafford",
+        "pos": "GK",
+        "birthdate": "2002-10-10"
+      },
+      {
+        "nr": 24,
+        "name": "Reece James",
+        "pos": "DF",
+        "birthdate": "1999-12-08"
+      },
+      {
+        "nr": 25,
+        "name": "Djed Spence",
+        "pos": "DF",
+        "birthdate": "2000-08-09"
+      },
+      {
+        "nr": 26,
+        "name": "Jarell Quansah",
+        "pos": "DF",
+        "birthdate": "2003-01-29"
+      }
+    ],
+    "Croatia": [
+      {
+        "nr": 1,
+        "name": "Dominik Livaković",
+        "pos": "GK",
+        "birthdate": "1995-01-09"
+      },
+      {
+        "nr": 2,
+        "name": "Josip Stanišić",
+        "pos": "DF",
+        "birthdate": "2000-04-02"
+      },
+      {
+        "nr": 3,
+        "name": "Marin Pongračić",
+        "pos": "DF",
+        "birthdate": "1997-09-11"
+      },
+      {
+        "nr": 4,
+        "name": "Joško Gvardiol",
+        "pos": "DF",
+        "birthdate": "2002-01-23"
+      },
+      {
+        "nr": 5,
+        "name": "Duje Ćaleta-Car",
+        "pos": "DF",
+        "birthdate": "1996-09-17"
+      },
+      {
+        "nr": 6,
+        "name": "Josip Šutalo",
+        "pos": "DF",
+        "birthdate": "2000-02-28"
+      },
+      {
+        "nr": 7,
+        "name": "Nikola Moro",
+        "pos": "MF",
+        "birthdate": "1998-03-12"
+      },
+      {
+        "nr": 8,
+        "name": "Mateo Kovačić",
+        "pos": "MF",
+        "birthdate": "1994-05-06"
+      },
+      {
+        "nr": 9,
+        "name": "Andrej Kramarić",
+        "pos": "FW",
+        "birthdate": "1991-06-19"
+      },
+      {
+        "nr": 10,
+        "name": "Luka Modrić",
+        "pos": "MF",
+        "birthdate": "1985-09-09"
+      },
+      {
+        "nr": 11,
+        "name": "Ante Budimir",
+        "pos": "FW",
+        "birthdate": "1991-07-22"
+      },
+      {
+        "nr": 12,
+        "name": "Ivor Pandur",
+        "pos": "GK",
+        "birthdate": "2000-03-25"
+      },
+      {
+        "nr": 13,
+        "name": "Nikola Vlašić",
+        "pos": "MF",
+        "birthdate": "1997-10-04"
+      },
+      {
+        "nr": 14,
+        "name": "Ivan Perišić",
+        "pos": "MF",
+        "birthdate": "1989-02-02"
+      },
+      {
+        "nr": 15,
+        "name": "Mario Pašalić",
+        "pos": "MF",
+        "birthdate": "1995-02-09"
+      },
+      {
+        "nr": 16,
+        "name": "Martin Baturina",
+        "pos": "FW",
+        "birthdate": "2003-02-16"
+      },
+      {
+        "nr": 17,
+        "name": "Petar Sučić",
+        "pos": "MF",
+        "birthdate": "2003-10-25"
+      },
+      {
+        "nr": 18,
+        "name": "Kristijan Jakić",
+        "pos": "MF",
+        "birthdate": "1997-05-14"
+      },
+      {
+        "nr": 19,
+        "name": "Toni Fruk",
+        "pos": "FW",
+        "birthdate": "2001-03-09"
+      },
+      {
+        "nr": 20,
+        "name": "Igor Matanović",
+        "pos": "FW",
+        "birthdate": "2003-03-31"
+      },
+      {
+        "nr": 21,
+        "name": "Luka Sučić",
+        "pos": "MF",
+        "birthdate": "2002-09-08"
+      },
+      {
+        "nr": 22,
+        "name": "Luka Vušković",
+        "pos": "DF",
+        "birthdate": "2007-02-24"
+      },
+      {
+        "nr": 23,
+        "name": "Dominik Kotarski",
+        "pos": "GK",
+        "birthdate": "2000-02-10"
+      },
+      {
+        "nr": 24,
+        "name": "Marco Pašalić",
+        "pos": "FW",
+        "birthdate": "2000-09-14"
+      },
+      {
+        "nr": 25,
+        "name": "Martin Erlić",
+        "pos": "DF",
+        "birthdate": "1998-01-24"
+      },
+      {
+        "nr": 26,
+        "name": "Petar Musa",
+        "pos": "FW",
+        "birthdate": "1998-03-04"
+      }
+    ],
+    "Ghana": [
+      {
+        "nr": 1,
+        "name": "Lawrence Ati-Zigi",
+        "pos": "GK",
+        "birthdate": "1996-11-29"
+      },
+      {
+        "nr": 2,
+        "name": "Alidu Seidu",
+        "pos": "DF",
+        "birthdate": "2000-06-04"
+      },
+      {
+        "nr": 3,
+        "name": "Caleb Yirenkyi",
+        "pos": "DF",
+        "birthdate": "2006-01-15"
+      },
+      {
+        "nr": 4,
+        "name": "Jonas Adjetey",
+        "pos": "DF",
+        "birthdate": "2003-12-13"
+      },
+      {
+        "nr": 5,
+        "name": "Thomas Partey",
+        "pos": "MF",
+        "birthdate": "1993-06-13"
+      },
+      {
+        "nr": 6,
+        "name": "Abdul Mumin",
+        "pos": "DF",
+        "birthdate": "1998-06-06"
+      },
+      {
+        "nr": 7,
+        "name": "Abdul Fatawu",
+        "pos": "FW",
+        "birthdate": "2004-03-08"
+      },
+      {
+        "nr": 8,
+        "name": "Kwasi Sibo",
+        "pos": "MF",
+        "birthdate": "1998-06-24"
+      },
+      {
+        "nr": 9,
+        "name": "Jordan Ayew",
+        "pos": "FW",
+        "birthdate": "1991-09-11"
+      },
+      {
+        "nr": 10,
+        "name": "Brandon Thomas-Asante",
+        "pos": "FW",
+        "birthdate": "1998-12-29"
+      },
+      {
+        "nr": 11,
+        "name": "Antoine Semenyo",
+        "pos": "FW",
+        "birthdate": "2000-01-07"
+      },
+      {
+        "nr": 12,
+        "name": "Joseph Anang",
+        "pos": "GK",
+        "birthdate": "2000-06-08"
+      },
+      {
+        "nr": 13,
+        "name": "Christopher Bonsu Baah",
+        "pos": "MF",
+        "birthdate": "2004-12-14"
+      },
+      {
+        "nr": 14,
+        "name": "Gideon Mensah",
+        "pos": "DF",
+        "birthdate": "1998-07-18"
+      },
+      {
+        "nr": 15,
+        "name": "Elisha Owusu",
+        "pos": "MF",
+        "birthdate": "1997-11-07"
+      },
+      {
+        "nr": 16,
+        "name": "Benjamin Asare",
+        "pos": "MF",
+        "birthdate": "1992-07-13"
+      },
+      {
+        "nr": 17,
+        "name": "Abdul Rahman Baba",
+        "pos": "DF",
+        "birthdate": "1994-07-02"
+      },
+      {
+        "nr": 18,
+        "name": "Jerome Opoku",
+        "pos": "DF",
+        "birthdate": "1998-10-14"
+      },
+      {
+        "nr": 19,
+        "name": "Iñaki Williams",
+        "pos": "FW",
+        "birthdate": "1994-06-15"
+      },
+      {
+        "nr": 20,
+        "name": "Augustine Boakye",
+        "pos": "FW",
+        "birthdate": "2000-11-03"
+      },
+      {
+        "nr": 21,
+        "name": "Kojo Peprah Oppong",
+        "pos": "FW",
+        "birthdate": "2004-06-04"
+      },
+      {
+        "nr": 22,
+        "name": "Kamaldeen Sulemana",
+        "pos": "MF",
+        "birthdate": "2002-02-15"
+      },
+      {
+        "nr": 23,
+        "name": "Derrick Luckassen",
+        "pos": "DF",
+        "birthdate": "1995-07-03"
+      },
+      {
+        "nr": 24,
+        "name": "Ernest Nuamah",
+        "pos": "MF",
+        "birthdate": "2003-11-01"
+      },
+      {
+        "nr": 25,
+        "name": "Prince Kwabena Adu",
+        "pos": "FW",
+        "birthdate": "2003-09-23"
+      },
+      {
+        "nr": 26,
+        "name": "Marvin Senaya",
+        "pos": "GK",
+        "birthdate": "2001-01-28"
+      }
+    ],
+    "Panama": [
+      {
+        "nr": 1,
+        "name": "Luis Mejía",
+        "pos": "GK",
+        "birthdate": "1991-03-16"
+      },
+      {
+        "nr": 2,
+        "name": "César Blackman",
+        "pos": "DF",
+        "birthdate": "1998-04-02"
+      },
+      {
+        "nr": 3,
+        "name": "José Córdoba",
+        "pos": "DF",
+        "birthdate": "2001-06-03"
+      },
+      {
+        "nr": 4,
+        "name": "Fidel Escobar",
+        "pos": "DF",
+        "birthdate": "1995-01-09"
+      },
+      {
+        "nr": 5,
+        "name": "Edgardo Fariña",
+        "pos": "DF",
+        "birthdate": "2001-10-19"
+      },
+      {
+        "nr": 6,
+        "name": "Cristian Martínez",
+        "pos": "MF",
+        "birthdate": "1997-02-06"
+      },
+      {
+        "nr": 7,
+        "name": "José Luis Rodríguez",
+        "pos": "MF",
+        "birthdate": "1998-06-19"
+      },
+      {
+        "nr": 8,
+        "name": "Adalberto Carrasquilla",
+        "pos": "MF",
+        "birthdate": "1998-11-28"
+      },
+      {
+        "nr": 9,
+        "name": "Tomás Rodríguez",
+        "pos": "FW",
+        "birthdate": "1999-03-09"
+      },
+      {
+        "nr": 10,
+        "name": "Ismael Díaz",
+        "pos": "MF",
+        "birthdate": "1997-05-12"
+      },
+      {
+        "nr": 11,
+        "name": "Yoel Bárcenas",
+        "pos": "FW",
+        "birthdate": "1993-10-23"
+      },
+      {
+        "nr": 12,
+        "name": "César Samudio",
+        "pos": "GK",
+        "birthdate": "1994-02-23"
+      },
+      {
+        "nr": 13,
+        "name": "Jiovany Ramos",
+        "pos": "DF",
+        "birthdate": "1997-01-26"
+      },
+      {
+        "nr": 14,
+        "name": "Carlos Harvey",
+        "pos": "MF",
+        "birthdate": "2000-02-03"
+      },
+      {
+        "nr": 15,
+        "name": "Eric Davis",
+        "pos": "DF",
+        "birthdate": "1991-03-31"
+      },
+      {
+        "nr": 16,
+        "name": "Andrés Andrade",
+        "pos": "MF",
+        "birthdate": "1998-10-16"
+      },
+      {
+        "nr": 17,
+        "name": "José Fajardo",
+        "pos": "FW",
+        "birthdate": "1993-08-18"
+      },
+      {
+        "nr": 18,
+        "name": "Cecilio Waterman",
+        "pos": "FW",
+        "birthdate": "1991-04-13"
+      },
+      {
+        "nr": 19,
+        "name": "Alberto Quintero",
+        "pos": "FW",
+        "birthdate": "1987-12-18"
+      },
+      {
+        "nr": 20,
+        "name": "Aníbal Godoy",
+        "pos": "MF",
+        "birthdate": "1990-02-10"
+      },
+      {
+        "nr": 21,
+        "name": "César Yanis",
+        "pos": "DF",
+        "birthdate": "1996-01-28"
+      },
+      {
+        "nr": 22,
+        "name": "Orlando Mosquera",
+        "pos": "GK",
+        "birthdate": "1994-12-25"
+      },
+      {
+        "nr": 23,
+        "name": "Michael Amir Murillo",
+        "pos": "DF",
+        "birthdate": "1996-02-11"
+      },
+      {
+        "nr": 24,
+        "name": "Azarias Londoño",
+        "pos": "MF",
+        "birthdate": "2001-06-21"
+      },
+      {
+        "nr": 25,
+        "name": "Roderick Miller",
+        "pos": "FW",
+        "birthdate": "1992-04-03"
+      },
+      {
+        "nr": 26,
+        "name": "Jorge Gutiérrez",
+        "pos": "FW",
+        "birthdate": "1998-09-01"
+      }
+    ]
+  }
+}

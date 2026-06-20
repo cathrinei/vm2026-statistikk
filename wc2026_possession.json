@@ -1,0 +1,170 @@
+{
+  "sr:sport_event:66456904": {
+    "home": "Mexico",
+    "away": "South Africa",
+    "home_poss": 61,
+    "away_poss": 39
+  },
+  "sr:sport_event:66456906": {
+    "home": "Korea Republic",
+    "away": "Czechia",
+    "home_poss": 62,
+    "away_poss": 38
+  },
+  "sr:sport_event:66456916": {
+    "home": "Canada",
+    "away": "Bosnia and Herzegovina",
+    "home_poss": 60,
+    "away_poss": 40
+  },
+  "sr:sport_event:66456940": {
+    "home": "USA",
+    "away": "Paraguay",
+    "home_poss": 63,
+    "away_poss": 37
+  },
+  "sr:sport_event:66456918": {
+    "home": "Qatar",
+    "away": "Switzerland",
+    "home_poss": 30,
+    "away_poss": 70
+  },
+  "sr:sport_event:66456928": {
+    "home": "Brazil",
+    "away": "Morocco",
+    "home_poss": 54,
+    "away_poss": 46
+  },
+  "sr:sport_event:66456930": {
+    "home": "Haiti",
+    "away": "Scotland",
+    "home_poss": 50,
+    "away_poss": 50
+  },
+  "sr:sport_event:66456942": {
+    "home": "Australia",
+    "away": "Turkiye",
+    "home_poss": 37,
+    "away_poss": 63
+  },
+  "sr:sport_event:66457070": {
+    "home": "Germany",
+    "away": "Curacao",
+    "home_poss": 65,
+    "away_poss": 35
+  },
+  "sr:sport_event:66457072": {
+    "home": "Ivory Coast",
+    "away": "Ecuador",
+    "home_poss": 49,
+    "away_poss": 51
+  },
+  "sr:sport_event:66456968": {
+    "home": "Netherlands",
+    "away": "Japan",
+    "home_poss": 60,
+    "away_poss": 40
+  },
+  "sr:sport_event:66456970": {
+    "home": "Sweden",
+    "away": "Tunisia",
+    "home_poss": 49,
+    "away_poss": 51
+  },
+  "sr:sport_event:66456982": {
+    "home": "Belgium",
+    "away": "Egypt",
+    "home_poss": 53,
+    "away_poss": 47
+  },
+  "sr:sport_event:66456984": {
+    "home": "IR Iran",
+    "away": "New Zealand",
+    "home_poss": 47,
+    "away_poss": 53
+  },
+  "sr:sport_event:66456994": {
+    "home": "Spain",
+    "away": "Cape Verde",
+    "home_poss": 74,
+    "away_poss": 26
+  },
+  "sr:sport_event:66456996": {
+    "home": "Saudi Arabia",
+    "away": "Uruguay",
+    "home_poss": 35,
+    "away_poss": 65
+  },
+  "sr:sport_event:66457006": {
+    "home": "France",
+    "away": "Senegal",
+    "home_poss": 54,
+    "away_poss": 46
+  },
+  "sr:sport_event:66457008": {
+    "home": "Iraq",
+    "away": "Norway",
+    "home_poss": 37,
+    "away_poss": 63
+  },
+  "sr:sport_event:66457018": {
+    "home": "Argentina",
+    "away": "Algeria",
+    "home_poss": 47,
+    "away_poss": 53
+  },
+  "sr:sport_event:66457020": {
+    "home": "Austria",
+    "away": "Jordan",
+    "home_poss": 62,
+    "away_poss": 38
+  },
+  "sr:sport_event:66457030": {
+    "home": "Portugal",
+    "away": "Congo DR",
+    "home_poss": 75,
+    "away_poss": 25
+  },
+  "sr:sport_event:66457042": {
+    "home": "England",
+    "away": "Croatia",
+    "home_poss": 54,
+    "away_poss": 46
+  },
+  "sr:sport_event:66457044": {
+    "home": "Ghana",
+    "away": "Panama",
+    "home_poss": 37,
+    "away_poss": 63
+  },
+  "sr:sport_event:66457032": {
+    "home": "Uzbekistan",
+    "away": "Colombia",
+    "home_poss": 33,
+    "away_poss": 67
+  },
+  "sr:sport_event:66456910": {
+    "home": "Czechia",
+    "away": "South Africa",
+    "home_poss": 39,
+    "away_poss": 61
+  },
+  "sr:sport_event:66456922": {
+    "home": "Switzerland",
+    "away": "Bosnia and Herzegovina",
+    "home_poss": 62,
+    "away_poss": 38
+  },
+  "sr:sport_event:66456920": {
+    "home": "Canada",
+    "away": "Qatar",
+    "home_poss": 78,
+    "away_poss": 22
+  },
+  "sr:sport_event:66456908": {
+    "home": "Mexico",
+    "away": "Korea Republic",
+    "home_poss": 43,
+    "away_poss": 57
+  }
+}

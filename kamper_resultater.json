@@ -1,0 +1,810 @@
+{
+  "Gruppe A": [
+    {
+      "dato": "2026-06-11",
+      "hjemme": "Mexico",
+      "borte": "Sør-Afrika",
+      "hjemme_en": "Mexico",
+      "borte_en": "South Africa",
+      "score_h": 2,
+      "score_a": 0,
+      "spilt": true,
+      "id": "400021443",
+      "dommer": "Wilton SAMPAIO"
+    },
+    {
+      "dato": "2026-06-11",
+      "hjemme": "Sør-Korea",
+      "borte": "Tsjekkia",
+      "hjemme_en": "South Korea",
+      "borte_en": "Czechia",
+      "score_h": 2,
+      "score_a": 1,
+      "spilt": true,
+      "id": "400021441",
+      "dommer": "Amin MOHAMED"
+    },
+    {
+      "dato": "2026-06-18",
+      "hjemme": "Tsjekkia",
+      "borte": "Sør-Afrika",
+      "hjemme_en": "Czechia",
+      "borte_en": "South Africa",
+      "score_h": 1,
+      "score_a": 1,
+      "spilt": true,
+      "id": "400021440",
+      "dommer": "Tori PENSO"
+    },
+    {
+      "dato": "2026-06-18",
+      "hjemme": "Mexico",
+      "borte": "Sør-Korea",
+      "hjemme_en": "Mexico",
+      "borte_en": "South Korea",
+      "score_h": 1,
+      "score_a": 0,
+      "spilt": true,
+      "id": "400021442",
+      "dommer": "Gustavo TEJERA"
+    },
+    {
+      "dato": "2026-06-24",
+      "hjemme": "Tsjekkia",
+      "borte": "Mexico",
+      "hjemme_en": "Czechia",
+      "borte_en": "Mexico",
+      "score_h": null,
+      "score_a": null,
+      "spilt": false
+    },
+    {
+      "dato": "2026-06-24",
+      "hjemme": "Sør-Afrika",
+      "borte": "Sør-Korea",
+      "hjemme_en": "South Africa",
+      "borte_en": "South Korea",
+      "score_h": null,
+      "score_a": null,
+      "spilt": false
+    }
+  ],
+  "Gruppe B": [
+    {
+      "dato": "2026-06-12",
+      "hjemme": "Canada",
+      "borte": "Bosnia-Hercegovina",
+      "hjemme_en": "Canada",
+      "borte_en": "Bosnia and Herzegovina",
+      "score_h": 1,
+      "score_a": 1,
+      "spilt": true,
+      "id": "400021449",
+      "dommer": "Facundo TELLO"
+    },
+    {
+      "dato": "2026-06-13",
+      "hjemme": "Qatar",
+      "borte": "Sveits",
+      "hjemme_en": "Qatar",
+      "borte_en": "Switzerland",
+      "score_h": 1,
+      "score_a": 1,
+      "spilt": true,
+      "id": "400021447",
+      "dommer": "Said MARTINEZ"
+    },
+    {
+      "dato": "2026-06-18",
+      "hjemme": "Sveits",
+      "borte": "Bosnia-Hercegovina",
+      "hjemme_en": "Switzerland",
+      "borte_en": "Bosnia and Herzegovina",
+      "score_h": 4,
+      "score_a": 1,
+      "spilt": true,
+      "id": "400021446",
+      "dommer": "Joao PINHEIRO"
+    },
+    {
+      "dato": "2026-06-18",
+      "hjemme": "Canada",
+      "borte": "Qatar",
+      "hjemme_en": "Canada",
+      "borte_en": "Qatar",
+      "score_h": 6,
+      "score_a": 0,
+      "spilt": true,
+      "id": "400021450",
+      "dommer": "Cristian GARAY"
+    },
+    {
+      "dato": "2026-06-24",
+      "hjemme": "Sveits",
+      "borte": "Canada",
+      "hjemme_en": "Switzerland",
+      "borte_en": "Canada",
+      "score_h": null,
+      "score_a": null,
+      "spilt": false
+    },
+    {
+      "dato": "2026-06-24",
+      "hjemme": "Bosnia-Hercegovina",
+      "borte": "Qatar",
+      "hjemme_en": "Bosnia and Herzegovina",
+      "borte_en": "Qatar",
+      "score_h": null,
+      "score_a": null,
+      "spilt": false
+    }
+  ],
+  "Gruppe C": [
+    {
+      "dato": "2026-06-13",
+      "hjemme": "Brasil",
+      "borte": "Marokko",
+      "hjemme_en": "Brazil",
+      "borte_en": "Morocco",
+      "score_h": 1,
+      "score_a": 1,
+      "spilt": true,
+      "id": "400021456",
+      "dommer": "Slavko VINCIC"
+    },
+    {
+      "dato": "2026-06-13",
+      "hjemme": "Haiti",
+      "borte": "Skottland",
+      "hjemme_en": "Haiti",
+      "borte_en": "Scotland",
+      "score_h": 0,
+      "score_a": 1,
+      "spilt": true,
+      "id": "400021453",
+      "dommer": "Mustapha GHORBAL"
+    },
+    {
+      "dato": "2026-06-19",
+      "hjemme": "Skottland",
+      "borte": "Marokko",
+      "hjemme_en": "Scotland",
+      "borte_en": "Morocco",
+      "score_h": 0,
+      "score_a": 1,
+      "spilt": true,
+      "id": "400021454",
+      "dommer": "Ilgiz TANTASHEV"
+    },
+    {
+      "dato": "2026-06-19",
+      "hjemme": "Brasil",
+      "borte": "Haiti",
+      "hjemme_en": "Brazil",
+      "borte_en": "Haiti",
+      "score_h": 3,
+      "score_a": 0,
+      "spilt": true,
+      "id": "400021457",
+      "dommer": "Alejandro HERNANDEZ"
+    },
+    {
+      "dato": "2026-06-24",
+      "hjemme": "Skottland",
+      "borte": "Brasil",
+      "hjemme_en": "Scotland",
+      "borte_en": "Brazil",
+      "score_h": null,
+      "score_a": null,
+      "spilt": false
+    },
+    {
+      "dato": "2026-06-24",
+      "hjemme": "Marokko",
+      "borte": "Haiti",
+      "hjemme_en": "Morocco",
+      "borte_en": "Haiti",
+      "score_h": null,
+      "score_a": null,
+      "spilt": false
+    }
+  ],
+  "Gruppe D": [
+    {
+      "dato": "2026-06-12",
+      "hjemme": "USA",
+      "borte": "Paraguay",
+      "hjemme_en": "United States",
+      "borte_en": "Paraguay",
+      "score_h": 4,
+      "score_a": 1,
+      "spilt": true,
+      "id": "400021458",
+      "dommer": "Danny MAKKELIE"
+    },
+    {
+      "dato": "2026-06-14",
+      "hjemme": "Australia",
+      "borte": "Tyrkia",
+      "hjemme_en": "Australia",
+      "borte_en": "Turkey",
+      "score_h": 2,
+      "score_a": 0,
+      "spilt": true,
+      "id": "400021463",
+      "dommer": "Jesus VALENZUELA"
+    },
+    {
+      "dato": "2026-06-19",
+      "hjemme": "USA",
+      "borte": "Australia",
+      "hjemme_en": "United States",
+      "borte_en": "Australia",
+      "score_h": 2,
+      "score_a": 0,
+      "spilt": true,
+      "id": "400021462",
+      "dommer": "Felix ZWAYER"
+    },
+    {
+      "dato": "2026-06-19",
+      "hjemme": "Tyrkia",
+      "borte": "Paraguay",
+      "hjemme_en": "Turkey",
+      "borte_en": "Paraguay",
+      "score_h": 0,
+      "score_a": 1,
+      "spilt": true,
+      "id": "400021460",
+      "dommer": "Ivan BARTON"
+    },
+    {
+      "dato": "2026-06-25",
+      "hjemme": "Tyrkia",
+      "borte": "USA",
+      "hjemme_en": "Turkey",
+      "borte_en": "United States",
+      "score_h": null,
+      "score_a": null,
+      "spilt": false
+    },
+    {
+      "dato": "2026-06-25",
+      "hjemme": "Paraguay",
+      "borte": "Australia",
+      "hjemme_en": "Paraguay",
+      "borte_en": "Australia",
+      "score_h": null,
+      "score_a": null,
+      "spilt": false
+    }
+  ],
+  "Gruppe E": [
+    {
+      "dato": "2026-06-14",
+      "hjemme": "Tyskland",
+      "borte": "Curaçao",
+      "hjemme_en": "Germany",
+      "borte_en": "Curacao",
+      "score_h": 7,
+      "score_a": 1,
+      "spilt": true,
+      "id": "400021464",
+      "dommer": "Jalal JAYED"
+    },
+    {
+      "dato": "2026-06-14",
+      "hjemme": "Elfenbenskysten",
+      "borte": "Ecuador",
+      "hjemme_en": "Ivory Coast",
+      "borte_en": "Ecuador",
+      "score_h": 1,
+      "score_a": 0,
+      "spilt": true,
+      "id": "400021467",
+      "dommer": "Francois LETEXIER"
+    },
+    {
+      "dato": "2026-06-20",
+      "hjemme": "Tyskland",
+      "borte": "Elfenbenskysten",
+      "hjemme_en": "Germany",
+      "borte_en": "Ivory Coast",
+      "score_h": null,
+      "score_a": null,
+      "spilt": false
+    },
+    {
+      "dato": "2026-06-20",
+      "hjemme": "Ecuador",
+      "borte": "Curaçao",
+      "hjemme_en": "Ecuador",
+      "borte_en": "Curacao",
+      "score_h": null,
+      "score_a": null,
+      "spilt": false
+    },
+    {
+      "dato": "2026-06-25",
+      "hjemme": "Ecuador",
+      "borte": "Tyskland",
+      "hjemme_en": "Ecuador",
+      "borte_en": "Germany",
+      "score_h": null,
+      "score_a": null,
+      "spilt": false
+    },
+    {
+      "dato": "2026-06-25",
+      "hjemme": "Curaçao",
+      "borte": "Elfenbenskysten",
+      "hjemme_en": "Curacao",
+      "borte_en": "Ivory Coast",
+      "score_h": null,
+      "score_a": null,
+      "spilt": false
+    }
+  ],
+  "Gruppe F": [
+    {
+      "dato": "2026-06-14",
+      "hjemme": "Nederland",
+      "borte": "Japan",
+      "hjemme_en": "Netherlands",
+      "borte_en": "Japan",
+      "score_h": 2,
+      "score_a": 2,
+      "spilt": true,
+      "id": "400021470",
+      "dommer": "Ismail ELFATH"
+    },
+    {
+      "dato": "2026-06-14",
+      "hjemme": "Sverige",
+      "borte": "Tunisia",
+      "hjemme_en": "Sweden",
+      "borte_en": "Tunisia",
+      "score_h": 5,
+      "score_a": 1,
+      "spilt": true,
+      "id": "400021474",
+      "dommer": "Yael FALCON PEREZ"
+    },
+    {
+      "dato": "2026-06-20",
+      "hjemme": "Nederland",
+      "borte": "Sverige",
+      "hjemme_en": "Netherlands",
+      "borte_en": "Sweden",
+      "score_h": null,
+      "score_a": null,
+      "spilt": false
+    },
+    {
+      "dato": "2026-06-21",
+      "hjemme": "Tunisia",
+      "borte": "Japan",
+      "hjemme_en": "Tunisia",
+      "borte_en": "Japan",
+      "score_h": null,
+      "score_a": null,
+      "spilt": false
+    },
+    {
+      "dato": "2026-06-25",
+      "hjemme": "Tunisia",
+      "borte": "Nederland",
+      "hjemme_en": "Tunisia",
+      "borte_en": "Netherlands",
+      "score_h": null,
+      "score_a": null,
+      "spilt": false
+    },
+    {
+      "dato": "2026-06-25",
+      "hjemme": "Japan",
+      "borte": "Sverige",
+      "hjemme_en": "Japan",
+      "borte_en": "Sweden",
+      "score_h": null,
+      "score_a": null,
+      "spilt": false
+    }
+  ],
+  "Gruppe G": [
+    {
+      "dato": "2026-06-15",
+      "hjemme": "Belgia",
+      "borte": "Egypt",
+      "hjemme_en": "Belgium",
+      "borte_en": "Egypt",
+      "score_h": 1,
+      "score_a": 1,
+      "spilt": true,
+      "id": "400021478",
+      "dommer": "Ramon ABATTI"
+    },
+    {
+      "dato": "2026-06-15",
+      "hjemme": "Iran",
+      "borte": "New Zealand",
+      "hjemme_en": "Iran",
+      "borte_en": "New Zealand",
+      "score_h": 2,
+      "score_a": 2,
+      "spilt": true,
+      "id": "400021476",
+      "dommer": "Cesar RAMOS"
+    },
+    {
+      "dato": "2026-06-21",
+      "hjemme": "Belgia",
+      "borte": "Iran",
+      "hjemme_en": "Belgium",
+      "borte_en": "Iran",
+      "score_h": null,
+      "score_a": null,
+      "spilt": false
+    },
+    {
+      "dato": "2026-06-21",
+      "hjemme": "New Zealand",
+      "borte": "Egypt",
+      "hjemme_en": "New Zealand",
+      "borte_en": "Egypt",
+      "score_h": null,
+      "score_a": null,
+      "spilt": false
+    },
+    {
+      "dato": "2026-06-26",
+      "hjemme": "New Zealand",
+      "borte": "Belgia",
+      "hjemme_en": "New Zealand",
+      "borte_en": "Belgium",
+      "score_h": null,
+      "score_a": null,
+      "spilt": false
+    },
+    {
+      "dato": "2026-06-26",
+      "hjemme": "Egypt",
+      "borte": "Iran",
+      "hjemme_en": "Egypt",
+      "borte_en": "Iran",
+      "score_h": null,
+      "score_a": null,
+      "spilt": false
+    }
+  ],
+  "Gruppe H": [
+    {
+      "dato": "2026-06-15",
+      "hjemme": "Spania",
+      "borte": "Kapp Verde",
+      "hjemme_en": "Spain",
+      "borte_en": "Cape Verde",
+      "score_h": 0,
+      "score_a": 0,
+      "spilt": true,
+      "id": "400021482",
+      "dommer": "Adham MAKHADMEH"
+    },
+    {
+      "dato": "2026-06-15",
+      "hjemme": "Saudi-Arabia",
+      "borte": "Uruguay",
+      "hjemme_en": "Saudi Arabia",
+      "borte_en": "Uruguay",
+      "score_h": 1,
+      "score_a": 1,
+      "spilt": true,
+      "id": "400021486",
+      "dommer": "Maurizio MARIANI"
+    },
+    {
+      "dato": "2026-06-21",
+      "hjemme": "Spania",
+      "borte": "Saudi-Arabia",
+      "hjemme_en": "Spain",
+      "borte_en": "Saudi Arabia",
+      "score_h": null,
+      "score_a": null,
+      "spilt": false
+    },
+    {
+      "dato": "2026-06-21",
+      "hjemme": "Uruguay",
+      "borte": "Kapp Verde",
+      "hjemme_en": "Uruguay",
+      "borte_en": "Cape Verde",
+      "score_h": null,
+      "score_a": null,
+      "spilt": false
+    },
+    {
+      "dato": "2026-06-26",
+      "hjemme": "Uruguay",
+      "borte": "Spania",
+      "hjemme_en": "Uruguay",
+      "borte_en": "Spain",
+      "score_h": null,
+      "score_a": null,
+      "spilt": false
+    },
+    {
+      "dato": "2026-06-26",
+      "hjemme": "Kapp Verde",
+      "borte": "Saudi-Arabia",
+      "hjemme_en": "Cape Verde",
+      "borte_en": "Saudi Arabia",
+      "score_h": null,
+      "score_a": null,
+      "spilt": false
+    }
+  ],
+  "Gruppe I": [
+    {
+      "dato": "2026-06-16",
+      "hjemme": "Frankrike",
+      "borte": "Senegal",
+      "hjemme_en": "France",
+      "borte_en": "Senegal",
+      "score_h": 3,
+      "score_a": 1,
+      "spilt": true,
+      "id": "400021490",
+      "dommer": "Alireza FAGHANI"
+    },
+    {
+      "dato": "2026-06-16",
+      "hjemme": "Irak",
+      "borte": "Norge",
+      "hjemme_en": "Iraq",
+      "borte_en": "Norway",
+      "score_h": 1,
+      "score_a": 4,
+      "spilt": true,
+      "id": "400021488",
+      "dommer": "Pierre ATCHO"
+    },
+    {
+      "dato": "2026-06-22",
+      "hjemme": "Frankrike",
+      "borte": "Irak",
+      "hjemme_en": "France",
+      "borte_en": "Iraq",
+      "score_h": null,
+      "score_a": null,
+      "spilt": false
+    },
+    {
+      "dato": "2026-06-22",
+      "hjemme": "Norge",
+      "borte": "Senegal",
+      "hjemme_en": "Norway",
+      "borte_en": "Senegal",
+      "score_h": null,
+      "score_a": null,
+      "spilt": false
+    },
+    {
+      "dato": "2026-06-26",
+      "hjemme": "Norge",
+      "borte": "Frankrike",
+      "hjemme_en": "Norway",
+      "borte_en": "France",
+      "score_h": null,
+      "score_a": null,
+      "spilt": false
+    },
+    {
+      "dato": "2026-06-26",
+      "hjemme": "Senegal",
+      "borte": "Irak",
+      "hjemme_en": "Senegal",
+      "borte_en": "Iraq",
+      "score_h": null,
+      "score_a": null,
+      "spilt": false
+    }
+  ],
+  "Gruppe J": [
+    {
+      "dato": "2026-06-16",
+      "hjemme": "Argentina",
+      "borte": "Algerie",
+      "hjemme_en": "Argentina",
+      "borte_en": "Algeria",
+      "score_h": 3,
+      "score_a": 0,
+      "spilt": true,
+      "id": "400021496",
+      "dommer": "Szymon MARCINIAK"
+    },
+    {
+      "dato": "2026-06-17",
+      "hjemme": "Østerrike",
+      "borte": "Jordan",
+      "hjemme_en": "Austria",
+      "borte_en": "Jordan",
+      "score_h": 3,
+      "score_a": 1,
+      "spilt": true,
+      "id": "400021498",
+      "dommer": "Dahane BEIDA"
+    },
+    {
+      "dato": "2026-06-22",
+      "hjemme": "Argentina",
+      "borte": "Østerrike",
+      "hjemme_en": "Argentina",
+      "borte_en": "Austria",
+      "score_h": null,
+      "score_a": null,
+      "spilt": false
+    },
+    {
+      "dato": "2026-06-22",
+      "hjemme": "Jordan",
+      "borte": "Algerie",
+      "hjemme_en": "Jordan",
+      "borte_en": "Algeria",
+      "score_h": null,
+      "score_a": null,
+      "spilt": false
+    },
+    {
+      "dato": "2026-06-27",
+      "hjemme": "Jordan",
+      "borte": "Argentina",
+      "hjemme_en": "Jordan",
+      "borte_en": "Argentina",
+      "score_h": null,
+      "score_a": null,
+      "spilt": false
+    },
+    {
+      "dato": "2026-06-27",
+      "hjemme": "Algerie",
+      "borte": "Østerrike",
+      "hjemme_en": "Algeria",
+      "borte_en": "Austria",
+      "score_h": null,
+      "score_a": null,
+      "spilt": false
+    }
+  ],
+  "Gruppe K": [
+    {
+      "dato": "2026-06-17",
+      "hjemme": "Portugal",
+      "borte": "DR Kongo",
+      "hjemme_en": "Portugal",
+      "borte_en": "DR Congo",
+      "score_h": 1,
+      "score_a": 1,
+      "spilt": true,
+      "id": "400021502",
+      "dommer": "Abdulrahman ALJASSIM"
+    },
+    {
+      "dato": "2026-06-17",
+      "hjemme": "Usbekistan",
+      "borte": "Colombia",
+      "hjemme_en": "Uzbekistan",
+      "borte_en": "Colombia",
+      "score_h": 1,
+      "score_a": 3,
+      "spilt": true,
+      "id": "400021504",
+      "dommer": "Anthony TAYLOR"
+    },
+    {
+      "dato": "2026-06-23",
+      "hjemme": "Portugal",
+      "borte": "Usbekistan",
+      "hjemme_en": "Portugal",
+      "borte_en": "Uzbekistan",
+      "score_h": null,
+      "score_a": null,
+      "spilt": false
+    },
+    {
+      "dato": "2026-06-23",
+      "hjemme": "Colombia",
+      "borte": "DR Kongo",
+      "hjemme_en": "Colombia",
+      "borte_en": "DR Congo",
+      "score_h": null,
+      "score_a": null,
+      "spilt": false
+    },
+    {
+      "dato": "2026-06-27",
+      "hjemme": "Colombia",
+      "borte": "Portugal",
+      "hjemme_en": "Colombia",
+      "borte_en": "Portugal",
+      "score_h": null,
+      "score_a": null,
+      "spilt": false
+    },
+    {
+      "dato": "2026-06-27",
+      "hjemme": "DR Kongo",
+      "borte": "Usbekistan",
+      "hjemme_en": "DR Congo",
+      "borte_en": "Uzbekistan",
+      "score_h": null,
+      "score_a": null,
+      "spilt": false
+    }
+  ],
+  "Gruppe L": [
+    {
+      "dato": "2026-06-17",
+      "hjemme": "England",
+      "borte": "Kroatia",
+      "hjemme_en": "England",
+      "borte_en": "Croatia",
+      "score_h": 4,
+      "score_a": 2,
+      "spilt": true,
+      "id": "400021507",
+      "dommer": "Clement TURPIN"
+    },
+    {
+      "dato": "2026-06-17",
+      "hjemme": "Ghana",
+      "borte": "Panama",
+      "hjemme_en": "Ghana",
+      "borte_en": "Panama",
+      "score_h": 1,
+      "score_a": 0,
+      "spilt": true,
+      "id": "400021510",
+      "dommer": "Glenn NYBERG"
+    },
+    {
+      "dato": "2026-06-23",
+      "hjemme": "England",
+      "borte": "Ghana",
+      "hjemme_en": "England",
+      "borte_en": "Ghana",
+      "score_h": null,
+      "score_a": null,
+      "spilt": false
+    },
+    {
+      "dato": "2026-06-23",
+      "hjemme": "Panama",
+      "borte": "Kroatia",
+      "hjemme_en": "Panama",
+      "borte_en": "Croatia",
+      "score_h": null,
+      "score_a": null,
+      "spilt": false
+    },
+    {
+      "dato": "2026-06-27",
+      "hjemme": "Panama",
+      "borte": "England",
+      "hjemme_en": "Panama",
+      "borte_en": "England",
+      "score_h": null,
+      "score_a": null,
+      "spilt": false
+    },
+    {
+      "dato": "2026-06-27",
+      "hjemme": "Kroatia",
+      "borte": "Ghana",
+      "hjemme_en": "Croatia",
+      "borte_en": "Ghana",
+      "score_h": null,
+      "score_a": null,
+      "spilt": false
+    }
+  ]
+}
