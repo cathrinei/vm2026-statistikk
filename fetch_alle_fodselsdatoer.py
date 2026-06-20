@@ -30,7 +30,7 @@ _HEADERS     = {
     "Accept": "application/json",
 }
 
-BASE_DIR    = Path(r"C:\Claude_dev\FotballVMClaude")
+BASE_DIR    = Path(__file__).parent
 ALDER_CACHE = BASE_DIR / "player_alder.json"
 PLAYERS_JSON = BASE_DIR / "players.json"
 PYTHON      = sys.executable

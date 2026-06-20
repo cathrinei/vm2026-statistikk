@@ -11,6 +11,7 @@ import io, json, shutil, sys, time, unicodedata, re
 from datetime import datetime
 from pathlib import Path
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+BASE_DIR = Path(__file__).parent
 
 try:
     import requests
@@ -22,10 +23,10 @@ except ImportError as e:
 
 # Font/PatternFill etc. brukes inne i _xl_styles() — ikke slett importen over
 
-EXCEL_PATH        = r"C:\Claude_dev\FotballVMClaude\VM2026_avansert_gruppetabeller_og_sluttspill.xlsx"
-KAMPER_PATH       = r"C:\Claude_dev\FotballVMClaude\VM_fotball_menn_2026_kamper.xlsx"
-CACHE_PATH        = r"C:\Claude_dev\FotballVMClaude\kamper_resultater.json"
-TILSKUERE_CACHE   = r"C:\Claude_dev\FotballVMClaude\tilskuere_cache.json"
+EXCEL_PATH        = BASE_DIR / "VM2026_avansert_gruppetabeller_og_sluttspill.xlsx"
+KAMPER_PATH       = BASE_DIR / "VM_fotball_menn_2026_kamper.xlsx"
+CACHE_PATH        = BASE_DIR / "kamper_resultater.json"
+TILSKUERE_CACHE   = BASE_DIR / "tilskuere_cache.json"
 
 _FIFA_BASE   = "https://api.fifa.com/api/v3"
 _FIFA_COMP   = "17"

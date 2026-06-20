@@ -7,6 +7,8 @@ Kjøres automatisk av oppdater.py ved nye kamper.
 """
 import io, re, shutil, sys, unicodedata
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+from pathlib import Path
+BASE_DIR = Path(__file__).parent
 
 try:
     import requests
@@ -16,7 +18,7 @@ try:
 except ImportError as e:
     sys.exit(f"Mangler pakke: {e}")
 
-EXCEL_PATH   = r"C:\Claude_dev\FotballVMClaude\VM2026_avansert_gruppetabeller_og_sluttspill.xlsx"
+EXCEL_PATH   = BASE_DIR / "VM2026_avansert_gruppetabeller_og_sluttspill.xlsx"
 _FIFA_BASE   = "https://api.fifa.com/api/v3"
 _FIFA_SEASON = "285023"
 _HEADERS     = {

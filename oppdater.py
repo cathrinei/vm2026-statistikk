@@ -43,16 +43,17 @@ NB: Alle 1248 spillere har fødselsdato og klubb (100% dekningsgrad, per 2026-06
 import io, json, subprocess, sys, time
 from datetime import datetime
 from pathlib import Path
+BASE_DIR = Path(__file__).parent
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
 PYTHON          = sys.executable
-CACHE_PATH      = Path(r"C:\Claude_dev\FotballVMClaude\kamper_resultater.json")
-CLUBS_JSON      = Path(r"C:\Claude_dev\FotballVMClaude\clubs_new.json")
-PLAYERS_JSON    = Path(r"C:\Claude_dev\FotballVMClaude\players.json")
-TOP_DIVISION_PY = Path(r"C:\Claude_dev\FotballVMClaude\top_division.py")
-LEVEL_MAP_PY    = Path(r"C:\Claude_dev\FotballVMClaude\level_map.py")
-EXCEL_PATH      = Path(r"C:\Claude_dev\FotballVMClaude\VM2026_avansert_gruppetabeller_og_sluttspill.xlsx")
+CACHE_PATH      = Path(BASE_DIR / "kamper_resultater.json")
+CLUBS_JSON      = Path(BASE_DIR / "clubs_new.json")
+PLAYERS_JSON    = Path(BASE_DIR / "players.json")
+TOP_DIVISION_PY = Path(BASE_DIR / "top_division.py")
+LEVEL_MAP_PY    = Path(BASE_DIR / "level_map.py")
+EXCEL_PATH      = Path(BASE_DIR / "VM2026_avansert_gruppetabeller_og_sluttspill.xlsx")
 
 
 def count_spilte() -> int:

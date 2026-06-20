@@ -7,6 +7,7 @@ på mål, utenfor, blokkert) per kamp. Kilde: wc2026_stats.json.
 import io, json, re, shutil, sys, unicodedata
 from pathlib import Path
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+BASE_DIR = Path(__file__).parent
 
 try:
     from openpyxl import load_workbook
@@ -14,9 +15,9 @@ try:
 except ImportError as e:
     sys.exit(f"Mangler pakke: {e}")
 
-EXCEL_PATH = r"C:\Claude_dev\FotballVMClaude\VM2026_avansert_gruppetabeller_og_sluttspill.xlsx"
-STATS_PATH = r"C:\Claude_dev\FotballVMClaude\wc2026_stats.json"
-CACHE_PATH = r"C:\Claude_dev\FotballVMClaude\kamper_resultater.json"
+EXCEL_PATH = BASE_DIR / "VM2026_avansert_gruppetabeller_og_sluttspill.xlsx"
+STATS_PATH = BASE_DIR / "wc2026_stats.json"
+CACHE_PATH = BASE_DIR / "kamper_resultater.json"
 SHEET_NAME = "Ballbesittelse"
 
 NORSK = {

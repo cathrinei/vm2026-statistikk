@@ -9,6 +9,7 @@ Cache: player_alder.json  — lagres lokalt for å unngå gjentatte API-kall.
 import io, json, re, shutil, sys, time, unicodedata
 from datetime import date, datetime
 from pathlib import Path
+BASE_DIR = Path(__file__).parent
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
@@ -20,11 +21,11 @@ try:
 except ImportError as e:
     sys.exit(f"Mangler pakke: {e}")
 
-EXCEL_PATH   = r"C:\Claude_dev\FotballVMClaude\VM2026_avansert_gruppetabeller_og_sluttspill.xlsx"
-CACHE_PATH   = r"C:\Claude_dev\FotballVMClaude\kamper_resultater.json"
-ALDER_CACHE  = r"C:\Claude_dev\FotballVMClaude\player_alder.json"
-LINEUP_CACHE = r"C:\Claude_dev\FotballVMClaude\lineup_cache.json"
-PLAYERS_JSON = r"C:\Claude_dev\FotballVMClaude\players.json"
+EXCEL_PATH   = BASE_DIR / "VM2026_avansert_gruppetabeller_og_sluttspill.xlsx"
+CACHE_PATH   = BASE_DIR / "kamper_resultater.json"
+ALDER_CACHE  = BASE_DIR / "player_alder.json"
+LINEUP_CACHE = BASE_DIR / "lineup_cache.json"
+PLAYERS_JSON = BASE_DIR / "players.json"
 
 _FIFA_BASE   = "https://api.fifa.com/api/v3"
 _FIFA_COMP   = "17"

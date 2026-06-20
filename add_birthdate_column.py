@@ -12,6 +12,7 @@ Kilde: players.json (birthdate-felt populert av add_alder_sheet.py).
 import io, json, shutil, sys, unicodedata, re
 from pathlib import Path
 from datetime import date
+BASE_DIR = Path(__file__).parent
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
@@ -22,8 +23,8 @@ try:
 except ImportError:
     sys.exit("Mangler openpyxl: pip install openpyxl")
 
-EXCEL_PATH   = r"C:\Claude_dev\FotballVMClaude\VM2026_avansert_gruppetabeller_og_sluttspill.xlsx"
-PLAYERS_JSON = r"C:\Claude_dev\FotballVMClaude\players.json"
+EXCEL_PATH   = BASE_DIR / "VM2026_avansert_gruppetabeller_og_sluttspill.xlsx"
+PLAYERS_JSON = BASE_DIR / "players.json"
 
 GROUPS     = [f"Gruppe {x}" for x in "ABCDEFGHIJKL"]
 BLOCKS     = [(1, 3, 28), (30, 32, 57), (59, 61, 86), (88, 90, 115)]

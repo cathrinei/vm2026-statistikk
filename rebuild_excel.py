@@ -15,6 +15,7 @@ Kan IKKE rekonstrueres:
 """
 import io, json, re, sys
 from pathlib import Path
+BASE_DIR = Path(__file__).parent
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
@@ -24,10 +25,10 @@ try:
 except ImportError:
     sys.exit("Mangler openpyxl: pip install openpyxl")
 
-EXCEL_PATH   = r"C:\Claude_dev\FotballVMClaude\VM2026_avansert_gruppetabeller_og_sluttspill.xlsx"
-PLAYERS_JSON = r"C:\Claude_dev\FotballVMClaude\players.json"
-CLUBS_JSON   = r"C:\Claude_dev\FotballVMClaude\clubs_new.json"
-RAPPORT_MD   = r"C:\Claude_dev\FotballVMClaude\avvik_rapport.md"
+EXCEL_PATH   = BASE_DIR / "VM2026_avansert_gruppetabeller_og_sluttspill.xlsx"
+PLAYERS_JSON = BASE_DIR / "players.json"
+CLUBS_JSON   = BASE_DIR / "clubs_new.json"
+RAPPORT_MD   = BASE_DIR / "avvik_rapport.md"
 
 GROUPS = [f"Gruppe {x}" for x in "ABCDEFGHIJKL"]
 BLOCKS = [(1, 3, 28), (30, 32, 57), (59, 61, 86), (88, 90, 115)]

@@ -8,10 +8,12 @@ Skriver ny clubs_new.json med players.json-navn som nøkler.
 """
 import io, json, re, sys, unicodedata
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+from pathlib import Path
+BASE_DIR = Path(__file__).parent
 
-with open(r"C:\Claude_dev\FotballVMClaude\clubs_new.json", encoding="utf-8") as f:
+with open(BASE_DIR / "clubs_new.json", encoding="utf-8") as f:
     clubs_raw = json.load(f)
-with open(r"C:\Claude_dev\FotballVMClaude\players.json", encoding="utf-8") as f:
+with open(BASE_DIR / "players.json", encoding="utf-8") as f:
     players = json.load(f)
 
 # ── Lagnavn: players.json → clubs_new.json ────────────────────────────────────
@@ -207,7 +209,7 @@ for gruppe, lag_dict in players.items():
                 total_matched += 1
 
 # Skriv ny clubs_new.json
-with open(r"C:\Claude_dev\FotballVMClaude\clubs_new.json", "w", encoding="utf-8") as f:
+with open(BASE_DIR / "clubs_new.json", "w", encoding="utf-8") as f:
     json.dump(new_clubs, f, ensure_ascii=False, indent=2)
 
 print(f"Matched:   {total_matched}")

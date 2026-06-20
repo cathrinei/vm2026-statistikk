@@ -7,6 +7,7 @@ fargekodet etter antall mål. Kilde: lagstatistikk_cache.json.
 import io, json, shutil, sys
 from pathlib import Path
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+BASE_DIR = Path(__file__).parent
 
 try:
     from openpyxl import load_workbook
@@ -14,8 +15,8 @@ try:
 except ImportError as e:
     sys.exit(f"Mangler pakke: {e}")
 
-EXCEL_PATH  = r"C:\Claude_dev\FotballVMClaude\VM2026_avansert_gruppetabeller_og_sluttspill.xlsx"
-STAT_CACHE  = r"C:\Claude_dev\FotballVMClaude\lagstatistikk_cache.json"
+EXCEL_PATH  = BASE_DIR / "VM2026_avansert_gruppetabeller_og_sluttspill.xlsx"
+STAT_CACHE  = BASE_DIR / "lagstatistikk_cache.json"
 SHEET_NAME  = "Heatmap"
 
 GOAL_TYPES  = {"Goal!", "Penalty Goal", "Own goal"}

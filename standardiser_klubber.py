@@ -5,6 +5,8 @@ Normaliserer klubbnavn i clubs_new.json til én kanonisk form per klubb.
 """
 import io, json, sys
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+from pathlib import Path
+BASE_DIR = Path(__file__).parent
 
 CANONICAL = {
     # Tyske klubber
@@ -121,7 +123,7 @@ CANONICAL = {
     "UNAM Pumas":                   "Pumas UNAM",
 }
 
-with open(r"C:\Claude_dev\FotballVMClaude\clubs_new.json", encoding="utf-8") as f:
+with open(BASE_DIR / "clubs_new.json", encoding="utf-8") as f:
     c = json.load(f)
 
 endringer = 0
@@ -133,7 +135,7 @@ for lag in c:
             c[lag][navn] = ny
             endringer += 1
 
-with open(r"C:\Claude_dev\FotballVMClaude\clubs_new.json", "w", encoding="utf-8") as f:
+with open(BASE_DIR / "clubs_new.json", "w", encoding="utf-8") as f:
     json.dump(c, f, ensure_ascii=False, indent=2)
 
 print(f"Endringer: {endringer}")

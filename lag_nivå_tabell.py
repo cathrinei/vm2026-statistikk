@@ -3,6 +3,7 @@ Genererer Excel-ark: spillere som ikke spiller i toppserien (nivå 2 og lavere).
 Kolonner: Nivå, Klubb, Liga, Spiller, Nasjonallag
 """
 import re, sys
+from pathlib import Path
 from openpyxl import load_workbook
 from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 
@@ -56,7 +57,7 @@ rows.sort(key=lambda x: (x[0], x[2], x[3], x[1], x[4], x[5]))
 
 # ── Skriv Excel ───────────────────────────────────────────────────────────────
 
-EXCEL_PATH = r'C:\Claude_dev\FotballVMClaude\VM2026_avansert_gruppetabeller_og_sluttspill.xlsx'
+EXCEL_PATH = Path(__file__).parent / "VM2026_avansert_gruppetabeller_og_sluttspill.xlsx"
 wb = load_workbook(EXCEL_PATH)
 
 sheet_name = 'Nivå 2 og lavere'

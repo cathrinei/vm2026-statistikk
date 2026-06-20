@@ -18,6 +18,7 @@ Cache: lagstatistikk_cache.json — lagres for å unngå gjentatte API-kall.
 import io, json, shutil, sys, time
 from collections import defaultdict
 from pathlib import Path
+BASE_DIR = Path(__file__).parent
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
@@ -29,10 +30,10 @@ try:
 except ImportError as e:
     sys.exit(f"Mangler pakke: {e}")
 
-EXCEL_PATH   = r"C:\Claude_dev\FotballVMClaude\VM2026_avansert_gruppetabeller_og_sluttspill.xlsx"
-CACHE_PATH   = r"C:\Claude_dev\FotballVMClaude\kamper_resultater.json"
-STAT_CACHE   = r"C:\Claude_dev\FotballVMClaude\lagstatistikk_cache.json"
-LIVE_CACHE   = r"C:\Claude_dev\FotballVMClaude\live_cache.json"
+EXCEL_PATH   = BASE_DIR / "VM2026_avansert_gruppetabeller_og_sluttspill.xlsx"
+CACHE_PATH   = BASE_DIR / "kamper_resultater.json"
+STAT_CACHE   = BASE_DIR / "lagstatistikk_cache.json"
+LIVE_CACHE   = BASE_DIR / "live_cache.json"
 
 _FIFA_BASE   = "https://api.fifa.com/api/v3"
 _FIFA_COMP   = "17"

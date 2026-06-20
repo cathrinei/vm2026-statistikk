@@ -7,6 +7,7 @@ Kilde: clubs_new.json
 import io, json, shutil, sys
 from collections import defaultdict, Counter
 from pathlib import Path
+BASE_DIR = Path(__file__).parent
 
 try:
     from club_country_map import CLUB_COUNTRY
@@ -24,8 +25,8 @@ try:
 except ImportError as e:
     sys.exit(f"Mangler pakke: {e}")
 
-EXCEL_PATH  = r"C:\Claude_dev\FotballVMClaude\VM2026_avansert_gruppetabeller_og_sluttspill.xlsx"
-CLUBS_JSON  = r"C:\Claude_dev\FotballVMClaude\clubs_new.json"
+EXCEL_PATH  = BASE_DIR / "VM2026_avansert_gruppetabeller_og_sluttspill.xlsx"
+CLUBS_JSON  = BASE_DIR / "clubs_new.json"
 
 # Norske lagnavn
 NORSK = {

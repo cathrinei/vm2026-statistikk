@@ -9,6 +9,7 @@ import argparse, io, re, shutil, sys, time, unicodedata
 from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
+BASE_DIR = Path(__file__).parent
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
@@ -24,10 +25,10 @@ except ImportError:
 
 # ── Konfig ────────────────────────────────────────────────────────────────────
 
-EXCEL_PATH       = r"C:\Claude_dev\FotballVMClaude\VM2026_avansert_gruppetabeller_og_sluttspill.xlsx"
-REPORT_PATH      = r"C:\Claude_dev\FotballVMClaude\avvik_rapport.md"
-TIMELINE_CACHE   = r"C:\Claude_dev\FotballVMClaude\avvik_timeline_cache.json"
-PLAYER_NAME_CACHE= r"C:\Claude_dev\FotballVMClaude\player_names_cache.json"
+EXCEL_PATH       = BASE_DIR / "VM2026_avansert_gruppetabeller_og_sluttspill.xlsx"
+REPORT_PATH      = BASE_DIR / "avvik_rapport.md"
+TIMELINE_CACHE   = BASE_DIR / "avvik_timeline_cache.json"
+PLAYER_NAME_CACHE= BASE_DIR / "player_names_cache.json"
 
 _FIFA_BASE   = "https://api.fifa.com/api/v3"
 _FIFA_COMP   = "17"

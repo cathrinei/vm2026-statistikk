@@ -8,6 +8,8 @@ Legger til to statistikkark i Excel-filen:
 import io, json, shutil, sys
 from collections import defaultdict
 from datetime import date
+from pathlib import Path
+BASE_DIR = Path(__file__).parent
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
@@ -25,9 +27,9 @@ except ImportError:
     CLUB_COUNTRY = {}
     LAND_NO = {}
 
-EXCEL_PATH   = r"C:\Claude_dev\FotballVMClaude\VM2026_avansert_gruppetabeller_og_sluttspill.xlsx"
-PLAYERS_JSON = r"C:\Claude_dev\FotballVMClaude\players.json"
-CLUBS_JSON   = r"C:\Claude_dev\FotballVMClaude\clubs_new.json"
+EXCEL_PATH   = BASE_DIR / "VM2026_avansert_gruppetabeller_og_sluttspill.xlsx"
+PLAYERS_JSON = BASE_DIR / "players.json"
+CLUBS_JSON   = BASE_DIR / "clubs_new.json"
 
 TURNERING_START = date(2026, 6, 12)
 
