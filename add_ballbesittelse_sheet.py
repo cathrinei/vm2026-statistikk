@@ -16,7 +16,7 @@ except ImportError as e:
     sys.exit(f"Mangler pakke: {e}")
 
 EXCEL_PATH = BASE_DIR / "VM2026_avansert_gruppetabeller_og_sluttspill.xlsx"
-STATS_PATH = BASE_DIR / "wc2026_stats.json"
+STATS_PATH = BASE_DIR / "wc2026_stats3.json"
 CACHE_PATH = BASE_DIR / "kamper_resultater.json"
 SHEET_NAME = "Ballbesittelse"
 
@@ -81,6 +81,9 @@ def bygg_data() -> list[dict]:
         a_no = til_norsk(entry["away"])
         key  = _norm(h_no) + "|" + _norm(a_no)
         info = kamp_idx.get(key)
+        if not info:
+            rev_key = _norm(a_no) + "|" + _norm(h_no)
+            info = kamp_idx.get(rev_key)
         if not info:
             ikke_matchet.append(f"{h_no} vs {a_no}")
             continue
