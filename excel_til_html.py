@@ -265,7 +265,7 @@ def main():
 
     tab_html = '\n'.join(tab_knapper)
     ark_html_blokk = '\n'.join(ark_seksjoner)
-    tidspunkt = __import__('datetime').datetime.now().strftime("%Y-%m-%d %H:%M")
+    tidspunkt = __import__('datetime').datetime.now().strftime("%Y-%m-%d")
 
     # Les template hvis den finnes, bruk innebygd ellers
     template_fil = os.path.join(UTDATA_DIR, "template.html")
