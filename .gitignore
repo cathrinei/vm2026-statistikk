@@ -1,0 +1,18 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Cache-filer (regenereres automatisk)
+*.json
+!package.json
+
+# Excel-filer (store binærfiler, ikke egnet for git)
+*.xlsx
+
+# Testfiler
+test_rapport.txt
+
+# Editor
+.vscode/
+*.tmp

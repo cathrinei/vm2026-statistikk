@@ -1,0 +1,190 @@
+UNKNOWN clubs:
+
+Total unknown players: 0
+Total mapped players: 1248
+[France] AS Nancy-Lorraine
+    Haiti: Martin Experience
+[Iraq] Al-Talaba
+    Iraq: ​Zaid ⁠Ismail
+[Japan] Albirex Niigata
+    Australia: Geria
+[France] Angers SCO
+    Haiti: Carlens Arcus
+[Switzerland] BSC Young Boys II
+    Haiti: Keeto Thermoncy
+[England] Braintree Town
+    New Zealand: Tommy Smith
+[England] Burnley
+    South Africa: Lyle Foster
+    Switzerland: Zeki Amdouni
+    Sweden: Hjalmar Ekdal
+    Tunisia: Hannibal Mejbri
+    Democratic Republic of the Congo: Axel Tuanzebe
+[Chile] CD Cobresal
+    Panama: Cesar Yanis
+[Panama] CD Plaza Amador
+    Panama: Eric Davis
+    Panama: Alberto Quintero
+[Portugal] CD Tondela
+    South Africa: Sphephelo Sithole
+[Chile] CD Universidad Catolica
+    Panama: Azarías Londoño
+    Panama: José Fajardo
+[Spain] Castellón
+    Australia: Mabil
+    Democratic Republic of the Congo: Brian Cipenga
+[England] Charlton Athletic
+    Scotland: Lyndon Dykes
+[Portugal] Chaves
+    Cabo Verde: Josimar Dias "Vozinha"
+[England] Coventry City
+    United States of America: Haji Wright
+    Ghana: Brandon Thomas-Asante
+[Italy] Cremonese
+    Paraguay: Antonio Sanabria
+    Norway: Morten Thorsby
+[Spain] Cultural Leonesa
+    Qatar: Homam Al-Amin
+[England] Derby County
+    Sweden: Jacob Widell Zetterström
+    Norway: Sondre Langås
+[USA] El Paso Locomotive FC
+    Haiti: Carl-Fred Sainthe
+[Spain] Elche
+    Austria: David Affengruber
+[Germany] FC Cosmos Koblenz
+    Haiti: Josué Duverger
+[Netherlands] FC Den Bosch
+    Curaçao: Kevin Felida
+[France] FC Sochaux
+    Haiti: Alexandre Pierre
+[Slovakia] FC Tatran Prešov
+    Haiti: Dominique Simon
+[Netherlands] FC Volendam
+    Curaçao: Juninho Bacuna
+    Curaçao: Brandley Kuwas
+[Germany] Fortuna Düsseldorf
+    Switzerland: Cedric Itten
+[Germany] Frankfurt
+    Germany: Nathaniel Brown
+[Germany] Freiburg
+    Japan: Suzuki Yuito
+    Croatia: Igor Matanovic
+[Italy] Frosinone
+    Algeria: Farès Ghedjemis
+[Turkey] Gaziantep FK
+    Bosnia and Herzegovina: Nihad Mujakić
+[Austria] Grazer
+    Australia: Italiano
+[Germany] Hannover 96
+    South Africa: Ime Okon
+    Tunisia: ​Elias Saad
+[England] Hull City
+    Canada: Liam Miller
+    Bosnia and Herzegovina: Amir Hadžiahmetović
+    Croatia: Ivor Pandur
+[Turkey] Iğdır
+    Curaçao: Leandro Bacuna
+    Cabo Verde: Ryan Mendes
+[Germany] Karlsruher SC
+    Bosnia and Herzegovina: Dženis Burnić
+[England] Leeds United
+    Switzerland: Noah Okafor
+    United States of America: Brenden Aaronson
+    Japan: Tanaka Ao
+    Sweden: Gabriel Gudmundsson
+[Spain] Levante
+    Australia: Ryan
+[Iran] Malavan
+    Islamic Republic of Iran: Danial Eiri
+[USA] Miami FC
+    Curaçao: Eloy Room
+    Curaçao: Jürgen Locadia
+[England] Middlesbrough
+    Canada: Alfie Jones
+    Curaçao: Sontje Hansen
+[England] Millwall FC
+    New Zealand: Max Crocombe
+[Bulgaria] Montana
+    Cabo Verde: Márcio da Rosa
+[Netherlands] Nijmegen
+    Japan: Ogawa Koki
+[Sweden] IFK Norrköping
+    Tunisia: Moutaz Neffati
+[England] Norwich City
+    Canada: Ali Ahmed
+    Scotland: Kenny McLean
+    Australia: Toure
+    Panama: José Córdoba
+[Italy] Pisa
+    Switzerland: Michel Aebischer
+[England] Port Vale
+    New Zealand: Ben Waine
+[England] Portsmouth
+    Paraguay: Gustavo Caballero
+[Denmark] Randers
+    Australia: Izzo
+[Spain] Real Oviedo
+    Egypt: Haissem Hassan
+    Uruguay: Federico Viñas
+    Ghana: Kwasi Sibo
+[England] Rotherham United
+    Curaçao: Ar’Jany Martha
+[France] SC Bastia
+    Haiti: Johnny Placide
+[Netherlands] SC Telstar
+    Curaçao: Tyrick Bodak
+    Curaçao: Tyrese Noslin
+[Belgium] SV Zulte Waregem
+    Haiti: Wilguens Paugain
+[USA] San Diego
+    Cabo Verde: Carlos Santos
+[Brazil] Santos
+    Brazil: Neymar
+[Italy] Sassuolo
+    Australia: Volpato
+    Norway: Kristian Thorstvedt
+[Italy] Sassuolo Calcio
+    Canada: Ismaël Koné
+[Germany] Schalke 04
+    Bosnia and Herzegovina: Nikola Katić
+    Bosnia and Herzegovina: Edin Džeko
+[England] Sheffield United
+    Curaçao: Tahith Chong
+[South Africa] Siwelele FC
+    South Africa: Ricardo Goss
+[Croatia] Slaven Belupo
+    Bosnia and Herzegovina: Osman Hadžikić
+[Ireland] St. Patrick’s Athletic
+    Ghana: Joseph Anang
+[Switzerland] Stade Nyonnais
+    Algeria: Melvin Mastil
+[England] Stoke City
+    Sweden: Viktor Johansson
+[England] Swansea
+    Republic of Korea: Eom Jisung
+[England] Swansea City
+    Australia: Burgess
+    New Zealand: Marko Stamenić
+[Portugal] Torreense
+    Cabo Verde: Ianique Tavares "Stopira"
+[Italy] UC Sampdoria
+    Bosnia and Herzegovina: Dennis Hadžikadunić
+[Italy] US Sassuolo
+    Bosnia and Herzegovina: Tarik Muharemović
+[Chile] Universidad de Concepcion
+    Panama: Cecilio Waterman
+[Netherlands] VVV-Venlo
+    Curaçao: Trevor Doornbusch
+[England] Watford
+    Australia: Irankunda
+    Norway: Egil Selvik
+    Democratic Republic of the Congo: Edo Kayembe
+[England] Wolverhampton
+    Haiti: Jeanricner Bellegarde
+[England] Wrexham
+    Scotland: Dom Hyam
+[England] Wrexham AFC
+    New Zealand: Liberato Cacace
+[Switzerland] Young Boys Berne
+    Tunisia: Yan Valery
