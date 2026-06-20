@@ -24,10 +24,10 @@ jobs:
         run: pip install openpyxl requests
 
       - name: Oppdater data og Excel
-        run: python oppdater.py
+        run: python oppdater.py 2>&1 | tee oppdater_logg.txt; exit ${PIPESTATUS[0]}
 
       - name: Generer HTML
-        run: python excel_til_html.py
+        run: python excel_til_html.py 2>&1 | tee html_logg.txt; exit ${PIPESTATUS[0]}
 
       - name: Commit og push endringer
         run: |
@@ -37,3 +37,24 @@ jobs:
           git diff --cached --quiet && echo "Ingen endringer" || \
             git commit -m "Auto-oppdatering $(date -u +'%Y-%m-%d %H:%M UTC')" && \
             git push
+
+      - name: Vis feillogg ved feil
+        if: failure()
+        run: |
+          echo "========================================"
+          echo "  FEILLOGG — oppdater.py"
+          echo "========================================"
+          if [ -f oppdater_logg.txt ]; then
+            grep -A 20 "Traceback\|Error\|FEIL" oppdater_logg.txt || tail -30 oppdater_logg.txt
+          else
+            echo "(ingen logg funnet)"
+          fi
+          echo ""
+          echo "========================================"
+          echo "  FEILLOGG — excel_til_html.py"
+          echo "========================================"
+          if [ -f html_logg.txt ]; then
+            grep -A 20 "Traceback\|Error" html_logg.txt || tail -10 html_logg.txt
+          else
+            echo "(ikke kjørt)"
+          fi
