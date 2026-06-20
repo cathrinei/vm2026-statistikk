@@ -22,6 +22,56 @@ HOPP_OVER_ARK = set()
 # Maks kolonner å vise per ark (None = alle)
 MAKS_KOLS = None
 
+INNEBYGD_TEMPLATE = """\
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VM 2026 – Gruppetabeller og sluttspill</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Calibri, 'Segoe UI', Arial, sans-serif; font-size: 10pt; background: #f4f6f9; color: #1a1a2e; }
+  header { background: #0F2044; color: #fff; padding: 18px 24px 14px; }
+  header h1 { font-size: 1.4em; font-weight: bold; }
+  header p { font-size: 0.85em; opacity: 0.75; margin-top: 4px; }
+  .tab-bar { display: flex; flex-wrap: wrap; gap: 3px; padding: 10px 12px 0; background: #1A3C6B; position: sticky; top: 0; z-index: 100; }
+  .tab-bar button { background: rgba(255,255,255,0.15); color: #fff; border: none; padding: 6px 12px; cursor: pointer; border-radius: 4px 4px 0 0; font-size: 9pt; font-family: inherit; white-space: nowrap; transition: background 0.15s; }
+  .tab-bar button:hover { background: rgba(255,255,255,0.3); }
+  .tab-bar button.aktiv { background: #fff; color: #0F2044; font-weight: bold; }
+  .ark-innhold { padding: 16px 12px; }
+  .ark-innhold h2 { font-size: 1.1em; color: #0F2044; margin-bottom: 10px; padding-bottom: 5px; border-bottom: 2px solid #1A3C6B; }
+  .tabell-wrapper { overflow-x: auto; border: 1px solid #d0d8e8; border-radius: 4px; background: #fff; }
+  table { border-collapse: collapse; font-size: 9.5pt; min-width: 100%; }
+  td { padding: 3px 6px; border-bottom: 1px solid #e8edf5; border-right: 1px solid #edf0f5; white-space: nowrap; vertical-align: middle; min-width: 30px; }
+  tr:last-child td { border-bottom: none; }
+  td:last-child { border-right: none; }
+  footer { text-align: center; font-size: 8pt; color: #888; padding: 20px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>VM 2026 – Gruppetabeller og sluttspill</h1>
+  <p>Sist oppdatert: <!-- TIDSPUNKT --></p>
+</header>
+<div class="tab-bar">
+<!-- TABS -->
+</div>
+<!-- ARK -->
+<footer>Generert av excel_til_html.py &nbsp;&middot;&nbsp; Data: FIFA / oppdater.py</footer>
+<script>
+function visArk(id) {
+  document.querySelectorAll('.ark-innhold').forEach(el => el.style.display = 'none');
+  document.querySelectorAll('.tab-bar button').forEach(btn => btn.classList.remove('aktiv'));
+  const ark = document.getElementById('ark_' + id);
+  if (ark) ark.style.display = 'block';
+  event.currentTarget.classList.add('aktiv');
+}
+</script>
+</body>
+</html>
+"""
+
 
 def rgb_fra_fill(fill):
     """Returnerer hex-fargekode fra en PatternFill, eller None."""
@@ -213,122 +263,23 @@ def main():
             f'</div>'
         )
 
-    html = f"""<!DOCTYPE html>
-<html lang="no">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VM 2026 – Gruppetabeller og sluttspill</title>
-<style>
-  * {{ box-sizing: border-box; margin: 0; padding: 0; }}
-  body {{
-    font-family: Calibri, 'Segoe UI', Arial, sans-serif;
-    font-size: 10pt;
-    background: #f4f6f9;
-    color: #1a1a2e;
-  }}
-  header {{
-    background: #0F2044;
-    color: #fff;
-    padding: 18px 24px 14px;
-  }}
-  header h1 {{ font-size: 1.4em; font-weight: bold; }}
-  header p {{ font-size: 0.85em; opacity: 0.75; margin-top: 4px; }}
+    tab_html = '\n'.join(tab_knapper)
+    ark_html_blokk = '\n'.join(ark_seksjoner)
+    tidspunkt = __import__('datetime').datetime.now().strftime("%Y-%m-%d %H:%M")
 
-  .tab-bar {{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 3px;
-    padding: 10px 12px 0;
-    background: #1A3C6B;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }}
-  .tab-bar button {{
-    background: rgba(255,255,255,0.15);
-    color: #fff;
-    border: none;
-    padding: 6px 12px;
-    cursor: pointer;
-    border-radius: 4px 4px 0 0;
-    font-size: 9pt;
-    font-family: inherit;
-    white-space: nowrap;
-    transition: background 0.15s;
-  }}
-  .tab-bar button:hover {{ background: rgba(255,255,255,0.3); }}
-  .tab-bar button.aktiv {{
-    background: #fff;
-    color: #0F2044;
-    font-weight: bold;
-  }}
+    # Les template hvis den finnes, bruk innebygd ellers
+    template_fil = os.path.join(UTDATA_DIR, "template.html")
+    if os.path.exists(template_fil):
+        with open(template_fil, encoding="utf-8") as f:
+            html = f.read()
+        print(f"  Bruker template: {template_fil}")
+    else:
+        html = INNEBYGD_TEMPLATE
+        print(f"  Ingen template funnet — bruker innebygd mal")
 
-  .ark-innhold {{ padding: 16px 12px; }}
-  .ark-innhold h2 {{
-    font-size: 1.1em;
-    color: #0F2044;
-    margin-bottom: 10px;
-    padding-bottom: 5px;
-    border-bottom: 2px solid #1A3C6B;
-  }}
-
-  .tabell-wrapper {{
-    overflow-x: auto;
-    border: 1px solid #d0d8e8;
-    border-radius: 4px;
-    background: #fff;
-  }}
-  table {{
-    border-collapse: collapse;
-    font-size: 9.5pt;
-    min-width: 100%;
-  }}
-  td {{
-    padding: 3px 6px;
-    border-bottom: 1px solid #e8edf5;
-    border-right: 1px solid #edf0f5;
-    white-space: nowrap;
-    vertical-align: middle;
-    min-width: 30px;
-  }}
-  tr:last-child td {{ border-bottom: none; }}
-  td:last-child {{ border-right: none; }}
-
-  footer {{
-    text-align: center;
-    font-size: 8pt;
-    color: #888;
-    padding: 20px;
-  }}
-</style>
-</head>
-<body>
-<header>
-  <h1>VM 2026 – Gruppetabeller og sluttspill</h1>
-  <p>Oppdatert automatisk fra VM2026_avansert_gruppetabeller_og_sluttspill.xlsx</p>
-</header>
-
-<div class="tab-bar">
-{''.join(tab_knapper)}
-</div>
-
-{''.join(ark_seksjoner)}
-
-<footer>Generert av excel_til_html.py &nbsp;·&nbsp; Data: FIFA / oppdater.py</footer>
-
-<script>
-function visArk(id) {{
-  document.querySelectorAll('.ark-innhold').forEach(el => el.style.display = 'none');
-  document.querySelectorAll('.tab-bar button').forEach(btn => btn.classList.remove('aktiv'));
-  const ark = document.getElementById('ark_' + id);
-  if (ark) ark.style.display = 'block';
-  event.currentTarget.classList.add('aktiv');
-}}
-</script>
-</body>
-</html>
-"""
+    html = html.replace("<!-- TABS -->", tab_html)
+    html = html.replace("<!-- ARK -->", ark_html_blokk)
+    html = html.replace("<!-- TIDSPUNKT -->", tidspunkt)
 
     with open(UTDATA_FIL, "w", encoding="utf-8") as f:
         f.write(html)
@@ -336,10 +287,6 @@ function visArk(id) {{
     size_kb = os.path.getsize(UTDATA_FIL) // 1024
     print(f"\nFerdig! Skrevet til: {UTDATA_FIL} ({size_kb} KB)")
     print(f"  Ark konvertert: {len(ark_navn)}")
-    print(f"\nNeste steg:")
-    print(f"  1. Opprett GitHub-repo og legg inn docs/index.html")
-    print(f"  2. Aktiver GitHub Pages: Settings > Pages > Source: Deploy from branch > /docs")
-    print(f"  3. Siden blir tilgjengelig på https://<bruker>.github.io/<repo>/")
 
 
 if __name__ == "__main__":

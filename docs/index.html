@@ -5,98 +5,65 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VM 2026 – Gruppetabeller og sluttspill</title>
 <style>
+  /* ── Grunnstiler (ikke rediger under her) ───────────────────── */
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: Calibri, 'Segoe UI', Arial, sans-serif;
-    font-size: 10pt;
-    background: #f4f6f9;
-    color: #1a1a2e;
-  }
-  header {
-    background: #0F2044;
-    color: #fff;
-    padding: 18px 24px 14px;
-  }
-  header h1 { font-size: 1.4em; font-weight: bold; }
-  header p { font-size: 0.85em; opacity: 0.75; margin-top: 4px; }
-
-  .tab-bar {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 3px;
-    padding: 10px 12px 0;
-    background: #1A3C6B;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-  .tab-bar button {
-    background: rgba(255,255,255,0.15);
-    color: #fff;
-    border: none;
-    padding: 6px 12px;
-    cursor: pointer;
-    border-radius: 4px 4px 0 0;
-    font-size: 9pt;
-    font-family: inherit;
-    white-space: nowrap;
-    transition: background 0.15s;
-  }
+  body { font-family: Calibri, 'Segoe UI', Arial, sans-serif; font-size: 10pt; background: #f4f6f9; color: #1a1a2e; }
+  .tab-bar { display: flex; flex-wrap: wrap; gap: 3px; padding: 10px 12px 0; background: #1A3C6B; position: sticky; top: 0; z-index: 100; }
+  .tab-bar button { background: rgba(255,255,255,0.15); color: #fff; border: none; padding: 6px 12px; cursor: pointer; border-radius: 4px 4px 0 0; font-size: 9pt; font-family: inherit; white-space: nowrap; transition: background 0.15s; }
   .tab-bar button:hover { background: rgba(255,255,255,0.3); }
-  .tab-bar button.aktiv {
-    background: #fff;
-    color: #0F2044;
-    font-weight: bold;
-  }
-
+  .tab-bar button.aktiv { background: #fff; color: #0F2044; font-weight: bold; }
   .ark-innhold { padding: 16px 12px; }
-  .ark-innhold h2 {
-    font-size: 1.1em;
-    color: #0F2044;
-    margin-bottom: 10px;
-    padding-bottom: 5px;
-    border-bottom: 2px solid #1A3C6B;
-  }
-
-  .tabell-wrapper {
-    overflow-x: auto;
-    border: 1px solid #d0d8e8;
-    border-radius: 4px;
-    background: #fff;
-  }
-  table {
-    border-collapse: collapse;
-    font-size: 9.5pt;
-    min-width: 100%;
-  }
-  td {
-    padding: 3px 6px;
-    border-bottom: 1px solid #e8edf5;
-    border-right: 1px solid #edf0f5;
-    white-space: nowrap;
-    vertical-align: middle;
-    min-width: 30px;
-  }
+  .ark-innhold h2 { font-size: 1.1em; color: #0F2044; margin-bottom: 10px; padding-bottom: 5px; border-bottom: 2px solid #1A3C6B; }
+  .tabell-wrapper { overflow-x: auto; border: 1px solid #d0d8e8; border-radius: 4px; background: #fff; }
+  table { border-collapse: collapse; font-size: 9.5pt; min-width: 100%; }
+  td { padding: 3px 6px; border-bottom: 1px solid #e8edf5; border-right: 1px solid #edf0f5; white-space: nowrap; vertical-align: middle; min-width: 30px; }
   tr:last-child td { border-bottom: none; }
   td:last-child { border-right: none; }
 
-  footer {
-    text-align: center;
-    font-size: 8pt;
-    color: #888;
-    padding: 20px;
-  }
+  /* ── Rediger gjerne alt under her ───────────────────────────── */
+  header { background: #0F2044; color: #fff; padding: 18px 24px 14px; }
+  header h1 { font-size: 1.4em; font-weight: bold; }
+  header p { font-size: 0.85em; opacity: 0.75; margin-top: 4px; }
+  footer { text-align: center; font-size: 8pt; color: #888; padding: 20px; }
 </style>
 </head>
 <body>
+
+<!-- ── HEADER: rediger tittel og ingress fritt ───────────────── -->
 <header>
   <h1>VM 2026 – Gruppetabeller og sluttspill</h1>
+  <p>Sist oppdatert: 2026-06-20 11:51</p>
 </header>
 
+<!-- ── FANENE genereres automatisk — ikke endre denne linjen ─── -->
 <div class="tab-bar">
-<button class="aktiv" onclick="visArk('Gruppe_A')">Gruppe A</button><button onclick="visArk('Gruppe_B')">Gruppe B</button><button onclick="visArk('Gruppe_C')">Gruppe C</button><button onclick="visArk('Gruppe_D')">Gruppe D</button><button onclick="visArk('Gruppe_E')">Gruppe E</button><button onclick="visArk('Gruppe_F')">Gruppe F</button><button onclick="visArk('Gruppe_G')">Gruppe G</button><button onclick="visArk('Gruppe_H')">Gruppe H</button><button onclick="visArk('Gruppe_I')">Gruppe I</button><button onclick="visArk('Gruppe_J')">Gruppe J</button><button onclick="visArk('Gruppe_K')">Gruppe K</button><button onclick="visArk('Gruppe_L')">Gruppe L</button><button onclick="visArk('Toppscorere')">Toppscorere</button><button onclick="visArk('Assists')">Assists</button><button onclick="visArk('Kort')">Kort</button><button onclick="visArk('Lagstatistikk')">Lagstatistikk</button><button onclick="visArk('Ballbesittelse')">Ballbesittelse</button><button onclick="visArk('Scoringstidspunkt')">Scoringstidspunkt</button><button onclick="visArk('Heatmap')">Heatmap</button><button onclick="visArk('Spillere_etter_klubbland')">Spillere etter klubbland</button><button onclick="visArk('Klubber')">Klubber</button><button onclick="visArk('Niv__2_og_lavere')">Nivå 2 og lavere</button><button onclick="visArk('Aldersfordeling')">Aldersfordeling</button><button onclick="visArk('Alder')">Alder</button>
+<button class="aktiv" onclick="visArk('Gruppe_A')">Gruppe A</button>
+<button onclick="visArk('Gruppe_B')">Gruppe B</button>
+<button onclick="visArk('Gruppe_C')">Gruppe C</button>
+<button onclick="visArk('Gruppe_D')">Gruppe D</button>
+<button onclick="visArk('Gruppe_E')">Gruppe E</button>
+<button onclick="visArk('Gruppe_F')">Gruppe F</button>
+<button onclick="visArk('Gruppe_G')">Gruppe G</button>
+<button onclick="visArk('Gruppe_H')">Gruppe H</button>
+<button onclick="visArk('Gruppe_I')">Gruppe I</button>
+<button onclick="visArk('Gruppe_J')">Gruppe J</button>
+<button onclick="visArk('Gruppe_K')">Gruppe K</button>
+<button onclick="visArk('Gruppe_L')">Gruppe L</button>
+<button onclick="visArk('Toppscorere')">Toppscorere</button>
+<button onclick="visArk('Assists')">Assists</button>
+<button onclick="visArk('Kort')">Kort</button>
+<button onclick="visArk('Lagstatistikk')">Lagstatistikk</button>
+<button onclick="visArk('Ballbesittelse')">Ballbesittelse</button>
+<button onclick="visArk('Scoringstidspunkt')">Scoringstidspunkt</button>
+<button onclick="visArk('Heatmap')">Heatmap</button>
+<button onclick="visArk('Spillere_etter_klubbland')">Spillere etter klubbland</button>
+<button onclick="visArk('Klubber')">Klubber</button>
+<button onclick="visArk('Niv__2_og_lavere')">Nivå 2 og lavere</button>
+<button onclick="visArk('Aldersfordeling')">Aldersfordeling</button>
+<button onclick="visArk('Alder')">Alder</button>
 </div>
 
+<!-- ── TABELLDATA genereres automatisk — ikke endre denne linjen -->
 <div id="ark_Gruppe_A" class="ark-innhold" style="display:block">
 <h2>Gruppe A</h2>
 <div class="tabell-wrapper"><table>
@@ -2722,7 +2689,8 @@
 <td style="color:#C0C0C0;text-align:center">0</td>
 </tr>
 </table></div>
-</div><div id="ark_Gruppe_B" class="ark-innhold" style="display:none">
+</div>
+<div id="ark_Gruppe_B" class="ark-innhold" style="display:none">
 <h2>Gruppe B</h2>
 <div class="tabell-wrapper"><table>
 <colgroup>
@@ -5347,7 +5315,8 @@
 <td style="color:#1A1A2E;text-align:center">8</td>
 </tr>
 </table></div>
-</div><div id="ark_Gruppe_C" class="ark-innhold" style="display:none">
+</div>
+<div id="ark_Gruppe_C" class="ark-innhold" style="display:none">
 <h2>Gruppe C</h2>
 <div class="tabell-wrapper"><table>
 <colgroup>
@@ -7972,7 +7941,8 @@
 <td style="color:#C0C0C0;text-align:center">0</td>
 </tr>
 </table></div>
-</div><div id="ark_Gruppe_D" class="ark-innhold" style="display:none">
+</div>
+<div id="ark_Gruppe_D" class="ark-innhold" style="display:none">
 <h2>Gruppe D</h2>
 <div class="tabell-wrapper"><table>
 <colgroup>
@@ -10597,7 +10567,8 @@
 <td style="color:#1A1A2E;text-align:center">39</td>
 </tr>
 </table></div>
-</div><div id="ark_Gruppe_E" class="ark-innhold" style="display:none">
+</div>
+<div id="ark_Gruppe_E" class="ark-innhold" style="display:none">
 <h2>Gruppe E</h2>
 <div class="tabell-wrapper"><table>
 <colgroup>
@@ -13222,7 +13193,8 @@
 <td style="color:#C0C0C0;text-align:center">0</td>
 </tr>
 </table></div>
-</div><div id="ark_Gruppe_F" class="ark-innhold" style="display:none">
+</div>
+<div id="ark_Gruppe_F" class="ark-innhold" style="display:none">
 <h2>Gruppe F</h2>
 <div class="tabell-wrapper"><table>
 <colgroup>
@@ -15847,7 +15819,8 @@
 <td style="color:#1A1A2E;text-align:center">24</td>
 </tr>
 </table></div>
-</div><div id="ark_Gruppe_G" class="ark-innhold" style="display:none">
+</div>
+<div id="ark_Gruppe_G" class="ark-innhold" style="display:none">
 <h2>Gruppe G</h2>
 <div class="tabell-wrapper"><table>
 <colgroup>
@@ -18472,7 +18445,8 @@
 <td style="color:#C0C0C0;text-align:center">0</td>
 </tr>
 </table></div>
-</div><div id="ark_Gruppe_H" class="ark-innhold" style="display:none">
+</div>
+<div id="ark_Gruppe_H" class="ark-innhold" style="display:none">
 <h2>Gruppe H</h2>
 <div class="tabell-wrapper"><table>
 <colgroup>
@@ -21097,7 +21071,8 @@
 <td style="color:#C0C0C0;text-align:center">0</td>
 </tr>
 </table></div>
-</div><div id="ark_Gruppe_I" class="ark-innhold" style="display:none">
+</div>
+<div id="ark_Gruppe_I" class="ark-innhold" style="display:none">
 <h2>Gruppe I</h2>
 <div class="tabell-wrapper"><table>
 <colgroup>
@@ -23722,7 +23697,8 @@
 <td style="color:#1A1A2E;text-align:center">103</td>
 </tr>
 </table></div>
-</div><div id="ark_Gruppe_J" class="ark-innhold" style="display:none">
+</div>
+<div id="ark_Gruppe_J" class="ark-innhold" style="display:none">
 <h2>Gruppe J</h2>
 <div class="tabell-wrapper"><table>
 <colgroup>
@@ -26347,7 +26323,8 @@
 <td style="color:#C0C0C0;text-align:center">0</td>
 </tr>
 </table></div>
-</div><div id="ark_Gruppe_K" class="ark-innhold" style="display:none">
+</div>
+<div id="ark_Gruppe_K" class="ark-innhold" style="display:none">
 <h2>Gruppe K</h2>
 <div class="tabell-wrapper"><table>
 <colgroup>
@@ -28972,7 +28949,8 @@
 <td style="color:#1A1A2E;text-align:center">7</td>
 </tr>
 </table></div>
-</div><div id="ark_Gruppe_L" class="ark-innhold" style="display:none">
+</div>
+<div id="ark_Gruppe_L" class="ark-innhold" style="display:none">
 <h2>Gruppe L</h2>
 <div class="tabell-wrapper"><table>
 <colgroup>
@@ -31597,7 +31575,8 @@
 <td style="color:#C0C0C0;text-align:center">0</td>
 </tr>
 </table></div>
-</div><div id="ark_Toppscorere" class="ark-innhold" style="display:none">
+</div>
+<div id="ark_Toppscorere" class="ark-innhold" style="display:none">
 <h2>Toppscorere</h2>
 <div class="tabell-wrapper"><table>
 <colgroup>
@@ -32279,7 +32258,8 @@
 <td style="background:#F0F5FB;color:#1A1A2E;text-align:center"></td>
 </tr>
 </table></div>
-</div><div id="ark_Assists" class="ark-innhold" style="display:none">
+</div>
+<div id="ark_Assists" class="ark-innhold" style="display:none">
 <h2>Assists</h2>
 <div class="tabell-wrapper"><table>
 <colgroup>
@@ -32781,7 +32761,8 @@
 <td style="background:#F0F5FB;color:#1A1A2E;text-align:center"></td>
 </tr>
 </table></div>
-</div><div id="ark_Kort" class="ark-innhold" style="display:none">
+</div>
+<div id="ark_Kort" class="ark-innhold" style="display:none">
 <h2>Kort</h2>
 <div class="tabell-wrapper"><table>
 <colgroup>
@@ -33460,7 +33441,8 @@
 <td style="color:#1A1A2E;text-align:center"></td>
 </tr>
 </table></div>
-</div><div id="ark_Lagstatistikk" class="ark-innhold" style="display:none">
+</div>
+<div id="ark_Lagstatistikk" class="ark-innhold" style="display:none">
 <h2>Lagstatistikk</h2>
 <div class="tabell-wrapper"><table>
 <colgroup>
@@ -35921,7 +35903,8 @@
 <td style="color:#1A1A2E;text-align:center">63'</td>
 </tr>
 </table></div>
-</div><div id="ark_Ballbesittelse" class="ark-innhold" style="display:none">
+</div>
+<div id="ark_Ballbesittelse" class="ark-innhold" style="display:none">
 <h2>Ballbesittelse</h2>
 <div class="tabell-wrapper"><table>
 <colgroup>
@@ -36449,7 +36432,8 @@
 <td style="font-size:11pt"></td>
 </tr>
 </table></div>
-</div><div id="ark_Scoringstidspunkt" class="ark-innhold" style="display:none">
+</div>
+<div id="ark_Scoringstidspunkt" class="ark-innhold" style="display:none">
 <h2>Scoringstidspunkt</h2>
 <div class="tabell-wrapper"><table>
 <colgroup>
@@ -36501,7 +36485,8 @@
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center"></td>
 </tr>
 </table></div>
-</div><div id="ark_Heatmap" class="ark-innhold" style="display:none">
+</div>
+<div id="ark_Heatmap" class="ark-innhold" style="display:none">
 <h2>Heatmap</h2>
 <div class="tabell-wrapper"><table>
 <colgroup>
@@ -36774,7 +36759,8 @@
 <td style="font-size:11pt"></td>
 </tr>
 </table></div>
-</div><div id="ark_Spillere_etter_klubbland" class="ark-innhold" style="display:none">
+</div>
+<div id="ark_Spillere_etter_klubbland" class="ark-innhold" style="display:none">
 <h2>Spillere etter klubbland</h2>
 <div class="tabell-wrapper"><table>
 <colgroup>
@@ -37595,7 +37581,8 @@
 <td style="font-size:11pt"></td>
 </tr>
 </table></div>
-</div><div id="ark_Klubber" class="ark-innhold" style="display:none">
+</div>
+<div id="ark_Klubber" class="ark-innhold" style="display:none">
 <h2>Klubber</h2>
 <div class="tabell-wrapper"><table>
 <colgroup>
@@ -40815,7 +40802,8 @@
 <td style="background:#F0F5FB;color:#1A1A2E">Østerrike</td>
 </tr>
 </table></div>
-</div><div id="ark_Niv__2_og_lavere" class="ark-innhold" style="display:none">
+</div>
+<div id="ark_Niv__2_og_lavere" class="ark-innhold" style="display:none">
 <h2>Nivå 2 og lavere</h2>
 <div class="tabell-wrapper"><table>
 <colgroup>
@@ -41390,7 +41378,8 @@
 <td style="font-size:11pt"></td>
 </tr>
 </table></div>
-</div><div id="ark_Aldersfordeling" class="ark-innhold" style="display:none">
+</div>
+<div id="ark_Aldersfordeling" class="ark-innhold" style="display:none">
 <h2>Aldersfordeling</h2>
 <div class="tabell-wrapper"><table>
 <colgroup>
@@ -41947,7 +41936,8 @@
 <td style="background:#F0F5FB;color:#1A1A2E;text-align:center">26/26</td>
 </tr>
 </table></div>
-</div><div id="ark_Alder" class="ark-innhold" style="display:none">
+</div>
+<div id="ark_Alder" class="ark-innhold" style="display:none">
 <h2>Alder</h2>
 <div class="tabell-wrapper"><table>
 <colgroup>
@@ -42167,8 +42157,12 @@
 </table></div>
 </div>
 
-<footer>Generert av excel_til_html.py &nbsp;·&nbsp; Data: FIFA / oppdater.py</footer>
+<!-- ── FOOTER: rediger fritt ─────────────────────────────────── -->
+<footer>
+  Statistikk VM i fotball for menn 2026 &nbsp;&middot;&nbsp; Data: FIFA
+</footer>
 
+<!-- ── SCRIPT: ikke endre ────────────────────────────────────── -->
 <script>
 function visArk(id) {
   document.querySelectorAll('.ark-innhold').forEach(el => el.style.display = 'none');

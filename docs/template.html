@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VM 2026 – Gruppetabeller og sluttspill</title>
+<style>
+  /* ── Grunnstiler (ikke rediger under her) ───────────────────── */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Calibri, 'Segoe UI', Arial, sans-serif; font-size: 10pt; background: #f4f6f9; color: #1a1a2e; }
+  .tab-bar { display: flex; flex-wrap: wrap; gap: 3px; padding: 10px 12px 0; background: #1A3C6B; position: sticky; top: 0; z-index: 100; }
+  .tab-bar button { background: rgba(255,255,255,0.15); color: #fff; border: none; padding: 6px 12px; cursor: pointer; border-radius: 4px 4px 0 0; font-size: 9pt; font-family: inherit; white-space: nowrap; transition: background 0.15s; }
+  .tab-bar button:hover { background: rgba(255,255,255,0.3); }
+  .tab-bar button.aktiv { background: #fff; color: #0F2044; font-weight: bold; }
+  .ark-innhold { padding: 16px 12px; }
+  .ark-innhold h2 { font-size: 1.1em; color: #0F2044; margin-bottom: 10px; padding-bottom: 5px; border-bottom: 2px solid #1A3C6B; }
+  .tabell-wrapper { overflow-x: auto; border: 1px solid #d0d8e8; border-radius: 4px; background: #fff; }
+  table { border-collapse: collapse; font-size: 9.5pt; min-width: 100%; }
+  td { padding: 3px 6px; border-bottom: 1px solid #e8edf5; border-right: 1px solid #edf0f5; white-space: nowrap; vertical-align: middle; min-width: 30px; }
+  tr:last-child td { border-bottom: none; }
+  td:last-child { border-right: none; }
+
+  /* ── Rediger gjerne alt under her ───────────────────────────── */
+  header { background: #0F2044; color: #fff; padding: 18px 24px 14px; }
+  header h1 { font-size: 1.4em; font-weight: bold; }
+  header p { font-size: 0.85em; opacity: 0.75; margin-top: 4px; }
+  footer { text-align: center; font-size: 8pt; color: #888; padding: 20px; }
+</style>
+</head>
+<body>
+
+<!-- ── HEADER: rediger tittel og ingress fritt ───────────────── -->
+<header>
+  <h1>VM 2026 – Gruppetabeller og sluttspill</h1>
+  <p>Sist oppdatert: <!-- TIDSPUNKT --></p>
+</header>
+
+<!-- ── FANENE genereres automatisk — ikke endre denne linjen ─── -->
+<div class="tab-bar">
+<!-- TABS -->
+</div>
+
+<!-- ── TABELLDATA genereres automatisk — ikke endre denne linjen -->
+<!-- ARK -->
+
+<!-- ── FOOTER: rediger fritt ─────────────────────────────────── -->
+<footer>
+  Statistikk VM i fotball for menn 2026 &nbsp;&middot;&nbsp; Data: FIFA
+</footer>
+
+<!-- ── SCRIPT: ikke endre ────────────────────────────────────── -->
+<script>
+function visArk(id) {
+  document.querySelectorAll('.ark-innhold').forEach(el => el.style.display = 'none');
+  document.querySelectorAll('.tab-bar button').forEach(btn => btn.classList.remove('aktiv'));
+  const ark = document.getElementById('ark_' + id);
+  if (ark) ark.style.display = 'block';
+  event.currentTarget.classList.add('aktiv');
+}
+</script>
+</body>
+</html>
