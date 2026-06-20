@@ -126,7 +126,7 @@ function finnTabKnapp(id) {
   return null;
 }
 
-function visArk(id) {
+  function visArk(id, oppdaterHash = true) {
   document.querySelectorAll('.ark-innhold').forEach(el => el.style.display = 'none');
   document.querySelectorAll('.tab-bar button').forEach(b => b.classList.remove('aktiv'));
   const ark = document.getElementById('ark_' + id);
@@ -143,7 +143,47 @@ function visArk(id) {
   if (overlayKnapp) overlayKnapp.classList.add('aktiv');
   const sok = document.getElementById('sokefelt');
   if (sok) { sok.value = ''; sokITabell(''); }
+  if (oppdaterHash) history.replaceState(null, '', '#' + id);
 }
+
+function navigerTilHash(hash) {
+  if (!hash || hash === '#') return;
+  const id = hash.replace(/^#/, '');
+  if (document.getElementById('ark_' + id)) {
+    visArk(id, false);
+    return;
+  }
+  const el = document.getElementById(id);
+  if (el) {
+    const ark = el.closest('.ark-innhold');
+    if (ark) {
+      visArk(ark.id.replace(/^ark_/, ''), false);
+      setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 150);
+    }
+  }
+}
+
+window.addEventListener('hashchange', () => navigerTilHash(location.hash));
+// function visArk(id) {
+//   document.querySelectorAll('.ark-innhold').forEach(el => el.style.display = 'none');
+//   document.querySelectorAll('.tab-bar button').forEach(b => b.classList.remove('aktiv'));
+//   const ark = document.getElementById('ark_' + id);
+//   if (ark) ark.style.display = 'block';
+//   const knapp = finnTabKnapp(id);
+//   if (knapp) {
+//     knapp.classList.add('aktiv');
+//     knapp.scrollIntoView({behavior: 'smooth', block: 'nearest', inline: 'center'});
+//     const aktivTekst = document.getElementById('aktiv-fane-tekst');
+//     if (aktivTekst) aktivTekst.textContent = knapp.textContent.trim();
+//   }
+//   document.querySelectorAll('.fane-gruppe-knapper button').forEach(b => b.classList.remove('aktiv'));
+//   const overlayKnapp = document.querySelector('.fane-gruppe-knapper button[data-id="' + id + '"]');
+//   if (overlayKnapp) overlayKnapp.classList.add('aktiv');
+//   const sok = document.getElementById('sokefelt');
+//   if (sok) { sok.value = ''; sokITabell(''); }
+// }
+
+  
 
 function sokITabell(q) {
   const tekst = q.toLowerCase().trim();
@@ -205,7 +245,8 @@ function byggFaneMeny() {
     if (el) el.textContent = aktiv.navn;
   }
 }
-document.addEventListener('DOMContentLoaded', byggFaneMeny);
+// document.addEventListener('DOMContentLoaded', byggFaneMeny);
+  document.addEventListener('DOMContentLoaded', () => { byggFaneMeny(); if (location.hash) navigerTilHash(location.hash); });
 </script>
 </body>
 </html>
