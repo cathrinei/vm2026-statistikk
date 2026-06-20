@@ -104,18 +104,27 @@ def skriv_country_sheet(ranked, country_lvl):
     if sheet_name in wb.sheetnames:
         del wb[sheet_name]
     ws = wb.create_sheet(sheet_name)
-    ws.auto_filter.ref = f"A1:{get_column_letter(ncols)}1"
+    ws.auto_filter.ref = f"A2:{get_column_letter(ncols)}2"
 
-    # Kolonneoverskrifter rad 1
-    ws.row_dimensions[1].height = 20
+    total_spillere = sum(v for _, v in ranked)
+
+    # Tittelrad
+    ws.row_dimensions[1].height = 28
+    ws.merge_cells(f"A1:{get_column_letter(ncols)}1")
+    c = ws.cell(row=1, column=1,
+                value=f"VM 2026 — Spillere etter klubbland   {len(ranked)} land, {total_spillere} spillere")
+    c.font = S["f_title"]; c.fill = S["NAVY"]; c.alignment = S["lft"]
+
+    # Kolonneoverskrifter rad 2
+    ws.row_dimensions[2].height = 20
     for col, (label, _, al) in enumerate(col_defs, 1):
-        c = ws.cell(row=1, column=col, value=label)
+        c = ws.cell(row=2, column=col, value=label)
         c.font = S["f_hdr"]; c.fill = S["BLUE"]; c.alignment = al
 
-    # Datarader fra rad 2
+    # Datarader fra rad 3
     rang = 1
     for i, (land, total) in enumerate(ranked):
-        row = i + 2
+        row = i + 3
         ws.row_dimensions[row].height = 17
         lvls = country_lvl.get(land, {})
 
