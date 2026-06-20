@@ -33,18 +33,24 @@ INTERVALS = [
 ]
 
 
-def _parse_min(s: str) -> int | None:
+def _parse_min(s: str) -> tuple[int, int] | None:
+    """Returnerer (intervall_minutt, visnings_minutt).
+    45'+5' → (45, 50): telles i 31–45-intervallet, vises som 50.
+    90'+7' → (90, 97): telles i 76–90+-intervallet, vises som 97.
+    """
     if not s:
         return None
     s = str(s).strip().rstrip("'")
     if "'+'" in s or "'+" in s:
         parts = s.replace("'", "").split("+")
         try:
-            return int(parts[0]) + int(parts[1])
+            base, extra = int(parts[0]), int(parts[1])
+            return base, base + extra
         except Exception:
             return None
     try:
-        return int(s)
+        v = int(s)
+        return v, v
     except Exception:
         return None
 
@@ -64,15 +70,16 @@ def tell_maal() -> tuple[list[int], int, list[dict]]:
         for e in events:
             if e.get("TypeLocalized") not in GOAL_TYPES:
                 continue
-            minutt = _parse_min(e.get("MatchMinute"))
-            if minutt is None:
+            parsed = _parse_min(e.get("MatchMinute"))
+            if parsed is None:
                 continue
+            intervall_min, visnings_min = parsed
             for i, (_, lo, hi) in enumerate(INTERVALS):
-                if lo <= minutt <= hi:
+                if lo <= intervall_min <= hi:
                     counts[i] += 1
                     break
             maal_data.append({
-                "minutt":  minutt,
+                "minutt":  visnings_min,
                 "type":    e.get("TypeLocalized"),
                 "spiller": e.get("PlayerName", ""),
             })

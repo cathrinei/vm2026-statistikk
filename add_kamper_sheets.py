@@ -509,7 +509,7 @@ def skriv_kamper_til_excel(grupper: dict[str, list[dict]],
         raise
 
     runde_labels = ["Runde 1", "Runde 1", "Runde 2", "Runde 2", "Runde 3", "Runde 3"]
-    BLOCK_HEADER_ROWS = [1, 30, 59, 88]
+    BLOCK_HEADER_ROWS = [17, 46, 75, 104]
 
     for g in GROUPS:
         if g not in wb.sheetnames or g not in grupper:

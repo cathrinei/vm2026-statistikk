@@ -31,7 +31,7 @@ CLUBS_JSON   = BASE_DIR / "clubs_new.json"
 RAPPORT_MD   = BASE_DIR / "avvik_rapport.md"
 
 GROUPS = [f"Gruppe {x}" for x in "ABCDEFGHIJKL"]
-BLOCKS = [(1, 3, 28), (30, 32, 57), (59, 61, 86), (88, 90, 115)]
+BLOCKS = [(17, 19, 44), (46, 48, 73), (75, 77, 102), (104, 106, 131)]
 
 COL_NR     = 12
 COL_NAME   = 13

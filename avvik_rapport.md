@@ -1,14 +1,106 @@
 # VM 2026 — Avviksrapport
-*Generert: 2026-06-20 17:24*
+*Generert: 2026-06-20 21:45*
 
 **Kilde:** [FIFA API](https://api.fifa.com/api/v3/calendar/matches)
-**Status:** ✅ 114 spillere hentet (32 kamper)
+**Status:** ✅ 119 spillere hentet (33 kamper)
 **Spillere i Excel (mål/assist > 0):** 114
-**Spillere hos FIFA:** 114
+**Spillere hos FIFA:** 119
 
-## ✅ Ingen avvik
+## 🔍 Avvik — 93 stk
 
-Excel stemmer med FIFA.
+🟡  **Memphis Depay** 🌍 Nederland (Nederland, Gruppe F) — Assist: Excel=0, FIFA=1
+🟡  **Cody Gakpo** 🌍 Nederland (Nederland, Gruppe F) — Assist: Excel=0, FIFA=1
+🟡  **Denzel Dumfries** 🌍 Nederland (Nederland, Gruppe F) — Assist: Excel=0, FIFA=1
+🟡  **Crysencio Summerville** 🌍 Nederland (Nederland, Gruppe F) — Assist: Excel=0, FIFA=1
+🟡  **Alexander Isak** 🌍 Sverige (Sverige, Gruppe F) — Assist: Excel=2, FIFA=3
+🟨  **Brian Gutiérrez** 🌍 Mexico (Mexico, Gruppe A) — Gule: Excel=0, FIFA=1
+🟨  **Teboho Mokoena** 🌍 Sør-Afrika (Sør-Afrika, Gruppe A) — Gule: Excel=0, FIFA=2
+🟨  **Thalente Mbatha** 🌍 Sør-Afrika (Sør-Afrika, Gruppe A) — Gule: Excel=0, FIFA=1
+🟨  **Nkosinathi Sibisi** 🌍 Sør-Afrika (Sør-Afrika, Gruppe A) — Gule: Excel=0, FIFA=1
+🟨  **Lee Gi-hyuk** 🌍 Sør-Korea (Sør-Korea, Gruppe A) — Gule: Excel=0, FIFA=1
+🟨  **Paik Seung-ho** 🌍 Sør-Korea (Sør-Korea, Gruppe A) — Gule: Excel=0, FIFA=1
+🟨  **Lee Kang-in** 🌍 Sør-Korea (Sør-Korea, Gruppe A) — Gule: Excel=0, FIFA=1
+🟨  **Ladislav Krejčí** 🌍 Tsjekkia (Tsjekkia, Gruppe A) — Gule: Excel=0, FIFA=1
+🟨  **Alistair Johnston** 🌍 Canada (Canada, Gruppe B) — Gule: Excel=0, FIFA=1
+🟨  **Luc de Fougerolles** 🌍 Canada (Canada, Gruppe B) — Gule: Excel=0, FIFA=1
+🟨  **Derek Cornelius** 🌍 Canada (Canada, Gruppe B) — Gule: Excel=0, FIFA=1
+🟨  **Amar Dedić** 🌍 Bosnia-Hercegovina (Bosnia-Hercegovina, Gruppe B) — Gule: Excel=0, FIFA=1
+🟨  **Ermedin Demirović** 🌍 Bosnia-Hercegovina (Bosnia-Hercegovina, Gruppe B) — Gule: Excel=0, FIFA=1
+🟨  **Edin Džeko** 🌍 Bosnia-Hercegovina (Bosnia-Hercegovina, Gruppe B) — Gule: Excel=0, FIFA=1
+🟨  **Nikola Katić** 🌍 Bosnia-Hercegovina (Bosnia-Hercegovina, Gruppe B) — Gule: Excel=0, FIFA=1
+🟨  **Jovo Lukić** 🌍 Bosnia-Hercegovina (Bosnia-Hercegovina, Gruppe B) — Gule: Excel=0, FIFA=1
+🟨  **Mahmoud Abunada** 🌍 Qatar (Qatar, Gruppe B) — Gule: Excel=0, FIFA=1
+🟨  **Jassem Gaber** 🌍 Qatar (Qatar, Gruppe B) — Gule: Excel=0, FIFA=1
+🟨  **Nico Elvedi** 🌍 Sveits (Sveits, Gruppe B) — Gule: Excel=0, FIFA=1
+🟨  **Denis Zakaria** 🌍 Sveits (Sveits, Gruppe B) — Gule: Excel=0, FIFA=1
+🟨  **Casemiro** 🌍 Brasil (Brasil, Gruppe C) — Gule: Excel=0, FIFA=1
+🟨  **Douglas Santos** 🌍 Brasil (Brasil, Gruppe C) — Gule: Excel=0, FIFA=1
+🟨  **Roger Ibañez** 🌍 Brasil (Brasil, Gruppe C) — Gule: Excel=0, FIFA=1
+🟨  **Issa Diop** 🌍 Marokko (Marokko, Gruppe C) — Gule: Excel=0, FIFA=1
+🟨  **Carlens Arcus** 🌍 Haiti (Haiti, Gruppe C) — Gule: Excel=0, FIFA=1
+🟨  **Jean-Ricner Bellegarde** 🌍 Haiti (Haiti, Gruppe C) — Gule: Excel=0, FIFA=1
+🟨  **Danley Jean Jacques** 🌍 Haiti (Haiti, Gruppe C) — Gule: Excel=0, FIFA=1
+🟨  **Frantzdy Pierrot** 🌍 Haiti (Haiti, Gruppe C) — Gule: Excel=0, FIFA=1
+🟨  **Aaron Hickey** 🌍 Skottland (Skottland, Gruppe C) — Gule: Excel=0, FIFA=1
+🟨  **Andy Robertson** 🌍 Skottland (Skottland, Gruppe C) — Gule: Excel=0, FIFA=1
+🟨  **Kenny McLean** 🌍 Skottland (Skottland, Gruppe C) — Gule: Excel=0, FIFA=1
+🟨  **Findlay Curtis** 🌍 Skottland (Skottland, Gruppe C) — Gule: Excel=0, FIFA=1
+🟨  **Chris Richards** 🌍 USA (USA, Gruppe D) — Gule: Excel=0, FIFA=1
+🟨  **Tyler Adams** 🌍 USA (USA, Gruppe D) — Gule: Excel=0, FIFA=1
+🟨  **Antonee Robinson** 🌍 USA (USA, Gruppe D) — Gule: Excel=0, FIFA=1
+🟨  **Folarin Balogun** 🌍 USA (USA, Gruppe D) — Gule: Excel=0, FIFA=1
+🟨  **Juan José Cáceres** 🌍 Paraguay (Paraguay, Gruppe D) — Gule: Excel=0, FIFA=1
+🟨  **Júnior Alonso** 🌍 Paraguay (Paraguay, Gruppe D) — Gule: Excel=0, FIFA=1
+🟨  **Diego Gómez** 🌍 Paraguay (Paraguay, Gruppe D) — Gule: Excel=0, FIFA=1
+🟨  **Miguel Almirón** 🌍 Paraguay (Paraguay, Gruppe D) — Gule: Excel=0, FIFA=1
+🟨  **Álex Arce** 🌍 Paraguay (Paraguay, Gruppe D) — Gule: Excel=0, FIFA=1
+🟨  **Matías Galarza** 🌍 Paraguay (Paraguay, Gruppe D) — Gule: Excel=0, FIFA=1
+🟨  **Alessandro Circati** 🌍 Australia (Australia, Gruppe D) — Gule: Excel=0, FIFA=1
+🟨  **Jacob Italiano** 🌍 Australia (Australia, Gruppe D) — Gule: Excel=0, FIFA=1
+🟨  **Jordan Bos** 🌍 Australia (Australia, Gruppe D) — Gule: Excel=0, FIFA=1
+🟨  **Harry Souttar** 🌍 Australia (Australia, Gruppe D) — Gule: Excel=0, FIFA=1
+🟨  **Eren Elmalı** 🌍 Tyrkia (Tyrkia, Gruppe D) — Gule: Excel=0, FIFA=1
+🟨  **Yunus Akgün** 🌍 Tyrkia (Tyrkia, Gruppe D) — Gule: Excel=0, FIFA=1
+🟨  **Seko Fofana** 🌍 Elfenbenskysten (Elfenbenskysten, Gruppe E) — Gule: Excel=0, FIFA=1
+🟨  **Franck Kessié** 🌍 Elfenbenskysten (Elfenbenskysten, Gruppe E) — Gule: Excel=0, FIFA=1
+🟨  **Guéla Doué** 🌍 Elfenbenskysten (Elfenbenskysten, Gruppe E) — Gule: Excel=0, FIFA=1
+🟨  **Jackson Porozo** 🌍 Ecuador (Ecuador, Gruppe E) — Gule: Excel=0, FIFA=1
+🟨  **Memphis Depay** 🌍 Nederland (Nederland, Gruppe F) — Gule: Excel=0, FIFA=1
+🟨  **Micky van de Ven** 🌍 Nederland (Nederland, Gruppe F) — Gule: Excel=0, FIFA=1
+🟨  **Crysencio Summerville** 🌍 Nederland (Nederland, Gruppe F) — Gule: Excel=0, FIFA=1
+🟨  **Gabriel Gudmundsson** 🌍 Sverige (Sverige, Gruppe F) — Gule: Excel=0, FIFA=1
+🟨  **Lucas Bergvall** 🌍 Sverige (Sverige, Gruppe F) — Gule: Excel=0, FIFA=1
+🟨  **Yasin Ayari** 🌍 Sverige (Sverige, Gruppe F) — Gule: Excel=0, FIFA=1
+🟨  **Rani Khedira** 🌍 Tunisia (Tunisia, Gruppe F) — Gule: Excel=0, FIFA=1
+🟨  **Maxim De Cuyper** 🌍 Belgia (Belgia, Gruppe G) — Gule: Excel=0, FIFA=1
+🟨  **Timothy Castagne** 🌍 Belgia (Belgia, Gruppe G) — Gule: Excel=0, FIFA=1
+🟨  **Ahmed Fatouh** 🌍 Egypt (Egypt, Gruppe G) — Gule: Excel=0, FIFA=1
+🟨  **Marwan Attia** 🌍 Egypt (Egypt, Gruppe G) — Gule: Excel=0, FIFA=1
+🟨  **Ehsan Hajsafi** 🌍 Iran (Iran, Gruppe G) — Gule: Excel=0, FIFA=1
+🟨  **Pedri** 🌍 Spania (Spania, Gruppe H) — Gule: Excel=0, FIFA=1
+🟨  **Sidny Lopes Cabral** 🌍 Kapp Verde (Kapp Verde, Gruppe H) — Gule: Excel=0, FIFA=1
+🟨  **Abdulelah Al-Amri** 🌍 Saudi-Arabia (Saudi-Arabia, Gruppe H) — Gule: Excel=0, FIFA=1
+🟨  **Zaid Tahseen** 🌍 Irak (Irak, Gruppe I) — Gule: Excel=0, FIFA=1
+🟨  **Marcel Sabitzer** 🌍 Østerrike (Østerrike, Gruppe J) — Gule: Excel=0, FIFA=1
+🟨  **Nélson Semedo** 🌍 Portugal (Portugal, Gruppe K) — Gule: Excel=0, FIFA=1
+🟨  **Tomás Araújo** 🌍 Portugal (Portugal, Gruppe K) — Gule: Excel=0, FIFA=1
+🟨  **Bernardo Silva** 🌍 Portugal (Portugal, Gruppe K) — Gule: Excel=0, FIFA=1
+🟨  **Chancel Mbemba** 🌍 DR Kongo (DR Kongo, Gruppe K) — Gule: Excel=0, FIFA=1
+🟨  **Abdukodir Khusanov** 🌍 Usbekistan (Usbekistan, Gruppe K) — Gule: Excel=0, FIFA=1
+🟨  **Johan Mojica** 🌍 Colombia (Colombia, Gruppe K) — Gule: Excel=0, FIFA=1
+🟨  **Caleb Yirenkyi** 🌍 Ghana (Ghana, Gruppe L) — Gule: Excel=0, FIFA=1
+🟨  **César Blackman** 🌍 Panama (Panama, Gruppe L) — Gule: Excel=0, FIFA=1
+🟨  **Carlos Harvey** 🌍 Panama (Panama, Gruppe L) — Gule: Excel=0, FIFA=1
+🔴  **Cody Gakpo** 🌍 Nederland (Nederland, Gruppe F) — Mål: Excel=0, FIFA=2
+🔴  **Brian Brobbey** 🌍 Nederland (Nederland, Gruppe F) — Mål: Excel=0, FIFA=2
+🔴  **Crysencio Summerville** 🌍 Nederland (Nederland, Gruppe F) — Mål: Excel=1, FIFA=2
+🔴  **Anthony Elanga** 🌍 Sverige (Sverige, Gruppe F) — Mål: Excel=0, FIFA=1
+🟥  **César Montes** 🌍 Mexico (Mexico, Gruppe A) — Røde: Excel=0, FIFA=1
+🟥  **Themba Zwane** 🌍 Sør-Afrika (Sør-Afrika, Gruppe A) — Røde: Excel=0, FIFA=1
+🟥  **Sphephelo Sithole** 🌍 Sør-Afrika (Sør-Afrika, Gruppe A) — Røde: Excel=0, FIFA=1
+🟥  **Tarik Muharemović** 🌍 Bosnia-Hercegovina (Bosnia-Hercegovina, Gruppe B) — Røde: Excel=0, FIFA=1
+🟥  **Assim Madibo** 🌍 Qatar (Qatar, Gruppe B) — Røde: Excel=0, FIFA=1
+🟥  **Miguel Almirón** 🌍 Paraguay (Paraguay, Gruppe D) — Røde: Excel=0, FIFA=1
 
 ## Registrert i Excel
 

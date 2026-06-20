@@ -830,5 +830,31 @@
     "away_yellow": 0,
     "home_red": 0,
     "away_red": 0
+  },
+  "sr:sport_event:66456972": {
+    "home": "Netherlands",
+    "away": "Sweden",
+    "result": "5-1",
+    "date": "2026-06-20",
+    "round": 2,
+    "verified": true,
+    "home_poss": 52,
+    "away_poss": 48,
+    "home_shots_total": 12,
+    "away_shots_total": 20,
+    "home_shots_on_target": 7,
+    "away_shots_on_target": 9,
+    "home_shots_off_target": 3,
+    "away_shots_off_target": 9,
+    "home_shots_blocked": 2,
+    "away_shots_blocked": 2,
+    "home_corners": 2,
+    "away_corners": 5,
+    "home_fouls": 9,
+    "away_fouls": 12,
+    "home_yellow": 0,
+    "away_yellow": 3,
+    "home_red": 0,
+    "away_red": 0
   }
 }
