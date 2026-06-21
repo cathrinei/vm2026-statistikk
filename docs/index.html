@@ -29917,8 +29917,8 @@ function escapeRegex(s) {
   return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
-function gjenopprettHighlight(ark) {
-  ark.querySelectorAll('td[data-original]').forEach(td => {
+function gjenopprettHighlight() {
+  document.querySelectorAll('td[data-original]').forEach(td => {
     td.innerHTML = td.getAttribute('data-original');
     td.removeAttribute('data-original');
   });
@@ -29929,7 +29929,7 @@ function sokITabell(q) {
   const tekst = q.toLowerCase().trim();
   const synligArk = document.querySelector('.ark-innhold[style*="block"]');
   if (!synligArk) return;
-  gjenopprettHighlight(synligArk);
+  gjenopprettHighlight();
   let treff = 0, total = 0;
   const regex = tekst ? new RegExp(escapeRegex(tekst), 'gi') : null;
   synligArk.querySelectorAll('tr').forEach(rad => {
