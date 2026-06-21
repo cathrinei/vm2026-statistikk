@@ -2,7 +2,7 @@
 """
 add_sluttspill_sheet.py
 Lager ark for sluttspillrundene i VM 2026:
-  32-delsfinale, 8-delsfinale, Kvartfinaler, Semifinaler, Bronsefinale, Finale
+  16-delsfinale, 8-delsfinale, Kvartfinaler, Semifinaler, Bronsefinale, Finale
 
 Henter kampdata fra FIFA API. Fremtidige kamper vises med "TBA" som lagnavn.
 Cache: sluttspill_cache.json
@@ -61,8 +61,8 @@ def til_norsk(name: str) -> str:
 
 # FIFA API bruker engelske rundenavn — mapper til norske arknavn
 RUNDE_MAP: dict[str, str] = {
-    "round of 32":           "32-delsfinale",
-    "round of 32 - leg 1":   "32-delsfinale",
+    "round of 32":           "16-delsfinale",
+    "round of 32 - leg 1":   "16-delsfinale",
     "round of 16":           "8-delsfinale",
     "round of 16 - leg 1":   "8-delsfinale",
     "quarter-final":         "Kvartfinaler",
@@ -75,10 +75,10 @@ RUNDE_MAP: dict[str, str] = {
     "final":                 "Finale",
 }
 
-RUNDE_ORDER = ["32-delsfinale", "8-delsfinale", "Kvartfinaler", "Semifinaler", "Bronsefinale", "Finale"]
+RUNDE_ORDER = ["16-delsfinale", "8-delsfinale", "Kvartfinaler", "Semifinaler", "Bronsefinale", "Finale"]
 
 RUNDE_TITLER = {
-    "32-delsfinale": "VM 2026 — 32-delsfinale",
+    "16-delsfinale": "VM 2026 — 16-delsfinale",
     "8-delsfinale":  "VM 2026 — 8-delsfinale",
     "Kvartfinaler":  "VM 2026 — Kvartfinaler",
     "Semifinaler":   "VM 2026 — Semifinaler",
