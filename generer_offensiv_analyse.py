@@ -305,7 +305,11 @@ def generer_html(lag_data, metrikker, tidspunkt):
     </div>
     <div class="legend-item">
       <span class="legend-dot" style="background:rgba(194,57,43,0.7);border-color:#a32d2d"></span>
-      0 mål scored
+      0 mål — flest skudd
+    </div>
+    <div class="legend-item">
+      <span class="legend-dot" style="background:rgba(136,135,128,0.55);border-color:#5F5E5A"></span>
+      0 mål — øvrige
     </div>
   </div>
 </div>
