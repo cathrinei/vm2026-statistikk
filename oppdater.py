@@ -80,19 +80,25 @@ def count_spilte() -> int:
     return sum(1 for g in cache.values() for k in g if k.get("spilt"))
 
 
-def kjør_steg(navn, cmd, stopp_ved_feil=True) -> bool:
+def kjør_steg(navn, cmd, stopp_ved_feil=True) -> str:
     print(f"\n{'─'*55}")
     print(f"  {navn}")
     print(f"{'─'*55}")
-    start  = time.time()
-    result = subprocess.run(cmd, capture_output=False, text=False)
+    start = time.time()
+    linjer = []
+    with subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+                          text=True, encoding="utf-8", errors="replace") as p:
+        for linje in p.stdout:
+            print(linje, end="", flush=True)
+            linjer.append(linje)
+        p.wait()
     elapsed = time.time() - start
-    ok = result.returncode == 0
+    ok = p.returncode == 0
     print(f"\n  [{'✓ OK' if ok else '✗ FEIL'}]  ({elapsed:.1f}s)")
     if not ok and stopp_ved_feil:
         log(f"Steg feilet: {navn} — stopper.", level="ERROR")
         sys.exit(1)
-    return ok
+    return "".join(linjer)
 
 
 def _nyere_enn_excel(*filer) -> bool:
@@ -128,7 +134,7 @@ def main():
     spilte_før = count_spilte()
 
     kamper_cmd = [PYTHON, "add_kamper_sheets.py"] + (["--full"] if full else [])
-    kjør_steg("Kampresultater + gruppetabeller", kamper_cmd)
+    kamper_output = kjør_steg("Kampresultater + gruppetabeller", kamper_cmd)
 
     spilte_etter = count_spilte()
     nye_kamper   = spilte_etter - spilte_før
@@ -197,13 +203,23 @@ def main():
     print(f"  Ferdig ({elapsed:.0f}s)")
     print("=" * 55)
 
-    skriv_github_summary([
+    endrede_grupper = next(
+        (l.strip().split("Endringer i: ", 1)[1] for l in kamper_output.splitlines() if "Endringer i:" in l),
+        None
+    )
+    summary = [
         f"## VM 2026 oppdatering {datetime.now().strftime('%Y-%m-%d')}",
         f"- **Trigger:** `{os.environ.get('GITHUB_EVENT_NAME', 'lokal')}`",
         f"- **Kjøretid:** {elapsed:.0f}s",
         f"- **Kamper totalt:** {spilte_etter}",
-        f"- **Nye kamper denne kjøringen:** {nye_kamper}",
-    ])
+    ]
+    if nye_kamper > 0:
+        summary.append(f"- **Nye kamper:** {nye_kamper}")
+    if endrede_grupper:
+        summary.append(f"- **Oppdaterte grupper:** {endrede_grupper}")
+    elif nye_kamper == 0:
+        summary.append("- Ingen nye kamper siden sist")
+    skriv_github_summary(summary)
 
 
 if __name__ == "__main__":
