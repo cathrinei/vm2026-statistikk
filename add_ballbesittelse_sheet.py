@@ -96,6 +96,9 @@ def bygg_data() -> list[dict]:
         except Exception:
             score_str = res
 
+        if entry.get("home_poss") is None:
+            continue
+
         rader.append({
             "gruppe":        info["gruppe"],
             "hjemme":        h_no,
