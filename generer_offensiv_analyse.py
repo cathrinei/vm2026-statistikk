@@ -119,16 +119,21 @@ def finn_metrikker(lag_data, maal, skudd):
     }
 
 
-def er_interessant(d):
-    """Filtrer til lag som er interessante nok for boblediagrammet."""
-    return (
-        d["y"] >= 2.0 or                   # scorer minst 2 mål per kamp i snitt
-        (d["maal"] == 0 and d["x"] >= 18)  # 0-mål-paradoks med mange skudd
-    )
+TOPP_SCORERE = 12   # antall beste scorende lag i diagrammet
+TOPP_NULLMAAL = 3   # antall verste 0-mål-lag i diagrammet
+
+
+def velg_chart_lag(lag_data):
+    """Velg alltid et fast antall lag uansett turneringsstadium."""
+    med_maal  = sorted([d for d in lag_data if d["maal"] > 0],
+                       key=lambda d: (-d["y"], -d["skudd"]))[:TOPP_SCORERE]
+    nullmaal  = sorted([d for d in lag_data if d["maal"] == 0],
+                       key=lambda d: -d["skudd"])[:TOPP_NULLMAAL]
+    return med_maal + nullmaal
 
 
 def generer_html(lag_data, metrikker, tidspunkt):
-    chart_data = [d for d in lag_data if er_interessant(d)]
+    chart_data = velg_chart_lag(lag_data)
     to_games = [d for d in chart_data if d["kamper"] >= 2]
     one_game = [d for d in chart_data if d["kamper"] == 1]
 
