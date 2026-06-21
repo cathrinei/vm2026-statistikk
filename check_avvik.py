@@ -635,25 +635,21 @@ def skriv_toppscore_sheets(excel: list[dict]) -> None:
 
     med_statistikk = [p for p in excel if p["goals"] > 0 or p["assists"] > 0]
 
-    scorere = sorted(
-        [p for p in med_statistikk if p["goals"] > 0],
+    scorere_og_assists = sorted(
+        med_statistikk,
         key=lambda x: (-x["goals"], -x["assists"], x["name"]),
     )
+    n_mål = sum(p["goals"] for p in med_statistikk)
+    n_assists = sum(p["assists"] for p in med_statistikk)
     _write_sheet(
-        "Toppscorere", scorere,
-        f"VM 2026 — Toppscorere   {sum(p['goals'] for p in med_statistikk)} mål totalt",
+        "Scorere og assists", scorere_og_assists,
+        f"VM 2026 — Scorere og assists   {n_mål} mål · {n_assists} assists",
         rank_key=lambda p: p["goals"],
     )
 
-    assistere = sorted(
-        [p for p in med_statistikk if p["assists"] > 0],
-        key=lambda x: (-x["assists"], -x["goals"], x["name"]),
-    )
-    _write_sheet(
-        "Assists", assistere,
-        f"VM 2026 — Assists   {sum(p['assists'] for p in med_statistikk)} assist totalt",
-        rank_key=lambda p: p["assists"],
-    )
+    for gammelt in ["Toppscorere", "Assists"]:
+        if gammelt in wb.sheetnames:
+            del wb[gammelt]
 
     try:
         wb.save(EXCEL_PATH)
@@ -661,8 +657,7 @@ def skriv_toppscore_sheets(excel: list[dict]) -> None:
         shutil.copy2(backup, EXCEL_PATH)
         raise
 
-    print(f"      → 'Toppscorere'-sheet skrevet ({len(scorere)} spillere)")
-    print(f"      → 'Assists'-sheet skrevet ({len(assistere)} spillere)")
+    print(f"      → 'Scorere og assists'-sheet skrevet ({len(scorere_og_assists)} spillere, {n_mål} mål · {n_assists} assists)")
 
 # ── Rapport ───────────────────────────────────────────────────────────────────
 
