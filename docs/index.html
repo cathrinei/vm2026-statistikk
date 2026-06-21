@@ -93,6 +93,11 @@
   .sok-panel-tom { padding: 16px; text-align: center; color: #888; font-size: 9.5pt; }
   .sok-panel-hint { padding: 6px 14px; font-size: 8pt; color: rgba(255,255,255,0.5); background: #0F2044; border-bottom: 1px solid rgba(255,255,255,0.1); }
 
+  /* ── Spillernavn-klikk ───────────────────────────────────────── */
+  .spiller-lenke { cursor: pointer; }
+  .spiller-lenke:hover { text-decoration: underline; }
+  body.dark-mode .spiller-lenke:hover { color: #93c5fd; }
+
   /* ── Mørkt modus ─────────────────────────────────────────────── */
   #dark-mode-knapp { background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3); padding: 6px 12px; border-radius: 4px; font-size: 9pt; font-family: inherit; cursor: pointer; white-space: nowrap; flex-shrink: 0; }
   #dark-mode-knapp:hover { background: rgba(255,255,255,0.28); }
@@ -30116,9 +30121,45 @@ function oppdaterScrollKnapper() {
       });
     }
     document.addEventListener('click', function(e) {
+      const spillerTd = e.target.closest('td.spiller-lenke');
+      if (spillerTd) {
+        const navn = spillerTd.textContent.trim();
+        document.getElementById('sokefelt').value = navn;
+        sokAlleArk(navn);
+        return;
+      }
       if (!e.target.closest('#sok-panel') && !e.target.closest('#sokefelt')) lukkSokPanel();
     });
+
+    byggSpillerLenker();
   });
+
+  function byggSpillerLenker() {
+    // Bygg fasit av spillernavn fra spillertroppene (Gruppe A-L)
+    const tropp = new Set();
+    document.querySelectorAll('[id^="ark_Gruppe_"]').forEach(ark => {
+      ark.querySelectorAll('tr').forEach(tr => {
+        const tds = tr.querySelectorAll('td');
+        if (tds.length >= 2 && /^\d+$/.test(tds[0].textContent.trim())) {
+          const navn = tds[1].textContent.trim();
+          tropp.add(navn);
+          tds[1].classList.add('spiller-lenke');
+        }
+      });
+    });
+    // Statistikkfaner: merk kolonne 2 kun der navnet finnes i troppene
+    ['ark_Toppscorere', 'ark_Assists', 'ark_Kort'].forEach(id => {
+      const ark = document.getElementById(id);
+      if (!ark) return;
+      ark.querySelectorAll('tr').forEach(tr => {
+        const tds = tr.querySelectorAll('td');
+        if (tds.length >= 2 && !tds[1].hasAttribute('colspan')) {
+          const navn = tds[1].textContent.trim();
+          if (tropp.has(navn)) tds[1].classList.add('spiller-lenke');
+        }
+      });
+    });
+  }
 </script>
 </body>
 </html>
