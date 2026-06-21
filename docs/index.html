@@ -137,6 +137,12 @@
   }
   td[data-sort-col][data-sort-state="asc"]::after,
   td[data-sort-col][data-sort-state="desc"]::after { opacity: 1; }
+  /* ── Sticky kolonneoverskrifter ──────────────────────── */
+  tr[data-sort-header="1"] td {
+    position: sticky;
+    top: var(--nav-hoyde, 0px);
+    z-index: 10;
+  }
 </style>
 </head>
 <body>
@@ -30059,6 +30065,11 @@ function sorterSeksjon(headerRow, kolIndex, retning) {
   });
 }
 
+function oppdaterNavHoyde() {
+  const nav = document.querySelector('.nav-wrapper');
+  if (nav) document.documentElement.style.setProperty('--nav-hoyde', nav.offsetHeight + 'px');
+}
+
 function initialiserSortering() {
   document.querySelectorAll('tr[data-sort-header="1"]').forEach(headerRow => {
     headerRow.querySelectorAll('td').forEach((td, i) => {
@@ -30085,6 +30096,8 @@ function initialiserSortering() {
 
 document.addEventListener('DOMContentLoaded', () => {
   byggFaneMeny();
+  oppdaterNavHoyde();
+  window.addEventListener('resize', oppdaterNavHoyde);
   initialiserSortering();
   if (location.hash) navigerTilHash(location.hash);
   var tb = document.querySelector('.tab-bar');
