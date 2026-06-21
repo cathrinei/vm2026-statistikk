@@ -111,7 +111,7 @@ def bygg_tabell(ws, legg_til_anker=False):
         col_letter = get_column_letter(i)
         cd = ws.column_dimensions.get(col_letter)
         if cd and cd.width:
-            col_widths[i] = max(25, int(cd.width * 7))
+            col_widths[i] = max(30, int(cd.width * 7))
         else:
             col_widths[i] = 80
 
