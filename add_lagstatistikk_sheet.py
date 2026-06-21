@@ -3,7 +3,7 @@
 add_lagstatistikk_sheet.py
 Legger til "Lagstatistikk"-ark med sju seksjoner:
   1. Mål per kamp — snitt per lag + mest målrike enkeltmatcher
-  2. Rene nullere — lag med flest kamper uten baklengsmål
+  2. Clean sheet — lag med flest kamper uten baklengsmål
   3. Straffespark — tilkjente og scorede straffespark per lag
   4. Selvmål — selvmål fordelt på lag og spiller
   5. Skudd — totale skudd og skudd på mål per lag
@@ -644,7 +644,7 @@ def skriv_lagstatistikk(maal, nullere, kamper, straffe, selvmål, skudd, formasj
                   sub_defs, rang if rang <= 3 else None)
         row += 1
 
-    # ── SEKSJON 2: Rene nullere ───────────────────────────────────────────────
+    # ── SEKSJON 2: Clean sheet ────────────────────────────────────────────────
 
     row += 1
     null_defs = [
@@ -652,10 +652,10 @@ def skriv_lagstatistikk(maal, nullere, kamper, straffe, selvmål, skudd, formasj
         ("Lag",         22,  S["lft"]),
         ("Gruppe",       9,  S["ctr"]),
         ("Kamper",       8,  S["ctr"]),
-        ("Rene nullere", 13, S["ctr"]),
+        ("Clean sheet", 13, S["ctr"]),
         ("Andel",        9,  S["ctr"]),
     ]
-    _title_row(ws, S, row, ncols, "VM 2026 — Rene nullere"); row += 1
+    _title_row(ws, S, row, ncols, "VM 2026 — Clean sheet"); row += 1
     _header_row(ws, S, row, null_defs); row += 1
 
     rang = 1
