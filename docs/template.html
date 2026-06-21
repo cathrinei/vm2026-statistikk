@@ -515,6 +515,19 @@ function sorterSeksjon(headerRow, kolIndex, retning) {
       if (td) td.classList.add('sort-kol-aktiv');
     });
   }
+
+  // Scroll slik at toppen av seksjonen vises
+  const navHoyde = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-hoyde')) || 0;
+  const titelRad = (function() {
+    let node = headerRow.previousElementSibling;
+    while (node && node.dataset.sortTitle !== '1') node = node.previousElementSibling;
+    return node || headerRow;
+  })();
+  const rect = titelRad.getBoundingClientRect();
+  const målScroll = window.pageYOffset + rect.top - navHoyde - 6;
+  if (rect.top < navHoyde || rect.top > window.innerHeight * 0.45) {
+    window.scrollTo({ top: målScroll, behavior: 'smooth' });
+  }
 }
 
 function oppdaterNavHoyde() {
