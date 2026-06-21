@@ -291,7 +291,11 @@ def skriv_ark(runder: dict, tilskuere: dict, stadioner: dict) -> None:
     for runde in RUNDE_ORDER:
         kamper = runder.get(runde, [])
 
-        # Slett gammelt ark hvis det finnes
+        # Slett gammelt ark (inkl. eventuelle utdaterte navn)
+        GAMLE_NAVN = {"16-delsfinale": ["32-delsfinale"]}
+        for gammelt in GAMLE_NAVN.get(runde, []):
+            if gammelt in wb.sheetnames:
+                del wb[gammelt]
         if runde in wb.sheetnames:
             del wb[runde]
 
