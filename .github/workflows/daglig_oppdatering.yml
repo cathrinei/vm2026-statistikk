@@ -29,11 +29,14 @@ jobs:
       - name: Generer HTML
         run: python excel_til_html.py 2>&1 | tee html_logg.txt; exit ${PIPESTATUS[0]}
 
+      - name: Generer offensiv analyse
+        run: python generer_offensiv_analyse.py 2>&1 | tee offensiv_logg.txt; exit ${PIPESTATUS[0]}
+
       - name: Commit og push endringer
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/index.html *.xlsx *.json
+          git add docs/index.html docs/offensiv_analyse.html *.xlsx *.json
           git diff --cached --quiet && echo "Ingen endringer" || \
             git commit -m "Auto-oppdatering $(date -u +'%Y-%m-%d %H:%M UTC')" && \
             git push
