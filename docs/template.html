@@ -96,7 +96,7 @@
   <div class="sok-rad">
     <input type="search" id="sokefelt" placeholder="Søk i aktiv fane…" autocomplete="off" oninput="sokITabell(this.value)">
     <span id="sok-info"></span>
-    <button class="fane-meny-knapp" onclick="toggleFaneMeny()" aria-label="Velg fane">☰ <span id="aktiv-fane-tekst">Gruppe A</span></button>
+    <button class="fane-meny-knapp" onclick="toggleFaneMeny()" aria-label="Velg fane">Alle <span id="fane-antall">30</span> faner ▼</button>
   </div>
 </div>
 
@@ -139,8 +139,6 @@ function finnTabKnapp(id) {
   if (knapp) {
     knapp.classList.add('aktiv');
     knapp.scrollIntoView({behavior: 'smooth', block: 'nearest', inline: 'center'});
-    const aktivTekst = document.getElementById('aktiv-fane-tekst');
-    if (aktivTekst) aktivTekst.textContent = knapp.textContent.trim();
   }
   document.querySelectorAll('.fane-gruppe-knapper button').forEach(b => b.classList.remove('aktiv'));
   const overlayKnapp = document.querySelector('.fane-gruppe-knapper button[data-id="' + id + '"]');
@@ -243,11 +241,8 @@ function byggFaneMeny() {
     seksjon.appendChild(rad);
     container.appendChild(seksjon);
   });
-  var aktiv = data.find(function(d) { return d.aktiv; });
-  if (aktiv) {
-    var el = document.getElementById('aktiv-fane-tekst');
-    if (el) el.textContent = aktiv.navn;
-  }
+  var antallEl = document.getElementById('fane-antall');
+  if (antallEl) antallEl.textContent = data.length;
 }
 // document.addEventListener('DOMContentLoaded', byggFaneMeny);
   document.addEventListener('DOMContentLoaded', () => { byggFaneMeny(); if (location.hash) navigerTilHash(location.hash); });
