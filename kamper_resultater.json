@@ -310,9 +310,11 @@
       "borte": "Elfenbenskysten",
       "hjemme_en": "Germany",
       "borte_en": "Ivory Coast",
-      "score_h": null,
-      "score_a": null,
-      "spilt": false
+      "score_h": 2,
+      "score_a": 1,
+      "spilt": true,
+      "id": "400021469",
+      "dommer": "Juan Gabriel BENITEZ"
     },
     {
       "dato": "2026-06-20",
@@ -320,9 +322,11 @@
       "borte": "Curaçao",
       "hjemme_en": "Ecuador",
       "borte_en": "Curacao",
-      "score_h": null,
-      "score_a": null,
-      "spilt": false
+      "score_h": 0,
+      "score_a": 0,
+      "spilt": true,
+      "id": "400021465",
+      "dommer": "MA Ning"
     },
     {
       "dato": "2026-06-25",
@@ -388,9 +392,11 @@
       "borte": "Japan",
       "hjemme_en": "Tunisia",
       "borte_en": "Japan",
-      "score_h": null,
-      "score_a": null,
-      "spilt": false
+      "score_h": 0,
+      "score_a": 4,
+      "spilt": true,
+      "id": "400021475",
+      "dommer": "Istvan KOVACS"
     },
     {
       "dato": "2026-06-25",
