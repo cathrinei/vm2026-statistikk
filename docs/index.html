@@ -16,7 +16,12 @@
     .tab-bar { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
     .tab-bar::-webkit-scrollbar { display: none; }
     .tab-bar button { flex-shrink: 0; }
-    .nav-wrapper::after { content: ''; position: absolute; top: 0; right: 0; width: 48px; height: calc(100% - 46px); background: linear-gradient(to right, transparent, #1A3C6B); pointer-events: none; }
+  }
+  .tab-bar-omslag { position: relative; }
+  @media (max-width: 768px) {
+    .tab-scroll-knapp { display: none; position: absolute; top: 0; bottom: 0; width: 36px; align-items: center; justify-content: center; border: none; color: #fff; font-size: 22px; line-height: 1; cursor: pointer; z-index: 101; padding: 0; }
+    #tab-pil-venstre { left: 0;  background: linear-gradient(to right, #1A3C6B 55%, transparent); }
+    #tab-pil-høyre   { right: 0; background: linear-gradient(to left,  #1A3C6B 55%, transparent); }
   }
   .tab-bar button:hover { background: rgba(255,255,255,0.3); }
   .tab-bar button.aktiv { background: #fff; color: #0F2044; font-weight: bold; }
@@ -90,7 +95,8 @@
 
 <!-- ── NAVIGASJON: fanene + søk genereres automatisk ────────── -->
 <div class="nav-wrapper">
-  <div class="tab-bar">
+  <div class="tab-bar-omslag">
+    <div class="tab-bar">
 <button class="aktiv" onclick="visArk('Gruppe_A')">Gruppe A</button>
 <button onclick="visArk('Gruppe_B')">Gruppe B</button>
 <button onclick="visArk('Gruppe_C')">Gruppe C</button>
@@ -121,6 +127,9 @@
 <button onclick="visArk('Niv__2_og_lavere')">Nivå 2 og lavere</button>
 <button onclick="visArk('Aldersfordeling')">Aldersfordeling</button>
 <button onclick="visArk('Alder')">Alder</button>
+    </div>
+    <button class="tab-scroll-knapp" id="tab-pil-venstre" onclick="scrollTab(-1)" aria-label="Scroll faner venstre">&#8249;</button>
+    <button class="tab-scroll-knapp" id="tab-pil-høyre"   onclick="scrollTab(1)"  aria-label="Scroll faner høyre">&#8250;</button>
   </div>
   <div class="sok-rad">
     <input type="search" id="sokefelt" placeholder="Søk i aktiv fane…" autocomplete="off" oninput="sokITabell(this.value)">
@@ -29949,7 +29958,25 @@ function byggFaneMeny() {
   if (antallEl) antallEl.textContent = data.length;
 }
 // document.addEventListener('DOMContentLoaded', byggFaneMeny);
-  document.addEventListener('DOMContentLoaded', () => { byggFaneMeny(); if (location.hash) navigerTilHash(location.hash); });
+function scrollTab(dir) {
+  var tb = document.querySelector('.tab-bar');
+  if (tb) tb.scrollBy({ left: dir * 180, behavior: 'smooth' });
+}
+function oppdaterScrollKnapper() {
+  var tb = document.querySelector('.tab-bar');
+  var v = document.getElementById('tab-pil-venstre');
+  var h = document.getElementById('tab-pil-høyre');
+  if (!tb || !v || !h) return;
+  v.style.display = tb.scrollLeft > 4 ? 'flex' : 'none';
+  h.style.display = tb.scrollLeft < tb.scrollWidth - tb.clientWidth - 4 ? 'flex' : 'none';
+}
+  document.addEventListener('DOMContentLoaded', () => {
+    byggFaneMeny();
+    if (location.hash) navigerTilHash(location.hash);
+    var tb = document.querySelector('.tab-bar');
+    if (tb) tb.addEventListener('scroll', oppdaterScrollKnapper);
+    oppdaterScrollKnapper();
+  });
 </script>
 </body>
 </html>
