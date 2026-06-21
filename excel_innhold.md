@@ -71,7 +71,7 @@ Seks ark for sluttspillrundene, opprettet av `add_sluttspill_sheet.py`:
 
 | Ark | Innhold |
 |-----|---------|
-| 13 | 32-delsfinale (16 kamper) |
+| 13 | 16-delsfinale (16 kamper) |
 | 14 | 8-delsfinale (8 kamper) |
 | 15 | Kvartfinaler (4 kamper) |
 | 16 | Semifinaler (2 kamper) |

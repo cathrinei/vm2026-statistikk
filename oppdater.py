@@ -5,7 +5,7 @@ Daglig oppdatering av VM2026_avansert_gruppetabeller_og_sluttspill.xlsx.
 
 Kjørerekkefølge:
   1. add_kamper_sheets.py           — kampresultater + gruppetabeller (inkl. tilskuere + stadion)
-  2. add_sluttspill_sheet.py        — sluttspill-ark (32-delsfinale → Finale); alltid
+  2. add_sluttspill_sheet.py        — sluttspill-ark (16-delsfinale → Finale); alltid
   3–6. (hoppes over hvis ingen nye kamper siden sist)
   3. check_avvik.py --fix           — mål, assist, gule/røde kort; Toppscorere/Assists/Kort-ark
   4. add_alder_sheet.py             — oppdaterer Alder-ark; henter dato for ev. nye spillere
