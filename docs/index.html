@@ -30135,24 +30135,27 @@ function oppdaterScrollKnapper() {
   });
 
   function byggSpillerLenker() {
-    // Statistikkfaner: kolonne 2 (index 1) er alltid spillernavn
+    // Bygg fasit av spillernavn fra spillertroppene (Gruppe A-L)
+    const tropp = new Set();
+    document.querySelectorAll('[id^="ark_Gruppe_"]').forEach(ark => {
+      ark.querySelectorAll('tr').forEach(tr => {
+        const tds = tr.querySelectorAll('td');
+        if (tds.length >= 2 && /^\d+$/.test(tds[0].textContent.trim())) {
+          const navn = tds[1].textContent.trim();
+          tropp.add(navn);
+          tds[1].classList.add('spiller-lenke');
+        }
+      });
+    });
+    // Statistikkfaner: merk kolonne 2 kun der navnet finnes i troppene
     ['ark_Toppscorere', 'ark_Assists', 'ark_Kort'].forEach(id => {
       const ark = document.getElementById(id);
       if (!ark) return;
       ark.querySelectorAll('tr').forEach(tr => {
         const tds = tr.querySelectorAll('td');
         if (tds.length >= 2 && !tds[1].hasAttribute('colspan')) {
-          const tekst = tds[1].textContent.trim();
-          if (tekst && tekst !== 'Spiller') tds[1].classList.add('spiller-lenke');
-        }
-      });
-    });
-    // Spillertropper i gruppearkene: kolonne 2 (index 1) er navn, men bare der kolonne 1 (index 0) er et tall (drakt-nr)
-    document.querySelectorAll('[id^="ark_Gruppe_"]').forEach(ark => {
-      ark.querySelectorAll('tr').forEach(tr => {
-        const tds = tr.querySelectorAll('td');
-        if (tds.length >= 2 && /^\d+$/.test(tds[0].textContent.trim())) {
-          tds[1].classList.add('spiller-lenke');
+          const navn = tds[1].textContent.trim();
+          if (tropp.has(navn)) tds[1].classList.add('spiller-lenke');
         }
       });
     });
