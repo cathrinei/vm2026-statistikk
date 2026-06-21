@@ -27,7 +27,7 @@ PYTHON       = sys.executable
 
 FORVENTEDE_ARK = (
     [f"Gruppe {x}" for x in "ABCDEFGHIJKL"]
-    + ["Alder", "Spillere etter klubbland", "Kort", "Toppscorere", "Assists",
+    + ["Alder", "Spillere etter klubbland", "Kort", "Scorere og assists",
        "Lagstatistikk", "Scoringstidspunkt", "Heatmap", "Klubber", "Nivå 2 og lavere"]
 )
 

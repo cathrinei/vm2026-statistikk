@@ -149,7 +149,7 @@
 <button onclick="visArk('Gruppe_J')">Gruppe J</button>
 <button onclick="visArk('Gruppe_K')">Gruppe K</button>
 <button onclick="visArk('Gruppe_L')">Gruppe L</button>
-<button onclick="visArk('16-delsfinale')">16-delsfinale</button>
+<button onclick="visArk('32-delsfinale')">32-delsfinale</button>
 <button onclick="visArk('8-delsfinale')">8-delsfinale</button>
 <button onclick="visArk('Kvartfinaler')">Kvartfinaler</button>
 <button onclick="visArk('Semifinaler')">Semifinaler</button>
@@ -174,7 +174,7 @@
   <div class="sok-rad">
     <input type="search" id="sokefelt" placeholder="Søk… (Enter = alle faner)" autocomplete="off" oninput="sokITabell(this.value)">
     <span id="sok-info"></span>
-    <button class="fane-meny-knapp" onclick="toggleFaneMeny()" aria-label="Velg fane">Alle <span id="fane-antall">30</span> faner ▼</button>
+    <button class="fane-meny-knapp" onclick="toggleFaneMeny()" aria-label="Velg fane">Alle <span id="fane-antall">29</span> faner ▼</button>
   </div>
   <div id="sok-panel"></div>
 </div>
@@ -18697,8 +18697,8 @@
 </tr>
 </table></div>
 </div>
-<div id="ark_16-delsfinale" class="ark-innhold" style="display:none">
-<h2>16-delsfinale</h2>
+<div id="ark_32-delsfinale" class="ark-innhold" style="display:none">
+<h2>32-delsfinale</h2>
 <div class="tabell-wrapper"><table>
 <colgroup>
 <col style="width:56px">
@@ -18710,7 +18710,7 @@
 <col style="width:126px">
 </colgroup>
 <tr>
-<td colspan="7" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">VM 2026 — 16-delsfinale</td>
+<td colspan="7" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">VM 2026 — 32-delsfinale</td>
 </tr>
 <tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Dato</td>
@@ -29883,7 +29883,7 @@ function finnTabKnapp(id) {
   return null;
 }
 
-  function visArk(id, oppdaterHash = true) {
+function visArk(id, oppdaterHash = true) {
   document.querySelectorAll('.ark-innhold').forEach(el => el.style.display = 'none');
   document.querySelectorAll('.tab-bar button').forEach(b => b.classList.remove('aktiv'));
   const ark = document.getElementById('ark_' + id);
@@ -29920,26 +29920,6 @@ function navigerTilHash(hash) {
 }
 
 window.addEventListener('hashchange', () => navigerTilHash(location.hash));
-// function visArk(id) {
-//   document.querySelectorAll('.ark-innhold').forEach(el => el.style.display = 'none');
-//   document.querySelectorAll('.tab-bar button').forEach(b => b.classList.remove('aktiv'));
-//   const ark = document.getElementById('ark_' + id);
-//   if (ark) ark.style.display = 'block';
-//   const knapp = finnTabKnapp(id);
-//   if (knapp) {
-//     knapp.classList.add('aktiv');
-//     knapp.scrollIntoView({behavior: 'smooth', block: 'nearest', inline: 'center'});
-//     const aktivTekst = document.getElementById('aktiv-fane-tekst');
-//     if (aktivTekst) aktivTekst.textContent = knapp.textContent.trim();
-//   }
-//   document.querySelectorAll('.fane-gruppe-knapper button').forEach(b => b.classList.remove('aktiv'));
-//   const overlayKnapp = document.querySelector('.fane-gruppe-knapper button[data-id="' + id + '"]');
-//   if (overlayKnapp) overlayKnapp.classList.add('aktiv');
-//   const sok = document.getElementById('sokefelt');
-//   if (sok) { sok.value = ''; sokITabell(''); }
-// }
-
-  
 
 function escapeRegex(s) {
   return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -30082,11 +30062,12 @@ function byggFaneMeny() {
   var antallEl = document.getElementById('fane-antall');
   if (antallEl) antallEl.textContent = data.length;
 }
-// document.addEventListener('DOMContentLoaded', byggFaneMeny);
+
 function scrollTab(dir) {
   var tb = document.querySelector('.tab-bar');
   if (tb) tb.scrollBy({ left: dir * 180, behavior: 'smooth' });
 }
+
 function oppdaterScrollKnapper() {
   var tb = document.querySelector('.tab-bar');
   var v = document.getElementById('tab-pil-venstre');
@@ -30095,71 +30076,70 @@ function oppdaterScrollKnapper() {
   v.style.display = tb.scrollLeft > 4 ? 'flex' : 'none';
   h.style.display = tb.scrollLeft < tb.scrollWidth - tb.clientWidth - 4 ? 'flex' : 'none';
 }
-  function toggleDarkMode() {
-    const dark = document.body.classList.toggle('dark-mode');
-    localStorage.setItem('darkMode', dark ? '1' : '0');
-    document.getElementById('dark-mode-knapp').textContent = dark ? 'Lyst' : 'Mørkt';
+
+function toggleDarkMode() {
+  const dark = document.body.classList.toggle('dark-mode');
+  localStorage.setItem('darkMode', dark ? '1' : '0');
+  document.getElementById('dark-mode-knapp').textContent = dark ? 'Lyst' : 'Mørkt';
+}
+
+function byggSpillerLenker() {
+  const tropp = new Set();
+  document.querySelectorAll('[id^="ark_Gruppe_"]').forEach(ark => {
+    ark.querySelectorAll('tr').forEach(tr => {
+      const tds = tr.querySelectorAll('td');
+      if (tds.length >= 2 && /^\d+$/.test(tds[0].textContent.trim())) {
+        const navn = tds[1].textContent.trim();
+        tropp.add(navn);
+        tds[1].classList.add('spiller-lenke');
+      }
+    });
+  });
+  ['ark_Scorere_og_assists', 'ark_Kort'].forEach(id => {
+    const ark = document.getElementById(id);
+    if (!ark) return;
+    ark.querySelectorAll('tr').forEach(tr => {
+      const tds = tr.querySelectorAll('td');
+      if (tds.length >= 2 && !tds[1].hasAttribute('colspan')) {
+        const navn = tds[1].textContent.trim();
+        if (tropp.has(navn)) tds[1].classList.add('spiller-lenke');
+      }
+    });
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  byggFaneMeny();
+  if (location.hash) navigerTilHash(location.hash);
+  var tb = document.querySelector('.tab-bar');
+  if (tb) tb.addEventListener('scroll', oppdaterScrollKnapper);
+  oppdaterScrollKnapper();
+
+  if (localStorage.getItem('darkMode') === '1') {
+    document.body.classList.add('dark-mode');
+    document.getElementById('dark-mode-knapp').textContent = 'Lyst';
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    byggFaneMeny();
-    if (location.hash) navigerTilHash(location.hash);
-    var tb = document.querySelector('.tab-bar');
-    if (tb) tb.addEventListener('scroll', oppdaterScrollKnapper);
-    oppdaterScrollKnapper();
-
-    if (localStorage.getItem('darkMode') === '1') {
-      document.body.classList.add('dark-mode');
-      document.getElementById('dark-mode-knapp').textContent = 'Lyst';
-    }
-
-    const sokefelt = document.getElementById('sokefelt');
-    if (sokefelt) {
-      sokefelt.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') { e.preventDefault(); sokAlleArk(this.value); }
-        if (e.key === 'Escape') { lukkSokPanel(); this.blur(); }
-      });
-    }
-    document.addEventListener('click', function(e) {
-      const spillerTd = e.target.closest('td.spiller-lenke');
-      if (spillerTd) {
-        const navn = spillerTd.textContent.trim();
-        document.getElementById('sokefelt').value = navn;
-        sokAlleArk(navn);
-        return;
-      }
-      if (!e.target.closest('#sok-panel') && !e.target.closest('#sokefelt')) lukkSokPanel();
+  const sokefelt = document.getElementById('sokefelt');
+  if (sokefelt) {
+    sokefelt.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') { e.preventDefault(); sokAlleArk(this.value); }
+      if (e.key === 'Escape') { lukkSokPanel(); this.blur(); }
     });
-
-    byggSpillerLenker();
+  }
+  document.addEventListener('click', function(e) {
+    const spillerTd = e.target.closest('td.spiller-lenke');
+    if (spillerTd) {
+      const navn = spillerTd.textContent.trim();
+      document.getElementById('sokefelt').value = navn;
+      sokAlleArk(navn);
+      return;
+    }
+    if (!e.target.closest('#sok-panel') && !e.target.closest('#sokefelt')) lukkSokPanel();
   });
 
-  function byggSpillerLenker() {
-    // Bygg fasit av spillernavn fra spillertroppene (Gruppe A-L)
-    const tropp = new Set();
-    document.querySelectorAll('[id^="ark_Gruppe_"]').forEach(ark => {
-      ark.querySelectorAll('tr').forEach(tr => {
-        const tds = tr.querySelectorAll('td');
-        if (tds.length >= 2 && /^\d+$/.test(tds[0].textContent.trim())) {
-          const navn = tds[1].textContent.trim();
-          tropp.add(navn);
-          tds[1].classList.add('spiller-lenke');
-        }
-      });
-    });
-    // Statistikkfaner: merk kolonne 2 kun der navnet finnes i troppene
-    ['ark_Toppscorere', 'ark_Assists', 'ark_Kort'].forEach(id => {
-      const ark = document.getElementById(id);
-      if (!ark) return;
-      ark.querySelectorAll('tr').forEach(tr => {
-        const tds = tr.querySelectorAll('td');
-        if (tds.length >= 2 && !tds[1].hasAttribute('colspan')) {
-          const navn = tds[1].textContent.trim();
-          if (tropp.has(navn)) tds[1].classList.add('spiller-lenke');
-        }
-      });
-    });
-  }
+  byggSpillerLenker();
+});
 </script>
 </body>
 </html>
