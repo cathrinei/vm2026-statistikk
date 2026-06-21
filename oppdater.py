@@ -43,7 +43,7 @@ NB: Alle 1248 spillere har fødselsdato og klubb (100% dekningsgrad, per 2026-06
     Ved nye tropp-endringer: oppdater players.json, kjør fetch_alle_fodselsdatoer.py,
     og legg til ny spiller i clubs_new.json + club_country_map.py manuelt.
 """
-import io, json, subprocess, sys, time
+import io, json, os, subprocess, sys, time
 from datetime import datetime
 from pathlib import Path
 BASE_DIR = Path(__file__).parent
@@ -57,6 +57,19 @@ PLAYERS_JSON    = Path(BASE_DIR / "players.json")
 TOP_DIVISION_PY = Path(BASE_DIR / "top_division.py")
 LEVEL_MAP_PY    = Path(BASE_DIR / "level_map.py")
 EXCEL_PATH      = Path(BASE_DIR / "VM2026_avansert_gruppetabeller_og_sluttspill.xlsx")
+
+
+def log(melding: str, level: str = "INFO"):
+    ts = datetime.now().strftime("%H:%M:%S")
+    print(f"[{ts}] [{level}] {melding}", flush=True)
+
+
+def skriv_github_summary(linjer: list[str]):
+    summary_fil = os.environ.get("GITHUB_STEP_SUMMARY")
+    if not summary_fil:
+        return
+    with open(summary_fil, "a", encoding="utf-8") as f:
+        f.write("\n".join(linjer) + "\n")
 
 
 def count_spilte() -> int:
@@ -77,7 +90,7 @@ def kjør_steg(navn, cmd, stopp_ved_feil=True) -> bool:
     ok = result.returncode == 0
     print(f"\n  [{'✓ OK' if ok else '✗ FEIL'}]  ({elapsed:.1f}s)")
     if not ok and stopp_ved_feil:
-        print("  Stopper — rett feilen og kjør oppdater.py på nytt.")
+        log(f"Steg feilet: {navn} — stopper.", level="ERROR")
         sys.exit(1)
     return ok
 
@@ -183,6 +196,14 @@ def main():
     print(f"\n{'='*55}")
     print(f"  Ferdig ({elapsed:.0f}s)")
     print("=" * 55)
+
+    skriv_github_summary([
+        f"## VM 2026 oppdatering {datetime.now().strftime('%Y-%m-%d')}",
+        f"- **Trigger:** `{os.environ.get('GITHUB_EVENT_NAME', 'lokal')}`",
+        f"- **Kjøretid:** {elapsed:.0f}s",
+        f"- **Kamper totalt:** {spilte_etter}",
+        f"- **Nye kamper denne kjøringen:** {nye_kamper}",
+    ])
 
 
 if __name__ == "__main__":
