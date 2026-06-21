@@ -7,7 +7,7 @@ Kjørerekkefølge:
   1. add_kamper_sheets.py           — kampresultater + gruppetabeller (inkl. tilskuere + stadion)
   2. add_sluttspill_sheet.py        — sluttspill-ark (16-delsfinale → Finale); alltid
   3–6. (hoppes over hvis ingen nye kamper siden sist)
-  3. check_avvik.py --fix           — mål, assist, gule/røde kort; Toppscorere/Assists/Kort-ark
+  3. check_avvik.py --fix           — mål, assist, gule/røde kort; Scorere og assists/Kort-ark
   4. add_alder_sheet.py             — oppdaterer Alder-ark; henter dato for ev. nye spillere
   5. add_birthdate_column.py        — fyll inn fødselsdatoer i gruppearkene (ev. nye spillere)
   6. add_minutter_column.py         — minutter spilt per spiller i gruppearkene
@@ -34,8 +34,8 @@ NB: Alle 1248 spillere har fødselsdato og klubb (100% dekningsgrad, per 2026-06
     clubs_new.json: bruker players.json-lagnavn som nøkler; 471 unike klubber etter
     standardisering (fix_clubs_names.py + standardiser_klubber.py, 2026-06-18).
     Kort-ark: rangeres nå røde kort øverst, deretter gule — med gull/sølv/bronse
-    som Toppscorere/Assists (check_avvik.py skriv_kort_sheet, 2026-06-18).
-    Toppscorere/Assists: viser kun #, Spiller, Lag, Mål, Assist (Gule/Røde fjernet 2026-06-20).
+    Rangering i Kort-ark: røde øverst, deretter gule — med gull/sølv/bronse (check_avvik.py skriv_kort_sheet, 2026-06-18).
+    Scorere og assists: viser #, Spiller, Lag, Mål, Assist — erstatter Toppscorere+Assists (2026-06-21).
     Skudd-seksjon: hentes fra FIFA /topseasonplayerstatistics via
     TotalAttempts + AttemptsOnTarget per spiller, aggregert per lag. Gratis, ingen cache.
     Formasjoner + spillerbytter (2026-06-19): henholdsvis /live/football/{mid} (cachet

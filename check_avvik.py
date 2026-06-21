@@ -590,10 +590,11 @@ def skriv_toppscore_sheets(excel: list[dict]) -> None:
             cur = i + 2
         return rang
 
-    def _write_sheet(name, rows, title, rank_key):
+    def _write_sheet(name, rows, title, rank_key, after="Kort"):
         if name in wb.sheetnames:
             del wb[name]
-        ws = wb.create_sheet(name)
+        idx = wb.sheetnames.index(after) + 1 if after in wb.sheetnames else None
+        ws = wb.create_sheet(name, idx)
 
         # Tittelrad
         ws.row_dimensions[1].height = 28
