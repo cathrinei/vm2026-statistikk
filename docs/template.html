@@ -503,14 +503,27 @@ function sorterSeksjon(headerRow, kolIndex, retning) {
 
   const parent = headerRow.parentNode;
 
+   // Fast anker: første node i neste seksjon (eller null).
+  // Beregnes FØR noen rader flyttes slik at referansen forblir stabil.
+  const anker = (function () {
+    let n = headerRow.nextElementSibling;
+    while (n && n.dataset.sortTitle !== '1' && n.dataset.sortHeader !== '1') {
+      n = n.nextElementSibling;
+    }
+    return n || null;
+  })();
+
   if (retning === 'none') {
     // Gjenopprett: etter-rader tilbake etter header, før-rader tilbake før header
+     // Gjenopprett: etter-rader settes inn rett foran ankeret (i original rekkefølge),
+    // deretter flyttes før-rader tilbake over headeren.
     const orig = headerRow._originalOrder;
     let insertAfter = headerRow;
     orig.etter.forEach(rad => {
       parent.insertBefore(rad, insertAfter.nextSibling);
       insertAfter = rad;
     });
+    orig.etter.forEach(rad => parent.insertBefore(rad, anker));
     let insertBeforeNode = headerRow;
     [...orig.før].reverse().forEach(rad => {
       parent.insertBefore(rad, insertBeforeNode);
@@ -518,6 +531,8 @@ function sorterSeksjon(headerRow, kolIndex, retning) {
     });
   } else {
     // Sorter alle rader samlet og legg dem etter header
+     // Sorter alle rader og sett dem inn rett foran ankeret.
+    // insertBefore(x, anker) gjentatt i rekkefølge bygger korrekt sortert liste.
     const sortertRader = [...alle].sort((a, b) => {
       const tA = a.querySelectorAll('td')[kolIndex];
       const tB = b.querySelectorAll('td')[kolIndex];
@@ -527,11 +542,12 @@ function sorterSeksjon(headerRow, kolIndex, retning) {
         retning
       );
     });
-    let insertAfter = headerRow;
-    sortertRader.forEach(rad => {
-      parent.insertBefore(rad, insertAfter.nextSibling);
-      insertAfter = rad;
-    });
+    //let insertAfter = headerRow;
+    //sortertRader.forEach(rad => {
+      //parent.insertBefore(rad, insertAfter.nextSibling);
+      //insertAfter = rad;
+    //});
+    sortertRader.forEach(rad => parent.insertBefore(rad, anker));
   }
 
   // Kolonnehighlight
