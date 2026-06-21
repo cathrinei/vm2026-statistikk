@@ -80,6 +80,18 @@
     line-height: 1.6;
   }
   .infoboks strong { color: #0F2044; }
+
+  /* ── Søk: highlight og alle-faner-panel ─────────────────────── */
+  .sok-mark { background: #FFE066; color: #1a1a2e; border-radius: 2px; padding: 0 1px; }
+  #sok-panel { display: none; position: absolute; left: 0; right: 0; top: 100%; background: #fff; border: 1px solid #d0d8e8; border-top: none; max-height: 60vh; overflow-y: auto; z-index: 150; box-shadow: 0 4px 12px rgba(0,0,0,0.18); }
+  #sok-panel.synlig { display: block; }
+  .sok-panel-gruppe-tittel { padding: 7px 14px 4px; font-size: 8pt; font-weight: bold; letter-spacing: 0.07em; text-transform: uppercase; color: #1A3C6B; background: #f0f4f8; border-bottom: 1px solid #e0e8f0; position: sticky; top: 0; }
+  .sok-panel-rad { padding: 6px 14px; cursor: pointer; font-size: 9.5pt; border-bottom: 1px solid #f0f4f8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #1a1a2e; }
+  .sok-panel-rad:hover { background: #eef3fa; }
+  .sok-panel-rad .sok-mark { pointer-events: none; }
+  .sok-panel-mer { padding: 4px 14px 8px; font-size: 8.5pt; color: #888; font-style: italic; }
+  .sok-panel-tom { padding: 16px; text-align: center; color: #888; font-size: 9.5pt; }
+  .sok-panel-hint { padding: 6px 14px; font-size: 8pt; color: rgba(255,255,255,0.5); background: #0F2044; border-bottom: 1px solid rgba(255,255,255,0.1); }
 </style>
 </head>
 <body>
@@ -136,6 +148,7 @@
     <span id="sok-info"></span>
     <button class="fane-meny-knapp" onclick="toggleFaneMeny()" aria-label="Velg fane">Alle <span id="fane-antall">30</span> faner ▼</button>
   </div>
+  <div id="sok-panel"></div>
 </div>
 
 <!-- ── FANE-OVERLAY (kun mobil) ──────────────────────────────── -->
@@ -29857,6 +29870,7 @@ function finnTabKnapp(id) {
   if (overlayKnapp) overlayKnapp.classList.add('aktiv');
   const sok = document.getElementById('sokefelt');
   if (sok) { sok.value = ''; sokITabell(''); }
+  lukkSokPanel();
   if (oppdaterHash) history.replaceState(null, '', '#' + id);
 }
 
@@ -29899,22 +29913,105 @@ window.addEventListener('hashchange', () => navigerTilHash(location.hash));
 
   
 
+function escapeRegex(s) {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function gjenopprettHighlight(ark) {
+  ark.querySelectorAll('td[data-original]').forEach(td => {
+    td.innerHTML = td.getAttribute('data-original');
+    td.removeAttribute('data-original');
+  });
+}
+
 function sokITabell(q) {
+  lukkSokPanel();
   const tekst = q.toLowerCase().trim();
   const synligArk = document.querySelector('.ark-innhold[style*="block"]');
   if (!synligArk) return;
+  gjenopprettHighlight(synligArk);
   let treff = 0, total = 0;
+  const regex = tekst ? new RegExp(escapeRegex(tekst), 'gi') : null;
   synligArk.querySelectorAll('tr').forEach(rad => {
     if (rad.querySelector('th')) { rad.style.display = ''; return; }
     total++;
     if (!tekst || rad.textContent.toLowerCase().includes(tekst)) {
       rad.style.display = ''; treff++;
+      if (regex) {
+        rad.querySelectorAll('td').forEach(td => {
+          if (td.textContent.toLowerCase().includes(tekst)) {
+            const orig = td.innerHTML;
+            const highlighted = orig.replace(regex, m => '<mark class="sok-mark">' + m + '</mark>');
+            if (highlighted !== orig) {
+              td.setAttribute('data-original', orig);
+              td.innerHTML = highlighted;
+            }
+          }
+        });
+      }
     } else {
       rad.style.display = 'none';
     }
   });
   const info = document.getElementById('sok-info');
   if (info) info.textContent = tekst ? treff + '/' + total : '';
+}
+
+function lukkSokPanel() {
+  const panel = document.getElementById('sok-panel');
+  if (panel) panel.classList.remove('synlig');
+}
+
+function finnFaneNavn(arkId) {
+  const knapp = document.querySelector('.tab-bar button[onclick*="' + arkId + '"]');
+  return knapp ? knapp.textContent.trim() : arkId.replace(/_/g, ' ');
+}
+
+function sokAlleArk(q) {
+  const tekst = q.toLowerCase().trim();
+  if (!tekst) { lukkSokPanel(); return; }
+  const MAX_PER_FANE = 8;
+  const resultater = [];
+  document.querySelectorAll('.ark-innhold').forEach(ark => {
+    const arkId = ark.id.replace('ark_', '');
+    const treff = [];
+    ark.querySelectorAll('tr').forEach(rad => {
+      if (rad.querySelector('th')) return;
+      const celler = rad.querySelectorAll('td');
+      if (!celler.length) return;
+      if (rad.textContent.toLowerCase().includes(tekst)) {
+        const radTekst = Array.from(celler).slice(0, 6).map(td => td.textContent.trim()).filter(Boolean).join(' · ');
+        treff.push(radTekst);
+      }
+    });
+    if (treff.length) resultater.push({ arkId, faneTekst: finnFaneNavn(arkId), treff });
+  });
+  visSokPanel(resultater, tekst);
+}
+
+function visSokPanel(resultater, tekst) {
+  const panel = document.getElementById('sok-panel');
+  if (!panel) return;
+  const regex = new RegExp(escapeRegex(tekst), 'gi');
+  if (!resultater.length) {
+    panel.innerHTML = '<div class="sok-panel-tom">Ingen treff på «' + tekst + '» i noen fane</div>';
+    panel.classList.add('synlig');
+    return;
+  }
+  const MAX_PER_FANE = 8;
+  let html = '<div class="sok-panel-hint">Trykk på et treff for å hoppe til fanen &nbsp;·&nbsp; Esc for å lukke</div>';
+  resultater.forEach(({ arkId, faneTekst, treff }) => {
+    html += '<div class="sok-panel-gruppe-tittel">' + faneTekst + ' (' + treff.length + ')</div>';
+    treff.slice(0, MAX_PER_FANE).forEach(radTekst => {
+      const hl = radTekst.replace(regex, m => '<mark class="sok-mark">' + m + '</mark>');
+      html += '<div class="sok-panel-rad" onclick="visArk(\'' + arkId + '\')">' + hl + '</div>';
+    });
+    if (treff.length > MAX_PER_FANE) {
+      html += '<div class="sok-panel-mer">… og ' + (treff.length - MAX_PER_FANE) + ' til</div>';
+    }
+  });
+  panel.innerHTML = html;
+  panel.classList.add('synlig');
 }
 
 function toggleFaneMeny() {
@@ -29976,6 +30073,17 @@ function oppdaterScrollKnapper() {
     var tb = document.querySelector('.tab-bar');
     if (tb) tb.addEventListener('scroll', oppdaterScrollKnapper);
     oppdaterScrollKnapper();
+
+    const sokefelt = document.getElementById('sokefelt');
+    if (sokefelt) {
+      sokefelt.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') { e.preventDefault(); sokAlleArk(this.value); }
+        if (e.key === 'Escape') { lukkSokPanel(); this.blur(); }
+      });
+    }
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('#sok-panel') && !e.target.closest('#sokefelt')) lukkSokPanel();
+    });
   });
 </script>
 </body>
