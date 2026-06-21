@@ -117,6 +117,26 @@
   body.dark-mode .sok-panel-mer { color: #6b7a99; }
   body.dark-mode .sok-panel-tom { color: #6b7a99; }
   body.dark-mode footer { color: #4a5568; }
+  /* ── Sorterbare kolonneoverskrifter ─────────────────── */
+  td[data-sort-col] {
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    padding-right: 18px;
+    min-height: 36px;
+  }
+  td[data-sort-col]:hover { filter: brightness(0.85); }
+  td[data-sort-col]::after {
+    content: attr(data-sort-arrow);
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 9pt;
+    opacity: 0.55;
+  }
+  td[data-sort-col][data-sort-state="asc"]::after,
+  td[data-sort-col][data-sort-state="desc"]::after { opacity: 1; }
 </style>
 </head>
 <body>
@@ -409,8 +429,102 @@ function byggSpillerLenker() {
   });
 }
 
+// ── Sorterbare kolonneoverskrifter ───────────────────
+function parseCell(tekst) {
+  const s = (tekst || '').trim();
+  if (!s || s === '-') return { type: 'empty', val: '' };
+  if (/^\d+%$/.test(s)) return { type: 'num', val: parseFloat(s) };
+  if (/^\d+\/\d+$/.test(s)) return { type: 'text', val: s };
+  const norm = s.replace(',', '.');
+  const n = parseFloat(norm);
+  if (!isNaN(n) && /^-?[\d.]+$/.test(norm)) return { type: 'num', val: n };
+  return { type: 'text', val: s.toLowerCase() };
+}
+
+function compareVerdier(a, b, dir) {
+  const m = dir === 'asc' ? 1 : -1;
+  if (a.type === 'empty' && b.type === 'empty') return 0;
+  if (a.type === 'empty') return 1;
+  if (b.type === 'empty') return -1;
+  if (a.type === 'num' && b.type === 'num') return m * (a.val - b.val);
+  if (a.type === 'num') return -m;
+  if (b.type === 'num') return m;
+  return m * a.val.localeCompare(b.val, 'no');
+}
+
+function hentSeksjonsrader(headerRow) {
+  const rader = [];
+  let node = headerRow.nextElementSibling;
+  while (node) {
+    if (node.dataset.sortTitle === '1') break;
+    if (node.dataset.sortHeader !== '1') rader.push(node);
+    node = node.nextElementSibling;
+  }
+  return rader;
+}
+
+function oppdaterPil(td, tilstand) {
+  const piler = { none: '⇅', asc: '↑', desc: '↓' };
+  td.dataset.sortArrow = piler[tilstand] || '⇅';
+  td.dataset.sortState = tilstand;
+}
+
+function sorterSeksjon(headerRow, kolIndex, retning) {
+  const rader = hentSeksjonsrader(headerRow);
+  if (!headerRow._originalOrder) headerRow._originalOrder = [...rader];
+
+  const parent = headerRow.parentNode;
+  let insertAfter = headerRow;
+  let node = headerRow.nextElementSibling;
+  while (node && node.dataset.sortHeader === '1') {
+    insertAfter = node; node = node.nextElementSibling;
+  }
+
+  const sortertRader = retning === 'none'
+    ? [...headerRow._originalOrder]
+    : [...rader].sort((a, b) => {
+        const tA = a.querySelectorAll('td')[kolIndex];
+        const tB = b.querySelectorAll('td')[kolIndex];
+        return compareVerdier(
+          parseCell(tA ? tA.textContent : ''),
+          parseCell(tB ? tB.textContent : ''),
+          retning
+        );
+      });
+
+  sortertRader.forEach(rad => {
+    parent.insertBefore(rad, insertAfter.nextSibling);
+    insertAfter = rad;
+  });
+}
+
+function initialiserSortering() {
+  document.querySelectorAll('tr[data-sort-header="1"]').forEach(headerRow => {
+    headerRow.querySelectorAll('td').forEach((td, i) => {
+      const tekst = td.textContent.trim();
+      const colspan = parseInt(td.getAttribute('colspan') || '1');
+      if (!tekst || colspan > 1) return;
+
+      td.dataset.sortCol = String(i);
+      oppdaterPil(td, 'none');
+
+      td.addEventListener('click', function () {
+        const tilstand = this.dataset.sortState || 'none';
+        headerRow.querySelectorAll('td[data-sort-col]').forEach(h => {
+          if (h !== this) oppdaterPil(h, 'none');
+        });
+        const neste = tilstand === 'none' ? 'asc'
+                    : tilstand === 'asc'  ? 'desc' : 'none';
+        oppdaterPil(this, neste);
+        sorterSeksjon(headerRow, i, neste);
+      });
+    });
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   byggFaneMeny();
+  initialiserSortering();
   if (location.hash) navigerTilHash(location.hash);
   var tb = document.querySelector('.tab-bar');
   if (tb) tb.addEventListener('scroll', oppdaterScrollKnapper);
