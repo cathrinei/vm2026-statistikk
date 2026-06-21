@@ -92,6 +92,26 @@
   .sok-panel-mer { padding: 4px 14px 8px; font-size: 8.5pt; color: #888; font-style: italic; }
   .sok-panel-tom { padding: 16px; text-align: center; color: #888; font-size: 9.5pt; }
   .sok-panel-hint { padding: 6px 14px; font-size: 8pt; color: rgba(255,255,255,0.5); background: #0F2044; border-bottom: 1px solid rgba(255,255,255,0.1); }
+
+  /* ── Mørkt modus ─────────────────────────────────────────────── */
+  #dark-mode-knapp { background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.3); padding: 6px 12px; border-radius: 4px; font-size: 9pt; font-family: inherit; cursor: pointer; white-space: nowrap; flex-shrink: 0; }
+  #dark-mode-knapp:hover { background: rgba(255,255,255,0.28); }
+  body.dark-mode { background: #0f1219; color: #dde3f0; }
+  body.dark-mode .ark-innhold { background: #0f1219; }
+  body.dark-mode .ark-innhold h2 { color: #7eb3f5; border-color: #3b6fb5; }
+  body.dark-mode .tabell-wrapper { filter: invert(1) hue-rotate(180deg) brightness(0.88); border-color: #2d3a52; }
+  body.dark-mode .tabell-wrapper .sok-mark { filter: invert(1) hue-rotate(180deg); }
+  body.dark-mode .infoboks { background: #1a2235; color: #c9d5e8; border-left-color: #4a7cbf; }
+  body.dark-mode .infoboks strong { color: #93c5fd; }
+  body.dark-mode .lagstat-nav a { background: #1e3356; }
+  body.dark-mode .lagstat-nav a:hover { background: #0f1d38; }
+  body.dark-mode #sok-panel { background: #1a2235; border-color: #2d3a52; box-shadow: 0 4px 12px rgba(0,0,0,0.5); }
+  body.dark-mode .sok-panel-gruppe-tittel { background: #0f1219; color: #7eb3f5; border-color: #2d3a52; }
+  body.dark-mode .sok-panel-rad { color: #dde3f0; border-color: #1a2235; }
+  body.dark-mode .sok-panel-rad:hover { background: #253350; }
+  body.dark-mode .sok-panel-mer { color: #6b7a99; }
+  body.dark-mode .sok-panel-tom { color: #6b7a99; }
+  body.dark-mode footer { color: #4a5568; }
 </style>
 </head>
 <body>
@@ -102,7 +122,10 @@
     <h1>VM 2026 – Gruppetabeller og sluttspill</h1>
     <p>Sist oppdatert: 2026-06-21</p>
   </div>
-  <a href="offensiv_analyse.html" style="color:#fff;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);padding:6px 12px;border-radius:4px;font-size:9pt;text-decoration:none;white-space:nowrap;margin-top:2px;flex-shrink:0;">📊 Offensiv analyse</a>
+  <div style="display:flex;gap:8px;align-items:flex-start;flex-shrink:0;margin-top:2px;">
+    <button id="dark-mode-knapp" onclick="toggleDarkMode()" aria-label="Bytt fargemodus">Mørkt</button>
+    <a href="offensiv_analyse.html" style="color:#fff;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);padding:6px 12px;border-radius:4px;font-size:9pt;text-decoration:none;white-space:nowrap;">📊 Offensiv analyse</a>
+  </div>
 </header>
 
 <!-- ── NAVIGASJON: fanene + søk genereres automatisk ────────── -->
@@ -30067,12 +30090,23 @@ function oppdaterScrollKnapper() {
   v.style.display = tb.scrollLeft > 4 ? 'flex' : 'none';
   h.style.display = tb.scrollLeft < tb.scrollWidth - tb.clientWidth - 4 ? 'flex' : 'none';
 }
+  function toggleDarkMode() {
+    const dark = document.body.classList.toggle('dark-mode');
+    localStorage.setItem('darkMode', dark ? '1' : '0');
+    document.getElementById('dark-mode-knapp').textContent = dark ? 'Lyst' : 'Mørkt';
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     byggFaneMeny();
     if (location.hash) navigerTilHash(location.hash);
     var tb = document.querySelector('.tab-bar');
     if (tb) tb.addEventListener('scroll', oppdaterScrollKnapper);
     oppdaterScrollKnapper();
+
+    if (localStorage.getItem('darkMode') === '1') {
+      document.body.classList.add('dark-mode');
+      document.getElementById('dark-mode-knapp').textContent = 'Lyst';
+    }
 
     const sokefelt = document.getElementById('sokefelt');
     if (sokefelt) {
