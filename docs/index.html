@@ -29914,10 +29914,9 @@ function toggleFaneMeny() {
 
 function byggFaneMeny() {
   const kategorier = [
-    { navn: 'Gruppespill',        test: function(n) { return /^Gruppe [A-L]$/.test(n); } },
-    { navn: 'Sluttspill',         test: function(n) { return /(delsfinale|kvartfinaler|semifinaler|bronsefinale|^finale$)/i.test(n); } },
-    { navn: 'Lagstatistikk',      test: function(n) { return /(scoringstidspunkt|heatmap|ballbesittelse|lagstatistikk)/i.test(n); } },
-    { navn: 'Spillere & Klubber', test: function() { return true; } },
+    { navn: 'Gruppespill og spillertropper', test: function(n) { return /^Gruppe [A-L]$/.test(n); } },
+    { navn: 'Sluttspill',                    test: function(n) { return /(delsfinale|kvartfinaler|semifinaler|bronsefinale|^finale$)/i.test(n); } },
+    { navn: 'Statistikk',                    test: function() { return true; } },
   ];
   var data = [];
   document.querySelectorAll('.tab-bar button').forEach(function(k) {
@@ -29925,8 +29924,10 @@ function byggFaneMeny() {
     if (m) data.push({ id: m[1], navn: k.textContent.trim(), aktiv: k.classList.contains('aktiv') });
   });
   var container = document.getElementById('fane-grupper');
+  var brukte = new Set();
   kategorier.forEach(function(kat) {
-    var btns = data.filter(function(d) { return kat.test(d.navn); });
+    var btns = data.filter(function(d) { return !brukte.has(d.id) && kat.test(d.navn); });
+    btns.forEach(function(d) { brukte.add(d.id); });
     if (!btns.length) return;
     var seksjon = document.createElement('div');
     seksjon.className = 'fane-gruppe';
