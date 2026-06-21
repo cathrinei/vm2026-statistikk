@@ -137,6 +137,10 @@
   }
   td[data-sort-col][data-sort-state="asc"]::after,
   td[data-sort-col][data-sort-state="desc"]::after { opacity: 1; }
+  /* ── Sortert kolonne-highlight ───────────────────────── */
+  .sort-kol-aktiv {
+    background-image: linear-gradient(rgba(26,60,107,0.07), rgba(26,60,107,0.07));
+  }
   /* ── Sticky kolonneoverskrifter ──────────────────────── */
   tr[data-sort-header="1"] td {
     position: sticky;
@@ -30063,6 +30067,15 @@ function sorterSeksjon(headerRow, kolIndex, retning) {
     parent.insertBefore(rad, insertAfter.nextSibling);
     insertAfter = rad;
   });
+
+  // Kolonnehighlight
+  rader.forEach(rad => rad.querySelectorAll('td').forEach(td => td.classList.remove('sort-kol-aktiv')));
+  if (retning !== 'none') {
+    rader.forEach(rad => {
+      const td = rad.querySelectorAll('td')[kolIndex];
+      if (td) td.classList.add('sort-kol-aktiv');
+    });
+  }
 }
 
 function oppdaterNavHoyde() {
