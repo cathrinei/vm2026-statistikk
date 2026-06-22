@@ -30863,7 +30863,64 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   byggSpillerLenker();
+  initStadionSortering();
 });
+
+function initStadionSortering() {
+  const tbl = document.querySelector('#ark_Stadionoversikt table');
+  if (!tbl) return;
+  const rows = Array.from(tbl.querySelectorAll('tr'));
+  const datoRgx = /^\d{2}\.\d{2}$/;
+  const headerRow = rows.find(r => r.cells[0] && r.cells[0].textContent.trim() === 'Dato');
+  if (!headerRow) return;
+  const dataRows = rows.filter(r => r.cells[0] && datoRgx.test(r.cells[0].textContent.trim()));
+  const originalOrder = [...dataRows];
+  const originalLabels = Array.from(headerRow.cells).map(c => c.textContent.trim());
+  let aktivKol = -1, stigende = true;
+
+  function sorterNokkel(row, col) {
+    const txt = row.cells[col] ? row.cells[col].textContent.trim() : '';
+    if (col === 0) { const [d,m] = txt.split('.'); return parseInt(m||0)*100 + parseInt(d||0); }
+    if (col === 8 || col === 9) return parseFloat(txt.replace(/\s/g,'')) || 0;
+    if (col === 10) return parseFloat(txt) || 0;
+    return txt.toLowerCase();
+  }
+
+  function settInn(sorted) {
+    let ref = headerRow;
+    sorted.forEach(r => { ref.parentNode.insertBefore(r, ref.nextSibling); ref = r; });
+  }
+
+  function oppdaterPiler(aktivIdx) {
+    Array.from(headerRow.cells).forEach((c, j) => {
+      c.textContent = originalLabels[j] + (j === aktivIdx ? (stigende ? ' ↑' : ' ↓') : '');
+    });
+  }
+
+  [0,1,2,4,5,6,7,8,9,10].forEach(i => {
+    const th = headerRow.cells[i];
+    if (!th) return;
+    th.style.cursor = 'pointer';
+    th.title = 'Klikk for å sortere';
+    th.addEventListener('click', () => {
+      if (aktivKol === i) {
+        if (stigende) { stigende = false; }
+        else {
+          aktivKol = -1;
+          settInn(originalOrder);
+          Array.from(headerRow.cells).forEach((c,j) => { c.textContent = originalLabels[j]; });
+          return;
+        }
+      } else { aktivKol = i; stigende = true; }
+      const sorted = [...dataRows].sort((a,b) => {
+        const ka = sorterNokkel(a,i), kb = sorterNokkel(b,i);
+        return stigende ? (ka<kb?-1:ka>kb?1:0) : (ka>kb?-1:ka<kb?1:0);
+      });
+      settInn(sorted);
+      oppdaterPiler(i);
+    });
+  });
+}
 </script>
 </body>
 </html>
