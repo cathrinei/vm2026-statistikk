@@ -136,16 +136,7 @@ def bygg_tabell(ws, legg_til_anker=False):
                 tittel = raw.split("   ")[0].strip()
                 seksjoner.append((anchor_id, tittel))
                 tr_id = f' id="{anchor_id}"'
-        tr_sort_attr = ""
-        første_celle_s = ws.cell(row=r, column=min_kol)
-        bg_sort = rgb_fra_fill(første_celle_s.fill)
-        if bg_sort:
-            upper_s = bg_sort.lstrip("#").upper()
-            if upper_s == "0F2044":
-                tr_sort_attr = ' data-sort-title="1"'
-            elif upper_s == "1A3C6B":
-                tr_sort_attr = ' data-sort-header="1"'
-        html.append(f"<tr{tr_id}{tr_sort_attr}>")
+        html.append(f"<tr{tr_id}>")
         for c in range(min_kol, max_kol + 1):
             if (r, c) in skip_celler:
                 continue
