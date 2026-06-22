@@ -516,9 +516,11 @@
       "borte": "Saudi-Arabia",
       "hjemme_en": "Spain",
       "borte_en": "Saudi Arabia",
-      "score_h": null,
-      "score_a": null,
-      "spilt": false
+      "score_h": 4,
+      "score_a": 0,
+      "spilt": true,
+      "id": "400021483",
+      "dommer": "Raphael CLAUS"
     },
     {
       "dato": "2026-06-21",
