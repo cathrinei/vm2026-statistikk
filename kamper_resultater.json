@@ -712,10 +712,12 @@
       "borte": "Østerrike",
       "hjemme_en": "Argentina",
       "borte_en": "Austria",
-      "score_h": null,
-      "score_a": null,
-      "spilt": false,
-      "tid": "19:00"
+      "score_h": 2,
+      "score_a": 0,
+      "spilt": true,
+      "tid": "19:00",
+      "id": "400021494",
+      "dommer": "Amin MOHAMED"
     },
     {
       "dato": "2026-06-23",
