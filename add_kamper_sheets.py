@@ -242,15 +242,17 @@ def hent_resultater(grupper: dict[str, list[dict]]) -> set[str]:
                 continue
             treff += 1
 
-            # Hent kickoff-tid (for alle kamper, spilt eller ikke)
+            # Hent kickoff-dato og -tid fra FIFA API (norsk tid, CEST = UTC+2)
             dato_fifa = m.get("Date", "")
             if dato_fifa:
                 try:
                     dt_utc = datetime.strptime(dato_fifa[:19], "%Y-%m-%dT%H:%M:%S")
-                    dt_no  = dt_utc + timedelta(hours=2)   # CEST = UTC+2
-                    ny_tid = dt_no.strftime("%H:%M")
-                    if k.get("tid") != ny_tid:
-                        k["tid"] = ny_tid
+                    dt_no  = dt_utc + timedelta(hours=2)
+                    ny_dato = dt_no.strftime("%Y-%m-%d")
+                    ny_tid  = dt_no.strftime("%H:%M")
+                    if k.get("tid") != ny_tid or k.get("dato") != ny_dato:
+                        k["tid"]  = ny_tid
+                        k["dato"] = ny_dato
                         endrede_grupper.add(g)
                 except Exception:
                     pass

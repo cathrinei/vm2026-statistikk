@@ -14,7 +14,7 @@
       "tid": "21:00"
     },
     {
-      "dato": "2026-06-11",
+      "dato": "2026-06-12",
       "hjemme": "Sør-Korea",
       "borte": "Tsjekkia",
       "hjemme_en": "South Korea",
@@ -40,7 +40,7 @@
       "tid": "18:00"
     },
     {
-      "dato": "2026-06-18",
+      "dato": "2026-06-19",
       "hjemme": "Mexico",
       "borte": "Sør-Korea",
       "hjemme_en": "Mexico",
@@ -53,7 +53,7 @@
       "tid": "03:00"
     },
     {
-      "dato": "2026-06-24",
+      "dato": "2026-06-25",
       "hjemme": "Tsjekkia",
       "borte": "Mexico",
       "hjemme_en": "Czechia",
@@ -64,7 +64,7 @@
       "tid": "03:00"
     },
     {
-      "dato": "2026-06-24",
+      "dato": "2026-06-25",
       "hjemme": "Sør-Afrika",
       "borte": "Sør-Korea",
       "hjemme_en": "South Africa",
@@ -116,7 +116,7 @@
       "tid": "21:00"
     },
     {
-      "dato": "2026-06-18",
+      "dato": "2026-06-19",
       "hjemme": "Canada",
       "borte": "Qatar",
       "hjemme_en": "Canada",
@@ -153,7 +153,7 @@
   ],
   "Gruppe C": [
     {
-      "dato": "2026-06-13",
+      "dato": "2026-06-14",
       "hjemme": "Brasil",
       "borte": "Marokko",
       "hjemme_en": "Brazil",
@@ -166,7 +166,7 @@
       "tid": "00:00"
     },
     {
-      "dato": "2026-06-13",
+      "dato": "2026-06-14",
       "hjemme": "Haiti",
       "borte": "Skottland",
       "hjemme_en": "Haiti",
@@ -179,7 +179,7 @@
       "tid": "03:00"
     },
     {
-      "dato": "2026-06-19",
+      "dato": "2026-06-20",
       "hjemme": "Skottland",
       "borte": "Marokko",
       "hjemme_en": "Scotland",
@@ -192,7 +192,7 @@
       "tid": "00:00"
     },
     {
-      "dato": "2026-06-19",
+      "dato": "2026-06-20",
       "hjemme": "Brasil",
       "borte": "Haiti",
       "hjemme_en": "Brazil",
@@ -205,7 +205,7 @@
       "tid": "02:30"
     },
     {
-      "dato": "2026-06-24",
+      "dato": "2026-06-25",
       "hjemme": "Skottland",
       "borte": "Brasil",
       "hjemme_en": "Scotland",
@@ -216,7 +216,7 @@
       "tid": "00:00"
     },
     {
-      "dato": "2026-06-24",
+      "dato": "2026-06-25",
       "hjemme": "Marokko",
       "borte": "Haiti",
       "hjemme_en": "Morocco",
@@ -229,7 +229,7 @@
   ],
   "Gruppe D": [
     {
-      "dato": "2026-06-12",
+      "dato": "2026-06-13",
       "hjemme": "USA",
       "borte": "Paraguay",
       "hjemme_en": "United States",
@@ -268,7 +268,7 @@
       "tid": "21:00"
     },
     {
-      "dato": "2026-06-19",
+      "dato": "2026-06-20",
       "hjemme": "Tyrkia",
       "borte": "Paraguay",
       "hjemme_en": "Turkey",
@@ -281,7 +281,7 @@
       "tid": "05:00"
     },
     {
-      "dato": "2026-06-25",
+      "dato": "2026-06-26",
       "hjemme": "Tyrkia",
       "borte": "USA",
       "hjemme_en": "Turkey",
@@ -292,7 +292,7 @@
       "tid": "04:00"
     },
     {
-      "dato": "2026-06-25",
+      "dato": "2026-06-26",
       "hjemme": "Paraguay",
       "borte": "Australia",
       "hjemme_en": "Paraguay",
@@ -318,7 +318,7 @@
       "tid": "19:00"
     },
     {
-      "dato": "2026-06-14",
+      "dato": "2026-06-15",
       "hjemme": "Elfenbenskysten",
       "borte": "Ecuador",
       "hjemme_en": "Ivory Coast",
@@ -344,7 +344,7 @@
       "tid": "22:00"
     },
     {
-      "dato": "2026-06-20",
+      "dato": "2026-06-21",
       "hjemme": "Ecuador",
       "borte": "Curaçao",
       "hjemme_en": "Ecuador",
@@ -394,7 +394,7 @@
       "tid": "22:00"
     },
     {
-      "dato": "2026-06-14",
+      "dato": "2026-06-15",
       "hjemme": "Sverige",
       "borte": "Tunisia",
       "hjemme_en": "Sweden",
@@ -433,7 +433,7 @@
       "tid": "06:00"
     },
     {
-      "dato": "2026-06-25",
+      "dato": "2026-06-26",
       "hjemme": "Tunisia",
       "borte": "Nederland",
       "hjemme_en": "Tunisia",
@@ -444,7 +444,7 @@
       "tid": "01:00"
     },
     {
-      "dato": "2026-06-25",
+      "dato": "2026-06-26",
       "hjemme": "Japan",
       "borte": "Sverige",
       "hjemme_en": "Japan",
@@ -470,7 +470,7 @@
       "tid": "21:00"
     },
     {
-      "dato": "2026-06-15",
+      "dato": "2026-06-16",
       "hjemme": "Iran",
       "borte": "New Zealand",
       "hjemme_en": "Iran",
@@ -496,7 +496,7 @@
       "tid": "21:00"
     },
     {
-      "dato": "2026-06-21",
+      "dato": "2026-06-22",
       "hjemme": "New Zealand",
       "borte": "Egypt",
       "hjemme_en": "New Zealand",
@@ -509,7 +509,7 @@
       "tid": "03:00"
     },
     {
-      "dato": "2026-06-26",
+      "dato": "2026-06-27",
       "hjemme": "New Zealand",
       "borte": "Belgia",
       "hjemme_en": "New Zealand",
@@ -520,7 +520,7 @@
       "tid": "05:00"
     },
     {
-      "dato": "2026-06-26",
+      "dato": "2026-06-27",
       "hjemme": "Egypt",
       "borte": "Iran",
       "hjemme_en": "Egypt",
@@ -546,7 +546,7 @@
       "tid": "18:00"
     },
     {
-      "dato": "2026-06-15",
+      "dato": "2026-06-16",
       "hjemme": "Saudi-Arabia",
       "borte": "Uruguay",
       "hjemme_en": "Saudi Arabia",
@@ -572,7 +572,7 @@
       "tid": "18:00"
     },
     {
-      "dato": "2026-06-21",
+      "dato": "2026-06-22",
       "hjemme": "Uruguay",
       "borte": "Kapp Verde",
       "hjemme_en": "Uruguay",
@@ -585,7 +585,7 @@
       "tid": "00:00"
     },
     {
-      "dato": "2026-06-26",
+      "dato": "2026-06-27",
       "hjemme": "Uruguay",
       "borte": "Spania",
       "hjemme_en": "Uruguay",
@@ -596,7 +596,7 @@
       "tid": "02:00"
     },
     {
-      "dato": "2026-06-26",
+      "dato": "2026-06-27",
       "hjemme": "Kapp Verde",
       "borte": "Saudi-Arabia",
       "hjemme_en": "Cape Verde",
@@ -622,7 +622,7 @@
       "tid": "21:00"
     },
     {
-      "dato": "2026-06-16",
+      "dato": "2026-06-17",
       "hjemme": "Irak",
       "borte": "Norge",
       "hjemme_en": "Iraq",
@@ -646,7 +646,7 @@
       "tid": "23:00"
     },
     {
-      "dato": "2026-06-22",
+      "dato": "2026-06-23",
       "hjemme": "Norge",
       "borte": "Senegal",
       "hjemme_en": "Norway",
@@ -681,7 +681,7 @@
   ],
   "Gruppe J": [
     {
-      "dato": "2026-06-16",
+      "dato": "2026-06-17",
       "hjemme": "Argentina",
       "borte": "Algerie",
       "hjemme_en": "Argentina",
@@ -718,7 +718,7 @@
       "tid": "19:00"
     },
     {
-      "dato": "2026-06-22",
+      "dato": "2026-06-23",
       "hjemme": "Jordan",
       "borte": "Algerie",
       "hjemme_en": "Jordan",
@@ -729,7 +729,7 @@
       "tid": "05:00"
     },
     {
-      "dato": "2026-06-27",
+      "dato": "2026-06-28",
       "hjemme": "Jordan",
       "borte": "Argentina",
       "hjemme_en": "Jordan",
@@ -740,7 +740,7 @@
       "tid": "04:00"
     },
     {
-      "dato": "2026-06-27",
+      "dato": "2026-06-28",
       "hjemme": "Algerie",
       "borte": "Østerrike",
       "hjemme_en": "Algeria",
@@ -766,7 +766,7 @@
       "tid": "19:00"
     },
     {
-      "dato": "2026-06-17",
+      "dato": "2026-06-18",
       "hjemme": "Usbekistan",
       "borte": "Colombia",
       "hjemme_en": "Uzbekistan",
@@ -790,7 +790,7 @@
       "tid": "19:00"
     },
     {
-      "dato": "2026-06-23",
+      "dato": "2026-06-24",
       "hjemme": "Colombia",
       "borte": "DR Kongo",
       "hjemme_en": "Colombia",
@@ -801,7 +801,7 @@
       "tid": "04:00"
     },
     {
-      "dato": "2026-06-27",
+      "dato": "2026-06-28",
       "hjemme": "Colombia",
       "borte": "Portugal",
       "hjemme_en": "Colombia",
@@ -812,7 +812,7 @@
       "tid": "01:30"
     },
     {
-      "dato": "2026-06-27",
+      "dato": "2026-06-28",
       "hjemme": "DR Kongo",
       "borte": "Usbekistan",
       "hjemme_en": "DR Congo",
@@ -838,7 +838,7 @@
       "tid": "22:00"
     },
     {
-      "dato": "2026-06-17",
+      "dato": "2026-06-18",
       "hjemme": "Ghana",
       "borte": "Panama",
       "hjemme_en": "Ghana",
@@ -862,7 +862,7 @@
       "tid": "22:00"
     },
     {
-      "dato": "2026-06-23",
+      "dato": "2026-06-24",
       "hjemme": "Panama",
       "borte": "Kroatia",
       "hjemme_en": "Panama",
