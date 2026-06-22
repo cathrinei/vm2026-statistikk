@@ -267,6 +267,22 @@ FIFA_RANKING = [
 ]
 
 
+IKKE_KVALIFISERT_TOPP48 = [
+    (12, "Italia"),
+    (21, "Danmark"),
+    (26, "Nigeria"),
+    (32, "Ukraina"),
+    (35, "Russland"),
+    (36, "Polen"),
+    (37, "Wales"),
+    (39, "Ungarn"),
+    (43, "Serbia"),
+    (44, "Kamerun"),
+    (47, "Slovakia"),
+    (48, "Hellas"),
+]
+
+
 def generer_fifa_ranking_seksjon():
     rader = []
     for i, (wc_rang, fifa_rang, land, gruppe) in enumerate(FIFA_RANKING):
@@ -280,6 +296,18 @@ def generer_fifa_ranking_seksjon():
             f'</tr>'
         )
     rader_html = "\n".join(rader)
+
+    ikke_kval_rader = []
+    for i, (fifa_rang, land) in enumerate(IKKE_KVALIFISERT_TOPP48):
+        bg = "#FFFFFF" if i % 2 == 0 else "#F0F5FB"
+        ikke_kval_rader.append(
+            f'<tr>'
+            f'<td style="background:{bg};font-weight:bold;color:#1A1A2E;text-align:center">{fifa_rang}</td>'
+            f'<td style="background:{bg};color:#1A1A2E">{escape(land)}</td>'
+            f'</tr>'
+        )
+    ikke_kval_html = "\n".join(ikke_kval_rader)
+
     return (
         '<div id="ark_FIFA_ranking" class="ark-innhold" style="display:none">\n'
         '<h2>FIFA-ranking</h2>\n'
@@ -301,7 +329,22 @@ def generer_fifa_ranking_seksjon():
         + rader_html + '\n'
         '<tr><td colspan="4" style="font-style:italic;color:#6B7A99;font-size:9pt">'
         '* FIFA-verdensrangering pr. 11. juni 2026. Kilde: inside.fifa.com/fifa-world-ranking/men. '
-        '# = rangering blant VM-lagene. Italia (#12 globalt) er ikke kvalifisert.</td></tr>\n'
+        '# = rangering blant VM-lagene.</td></tr>\n'
+        '</table></div>\n'
+        '<div class="tabell-wrapper" style="margin-top:18px"><table>\n'
+        '<colgroup>'
+        '<col style="width:90px">'
+        '<col style="width:200px">'
+        '</colgroup>\n'
+        '<tr><td colspan="2" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">'
+        'Topp 48 på FIFA-rankingen — ikke kvalifisert for VM 2026</td></tr>\n'
+        '<tr>'
+        '<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">FIFA-rang</td>'
+        '<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Land</td>'
+        '</tr>\n'
+        + ikke_kval_html + '\n'
+        '<tr><td colspan="2" style="font-style:italic;color:#6B7A99;font-size:9pt">'
+        '* Russland er utestengt av FIFA.</td></tr>\n'
         '</table></div>\n'
         '</div>'
     )
