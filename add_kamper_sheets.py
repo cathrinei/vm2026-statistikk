@@ -8,7 +8,7 @@ Kampene plasseres i kolonne 1–7, radene 1–9 (titel, header, 6 kamper + blank
 Spillerdata i kolonne 12–18 berøres ikke.
 """
 import io, json, shutil, sys, time, unicodedata, re
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 BASE_DIR = Path(__file__).parent
@@ -241,6 +241,22 @@ def hent_resultater(grupper: dict[str, list[dict]]) -> set[str]:
             if not m:
                 continue
             treff += 1
+
+            # Hent kickoff-dato og -tid fra FIFA API (norsk tid, CEST = UTC+2)
+            dato_fifa = m.get("Date", "")
+            if dato_fifa:
+                try:
+                    dt_utc = datetime.strptime(dato_fifa[:19], "%Y-%m-%dT%H:%M:%S")
+                    dt_no  = dt_utc + timedelta(hours=2)
+                    ny_dato = dt_no.strftime("%Y-%m-%d")
+                    ny_tid  = dt_no.strftime("%H:%M")
+                    if k.get("tid") != ny_tid or k.get("dato") != ny_dato:
+                        k["tid"]  = ny_tid
+                        k["dato"] = ny_dato
+                        endrede_grupper.add(g)
+                except Exception:
+                    pass
+
             if m.get("MatchStatus") == 0:  # spilt
                 ny_h = m.get("Home", {}).get("Score")
                 ny_a = m.get("Away", {}).get("Score")
@@ -369,16 +385,19 @@ def beregn_tabell(lag_liste: list[str], kamper: list[dict]) -> list[dict]:
 
 # ── Skriv til Excel ───────────────────────────────────────────────────────────
 
-def fmt_dato(d) -> str:
+def fmt_dato(d, tid=None) -> str:
     if d is None:
         return ""
-    if isinstance(d, (datetime,)):
-        return d.strftime("%d.%m")
-    try:
-        dt = datetime.strptime(str(d)[:10], "%Y-%m-%d")
-        return dt.strftime("%d.%m")
-    except Exception:
-        return str(d)[:10]
+    if isinstance(d, datetime):
+        dato_str = d.strftime("%d.%m")
+    else:
+        try:
+            dato_str = datetime.strptime(str(d)[:10], "%Y-%m-%d").strftime("%d.%m")
+        except Exception:
+            dato_str = str(d)[:10]
+    if tid:
+        return f"{dato_str} {tid}"
+    return dato_str
 
 def fmt_resultat(k: dict) -> str:
     if k["spilt"]:
@@ -532,11 +551,12 @@ def skriv_kamper_til_excel(grupper: dict[str, list[dict]],
 
         # Rad 2: Kolonneoverskrifter (inkl. Tilskuere i kol 6, Stadion i kol 7)
         ws.row_dimensions[2].height = 20
-        headers_row = ["Runde", "Dato", "Hjemmelag", "Resultat", "Bortelag", "Tilskuere", "Stadion", "Dommer"]
+        headers_row = ["Runde", "Dato og kl.slett", "Hjemmelag", "Resultat", "Bortelag", "Tilskuere", "Stadion", "Dommer"]
         for col, label in enumerate(headers_row, 1):
             c = ws.cell(row=2, column=col, value=label)
             c.font = S["f_hdr"]; c.fill = S["BLUE"]
             c.alignment = S["lft"] if col in (3, 5, 7, 8) else S["ctr"]
+        ws.column_dimensions["B"].width = 14
 
         # Rad 3–8: Kamper
         for i, k in enumerate(camp):
@@ -553,7 +573,7 @@ def skriv_kamper_til_excel(grupper: dict[str, list[dict]],
 
             data = [
                 runde_labels[i] if i < len(runde_labels) else "",
-                fmt_dato(k["dato"]),
+                fmt_dato(k["dato"], k.get("tid")),
                 k["hjemme"],
                 res,
                 k["borte"],
