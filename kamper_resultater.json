@@ -450,9 +450,11 @@
       "borte": "Iran",
       "hjemme_en": "Belgium",
       "borte_en": "Iran",
-      "score_h": null,
-      "score_a": null,
-      "spilt": false
+      "score_h": 0,
+      "score_a": 0,
+      "spilt": true,
+      "id": "400021477",
+      "dommer": "Dario HERRERA"
     },
     {
       "dato": "2026-06-21",
@@ -460,9 +462,11 @@
       "borte": "Egypt",
       "hjemme_en": "New Zealand",
       "borte_en": "Egypt",
-      "score_h": null,
-      "score_a": null,
-      "spilt": false
+      "score_h": 1,
+      "score_a": 3,
+      "spilt": true,
+      "id": "400021480",
+      "dommer": "Omar ALALI"
     },
     {
       "dato": "2026-06-26",
@@ -528,9 +532,11 @@
       "borte": "Kapp Verde",
       "hjemme_en": "Uruguay",
       "borte_en": "Cape Verde",
-      "score_h": null,
-      "score_a": null,
-      "spilt": false
+      "score_h": 2,
+      "score_a": 2,
+      "spilt": true,
+      "id": "400021487",
+      "dommer": "Espen ESKAS"
     },
     {
       "dato": "2026-06-26",
