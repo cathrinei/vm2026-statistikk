@@ -6,6 +6,8 @@ on:
     - cron: "0 8 * * *"   # 08:00 UTC = 10:00 norsk sommertid (reserve)
   workflow_dispatch:        # tillat manuell kjøring fra GitHub
   push:
+    branches:
+      - main
     paths:
       - "docs/template.html"  # regenerer index.html automatisk ved template-endring
 
