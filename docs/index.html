@@ -117,36 +117,6 @@
   body.dark-mode .sok-panel-mer { color: #6b7a99; }
   body.dark-mode .sok-panel-tom { color: #6b7a99; }
   body.dark-mode footer { color: #4a5568; }
-  /* ── Sorterbare kolonneoverskrifter ─────────────────── */
-  td[data-sort-col] {
-    cursor: pointer;
-    user-select: none;
-    position: relative;
-    padding-right: 18px;
-    min-height: 36px;
-  }
-  td[data-sort-col]:hover { filter: brightness(0.85); }
-  td[data-sort-col]::after {
-    content: attr(data-sort-arrow);
-    position: absolute;
-    right: 4px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 9pt;
-    opacity: 0.55;
-  }
-  td[data-sort-col][data-sort-state="asc"]::after,
-  td[data-sort-col][data-sort-state="desc"]::after { opacity: 1; }
-  /* ── Sortert kolonne-highlight ───────────────────────── */
-  .sort-kol-aktiv {
-    background-image: linear-gradient(rgba(26,60,107,0.07), rgba(26,60,107,0.07));
-  }
-  /* ── Sticky kolonneoverskrifter ──────────────────────── */
-  tr[data-sort-header="1"] td {
-    position: sticky;
-    top: var(--nav-hoyde, 0px);
-    z-index: 10;
-  }
 </style>
 </head>
 <body>
@@ -155,7 +125,7 @@
 <header>
   <div>
     <h1>VM 2026 – Gruppetabeller og sluttspill</h1>
-    <p>Sist oppdatert: 2026-06-21</p>
+    <p>Sist oppdatert: 2026-06-22</p>
   </div>
   <div style="display:flex;gap:8px;align-items:flex-start;flex-shrink:0;margin-top:2px;">
     <button id="dark-mode-knapp" onclick="toggleDarkMode()" aria-label="Bytt fargemodus">&#9790; Mørk</button>
@@ -237,12 +207,12 @@
 <col style="width:42px">
 <col style="width:42px">
 </colgroup>
-<tr data-sort-title="1">
+<tr>
 <td colspan="8" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Gruppe A — Kamper</td>
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Runde</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Dato</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Hjemmelag</td>
@@ -338,11 +308,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="9" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Gruppe A — Tabell</td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Lag</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">K</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">V</td>
@@ -414,11 +384,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Mexico</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Javier Aguirre Onaindía</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -754,11 +724,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Sør-Afrika</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Hugo Henri Broos</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -1094,11 +1064,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Sør-Korea</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Myung-bo Hong</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -1434,11 +1404,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Tsjekkia</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Miroslav Koubek</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -1779,12 +1749,12 @@
 <col style="width:42px">
 <col style="width:42px">
 </colgroup>
-<tr data-sort-title="1">
+<tr>
 <td colspan="8" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Gruppe B — Kamper</td>
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Runde</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Dato</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Hjemmelag</td>
@@ -1880,11 +1850,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="9" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Gruppe B — Tabell</td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Lag</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">K</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">V</td>
@@ -1956,11 +1926,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Canada</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Jesse Alan Marsch</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -2296,11 +2266,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Bosnia-Hercegovina</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Sergej Barbarez</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -2636,11 +2606,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Qatar</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Julen Lopetegui Argote</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -2976,11 +2946,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Sveits</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Murat Yakin</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -3321,12 +3291,12 @@
 <col style="width:42px">
 <col style="width:42px">
 </colgroup>
-<tr data-sort-title="1">
+<tr>
 <td colspan="8" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Gruppe C — Kamper</td>
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Runde</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Dato</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Hjemmelag</td>
@@ -3422,11 +3392,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="9" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Gruppe C — Tabell</td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Lag</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">K</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">V</td>
@@ -3498,11 +3468,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Brasil</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Carlo Ancelotti</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -3838,11 +3808,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Marokko</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Mohamed Ouahbi</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -4178,11 +4148,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Haiti</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Sebastien Migne</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -4518,11 +4488,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Skottland</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Stephen Clark</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -4863,12 +4833,12 @@
 <col style="width:42px">
 <col style="width:42px">
 </colgroup>
-<tr data-sort-title="1">
+<tr>
 <td colspan="8" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Gruppe D — Kamper</td>
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Runde</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Dato</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Hjemmelag</td>
@@ -4964,11 +4934,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="9" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Gruppe D — Tabell</td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Lag</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">K</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">V</td>
@@ -5040,11 +5010,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">USA</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Mauricio Pochettino</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -5380,11 +5350,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Paraguay</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Gustavo Alfaro</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -5720,11 +5690,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Australia</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Tony Popović</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -6060,11 +6030,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Tyrkia</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Vincenzo Montella</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -6405,12 +6375,12 @@
 <col style="width:42px">
 <col style="width:42px">
 </colgroup>
-<tr data-sort-title="1">
+<tr>
 <td colspan="8" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Gruppe E — Kamper</td>
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Runde</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Dato</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Hjemmelag</td>
@@ -6506,11 +6476,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="9" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Gruppe E — Tabell</td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Lag</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">K</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">V</td>
@@ -6582,11 +6552,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Tyskland</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Julian Nagelsmann</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -6922,11 +6892,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Curaçao</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Dick Advocaat</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -7262,11 +7232,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Elfenbenskysten</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Emerse Fae</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -7602,11 +7572,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Ecuador</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Sebastián Andrés Beccacece</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -7947,12 +7917,12 @@
 <col style="width:42px">
 <col style="width:42px">
 </colgroup>
-<tr data-sort-title="1">
+<tr>
 <td colspan="8" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Gruppe F — Kamper</td>
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Runde</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Dato</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Hjemmelag</td>
@@ -8048,11 +8018,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="9" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Gruppe F — Tabell</td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Lag</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">K</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">V</td>
@@ -8124,11 +8094,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Nederland</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Ronald Koeman</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -8464,11 +8434,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Japan</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Hajime Moriyasu</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -8804,11 +8774,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Sverige</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Graham Potter</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -9144,11 +9114,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Tunisia</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Herve Renard</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -9489,12 +9459,12 @@
 <col style="width:42px">
 <col style="width:42px">
 </colgroup>
-<tr data-sort-title="1">
+<tr>
 <td colspan="8" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Gruppe G — Kamper</td>
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Runde</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Dato</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Hjemmelag</td>
@@ -9590,11 +9560,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="9" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Gruppe G — Tabell</td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Lag</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">K</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">V</td>
@@ -9666,11 +9636,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Belgia</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Rudi Garcia</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -10006,11 +9976,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Egypt</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Hossam Hassan Hussein</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -10346,11 +10316,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Iran</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Amir Ghalenoei</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -10686,11 +10656,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">New Zealand</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Darren Bazeley</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -11031,12 +11001,12 @@
 <col style="width:42px">
 <col style="width:42px">
 </colgroup>
-<tr data-sort-title="1">
+<tr>
 <td colspan="8" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Gruppe H — Kamper</td>
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Runde</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Dato</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Hjemmelag</td>
@@ -11132,11 +11102,11 @@
 <td style="background:#FFFFFF;font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="9" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Gruppe H — Tabell</td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Lag</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">K</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">V</td>
@@ -11208,11 +11178,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Spania</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Luis De La Fuente Castillo</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -11548,11 +11518,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Kapp Verde</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Pedro Leitão Brito</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -11888,11 +11858,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Saudi-Arabia</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Georgios Donis</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -12228,11 +12198,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Uruguay</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Marcelo Bielsa</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -12573,12 +12543,12 @@
 <col style="width:42px">
 <col style="width:42px">
 </colgroup>
-<tr data-sort-title="1">
+<tr>
 <td colspan="8" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Gruppe I — Kamper</td>
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Runde</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Dato</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Hjemmelag</td>
@@ -12674,11 +12644,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="9" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Gruppe I — Tabell</td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Lag</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">K</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">V</td>
@@ -12750,11 +12720,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Frankrike</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Didier Deschamps</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -13090,11 +13060,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Senegal</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Pape Thiaw</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -13430,11 +13400,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Irak</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Graham James Arnold</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -13770,11 +13740,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Norge</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Ståle Solbakken</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -14115,12 +14085,12 @@
 <col style="width:42px">
 <col style="width:42px">
 </colgroup>
-<tr data-sort-title="1">
+<tr>
 <td colspan="8" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Gruppe J — Kamper</td>
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Runde</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Dato</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Hjemmelag</td>
@@ -14216,11 +14186,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="9" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Gruppe J — Tabell</td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Lag</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">K</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">V</td>
@@ -14292,11 +14262,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Argentina</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Lionel Scaloni</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -14632,11 +14602,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Algerie</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Vladimir Petkovic</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -14972,11 +14942,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Østerrike</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Ralf Rangnick</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -15312,11 +15282,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Jordan</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Jamal Sellami</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -15657,12 +15627,12 @@
 <col style="width:42px">
 <col style="width:42px">
 </colgroup>
-<tr data-sort-title="1">
+<tr>
 <td colspan="8" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Gruppe K — Kamper</td>
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Runde</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Dato</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Hjemmelag</td>
@@ -15758,11 +15728,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="9" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Gruppe K — Tabell</td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Lag</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">K</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">V</td>
@@ -15834,11 +15804,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Portugal</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Roberto Martínez Montoliú</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -16174,11 +16144,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">DR Kongo</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Sébastien Desabre</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -16514,11 +16484,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Usbekistan</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Fabio Cannavaro</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -16854,11 +16824,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Colombia</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Néstor Gabriel Lorenzo</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -17199,12 +17169,12 @@
 <col style="width:42px">
 <col style="width:42px">
 </colgroup>
-<tr data-sort-title="1">
+<tr>
 <td colspan="8" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Gruppe L — Kamper</td>
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Runde</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Dato</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Hjemmelag</td>
@@ -17300,11 +17270,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="9" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Gruppe L — Tabell</td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Lag</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">K</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">V</td>
@@ -17376,11 +17346,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">England</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Thomas Tuchel</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -17716,11 +17686,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Kroatia</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Zlatko Dalić</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -18056,11 +18026,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Ghana</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Carlos Queiroz</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -18396,11 +18366,11 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Panama</td>
 <td colspan="6" style="background:#0F2044;font-style:italic;color:#FFFFFF;font-size:9pt;text-align:right">Trener: Thomas Christiansen Tarín</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nr</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Navn</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
@@ -18738,10 +18708,10 @@
 <col style="width:168px">
 <col style="width:126px">
 </colgroup>
-<tr data-sort-title="1">
+<tr>
 <td colspan="7" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">VM 2026 — 16-delsfinale</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Dato</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Hjemmelag</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Resultat</td>
@@ -18908,10 +18878,10 @@
 <col style="width:168px">
 <col style="width:126px">
 </colgroup>
-<tr data-sort-title="1">
+<tr>
 <td colspan="7" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">VM 2026 — 8-delsfinale</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Dato</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Hjemmelag</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Resultat</td>
@@ -19006,10 +18976,10 @@
 <col style="width:168px">
 <col style="width:126px">
 </colgroup>
-<tr data-sort-title="1">
+<tr>
 <td colspan="7" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">VM 2026 — Kvartfinaler</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Dato</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Hjemmelag</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Resultat</td>
@@ -19068,10 +19038,10 @@
 <col style="width:168px">
 <col style="width:126px">
 </colgroup>
-<tr data-sort-title="1">
+<tr>
 <td colspan="7" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">VM 2026 — Semifinaler</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Dato</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Hjemmelag</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Resultat</td>
@@ -19112,10 +19082,10 @@
 <col style="width:168px">
 <col style="width:126px">
 </colgroup>
-<tr data-sort-title="1">
+<tr>
 <td colspan="7" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">VM 2026 — Bronsefinale</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Dato</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Hjemmelag</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Resultat</td>
@@ -19147,10 +19117,10 @@
 <col style="width:168px">
 <col style="width:126px">
 </colgroup>
-<tr data-sort-title="1">
+<tr>
 <td colspan="7" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">VM 2026 — Finale</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Dato</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Hjemmelag</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Resultat</td>
@@ -19180,10 +19150,10 @@
 <col style="width:56px">
 <col style="width:56px">
 </colgroup>
-<tr data-sort-title="1">
+<tr>
 <td colspan="5" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">VM 2026 — Kort  (93 spillere)</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">#</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Spiller</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Lag</td>
@@ -19853,10 +19823,10 @@
 <col style="width:49px">
 <col style="width:56px">
 </colgroup>
-<tr data-sort-title="1">
+<tr>
 <td colspan="5" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">VM 2026 — Scorere og assists   105 mål · 74 assists</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">#</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Spiller</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Lag</td>
@@ -20782,13 +20752,13 @@
 <col style="width:56px">
 <col style="width:63px">
 </colgroup>
-<tr id="lagstat-seksjon-1" data-sort-title="1">
+<tr id="lagstat-seksjon-1">
 <td colspan="8" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">VM 2026 — Mål per kamp   113 mål totalt</td>
 </tr>
 <tr>
 <td colspan="8" style="background:#E8EEF6;color:#1A1A2E;text-align:center">Spillermål: 99     Straffer: 6     Selvmål: 8</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">#</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Lag</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Gruppe</td>
@@ -21288,10 +21258,10 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr id="lagstat-seksjon-2" data-sort-title="1">
+<tr id="lagstat-seksjon-2">
 <td colspan="8" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">VM 2026 — Mest målrike enkeltmatcher</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">#</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Hjemmelag</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Gruppe</td>
@@ -21411,10 +21381,10 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr id="lagstat-seksjon-3" data-sort-title="1">
+<tr id="lagstat-seksjon-3">
 <td colspan="8" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">VM 2026 — Clean sheet</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">#</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Lag</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Gruppe</td>
@@ -21594,10 +21564,10 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr id="lagstat-seksjon-4" data-sort-title="1">
+<tr id="lagstat-seksjon-4">
 <td colspan="8" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">VM 2026 — Straffespark</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">#</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Lag</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Gruppe</td>
@@ -21667,10 +21637,10 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr id="lagstat-seksjon-5" data-sort-title="1">
+<tr id="lagstat-seksjon-5">
 <td colspan="8" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">VM 2026 — Selvmål</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">#</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Lag</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Gruppe</td>
@@ -21770,10 +21740,10 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr id="lagstat-seksjon-6" data-sort-title="1">
+<tr id="lagstat-seksjon-6">
 <td colspan="8" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">VM 2026 — Skudd per lag</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">#</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Lag</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Gruppe</td>
@@ -22273,10 +22243,10 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr id="lagstat-seksjon-7" data-sort-title="1">
+<tr id="lagstat-seksjon-7">
 <td colspan="8" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">VM 2026 — Formasjoner per lag</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">#</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Lag</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Gruppe</td>
@@ -22776,10 +22746,10 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr id="lagstat-seksjon-8" data-sort-title="1">
+<tr id="lagstat-seksjon-8">
 <td colspan="8" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">VM 2026 — Spillerbytte-timing (sortert etter snitt-minutt)</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">#</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Lag</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Gruppe</td>
@@ -23279,10 +23249,10 @@
 <col style="width:63px">
 <col style="width:63px">
 </colgroup>
-<tr data-sort-title="1">
+<tr>
 <td colspan="3" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Scoringstidspunkt — Mål per 15-minutters intervall</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Intervall</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Mål</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Andel</td>
@@ -23317,7 +23287,7 @@
 <td style="background:#FFFFFF;font-weight:bold;color:#0F5132;text-align:center">31</td>
 <td style="background:#FFFFFF;color:#6B7A99;text-align:center">0.27</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Totalt</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">113</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center"></td>
@@ -23341,10 +23311,10 @@
 <col style="width:31px">
 <col style="width:30px">
 </colgroup>
-<tr data-sort-title="1">
+<tr>
 <td colspan="12" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Scoringstidspunkt — Heatmap (mål per minutt)</td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td style="background:#0F2044;font-size:11pt"></td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;font-size:9pt;text-align:center">1</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;font-size:9pt;text-align:center">2</td>
@@ -23358,7 +23328,7 @@
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;font-size:9pt;text-align:center">10</td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:9pt;text-align:center">1–10</td>
 <td style="background:#FFFFFF;color:#AAAAAA;text-align:center"></td>
 <td style="background:#BDD7EE;font-weight:bold;color:#1A1A2E;text-align:center">2</td>
@@ -23372,7 +23342,7 @@
 <td style="background:#DEEBF7;font-weight:bold;color:#1A1A2E;text-align:center">1</td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:9pt;text-align:center">11–20</td>
 <td style="background:#DEEBF7;font-weight:bold;color:#1A1A2E;text-align:center">1</td>
 <td style="background:#DEEBF7;font-weight:bold;color:#1A1A2E;text-align:center">1</td>
@@ -23386,7 +23356,7 @@
 <td style="background:#DEEBF7;font-weight:bold;color:#1A1A2E;text-align:center">1</td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:9pt;text-align:center">21–30</td>
 <td style="background:#2171B5;font-weight:bold;color:#FFFFFF;text-align:center">4</td>
 <td style="background:#FFFFFF;color:#AAAAAA;text-align:center"></td>
@@ -23400,7 +23370,7 @@
 <td style="background:#BDD7EE;font-weight:bold;color:#1A1A2E;text-align:center">2</td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:9pt;text-align:center">31–40</td>
 <td style="background:#BDD7EE;font-weight:bold;color:#1A1A2E;text-align:center">2</td>
 <td style="background:#BDD7EE;font-weight:bold;color:#1A1A2E;text-align:center">2</td>
@@ -23414,7 +23384,7 @@
 <td style="background:#DEEBF7;font-weight:bold;color:#1A1A2E;text-align:center">1</td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:9pt;text-align:center">41–50</td>
 <td style="background:#DEEBF7;font-weight:bold;color:#1A1A2E;text-align:center">1</td>
 <td style="background:#DEEBF7;font-weight:bold;color:#1A1A2E;text-align:center">1</td>
@@ -23428,7 +23398,7 @@
 <td style="background:#5B9BD5;font-weight:bold;color:#FFFFFF;text-align:center">3</td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:9pt;text-align:center">51–60</td>
 <td style="background:#FFFFFF;color:#AAAAAA;text-align:center"></td>
 <td style="background:#FFFFFF;color:#AAAAAA;text-align:center"></td>
@@ -23442,7 +23412,7 @@
 <td style="background:#BDD7EE;font-weight:bold;color:#1A1A2E;text-align:center">2</td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:9pt;text-align:center">61–70</td>
 <td style="background:#FFFFFF;color:#AAAAAA;text-align:center"></td>
 <td style="background:#FFFFFF;color:#AAAAAA;text-align:center"></td>
@@ -23456,7 +23426,7 @@
 <td style="background:#FFFFFF;color:#AAAAAA;text-align:center"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:9pt;text-align:center">71–80</td>
 <td style="background:#FFFFFF;color:#AAAAAA;text-align:center"></td>
 <td style="background:#FFFFFF;color:#AAAAAA;text-align:center"></td>
@@ -23470,7 +23440,7 @@
 <td style="background:#BDD7EE;font-weight:bold;color:#1A1A2E;text-align:center">2</td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:9pt;text-align:center">81–90</td>
 <td style="background:#FFFFFF;color:#AAAAAA;text-align:center"></td>
 <td style="background:#DEEBF7;font-weight:bold;color:#1A1A2E;text-align:center">1</td>
@@ -23498,7 +23468,7 @@
 <td style="background:#D9D9D9;font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:9pt;text-align:center">45+</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;font-size:8pt;text-align:center">+1</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;font-size:8pt;text-align:center">+2</td>
@@ -23512,7 +23482,7 @@
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;font-size:8pt;text-align:center">+10</td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:9pt;text-align:center">HT</td>
 <td style="background:#FFFFFF;color:#AAAAAA;text-align:center"></td>
 <td style="background:#FFFFFF;color:#AAAAAA;text-align:center"></td>
@@ -23540,7 +23510,7 @@
 <td style="background:#D9D9D9;font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:9pt;text-align:center">AT</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;font-size:8pt;text-align:center">+1</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;font-size:8pt;text-align:center">+2</td>
@@ -23554,7 +23524,7 @@
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;font-size:8pt;text-align:center">+10</td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:9pt;text-align:center">90+</td>
 <td style="background:#FFFFFF;color:#AAAAAA;text-align:center"></td>
 <td style="background:#DEEBF7;font-weight:bold;color:#1A1A2E;text-align:center">1</td>
@@ -23582,11 +23552,11 @@
 <td style="background:#D9D9D9;font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="11" style="background:#0F2044;font-weight:bold;color:#FFFFFF">EKSTRAOMGANGER (sluttspill)</td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:9pt;text-align:center">ET 1</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;font-size:8pt;text-align:center">91</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;font-size:8pt;text-align:center">92</td>
@@ -23600,7 +23570,7 @@
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;font-size:8pt;text-align:center">100</td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:9pt;text-align:center">91–100</td>
 <td style="background:#FFFFFF;color:#AAAAAA;text-align:center"></td>
 <td style="background:#FFFFFF;color:#AAAAAA;text-align:center"></td>
@@ -23614,7 +23584,7 @@
 <td style="background:#FFFFFF;color:#AAAAAA;text-align:center"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:9pt;text-align:center">101–105</td>
 <td style="background:#FFFFFF;color:#AAAAAA;text-align:center"></td>
 <td style="background:#FFFFFF;color:#AAAAAA;text-align:center"></td>
@@ -23628,7 +23598,7 @@
 <td style="background:#F0F0F0;color:#CCCCCC;text-align:center"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:9pt;text-align:center">105+</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;font-size:8pt;text-align:center">+1</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;font-size:8pt;text-align:center">+2</td>
@@ -23642,7 +23612,7 @@
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;font-size:8pt;text-align:center">+10</td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:9pt;text-align:center">105+</td>
 <td style="background:#FFFFFF;color:#AAAAAA;text-align:center"></td>
 <td style="background:#FFFFFF;color:#AAAAAA;text-align:center"></td>
@@ -23670,7 +23640,7 @@
 <td style="background:#D9D9D9;font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:9pt;text-align:center">ET 2</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;font-size:8pt;text-align:center">106</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;font-size:8pt;text-align:center">107</td>
@@ -23684,7 +23654,7 @@
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;font-size:8pt;text-align:center">115</td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:9pt;text-align:center">106–115</td>
 <td style="background:#FFFFFF;color:#AAAAAA;text-align:center"></td>
 <td style="background:#FFFFFF;color:#AAAAAA;text-align:center"></td>
@@ -23698,7 +23668,7 @@
 <td style="background:#FFFFFF;color:#AAAAAA;text-align:center"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:9pt;text-align:center">116–120</td>
 <td style="background:#FFFFFF;color:#AAAAAA;text-align:center"></td>
 <td style="background:#FFFFFF;color:#AAAAAA;text-align:center"></td>
@@ -23712,7 +23682,7 @@
 <td style="background:#F0F0F0;color:#CCCCCC;text-align:center"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:9pt;text-align:center">120+</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;font-size:8pt;text-align:center">+1</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;font-size:8pt;text-align:center">+2</td>
@@ -23726,7 +23696,7 @@
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;font-size:8pt;text-align:center">+10</td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:9pt;text-align:center">120+</td>
 <td style="background:#FFFFFF;color:#AAAAAA;text-align:center"></td>
 <td style="background:#FFFFFF;color:#AAAAAA;text-align:center"></td>
@@ -23831,16 +23801,16 @@
 <col style="width:49px">
 <col style="width:140px">
 </colgroup>
-<tr data-sort-title="1">
+<tr>
 <td colspan="14" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">Kampstatistikk — VM 2026</td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td style="background:#0F2044;font-size:11pt"></td>
 <td colspan="6" style="background:#0E4D5C;font-weight:bold;color:#FFFFFF;font-size:9pt;text-align:center">← Hjemmelag</td>
 <td style="background:#0F2044;font-size:11pt"></td>
 <td colspan="6" style="background:#0E4D5C;font-weight:bold;color:#FFFFFF;font-size:9pt;text-align:center">Bortelag →</td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td style="background:#0F2044;font-weight:bold;color:#FFFFFF;text-align:center">Gruppe</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Lag</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Bes.</td>
@@ -23856,7 +23826,7 @@
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Bes.</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Lag</td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:9pt;text-align:center">Gruppe A</td>
 <td style="background:#F0F5FB;color:#1A1A2E">Mexico</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">0.61</td>
@@ -23920,7 +23890,7 @@
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">0.61</td>
 <td style="background:#FFFFFF;color:#1A1A2E">Sør-Afrika</td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:9pt;text-align:center">Gruppe B</td>
 <td style="background:#F0F5FB;color:#1A1A2E">Canada</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">0.6</td>
@@ -23984,7 +23954,7 @@
 <td style="background:#F0F5FB;font-weight:bold;color:#6B7A99;text-align:center">0.38</td>
 <td style="background:#FFFFFF;color:#1A1A2E">Bosnia-Hercegovina</td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:9pt;text-align:center">Gruppe C</td>
 <td style="background:#F0F5FB;color:#1A1A2E">Brasil</td>
 <td style="background:#BDD7EE;font-weight:bold;color:#1A1A2E;text-align:center">0.54</td>
@@ -24048,7 +24018,7 @@
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">0.6</td>
 <td style="background:#FFFFFF;color:#1A1A2E">Marokko</td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:9pt;text-align:center">Gruppe D</td>
 <td style="background:#F0F5FB;color:#1A1A2E">Australia</td>
 <td style="background:#F0F5FB;font-weight:bold;color:#6B7A99;text-align:center">0.37</td>
@@ -24112,7 +24082,7 @@
 <td style="background:#F0F5FB;font-weight:bold;color:#6B7A99;text-align:center">0.37</td>
 <td style="background:#FFFFFF;color:#1A1A2E">Australia</td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:9pt;text-align:center">Gruppe E</td>
 <td style="background:#F0F5FB;color:#1A1A2E">Ecuador</td>
 <td style="background:#0F2044;font-weight:bold;color:#FFFFFF;text-align:center">0.75</td>
@@ -24176,7 +24146,7 @@
 <td style="background:#BDD7EE;font-weight:bold;color:#1A1A2E;text-align:center">0.45</td>
 <td style="background:#FFFFFF;color:#1A1A2E">Elfenbenskysten</td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:9pt;text-align:center">Gruppe F</td>
 <td style="background:#F0F5FB;color:#1A1A2E">Nederland</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">0.6</td>
@@ -24240,7 +24210,7 @@
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">0.57</td>
 <td style="background:#FFFFFF;color:#1A1A2E">Japan</td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:9pt;text-align:center">Gruppe G</td>
 <td style="background:#F0F5FB;color:#1A1A2E">Belgia</td>
 <td style="background:#BDD7EE;font-weight:bold;color:#1A1A2E;text-align:center">0.53</td>
@@ -24272,7 +24242,7 @@
 <td style="background:#BDD7EE;font-weight:bold;color:#1A1A2E;text-align:center">0.53</td>
 <td style="background:#FFFFFF;color:#1A1A2E">New Zealand</td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:9pt;text-align:center">Gruppe H</td>
 <td style="background:#F0F5FB;color:#1A1A2E">Saudi-Arabia</td>
 <td style="background:#F0F5FB;font-weight:bold;color:#6B7A99;text-align:center">0.35</td>
@@ -24304,7 +24274,7 @@
 <td style="background:#F0F5FB;font-weight:bold;color:#6B7A99;text-align:center">0.26</td>
 <td style="background:#FFFFFF;color:#1A1A2E">Kapp Verde</td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:9pt;text-align:center">Gruppe I</td>
 <td style="background:#F0F5FB;color:#1A1A2E">Frankrike</td>
 <td style="background:#BDD7EE;font-weight:bold;color:#1A1A2E;text-align:center">0.54</td>
@@ -24336,7 +24306,7 @@
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">0.63</td>
 <td style="background:#FFFFFF;color:#1A1A2E">Norge</td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:9pt;text-align:center">Gruppe J</td>
 <td style="background:#F0F5FB;color:#1A1A2E">Argentina</td>
 <td style="background:#BDD7EE;font-weight:bold;color:#1A1A2E;text-align:center">0.47</td>
@@ -24368,7 +24338,7 @@
 <td style="background:#F0F5FB;font-weight:bold;color:#6B7A99;text-align:center">0.38</td>
 <td style="background:#FFFFFF;color:#1A1A2E">Jordan</td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:9pt;text-align:center">Gruppe K</td>
 <td style="background:#F0F5FB;color:#1A1A2E">Portugal</td>
 <td style="background:#0F2044;font-weight:bold;color:#FFFFFF;text-align:center">0.75</td>
@@ -24400,7 +24370,7 @@
 <td style="background:#0F2044;font-weight:bold;color:#FFFFFF;text-align:center">0.67</td>
 <td style="background:#FFFFFF;color:#1A1A2E">Colombia</td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:9pt;text-align:center">Gruppe L</td>
 <td style="background:#F0F5FB;color:#1A1A2E">England</td>
 <td style="background:#BDD7EE;font-weight:bold;color:#1A1A2E;text-align:center">0.54</td>
@@ -24483,10 +24453,10 @@
 <col style="width:80px">
 <col style="width:80px">
 </colgroup>
-<tr data-sort-title="1">
+<tr>
 <td colspan="9" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">VM 2026 — Spillere etter klubbland   68 land, 1248 spillere</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">#</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Land</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Spillere</td>
@@ -25257,10 +25227,10 @@
 <col style="width:63px">
 <col style="width:385px">
 </colgroup>
-<tr data-sort-title="1">
+<tr>
 <td colspan="5" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">VM 2026 — Klubber   457 klubber, 1248 spillere</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">#</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Klubb</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Land</td>
@@ -28479,10 +28449,10 @@
 <col style="width:210px">
 <col style="width:154px">
 </colgroup>
-<tr data-sort-title="1">
+<tr>
 <td colspan="6" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">VM 2026 — Spillere på nivå 2 og lavere   61 spillere</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Nivå</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Klubb</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Land</td>
@@ -29050,10 +29020,10 @@
 <col style="width:98px">
 <col style="width:91px">
 </colgroup>
-<tr data-sort-title="1">
+<tr>
 <td colspan="9" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">VM 2026 — Aldersfordeling per lag  (per 12.06.2026)</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">#</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Lag</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Gruppe</td>
@@ -29605,10 +29575,10 @@
 <col style="width:91px">
 <col style="width:91px">
 </colgroup>
-<tr data-sort-title="1">
+<tr>
 <td colspan="6" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">VM 2026 — 10 yngste spillere  (per 12.06.2026)</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">#</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Spiller</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Lag</td>
@@ -29704,10 +29674,10 @@
 <td style="font-size:11pt"></td>
 <td style="font-size:11pt"></td>
 </tr>
-<tr data-sort-title="1">
+<tr>
 <td colspan="6" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">VM 2026 — 10 eldste spillere  (per 12.06.2026)</td>
 </tr>
-<tr data-sort-header="1">
+<tr>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">#</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Spiller</td>
 <td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Lag</td>
@@ -30052,155 +30022,8 @@ function byggSpillerLenker() {
   });
 }
 
-// ── Sorterbare kolonneoverskrifter ───────────────────
-function parseCell(tekst) {
-  const s = (tekst || '').trim();
-  if (!s || s === '-') return { type: 'empty', val: '' };
-  if (/^\d+%$/.test(s)) return { type: 'num', val: parseFloat(s) };
-  if (/^\d+\/\d+$/.test(s)) return { type: 'text', val: s };
-  const norm = s.replace(',', '.');
-  const n = parseFloat(norm);
-  if (!isNaN(n) && /^-?[\d.]+$/.test(norm)) return { type: 'num', val: n };
-  return { type: 'text', val: s.toLowerCase() };
-}
-
-function compareVerdier(a, b, dir) {
-  const m = dir === 'asc' ? 1 : -1;
-  if (a.type === 'empty' && b.type === 'empty') return 0;
-  if (a.type === 'empty') return 1;
-  if (b.type === 'empty') return -1;
-  if (a.type === 'num' && b.type === 'num') return m * (a.val - b.val);
-  if (a.type === 'num') return -m;
-  if (b.type === 'num') return m;
-  return m * a.val.localeCompare(b.val, 'no');
-}
-
-function hentSeksjonsrader(headerRow) {
-  // Rader etter headeren (vanlig tilfelle)
-  const etterRader = [];
-  let node = headerRow.nextElementSibling;
-  while (node) {
-    if (node.dataset.sortTitle === '1' || node.dataset.sortHeader === '1') break;
-    etterRader.push(node);
-    node = node.nextElementSibling;
-  }
-  // Rader FØR headeren (f.eks. kamprader i gruppeark, topp-lag i Lagstatistikk)
-  const førRader = [];
-  node = headerRow.previousElementSibling;
-  while (node && node.dataset.sortTitle !== '1' && node.dataset.sortHeader !== '1') {
-    const celler = node.querySelectorAll('td');
-    const erInfoRad = celler.length === 1 && parseInt(celler[0].getAttribute('colspan') || '1') > 3;
-    const erTom = !erInfoRad && [...celler].every(td => !td.textContent.trim());
-    if (!erInfoRad && !erTom) førRader.unshift(node);
-    node = node.previousElementSibling;
-  }
-  return { førRader, etterRader, alle: [...førRader, ...etterRader] };
-}
-
-function oppdaterPil(td, tilstand) {
-  const piler = { none: '⇅', asc: '↑', desc: '↓' };
-  td.dataset.sortArrow = piler[tilstand] || '⇅';
-  td.dataset.sortState = tilstand;
-}
-
-function sorterSeksjon(headerRow, kolIndex, retning) {
-  const { førRader, etterRader, alle } = hentSeksjonsrader(headerRow);
-  if (!headerRow._originalOrder) {
-    headerRow._originalOrder = { før: [...førRader], etter: [...etterRader] };
-  }
-
-  const parent = headerRow.parentNode;
-
-  if (retning === 'none') {
-    // Gjenopprett: etter-rader tilbake etter header, før-rader tilbake før header
-    const orig = headerRow._originalOrder;
-    let insertAfter = headerRow;
-    orig.etter.forEach(rad => {
-      parent.insertBefore(rad, insertAfter.nextSibling);
-      insertAfter = rad;
-    });
-    
-    let insertBeforeNode = headerRow;
-    [...orig.før].reverse().forEach(rad => {
-      parent.insertBefore(rad, insertBeforeNode);
-      insertBeforeNode = rad;
-    });
-  } else {
-    // Sorter alle rader samlet og legg dem etter header
-    const sortertRader = [...alle].sort((a, b) => {
-      const tA = a.querySelectorAll('td')[kolIndex];
-      const tB = b.querySelectorAll('td')[kolIndex];
-      return compareVerdier(
-        parseCell(tA ? tA.textContent : ''),
-        parseCell(tB ? tB.textContent : ''),
-        retning
-      );
-    });
-    let insertAfter = headerRow;
-    sortertRader.forEach(rad => {
-      parent.insertBefore(rad, insertAfter.nextSibling);
-      insertAfter = rad;
-    });
-    
-  }
-
-  // Kolonnehighlight
-  alle.forEach(rad => rad.querySelectorAll('td').forEach(td => td.classList.remove('sort-kol-aktiv')));
-  if (retning !== 'none') {
-    alle.forEach(rad => {
-      const td = rad.querySelectorAll('td')[kolIndex];
-      if (td) td.classList.add('sort-kol-aktiv');
-    });
-  }
-
-  // Scroll slik at toppen av seksjonen vises
-  const navHoyde = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-hoyde')) || 0;
-  const titelRad = (function() {
-    let node = headerRow.previousElementSibling;
-    while (node && node.dataset.sortTitle !== '1') node = node.previousElementSibling;
-    return node || headerRow;
-  })();
-  const rect = titelRad.getBoundingClientRect();
-  const målScroll = window.pageYOffset + rect.top - navHoyde - 6;
-  if (rect.top < navHoyde || rect.top > window.innerHeight * 0.45) {
-    window.scrollTo({ top: målScroll, behavior: 'smooth' });
-  }
-}
-
-function oppdaterNavHoyde() {
-  const nav = document.querySelector('.nav-wrapper');
-  if (nav) document.documentElement.style.setProperty('--nav-hoyde', nav.offsetHeight + 'px');
-}
-
-function initialiserSortering() {
-  document.querySelectorAll('tr[data-sort-header="1"]').forEach(headerRow => {
-    headerRow.querySelectorAll('td').forEach((td, i) => {
-      const tekst = td.textContent.trim();
-      const colspan = parseInt(td.getAttribute('colspan') || '1');
-      if (!tekst || colspan > 1) return;
-
-      td.dataset.sortCol = String(i);
-      oppdaterPil(td, 'none');
-
-      td.addEventListener('click', function () {
-        const tilstand = this.dataset.sortState || 'none';
-        headerRow.querySelectorAll('td[data-sort-col]').forEach(h => {
-          if (h !== this) oppdaterPil(h, 'none');
-        });
-        const neste = tilstand === 'none' ? 'asc'
-                    : tilstand === 'asc'  ? 'desc' : 'none';
-        oppdaterPil(this, neste);
-        sorterSeksjon(headerRow, i, neste);
-      });
-    });
-  });
-}
-
 document.addEventListener('DOMContentLoaded', () => {
   byggFaneMeny();
-  oppdaterNavHoyde();
-  window.addEventListener('resize', oppdaterNavHoyde);
-  initialiserSortering();
   if (location.hash) navigerTilHash(location.hash);
   var tb = document.querySelector('.tab-bar');
   if (tb) tb.addEventListener('scroll', oppdaterScrollKnapper);
