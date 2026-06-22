@@ -15,6 +15,7 @@ Kjørerekkefølge:
   8. add_scoringstidspunkt_sheet.py — mål per 15-min intervall + søylediagram
   9. add_heatmap_sheet.py           — mål per minutt som fargekodet heatmap
  10. add_ballbesittelse_sheet.py    — ballbesittelse og skudd per kamp (leser wc2026_stats3.json)
+ 10b. add_stadion_sheet.py         — tilskuere og beleggsgrad per kamp (leser tilskuere_cache.json)
  11. add_club_column.py             — fyll inn klubbnavn i gruppearkene (alltid — caches internt)
 
 Flagg:
@@ -166,6 +167,9 @@ def main():
 
     # ── Steg 10: Ballbesittelse (alltid — leser fra wc2026_possession.json) ─────
     kjør_steg("Ballbesittelse", [PYTHON, "add_ballbesittelse_sheet.py"])
+
+    # ── Steg 10b: Stadionoversikt (alltid — leser fra tilskuere_cache.json) ───
+    kjør_steg("Stadionoversikt", [PYTHON, "add_stadion_sheet.py"])
 
     # ── Steg 11: Klubb-kolonne (alltid — fyller bare tomme celler) ────────────
     kjør_steg("Klubb-kolonne i gruppeark", [PYTHON, "add_club_column.py"])
