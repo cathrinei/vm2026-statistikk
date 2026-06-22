@@ -5,7 +5,14 @@ __pycache__/
 
 # Testfiler
 test_rapport.txt
-"Test av funksjonalitet.xlsx"
+Test av funksjonalitet.xlsx
+
+# Lokale verktøy og diagrammer
+workflow_diagram.html
+piksel-rev.html
+
+# Claude Code intern mappe
+.claude/
 
 # Genererte Excel- og rapportfiler (oppdateres av skriptene, ikke i git)
 VM2026_avansert_gruppetabeller_og_sluttspill_FULL_200626.xlsx
