@@ -702,7 +702,7 @@ function initFIFARankingSortering() {
 
   function sorterNokkel(row, col) {
     const txt = row.cells[col] ? row.cells[col].textContent.replace(/[⇅↑↓]/g, '').trim() : '';
-    if (col === 0) return parseFloat(txt) || 0;
+    if (col === 0 || col === 1) return parseFloat(txt) || 0;
     return txt.toLowerCase();
   }
 
