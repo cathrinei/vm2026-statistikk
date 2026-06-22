@@ -12,13 +12,13 @@
   .nav-wrapper { position: sticky; top: 0; z-index: 100; }
   .tab-bar { display: flex; flex-wrap: wrap; gap: 3px; padding: 10px 12px 0; background: #1A3C6B; }
   .tab-bar button { background: rgba(255,255,255,0.15); color: #fff; border: none; padding: 8px 12px; min-height: 44px; cursor: pointer; border-radius: 4px 4px 0 0; font-size: 9pt; font-family: inherit; white-space: nowrap; transition: background 0.15s; }
-  @media (max-width: 768px) {
+  @media (max-width: 768px), (orientation: landscape) and (max-height: 500px) {
     .tab-bar { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
     .tab-bar::-webkit-scrollbar { display: none; }
     .tab-bar button { flex-shrink: 0; }
   }
   .tab-bar-omslag { position: relative; }
-  @media (max-width: 768px) {
+  @media (max-width: 768px), (orientation: landscape) and (max-height: 500px) {
     .tab-scroll-knapp { display: none; position: absolute; top: 0; bottom: 0; width: 36px; align-items: center; justify-content: center; border: none; color: #fff; font-size: 22px; line-height: 1; cursor: pointer; z-index: 101; padding: 0; }
     #tab-pil-venstre { left: 0;  background: linear-gradient(to right, #1A3C6B 55%, transparent); }
     #tab-pil-høyre   { right: 0; background: linear-gradient(to left,  #1A3C6B 55%, transparent); }
@@ -31,7 +31,7 @@
   #sokefelt:focus { background: rgba(255,255,255,0.22); }
   #sok-info { color: rgba(255,255,255,0.55); font-size: 8.5pt; white-space: nowrap; min-width: 38px; text-align: right; }
   .fane-meny-knapp { display: none; background: rgba(255,255,255,0.15); color: #fff; border: none; border-radius: 20px; padding: 7px 12px; font-size: 9pt; font-family: inherit; cursor: pointer; white-space: nowrap; max-width: 170px; overflow: hidden; text-overflow: ellipsis; align-items: center; gap: 5px; flex-shrink: 0; }
-  @media (max-width: 768px) { .fane-meny-knapp { display: inline-flex; } }
+  @media (max-width: 768px), (orientation: landscape) and (max-height: 500px) { .fane-meny-knapp { display: inline-flex; } }
   .fane-overlay { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,0.55); }
   .fane-overlay.synlig { display: flex; align-items: flex-end; }
   .fane-overlay-innhold { background: #fff; width: 100%; max-height: 85vh; overflow-y: auto; border-radius: 16px 16px 0 0; padding-bottom: env(safe-area-inset-bottom, 0px); }
@@ -30864,6 +30864,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   byggSpillerLenker();
   initStadionSortering();
+  initGruppeSortering();
 });
 
 function initStadionSortering() {
@@ -30924,6 +30925,77 @@ function initStadionSortering() {
       });
       settInn(sorted);
       oppdaterPiler(i);
+    });
+  });
+}
+
+function initGruppeSortering() {
+  document.querySelectorAll('[id^="ark_Gruppe_"]').forEach(ark => {
+    const tbl = ark.querySelector('table');
+    if (!tbl) return;
+    const rows = Array.from(tbl.querySelectorAll('tr'));
+
+    const headerRows = rows.filter(r => r.cells[0] && r.cells[0].textContent.trim() === 'Nr');
+    headerRows.forEach(headerRow => {
+      const startIdx = rows.indexOf(headerRow) + 1;
+      const playerRows = [];
+      for (let i = startIdx; i < rows.length; i++) {
+        const r = rows[i];
+        if (r.cells[0] && /^\d+$/.test(r.cells[0].textContent.trim())) {
+          playerRows.push(r);
+        } else {
+          break;
+        }
+      }
+      if (playerRows.length === 0) return;
+
+      const originalOrder = [...playerRows];
+      const originalLabels = Array.from(headerRow.cells).map(c => c.textContent.trim());
+      let aktivKol = -1, stigende = true;
+
+      function sorterNokkel(row, col) {
+        const txt = row.cells[col] ? row.cells[col].textContent.replace(/[⇅↑↓]/g, '').trim() : '';
+        if ([0, 5, 6, 7, 8, 9].includes(col)) return parseFloat(txt) || 0;
+        if (col === 3) {
+          const p = txt.split('.');
+          return p.length === 3 ? parseInt(p[2]) * 10000 + parseInt(p[1]) * 100 + parseInt(p[0]) : 0;
+        }
+        return txt.toLowerCase();
+      }
+
+      function settInn(sorted) {
+        let ref = headerRow;
+        sorted.forEach(r => { ref.parentNode.insertBefore(r, ref.nextSibling); ref = r; });
+      }
+
+      function oppdaterPiler(aktivIdx) {
+        Array.from(headerRow.cells).forEach((c, j) => {
+          c.textContent = originalLabels[j] + (j === aktivIdx ? (stigende ? ' ↑' : ' ↓') : ' ⇅');
+        });
+      }
+
+      Array.from(headerRow.cells).forEach((th, i) => {
+        th.textContent = originalLabels[i] + ' ⇅';
+        th.style.cursor = 'pointer';
+        th.title = 'Klikk for å sortere';
+        th.addEventListener('click', () => {
+          if (aktivKol === i) {
+            if (stigende) { stigende = false; }
+            else {
+              aktivKol = -1;
+              settInn(originalOrder);
+              Array.from(headerRow.cells).forEach((c, j) => { c.textContent = originalLabels[j] + ' ⇅'; });
+              return;
+            }
+          } else { aktivKol = i; stigende = true; }
+          const sorted = [...playerRows].sort((a, b) => {
+            const ka = sorterNokkel(a, i), kb = sorterNokkel(b, i);
+            return stigende ? (ka < kb ? -1 : ka > kb ? 1 : 0) : (ka > kb ? -1 : ka < kb ? 1 : 0);
+          });
+          settInn(sorted);
+          oppdaterPiler(i);
+        });
+      });
     });
   });
 }
