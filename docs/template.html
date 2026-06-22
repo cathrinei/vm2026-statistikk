@@ -450,10 +450,11 @@ function initStadionSortering() {
   const dataRows = rows.filter(r => r.cells[0] && datoRgx.test(r.cells[0].textContent.trim()));
   const originalOrder = [...dataRows];
   const originalLabels = Array.from(headerRow.cells).map(c => c.textContent.trim());
+  const sorterbareCols = [0,1,2,4,5,6,7,8,9,10];
   let aktivKol = -1, stigende = true;
 
   function sorterNokkel(row, col) {
-    const txt = row.cells[col] ? row.cells[col].textContent.trim() : '';
+    const txt = row.cells[col] ? row.cells[col].textContent.replace(/[⇅↑↓]/g,'').trim() : '';
     if (col === 0) { const [d,m] = txt.split('.'); return parseInt(m||0)*100 + parseInt(d||0); }
     if (col === 8 || col === 9) return parseFloat(txt.replace(/\s/g,'')) || 0;
     if (col === 10) return parseFloat(txt) || 0;
@@ -467,13 +468,16 @@ function initStadionSortering() {
 
   function oppdaterPiler(aktivIdx) {
     Array.from(headerRow.cells).forEach((c, j) => {
-      c.textContent = originalLabels[j] + (j === aktivIdx ? (stigende ? ' ↑' : ' ↓') : '');
+      if (sorterbareCols.includes(j)) {
+        c.textContent = originalLabels[j] + (j === aktivIdx ? (stigende ? ' ↑' : ' ↓') : ' ⇅');
+      }
     });
   }
 
-  [0,1,2,4,5,6,7,8,9,10].forEach(i => {
+  sorterbareCols.forEach(i => {
     const th = headerRow.cells[i];
     if (!th) return;
+    th.textContent = originalLabels[i] + ' ⇅';
     th.style.cursor = 'pointer';
     th.title = 'Klikk for å sortere';
     th.addEventListener('click', () => {
@@ -482,7 +486,9 @@ function initStadionSortering() {
         else {
           aktivKol = -1;
           settInn(originalOrder);
-          Array.from(headerRow.cells).forEach((c,j) => { c.textContent = originalLabels[j]; });
+          Array.from(headerRow.cells).forEach((c,j) => {
+            c.textContent = sorterbareCols.includes(j) ? originalLabels[j] + ' ⇅' : originalLabels[j];
+          });
           return;
         }
       } else { aktivKol = i; stigende = true; }
