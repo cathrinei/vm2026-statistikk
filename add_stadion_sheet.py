@@ -138,8 +138,8 @@ def skriv_ark(rader: list[dict]) -> None:
     f_dato  = Font(name="Calibri", size=10,            color="1A1A2E")
 
     # A=Dato, B=Gruppe, C=Hjemme, D=Score, E=Borte, F=Arena, G=By, H=Land, I=Tilsk., J=Kap., K=Belegg
-    COL_WIDTHS = {"A": 10, "B": 9, "C": 20, "D": 7, "E": 20,
-                  "F": 24, "G": 24, "H": 9, "I": 12, "J": 11, "K": 9}
+    COL_WIDTHS = {"A": 7, "B": 9, "C": 20, "D": 7, "E": 16,
+                  "F": 24, "G": 24, "H": 7, "I": 12, "J": 11, "K": 9}
     for col, w in COL_WIDTHS.items():
         ws.column_dimensions[col].width = w
 
@@ -169,14 +169,10 @@ def skriv_ark(rader: list[dict]) -> None:
         c.font = f_hdr; c.fill = fill; c.alignment = al
 
     # ── Datarader ──────────────────────────────────────────────────────────────
-    prev_gruppe = None
     for i, r in enumerate(rader):
         row = 3 + i
         ws.row_dimensions[row].height = 18
         bg = EVEN if i % 2 == 0 else WHITE
-
-        grp_val = r["gruppe"] if r["gruppe"] != prev_gruppe else ""
-        prev_gruppe = r["gruppe"]
 
         dato_fmt = r["dato"][8:10] + "." + r["dato"][5:7]
 
@@ -199,8 +195,7 @@ def skriv_ark(rader: list[dict]) -> None:
             return c
 
         cell(1,  dato_fmt,     f_dato,   bg,         ctr)
-        cell(2,  grp_val,      f_grp if grp_val else f_muted,
-                               NAVY if grp_val else bg, ctr)
+        cell(2,  r["gruppe"],  f_grp,    NAVY,        ctr)
         cell(3,  r["hjemme"],  f_data,   bg,          lft)
         cell(4,  r["score"],   f_score,  bg,          ctr)
         cell(5,  r["borte"],   f_data,   bg,          lft)
