@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VM 2026 — VM-vinnere siden 1930</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #ffffff;
+    --bg-secondary: #f5f4f0;
+    --text-primary: #2c2c2a;
+    --text-secondary: #5f5e5a;
+    --border: rgba(0,0,0,0.12);
+    --radius: 8px;
+    --radius-lg: 12px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1e1e1c;
+      --bg-secondary: #2a2a28;
+      --text-primary: #e8e7e2;
+      --text-secondary: #a0a09a;
+      --border: rgba(255,255,255,0.10);
+    }
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    padding: 32px 24px;
+    max-width: 820px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  header { margin-bottom: 28px; }
+  header h1 { font-size: 20px; font-weight: 500; margin-bottom: 4px; }
+  header p  { font-size: 13px; color: var(--text-secondary); }
+
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .metric-card {
+    background: var(--bg-secondary);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    border: 0.5px solid var(--border);
+  }
+  .metric-label { font-size: 11px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px; }
+  .metric-value { font-size: 26px; font-weight: 500; line-height: 1; margin-bottom: 4px; }
+  .metric-sub   { font-size: 12px; color: var(--text-secondary); }
+
+  .metric-card.blue  .metric-value { color: #185FA5; }
+  .metric-card.green .metric-value { color: #0F6E56; }
+  .metric-card.amber .metric-value { color: #854F0B; }
+  .metric-card.coral .metric-value { color: #993C1D; }
+
+  @media (prefers-color-scheme: dark) {
+    .metric-card.blue  .metric-value { color: #85B7EB; }
+    .metric-card.green .metric-value { color: #5DCAA5; }
+    .metric-card.amber .metric-value { color: #FAC775; }
+    .metric-card.coral .metric-value { color: #F0997B; }
+  }
+
+  .section {
+    background: var(--bg);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+  .section-header {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 0.5px solid var(--border);
+    font-weight: 500;
+  }
+
+  /* Tabell */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead tr { border-bottom: 0.5px solid var(--border); }
+  th {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-align: left;
+    padding: 6px 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  td {
+    padding: 9px 10px;
+    color: var(--text-primary);
+    border-bottom: 0.5px solid var(--border);
+  }
+  tr:last-child td { border-bottom: none; }
+  tbody tr:hover td { background: var(--bg-secondary); }
+
+  .winner-badge {
+    display: inline-block;
+    background: #1D9E75;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 2px 7px;
+    border-radius: 10px;
+    vertical-align: middle;
+    margin-left: 6px;
+  }
+
+  /* Søkefelt */
+  .sokefelt-wrap { margin-bottom: 12px; }
+  #sokefelt {
+    width: 100%;
+    padding: 8px 14px;
+    border: 0.5px solid var(--border);
+    border-radius: 20px;
+    font-size: 13px;
+    font-family: inherit;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    outline: none;
+  }
+  #sokefelt:focus { border-color: #185FA5; }
+  .skjult { display: none; }
+
+  /* Barliste */
+  .bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .bar-label { font-size: 13px; min-width: 100px; }
+  .bar-track { flex: 1; background: var(--bg-secondary); border-radius: 3px; height: 14px; overflow: hidden; }
+  .bar-fill  { height: 14px; border-radius: 3px; }
+  .bar-count { font-size: 13px; font-weight: 500; min-width: 16px; text-align: right; }
+
+  .note { font-size: 11px; color: var(--text-secondary); margin-top: 14px; line-height: 1.6; }
+
+  @media (max-width: 480px) {
+    body { padding: 20px 16px; }
+    header h1 { font-size: 17px; }
+    .metric-card { padding: 10px 12px; }
+    .metric-value { font-size: 22px; }
+    .section { padding: 14px; }
+    th, td { padding: 6px 8px; font-size: 12px; }
+    .bar-label { min-width: 80px; font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" style="display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--text-secondary);text-decoration:none;margin-bottom:10px;padding:4px 0;">← Tilbake til oversikten</a>
+  <h1>VM-vinnere siden 1930</h1>
+  <p>Alle FIFA-verdensmestere fra Uruguay 1930 til i dag</p>
+</header>
+
+<div class="metrics">
+  <div class="metric-card blue">
+    <div class="metric-label">Antall VM</div>
+    <div class="metric-value">22</div>
+    <div class="metric-sub">Avsluttet (1930–2022)</div>
+  </div>
+  <div class="metric-card green">
+    <div class="metric-label">Rekordvinner</div>
+    <div class="metric-value">Brasil</div>
+    <div class="metric-sub">5 titler (1958–2002)</div>
+  </div>
+  <div class="metric-card amber">
+    <div class="metric-label">Ulike vinnere</div>
+    <div class="metric-value">8 land</div>
+    <div class="metric-sub">Kun europeiske og søramerikanske</div>
+  </div>
+  <div class="metric-card coral">
+    <div class="metric-label">Pågående VM</div>
+    <div class="metric-value">2026</div>
+    <div class="metric-sub">USA · Canada · Mexico</div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-header">Titler per land</div>
+  <div id="barliste"></div>
+</div>
+
+<div class="section">
+  <div class="section-header">Alle finaler</div>
+  <div class="sokefelt-wrap">
+    <input type="search" id="sokefelt" placeholder="Søk år, land eller resultat…" autocomplete="off">
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>År</th>
+        <th>Arrangør</th>
+        <th>Vinner</th>
+        <th>Finalemotstand</th>
+        <th>Resultat</th>
+      </tr>
+    </thead>
+    <tbody id="finaler-tbody">
+      <tr><td>1930</td><td>Uruguay</td><td>🇺🇾 Uruguay</td><td>Argentina</td><td>4–2</td></tr>
+      <tr><td>1934</td><td>Italia</td><td>🇮🇹 Italia</td><td>Tsjekkoslovakia</td><td>2–1 e.f.t.</td></tr>
+      <tr><td>1938</td><td>Frankrike</td><td>🇮🇹 Italia</td><td>Ungarn</td><td>4–2</td></tr>
+      <tr><td>1950</td><td>Brasil</td><td>🇺🇾 Uruguay</td><td>Brasil †</td><td>2–1</td></tr>
+      <tr><td>1954</td><td>Sveits</td><td>🇩🇪 Vest-Tyskland</td><td>Ungarn</td><td>3–2</td></tr>
+      <tr><td>1958</td><td>Sverige</td><td>🇧🇷 Brasil</td><td>Sverige</td><td>5–2</td></tr>
+      <tr><td>1962</td><td>Chile</td><td>🇧🇷 Brasil</td><td>Tsjekkoslovakia</td><td>3–1</td></tr>
+      <tr><td>1966</td><td>England</td><td>🏴󠁧󠁢󠁥󠁮󠁧󠁿 England</td><td>Vest-Tyskland</td><td>4–2 e.f.t.</td></tr>
+      <tr><td>1970</td><td>Mexico</td><td>🇧🇷 Brasil</td><td>Italia</td><td>4–1</td></tr>
+      <tr><td>1974</td><td>Vest-Tyskland</td><td>🇩🇪 Vest-Tyskland</td><td>Nederland</td><td>2–1</td></tr>
+      <tr><td>1978</td><td>Argentina</td><td>🇦🇷 Argentina</td><td>Nederland</td><td>3–1 e.f.t.</td></tr>
+      <tr><td>1982</td><td>Spania</td><td>🇮🇹 Italia</td><td>Vest-Tyskland</td><td>3–1</td></tr>
+      <tr><td>1986</td><td>Mexico</td><td>🇦🇷 Argentina</td><td>Vest-Tyskland</td><td>3–2</td></tr>
+      <tr><td>1990</td><td>Italia</td><td>🇩🇪 Vest-Tyskland</td><td>Argentina</td><td>1–0</td></tr>
+      <tr><td>1994</td><td>USA</td><td>🇧🇷 Brasil</td><td>Italia</td><td>0–0 (3–2 str.)</td></tr>
+      <tr><td>1998</td><td>Frankrike</td><td>🇫🇷 Frankrike</td><td>Brasil</td><td>3–0</td></tr>
+      <tr><td>2002</td><td>Korea/Japan</td><td>🇧🇷 Brasil</td><td>Tyskland</td><td>2–0</td></tr>
+      <tr><td>2006</td><td>Tyskland</td><td>🇮🇹 Italia</td><td>Frankrike</td><td>1–1 (5–3 str.)</td></tr>
+      <tr><td>2010</td><td>Sør-Afrika</td><td>🇪🇸 Spania</td><td>Nederland</td><td>1–0 e.f.t.</td></tr>
+      <tr><td>2014</td><td>Brasil</td><td>🇩🇪 Tyskland</td><td>Argentina</td><td>1–0 e.f.t.</td></tr>
+      <tr><td>2018</td><td>Russland</td><td>🇫🇷 Frankrike</td><td>Kroatia</td><td>4–2</td></tr>
+      <tr><td>2022</td><td>Qatar</td><td>🇦🇷 Argentina</td><td>Frankrike</td><td>3–3 (4–2 str.)</td></tr>
+    </tbody>
+  </table>
+  <p class="note">† 1950 ble avgjort i sluttspillrunde, ikke en tradisjonell finale — Uruguay trengte bare uavgjort mot Brasil i siste kamp.<br>e.f.t. = etter ekstraomganger &nbsp;·&nbsp; str. = straffesparkkonkurranse</p>
+</div>
+
+<script>
+const barData = [
+  { land: "Brasil",       flagg: "🇧🇷", titler: 5, farge: "#1D9E75" },
+  { land: "Vest-Tyskland/Tyskland", flagg: "🇩🇪", titler: 4, farge: "#378ADD" },
+  { land: "Italia",       flagg: "🇮🇹", titler: 4, farge: "#7F77DD" },
+  { land: "Argentina",    flagg: "🇦🇷", titler: 3, farge: "#D4537E" },
+  { land: "Frankrike",    flagg: "🇫🇷", titler: 2, farge: "#D85A30" },
+  { land: "Uruguay",      flagg: "🇺🇾", titler: 2, farge: "#BA7517" },
+  { land: "England",      flagg: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", titler: 1, farge: "#888780" },
+  { land: "Spania",       flagg: "🇪🇸", titler: 1, farge: "#E24B4A" },
+];
+const max = 5;
+const barliste = document.getElementById("barliste");
+barData.forEach(d => {
+  const row = document.createElement("div");
+  row.className = "bar-row";
+  row.innerHTML = `
+    <span class="bar-label">${d.flagg} ${d.land}</span>
+    <div class="bar-track"><div class="bar-fill" style="width:${Math.round((d.titler/max)*100)}%;background:${d.farge};"></div></div>
+    <span class="bar-count">${d.titler}</span>`;
+  barliste.appendChild(row);
+});
+
+const sok = document.getElementById("sokefelt");
+const rader = document.querySelectorAll("#finaler-tbody tr");
+sok.addEventListener("input", () => {
+  const q = sok.value.toLowerCase();
+  rader.forEach(tr => {
+    tr.classList.toggle("skjult", q && !tr.textContent.toLowerCase().includes(q));
+  });
+});
+</script>
+
+</body>
+</html>
