@@ -440,6 +440,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initStadionSortering();
   initGruppeSortering();
   initScorereOgAssistsSortering();
+  initLagstatistikkSortering();
+  initKortSortering();
 });
 
 function initStadionSortering() {
@@ -500,6 +502,135 @@ function initStadionSortering() {
       });
       settInn(sorted);
       oppdaterPiler(i);
+    });
+  });
+}
+
+function initKortSortering() {
+  const tbl = document.querySelector('#ark_Kort table');
+  if (!tbl) return;
+  const rows = Array.from(tbl.querySelectorAll('tr'));
+  const headerRow = rows.find(r => r.cells[0] && r.cells[0].textContent.trim() === '#');
+  if (!headerRow) return;
+  const dataRows = rows.filter(r => r.cells[0] && /^\d+$/.test(r.cells[0].textContent.trim()));
+  const originalOrder = [...dataRows];
+  const originalLabels = Array.from(headerRow.cells).map(c => c.textContent.trim());
+  let aktivKol = -1, stigende = true;
+
+  function sorterNokkel(row, col) {
+    const txt = row.cells[col] ? row.cells[col].textContent.replace(/[⇅↑↓]/g, '').trim() : '';
+    if ([0, 3, 4].includes(col)) return parseFloat(txt) || 0;
+    return txt.toLowerCase();
+  }
+
+  function settInn(sorted) {
+    let ref = headerRow;
+    sorted.forEach(r => { ref.parentNode.insertBefore(r, ref.nextSibling); ref = r; });
+  }
+
+  function oppdaterPiler(aktivIdx) {
+    Array.from(headerRow.cells).forEach((c, j) => {
+      c.textContent = originalLabels[j] + (j === aktivIdx ? (stigende ? ' ↑' : ' ↓') : ' ⇅');
+    });
+  }
+
+  Array.from(headerRow.cells).forEach((th, i) => {
+    th.textContent = originalLabels[i] + ' ⇅';
+    th.style.cursor = 'pointer';
+    th.title = 'Klikk for å sortere';
+    th.addEventListener('click', () => {
+      if (aktivKol === i) {
+        if (stigende) { stigende = false; }
+        else {
+          aktivKol = -1;
+          settInn(originalOrder);
+          Array.from(headerRow.cells).forEach((c, j) => { c.textContent = originalLabels[j] + ' ⇅'; });
+          return;
+        }
+      } else { aktivKol = i; stigende = true; }
+      const sorted = [...dataRows].sort((a, b) => {
+        const ka = sorterNokkel(a, i), kb = sorterNokkel(b, i);
+        return stigende ? (ka < kb ? -1 : ka > kb ? 1 : 0) : (ka > kb ? -1 : ka < kb ? 1 : 0);
+      });
+      settInn(sorted);
+      oppdaterPiler(i);
+    });
+  });
+}
+
+function initLagstatistikkSortering() {
+  const tbl = document.querySelector('#ark_Lagstatistikk table');
+  if (!tbl) return;
+  const rows = Array.from(tbl.querySelectorAll('tr'));
+
+  // Finn alle seksjon-tittelrader unntatt seksjon-1
+  const seksjonRader = rows.filter(r => /^lagstat-seksjon-([2-9]|\d{2,})$/.test(r.id));
+
+  seksjonRader.forEach(titelRow => {
+    const titelIdx = rows.indexOf(titelRow);
+    const headerRow = rows[titelIdx + 1];
+    if (!headerRow || !headerRow.cells[0] || headerRow.cells[0].textContent.trim() !== '#') return;
+
+    const headerIdx = rows.indexOf(headerRow);
+    const dataRows = [];
+    for (let i = headerIdx + 1; i < rows.length; i++) {
+      const r = rows[i];
+      if (r.id && r.id.startsWith('lagstat-seksjon-')) break;
+      if (r.cells[0] && /^\d+$/.test(r.cells[0].textContent.trim())) dataRows.push(r);
+    }
+    if (dataRows.length === 0) return;
+
+    const originalOrder = [...dataRows];
+    const originalLabels = Array.from(headerRow.cells).map(c => c.textContent.trim());
+    let aktivKol = -1, stigende = true;
+
+    function sorterNokkel(row, col) {
+      const txt = row.cells[col] ? row.cells[col].textContent.replace(/[⇅↑↓]/g, '').trim() : '';
+      if (col === 0) return parseFloat(txt) || 0;
+      if (/^\d{2}\.\d{2}$/.test(txt)) { const [d, m] = txt.split('.'); return parseInt(m) * 100 + parseInt(d); }
+      const n = parseFloat(txt.replace(',', '.').replace(/[%']/g, '').replace(/\s/g, ''));
+      if (!isNaN(n) && txt !== '') return n;
+      return txt.toLowerCase();
+    }
+
+    function settInn(sorted) {
+      let ref = headerRow;
+      sorted.forEach(r => { ref.parentNode.insertBefore(r, ref.nextSibling); ref = r; });
+    }
+
+    function oppdaterPiler(aktivIdx) {
+      Array.from(headerRow.cells).forEach((c, j) => {
+        c.textContent = originalLabels[j] + (j === aktivIdx ? (stigende ? ' ↑' : ' ↓') : ' ⇅');
+      });
+    }
+
+    const sorterbareCols = originalLabels.map((lbl, i) => i).filter(i => originalLabels[i] !== '');
+
+    sorterbareCols.forEach(i => {
+      const th = headerRow.cells[i];
+      if (!th) return;
+      th.textContent = originalLabels[i] + ' ⇅';
+      th.style.cursor = 'pointer';
+      th.title = 'Klikk for å sortere';
+      th.addEventListener('click', () => {
+        if (aktivKol === i) {
+          if (stigende) { stigende = false; }
+          else {
+            aktivKol = -1;
+            settInn(originalOrder);
+            Array.from(headerRow.cells).forEach((c, j) => {
+              c.textContent = sorterbareCols.includes(j) ? originalLabels[j] + ' ⇅' : originalLabels[j];
+            });
+            return;
+          }
+        } else { aktivKol = i; stigende = true; }
+        const sorted = [...dataRows].sort((a, b) => {
+          const ka = sorterNokkel(a, i), kb = sorterNokkel(b, i);
+          return stigende ? (ka < kb ? -1 : ka > kb ? 1 : 0) : (ka > kb ? -1 : ka < kb ? 1 : 0);
+        });
+        settInn(sorted);
+        oppdaterPiler(i);
+      });
     });
   });
 }
