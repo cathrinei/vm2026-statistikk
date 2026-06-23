@@ -119,6 +119,24 @@
   body.dark-mode .sok-panel-tom { color: #6b7a99; }
   body.dark-mode footer { color: #4a5568; }
 
+  /* ── Åpningsside ─────────────────────────────────────────── */
+  .hjem-omslag { max-width: 900px; margin: 0 auto; padding: 24px 16px; }
+  .hjem-ingress { font-size: 1.05em; color: #1A3C6B; margin-bottom: 24px; line-height: 1.6; }
+  .hjem-kategori { margin-bottom: 28px; }
+  .hjem-kategori-tittel { font-size: 0.78em; font-weight: bold; letter-spacing: 0.09em; text-transform: uppercase; color: #1A3C6B; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 2px solid #d0d8e8; }
+  .hjem-knapper { display: flex; flex-wrap: wrap; gap: 8px; }
+  .hjem-knapp { background: #f0f4f8; border: 1px solid #d0d8e8; border-radius: 6px; padding: 9px 16px; font-size: 9.5pt; font-family: inherit; color: #0F2044; cursor: pointer; transition: background 0.15s, border-color 0.15s; }
+  .hjem-knapp:hover { background: #1A3C6B; color: #fff; border-color: #1A3C6B; }
+  .hjem-lenker { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+  .hjem-lenke { display: inline-block; background: #0F2044; color: #fff; text-decoration: none; padding: 9px 18px; border-radius: 6px; font-size: 9.5pt; transition: background 0.15s; }
+  .hjem-lenke:hover { background: #1A3C6B; }
+  body.dark-mode .hjem-ingress { color: #7eb3f5; }
+  body.dark-mode .hjem-kategori-tittel { color: #7eb3f5; border-color: #2d3a52; }
+  body.dark-mode .hjem-knapp { background: #1a2235; border-color: #2d3a52; color: #dde3f0; }
+  body.dark-mode .hjem-knapp:hover { background: #3b6fb5; border-color: #3b6fb5; color: #fff; }
+  body.dark-mode .hjem-lenke { background: #1e3356; }
+  body.dark-mode .hjem-lenke:hover { background: #3b6fb5; }
+
   /* ── Dropdown-navigasjon ─────────────────────────────────────── */
   .tab-bar { display: none !important; }
   .tab-scroll-knapp { display: none !important; }
@@ -193,6 +211,14 @@
 </div>
 
 <!-- ── EGENDEFINERT INNHOLD: rediger fritt, vises over tabellene ─ -->
+
+<!-- ── ÅPNINGSSIDE — vises som standard ──────────────────── -->
+<div class="ark-innhold" id="ark_hjem" style="display:none;">
+  <h2>⚽ VM 2026 — Oversikt</h2>
+  <div class="hjem-omslag" id="hjem-innhold">
+    <!-- Bygges av byggHjemseksjon() -->
+  </div>
+</div>
 
 <!-- ── TABELLDATA genereres automatisk — ikke endre denne linjen -->
 <!-- ARK -->
@@ -371,6 +397,18 @@ function byggFaneMeny() {
     if (m) data.push({ id: m[1], navn: k.textContent.trim(), aktiv: k.classList.contains('aktiv') });
   });
   var container = document.getElementById('fane-grupper');
+  // Hjem-seksjon øverst i overlay
+  var hjemSeksjon = document.createElement('div');
+  hjemSeksjon.className = 'fane-gruppe';
+  hjemSeksjon.innerHTML = '<div class="fane-gruppe-tittel">Navigasjon</div>';
+  var hjemRad = document.createElement('div');
+  hjemRad.className = 'fane-gruppe-knapper';
+  var hjemKnapp = document.createElement('button');
+  hjemKnapp.textContent = '⚽ Hjem';
+  hjemKnapp.onclick = function() { visArk('hjem'); toggleFaneMeny(); };
+  hjemRad.appendChild(hjemKnapp);
+  hjemSeksjon.appendChild(hjemRad);
+  container.appendChild(hjemSeksjon);
   var brukte = new Set();
   kategorier.forEach(function(kat) {
     var btns = data.filter(function(d) { return !brukte.has(d.id) && kat.test(d.navn); });
@@ -411,6 +449,14 @@ function byggDropdownNav() {
   var nav = document.getElementById('dropdown-nav');
   if (!nav) return;
   nav.innerHTML = '';
+  // Hjem-knapp
+  var hjemDiv = document.createElement('div');
+  var hjemBtn = document.createElement('button');
+  hjemBtn.className = 'dropdown-trigger';
+  hjemBtn.textContent = 'Hjem';
+  hjemBtn.onclick = function() { visArk('hjem'); };
+  hjemDiv.appendChild(hjemBtn);
+  nav.appendChild(hjemDiv);
   var brukte = new Set();
   kategorier.forEach(function(kat) {
     var btns = data.filter(function(d) { return !brukte.has(d.id) && kat.test(d.navn); });
@@ -517,6 +563,40 @@ function toggleDarkMode() {
   applyDark(on);
 }
 
+function byggHjemseksjon() {
+  var kategorier = [
+    { navn: 'Gruppespill og spillertropper', test: function(n) { return /^Gruppe [A-L]$/.test(n); } },
+    { navn: 'Sluttspill',                    test: function(n) { return /(delsfinale|kvartfinaler|semifinaler|bronsefinale|^finale$)/i.test(n); } },
+    { navn: 'Spillere',                      test: function(n) { return /^(Alder|Spillere etter land|Kort|Scorere og assists|Aldersfordeling|Niv.+ 2 og lavere)$/i.test(n); } },
+    { navn: 'Lag',                           test: function() { return true; } },
+  ];
+  var data = [];
+  document.querySelectorAll('.tab-bar button').forEach(function(k) {
+    var m = (k.getAttribute('onclick') || '').match(/visArk\('([^']+)'\)/);
+    if (m) data.push({ id: m[1], navn: k.textContent.trim() });
+  });
+  var container = document.getElementById('hjem-innhold');
+  if (!container) return;
+  var html = '<p class="hjem-ingress">Velg en kategori nedenfor for å gå direkte til ønsket statistikk.</p>';
+  var brukte = new Set();
+  kategorier.forEach(function(kat) {
+    var btns = data.filter(function(d) { return !brukte.has(d.id) && kat.test(d.navn); });
+    btns.forEach(function(d) { brukte.add(d.id); });
+    if (!btns.length) return;
+    html += '<div class="hjem-kategori"><div class="hjem-kategori-tittel">' + kat.navn + '</div><div class="hjem-knapper">';
+    btns.forEach(function(d) {
+      html += '<button class="hjem-knapp" onclick="visArk(\'' + d.id + '\')">' + d.navn + '</button>';
+    });
+    html += '</div></div>';
+  });
+  html += '<div class="hjem-kategori"><div class="hjem-kategori-tittel">Andre sider</div><div class="hjem-lenker">';
+  html += '<a class="hjem-lenke" href="offensiv_analyse.html">📊 Offensiv analyse</a>';
+  html += '<a class="hjem-lenke" href="vm_vinnere.html">🏆 VM-vinnere</a>';
+  html += '<a class="hjem-lenke" href="historikk_rekorder.html">📈 All-time rekorder</a>';
+  html += '</div></div>';
+  container.innerHTML = html;
+}
+
 function byggSpillerLenker() {
   const tropp = new Set();
   document.querySelectorAll('[id^="ark_Gruppe_"]').forEach(ark => {
@@ -545,7 +625,9 @@ function byggSpillerLenker() {
 document.addEventListener('DOMContentLoaded', () => {
   byggFaneMeny();
   byggDropdownNav();
+  byggHjemseksjon();
   if (location.hash) navigerTilHash(location.hash);
+  else visArk('hjem', false);
   var tb = document.querySelector('.tab-bar');
   if (tb) tb.addEventListener('scroll', oppdaterScrollKnapper);
   oppdaterScrollKnapper();
