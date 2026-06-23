@@ -640,10 +640,12 @@
       "borte": "Irak",
       "hjemme_en": "France",
       "borte_en": "Iraq",
-      "score_h": null,
-      "score_a": null,
-      "spilt": false,
-      "tid": "23:00"
+      "score_h": 3,
+      "score_a": 0,
+      "spilt": true,
+      "tid": "23:00",
+      "id": "400021492",
+      "dommer": "Drew FISCHER"
     },
     {
       "dato": "2026-06-23",
@@ -651,10 +653,12 @@
       "borte": "Senegal",
       "hjemme_en": "Norway",
       "borte_en": "Senegal",
-      "score_h": null,
-      "score_a": null,
-      "spilt": false,
-      "tid": "02:00"
+      "score_h": 3,
+      "score_a": 2,
+      "spilt": true,
+      "tid": "02:00",
+      "id": "400021491",
+      "dommer": "Wilton SAMPAIO"
     },
     {
       "dato": "2026-06-26",
@@ -725,10 +729,12 @@
       "borte": "Algerie",
       "hjemme_en": "Jordan",
       "borte_en": "Algeria",
-      "score_h": null,
-      "score_a": null,
-      "spilt": false,
-      "tid": "05:00"
+      "score_h": 1,
+      "score_a": 2,
+      "spilt": true,
+      "tid": "05:00",
+      "id": "400021499",
+      "dommer": "Slavko VINCIC"
     },
     {
       "dato": "2026-06-28",
