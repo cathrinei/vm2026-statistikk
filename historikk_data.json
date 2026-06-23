@@ -1,0 +1,80 @@
+{
+  "toppscorere": [
+    {"spiller": "Lionel Messi",      "land": "Argentina",    "mal_pre2026": 16, "turneringer": "2006–2026", "aktiv_2026_lag": "Argentina"},
+    {"spiller": "Miroslav Klose",    "land": "Tyskland",     "mal_pre2026": 16, "turneringer": "2002–2014"},
+    {"spiller": "Ronaldo (R9)",      "land": "Brasil",       "mal_pre2026": 15, "turneringer": "1994–2006"},
+    {"spiller": "Kylian Mbappé","land": "Frankrike",    "mal_pre2026": 12, "turneringer": "2018–2026", "aktiv_2026_lag": "Frankrike"},
+    {"spiller": "Gerd Müller",  "land": "Vest-Tyskland","mal_pre2026": 14, "turneringer": "1970–1974"},
+    {"spiller": "Just Fontaine",     "land": "Frankrike",    "mal_pre2026": 13, "turneringer": "1958"},
+    {"spiller": "Pelé",         "land": "Brasil",       "mal_pre2026": 12, "turneringer": "1958–1970"},
+    {"spiller": "Sándor Kocsis","land": "Ungarn",       "mal_pre2026": 11, "turneringer": "1954"},
+    {"spiller": "Jürgen Klinsmann","land": "Tyskland",  "mal_pre2026": 11, "turneringer": "1990–1998"},
+    {"spiller": "Helmut Rahn",       "land": "Vest-Tyskland","mal_pre2026": 10, "turneringer": "1954–1958"},
+    {"spiller": "Gary Lineker",      "land": "England",      "mal_pre2026": 10, "turneringer": "1986–1990"},
+    {"spiller": "Gabriel Batistuta", "land": "Argentina",    "mal_pre2026": 10, "turneringer": "1994–2002"},
+    {"spiller": "Harry Kane",        "land": "England",      "mal_pre2026":  8, "turneringer": "2018–2026", "aktiv_2026_lag": "England"},
+    {"spiller": "Teófilo Cubillas","land": "Peru",      "mal_pre2026": 10, "turneringer": "1970–1982"},
+    {"spiller": "Thomas Müller","land": "Tyskland",     "mal_pre2026": 10, "turneringer": "2010–2022"},
+    {"spiller": "Cristiano Ronaldo", "land": "Portugal",     "mal_pre2026":  8, "turneringer": "2006–2026", "aktiv_2026_lag": "Portugal"}
+  ],
+  "flest_kamper": [
+    {"spiller": "Lionel Messi",           "land": "Argentina",    "kamper_pre2026": 26, "turneringer": "2006–2026", "aktiv_2026_lag": "Argentina"},
+    {"spiller": "Lothar Matthäus",   "land": "Tyskland",     "kamper_pre2026": 25, "turneringer": "1982–1998"},
+    {"spiller": "Miroslav Klose",         "land": "Tyskland",     "kamper_pre2026": 24, "turneringer": "2002–2014"},
+    {"spiller": "Paolo Maldini",          "land": "Italia",       "kamper_pre2026": 23, "turneringer": "1990–2002"},
+    {"spiller": "Cristiano Ronaldo",      "land": "Portugal",     "kamper_pre2026": 22, "turneringer": "2006–2026", "aktiv_2026_lag": "Portugal"},
+    {"spiller": "Diego Maradona",         "land": "Argentina",    "kamper_pre2026": 21, "turneringer": "1982–1994"},
+    {"spiller": "Uwe Seeler",             "land": "Vest-Tyskland","kamper_pre2026": 21, "turneringer": "1958–1970"},
+    {"spiller": "Władysław Żmuda","land": "Polen","kamper_pre2026": 21, "turneringer": "1974–1986"},
+    {"spiller": "Cafu",                   "land": "Brasil",       "kamper_pre2026": 20, "turneringer": "1990–2006", "noter": "Eneste spiller i tre VM-finaler"},
+    {"spiller": "Javier Mascherano",      "land": "Argentina",    "kamper_pre2026": 20, "turneringer": "2006–2018"},
+    {"spiller": "Grzegorz Lato",          "land": "Polen",        "kamper_pre2026": 20, "turneringer": "1974–1982"},
+    {"spiller": "Philipp Lahm",           "land": "Tyskland",     "kamper_pre2026": 20, "turneringer": "2006–2014"},
+    {"spiller": "Bastian Schweinsteiger", "land": "Tyskland",     "kamper_pre2026": 20, "turneringer": "2006–2014"},
+    {"spiller": "Hugo Lloris",            "land": "Frankrike",    "kamper_pre2026": 20, "turneringer": "2010–2022"},
+    {"spiller": "Rafael Márquez",    "land": "Mexico",       "kamper_pre2026": 19, "turneringer": "2002–2018"}
+  ],
+  "yngste_scorere": [
+    {"spiller": "Pelé",         "land": "Brasil",          "alder": "17 år, 239 dager", "motstander": "Wales",        "ar": 1958},
+    {"spiller": "Manuel Rosas",      "land": "Mexico",          "alder": "18 år, 93 dager",  "motstander": "Argentina",    "ar": 1930},
+    {"spiller": "Gavi",              "land": "Spania",          "alder": "18 år, 110 dager", "motstander": "Costa Rica",   "ar": 2022},
+    {"spiller": "Iliman Mbaye",      "land": "Senegal",         "alder": "18 år, 143 dager", "motstander": "Frankrike",    "ar": 2026, "aktiv_2026": true},
+    {"spiller": "Michael Owen",      "land": "England",         "alder": "18 år, 190 dager", "motstander": "Romania",      "ar": 1998},
+    {"spiller": "Nicolae Kovács","land": "Romania",        "alder": "18 år, 197 dager", "motstander": "—",       "ar": 1930},
+    {"spiller": "Dmitri Sychev",     "land": "Russland",        "alder": "18 år, 231 dager", "motstander": "—",       "ar": 2002},
+    {"spiller": "Lamine Yamal",      "land": "Spania",          "alder": "18 år, 343 dager", "motstander": "—",       "ar": 2026, "aktiv_2026": true},
+    {"spiller": "Lionel Messi",      "land": "Argentina",       "alder": "18 år, 357 dager", "motstander": "—",       "ar": 2006},
+    {"spiller": "Julian Green",      "land": "USA",             "alder": "19 år, 25 dager",  "motstander": "—",       "ar": 2014}
+  ],
+  "eldste_scorere": [
+    {"spiller": "Roger Milla",       "land": "Kamerun",         "alder": "42 år, 39 dager",  "motstander": "Russland",     "ar": 1994},
+    {"spiller": "Pepe",              "land": "Portugal",        "alder": "39 år, 283 dager", "motstander": "Sveits",       "ar": 2022},
+    {"spiller": "Lionel Messi",      "land": "Argentina",       "alder": "38 år, 363 dager", "motstander": "Østerrike","ar": 2026, "aktiv_2026": true},
+    {"spiller": "Cristiano Ronaldo", "land": "Portugal",        "alder": "37 år, 292 dager", "motstander": "Ghana",        "ar": 2022},
+    {"spiller": "Gunnar Gren",       "land": "Sverige",         "alder": "37 år, 236 dager", "motstander": "Vest-Tyskland","ar": 1958},
+    {"spiller": "Cuauhtémoc Blanco","land": "Mexico",      "alder": "37 år, 151 dager", "motstander": "Frankrike",    "ar": 2010},
+    {"spiller": "Felipe Baloy",      "land": "Panama",          "alder": "37 år, 120 dager", "motstander": "England",      "ar": 2018},
+    {"spiller": "Marko Arnautovic",  "land": "Østerrike",  "alder": "37 år, 59 dager",  "motstander": "Jordan",       "ar": 2026, "aktiv_2026": true},
+    {"spiller": "Obdulio Varela",    "land": "Uruguay",         "alder": "36 år, 279 dager", "motstander": "England",      "ar": 1954},
+    {"spiller": "Martín Palermo","land": "Argentina",      "alder": "36 år, 227 dager", "motstander": "Hellas",       "ar": 2010}
+  ],
+  "raskeste_mal": [
+    {"spiller": "Hakan Şükür", "land": "Tyrkia",       "tid": "11 sek", "motstander": "Sør-Korea", "ar": 2002},
+    {"spiller": "Václav Masek",          "land": "Tsjekkoslovakia","tid": "15 sek","motstander": "Mexico",       "ar": 1962},
+    {"spiller": "Ernst Lehner",               "land": "Tyskland",      "tid": "25 sek", "motstander": "Østerrike","ar": 1934},
+    {"spiller": "Bryan Robson",               "land": "England",       "tid": "28 sek", "motstander": "Frankrike",   "ar": 1982},
+    {"spiller": "Clint Dempsey",              "land": "USA",           "tid": "30 sek", "motstander": "Ghana",       "ar": 2014}
+  ],
+  "høyest_scorende_historisk": [
+    {"kamp": "Østerrike — Sveits",      "resultat": "7–5", "totalt": 12, "ar": 1954},
+    {"kamp": "Brasil — Polen",               "resultat": "6–5", "totalt": 11, "ar": 1938},
+    {"kamp": "Ungarn — Vest-Tyskland",        "resultat": "8–3", "totalt": 11, "ar": 1954},
+    {"kamp": "Ungarn — El Salvador",          "resultat": "10–1","totalt": 11, "ar": 1982},
+    {"kamp": "Frankrike — Paraguay",          "resultat": "7–3", "totalt": 10, "ar": 1958}
+  ],
+  "størst_seier_historisk": [
+    {"kamp": "Ungarn — El Salvador",  "resultat": "10–1", "diff": 9, "ar": 1982},
+    {"kamp": "Ungarn — Sør-Korea","resultat": "9–0",  "diff": 9, "ar": 1954},
+    {"kamp": "Jugoslavia — Zaire",    "resultat": "9–0",  "diff": 9, "ar": 1974}
+  ]
+}
