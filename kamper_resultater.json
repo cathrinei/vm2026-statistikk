@@ -792,10 +792,12 @@
       "borte": "Usbekistan",
       "hjemme_en": "Portugal",
       "borte_en": "Uzbekistan",
-      "score_h": null,
-      "score_a": null,
-      "spilt": false,
-      "tid": "19:00"
+      "score_h": 5,
+      "score_a": 0,
+      "spilt": true,
+      "tid": "19:00",
+      "id": "400021503",
+      "dommer": "Jalal JAYED"
     },
     {
       "dato": "2026-06-24",
