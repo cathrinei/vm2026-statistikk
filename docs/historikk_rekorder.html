@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VM 2026 — All-time rekorder</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #ffffff;
+    --bg-secondary: #f5f4f0;
+    --text-primary: #2c2c2a;
+    --text-secondary: #5f5e5a;
+    --border: rgba(0,0,0,0.12);
+    --radius: 8px;
+    --radius-lg: 12px;
+    --active-bg: #E6F1FB;
+    --active-color: #185FA5;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1e1e1c;
+      --bg-secondary: #2a2a28;
+      --text-primary: #e8e7e2;
+      --text-secondary: #a0a09a;
+      --border: rgba(255,255,255,0.10);
+      --active-bg: #0c2a4a;
+      --active-color: #85B7EB;
+    }
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    padding: 32px 24px;
+    max-width: 860px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  header { margin-bottom: 28px; }
+  header h1 { font-size: 20px; font-weight: 500; margin-bottom: 4px; }
+  header p  { font-size: 13px; color: var(--text-secondary); }
+
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .metric-card {
+    background: var(--bg-secondary);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    border: 0.5px solid var(--border);
+  }
+  .metric-label { font-size: 11px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px; }
+  .metric-value { font-size: 26px; font-weight: 500; line-height: 1; margin-bottom: 4px; }
+  .metric-sub   { font-size: 12px; color: var(--text-secondary); }
+
+  .metric-card.blue  .metric-value { color: #185FA5; }
+  .metric-card.green .metric-value { color: #0F6E56; }
+  .metric-card.amber .metric-value { color: #854F0B; }
+  .metric-card.coral .metric-value { color: #993C1D; }
+
+  @media (prefers-color-scheme: dark) {
+    .metric-card.blue  .metric-value { color: #85B7EB; }
+    .metric-card.green .metric-value { color: #5DCAA5; }
+    .metric-card.amber .metric-value { color: #FAC775; }
+    .metric-card.coral .metric-value { color: #F0997B; }
+  }
+
+  .section {
+    background: var(--bg);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+  .section-header {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .section-sub {
+    font-size: 12px;
+    color: var(--text-secondary);
+    font-weight: 400;
+    margin-left: 6px;
+  }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead tr { border-bottom: 0.5px solid var(--border); }
+  th {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-align: left;
+    padding: 6px 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+  th.center, td.center { text-align: center; }
+  td {
+    padding: 9px 10px;
+    color: var(--text-primary);
+    border-bottom: 0.5px solid var(--border);
+    white-space: nowrap;
+  }
+  tr:last-child td { border-bottom: none; }
+  tbody tr:hover td { background: var(--bg-secondary); }
+
+  .rank-num {
+    font-size: 12px;
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+  .player-name { font-weight: 500; }
+  .goals-num {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+  .row-active td { background: var(--active-bg); }
+  .row-active td { color: var(--active-color); }
+  .row-active:hover td { background: var(--active-bg); filter: brightness(0.97); }
+
+  .active-badge {
+    display: inline-block;
+    background: #185FA5;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 2px 7px;
+    border-radius: 10px;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+
+  .note { font-size: 11px; color: var(--text-secondary); margin-top: 14px; line-height: 1.7; }
+
+  @media (max-width: 480px) {
+    body { padding: 20px 16px; }
+    header h1 { font-size: 17px; }
+    .metric-card { padding: 10px 12px; }
+    .metric-value { font-size: 22px; }
+    .section { padding: 14px; }
+    th, td { padding: 6px 7px; font-size: 12px; }
+    .active-badge { font-size: 9px; padding: 1px 5px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" style="display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--text-secondary);text-decoration:none;margin-bottom:10px;padding:4px 0;">← Tilbake til oversikten</a>
+  <h1>All-time VM-rekorder</h1>
+  <p>Toppscorere og flest kamper i FIFA VM-historien &mdash; oppdatert etter gruppespillet 22. juni 2026</p>
+</header>
+
+<div class="metrics">
+  <div class="metric-card blue">
+    <div class="metric-label">All-time toppscorer</div>
+    <div class="metric-value">Messi</div>
+    <div class="metric-sub">18 mål (2006–2026)</div>
+  </div>
+  <div class="metric-card green">
+    <div class="metric-label">Flest kamper</div>
+    <div class="metric-value">Messi</div>
+    <div class="metric-sub">27+ kamper (2026 pågår)</div>
+  </div>
+  <div class="metric-card amber">
+    <div class="metric-label">Rekord i ett VM</div>
+    <div class="metric-value">13 mål</div>
+    <div class="metric-sub">Just Fontaine, Frankrike 1958</div>
+  </div>
+  <div class="metric-card coral">
+    <div class="metric-label">Aktive i VM 2026</div>
+    <div class="metric-value">3</div>
+    <div class="metric-sub">Messi, Mbappé, Kane (scorere)</div>
+  </div>
+</div>
+
+<!-- TOPPSCORERE -->
+<div class="section">
+  <div class="section-header">
+    Toppscorere alle tider
+    <span class="section-sub">— topp 15, inkl. VM 2026</span>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:36px;">#</th>
+        <th>Spiller</th>
+        <th>Land</th>
+        <th class="center" style="width:60px;">Mål</th>
+        <th>Turneringer</th>
+        <th>VM 2026</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="row-active">
+        <td class="rank-num">1</td>
+        <td class="player-name">Lionel Messi</td>
+        <td>Argentina</td>
+        <td class="goals-num center">18</td>
+        <td>2006–2026</td>
+        <td><span class="active-badge">Aktiv</span></td>
+      </tr>
+      <tr>
+        <td class="rank-num">2</td>
+        <td class="player-name">Miroslav Klose</td>
+        <td>Tyskland</td>
+        <td class="goals-num center">16</td>
+        <td>2002–2014</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="rank-num">3</td>
+        <td class="player-name">Ronaldo (R9)</td>
+        <td>Brasil</td>
+        <td class="goals-num center">15</td>
+        <td>1994–2006</td>
+        <td></td>
+      </tr>
+      <tr class="row-active">
+        <td class="rank-num">4</td>
+        <td class="player-name">Kylian Mbappé</td>
+        <td>Frankrike</td>
+        <td class="goals-num center">15</td>
+        <td>2018–2026</td>
+        <td><span class="active-badge">Aktiv</span></td>
+      </tr>
+      <tr>
+        <td class="rank-num">5</td>
+        <td class="player-name">Gerd Müller</td>
+        <td>Vest-Tyskland</td>
+        <td class="goals-num center">14</td>
+        <td>1970–1974</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="rank-num">6</td>
+        <td class="player-name">Just Fontaine</td>
+        <td>Frankrike</td>
+        <td class="goals-num center">13</td>
+        <td>1958</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="rank-num">7</td>
+        <td class="player-name">Pelé</td>
+        <td>Brasil</td>
+        <td class="goals-num center">12</td>
+        <td>1958–1970</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="rank-num">8</td>
+        <td class="player-name">Sándor Kocsis</td>
+        <td>Ungarn</td>
+        <td class="goals-num center">11</td>
+        <td>1954</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="rank-num">8</td>
+        <td class="player-name">Jürgen Klinsmann</td>
+        <td>Tyskland</td>
+        <td class="goals-num center">11</td>
+        <td>1990–1998</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="rank-num">10</td>
+        <td class="player-name">Helmut Rahn</td>
+        <td>Vest-Tyskland</td>
+        <td class="goals-num center">10</td>
+        <td>1954–1958</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="rank-num">10</td>
+        <td class="player-name">Gary Lineker</td>
+        <td>England</td>
+        <td class="goals-num center">10</td>
+        <td>1986–1990</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="rank-num">10</td>
+        <td class="player-name">Gabriel Batistuta</td>
+        <td>Argentina</td>
+        <td class="goals-num center">10</td>
+        <td>1994–2002</td>
+        <td></td>
+      </tr>
+      <tr class="row-active">
+        <td class="rank-num">10</td>
+        <td class="player-name">Harry Kane</td>
+        <td>England</td>
+        <td class="goals-num center">10</td>
+        <td>2018–2026</td>
+        <td><span class="active-badge">Aktiv</span></td>
+      </tr>
+      <tr>
+        <td class="rank-num">10</td>
+        <td class="player-name">Teófilo Cubillas</td>
+        <td>Peru</td>
+        <td class="goals-num center">10</td>
+        <td>1970–1982</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="rank-num">10</td>
+        <td class="player-name">Thomas Müller</td>
+        <td>Tyskland</td>
+        <td class="goals-num center">10</td>
+        <td>2010–2022</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="note">
+    Messi slo Kloses rekord med et dobbel mot Østerrike 22. juni 2026. Mbappés 15 mål inkluderer 3 mål scoret i gruppespillet 2026. Plass 10–15 deler alle 10 mål.
+    <br>Kilder: FIFA.com, Olympics.com, ESPN, NBC Sports.
+  </p>
+</div>
+
+<!-- FLEST KAMPER -->
+<div class="section">
+  <div class="section-header">
+    Flest kamper alle tider
+    <span class="section-sub">— topp 15, inkl. VM 2026</span>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:36px;">#</th>
+        <th>Spiller</th>
+        <th>Land</th>
+        <th class="center" style="width:70px;">Kamper</th>
+        <th>Turneringer</th>
+        <th>VM 2026</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="row-active">
+        <td class="rank-num">1</td>
+        <td class="player-name">Lionel Messi</td>
+        <td>Argentina</td>
+        <td class="goals-num center">27+</td>
+        <td>2006–2026</td>
+        <td><span class="active-badge">Aktiv</span></td>
+      </tr>
+      <tr>
+        <td class="rank-num">2</td>
+        <td class="player-name">Lothar Matthäus</td>
+        <td>Tyskland</td>
+        <td class="goals-num center">25</td>
+        <td>1982–1998</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="rank-num">3</td>
+        <td class="player-name">Miroslav Klose</td>
+        <td>Tyskland</td>
+        <td class="goals-num center">24</td>
+        <td>2002–2014</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="rank-num">4</td>
+        <td class="player-name">Paolo Maldini</td>
+        <td>Italia</td>
+        <td class="goals-num center">23</td>
+        <td>1990–2002</td>
+        <td></td>
+      </tr>
+      <tr class="row-active">
+        <td class="rank-num">5</td>
+        <td class="player-name">Cristiano Ronaldo</td>
+        <td>Portugal</td>
+        <td class="goals-num center">22+</td>
+        <td>2006–2026</td>
+        <td><span class="active-badge">Aktiv</span></td>
+      </tr>
+      <tr>
+        <td class="rank-num">6</td>
+        <td class="player-name">Diego Maradona</td>
+        <td>Argentina</td>
+        <td class="goals-num center">21</td>
+        <td>1982–1994</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="rank-num">6</td>
+        <td class="player-name">Uwe Seeler</td>
+        <td>Vest-Tyskland</td>
+        <td class="goals-num center">21</td>
+        <td>1958–1970</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="rank-num">6</td>
+        <td class="player-name">Władysław Żmuda</td>
+        <td>Polen</td>
+        <td class="goals-num center">21</td>
+        <td>1974–1986</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="rank-num">9</td>
+        <td class="player-name">Cafu</td>
+        <td>Brasil</td>
+        <td class="goals-num center">20</td>
+        <td>1990–2006</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="rank-num">9</td>
+        <td class="player-name">Javier Mascherano</td>
+        <td>Argentina</td>
+        <td class="goals-num center">20</td>
+        <td>2006–2018</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="rank-num">9</td>
+        <td class="player-name">Grzegorz Lato</td>
+        <td>Polen</td>
+        <td class="goals-num center">20</td>
+        <td>1974–1982</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="rank-num">9</td>
+        <td class="player-name">Philipp Lahm</td>
+        <td>Tyskland</td>
+        <td class="goals-num center">20</td>
+        <td>2006–2014</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="rank-num">9</td>
+        <td class="player-name">Bastian Schweinsteiger</td>
+        <td>Tyskland</td>
+        <td class="goals-num center">20</td>
+        <td>2006–2014</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="rank-num">9</td>
+        <td class="player-name">Hugo Lloris</td>
+        <td>Frankrike</td>
+        <td class="goals-num center">20</td>
+        <td>2010–2022</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td class="rank-num">15</td>
+        <td class="player-name">Rafael Márquez</td>
+        <td>Mexico</td>
+        <td class="goals-num center">19</td>
+        <td>2002–2018</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="note">
+    Messi hadde 26 kamper inn i 2026 og spiller sitt sjette VM — begge er nye rekorder. Ronaldo er også aktiv i sitt sjette VM for Portugal (22 kamper inn i 2026). Plass 6–8 deler alle 21 kamper; plass 9–14 deler alle 20 kamper. Cafu er den eneste spilleren som har spilt i tre VM-finaler.
+    <br>Kilder: FIFA.com, Olympics.com, NBC Sports, Surprise Sports.
+  </p>
+</div>
+
+</body>
+</html>
