@@ -42,6 +42,7 @@ CANONICAL = {
     "KRC Genk":                     "Genk",
 
     # Spanske
+    "Athletic Bilbao":              "Athletic Club",
     "Real Ovideo":                  "Real Oviedo",
     "FC Barcelona":                 "Barcelona",
     "FC Sevilla":                   "Sevilla",
