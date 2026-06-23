@@ -61,10 +61,10 @@ def til_norsk(name: str) -> str:
 
 # FIFA API bruker engelske rundenavn — mapper til norske arknavn
 RUNDE_MAP: dict[str, str] = {
-    "round of 32":           "16-delsfinale",
-    "round of 32 - leg 1":   "16-delsfinale",
-    "round of 16":           "8-delsfinale",
-    "round of 16 - leg 1":   "8-delsfinale",
+    "round of 32":           "16-delsfinaler",
+    "round of 32 - leg 1":   "16-delsfinaler",
+    "round of 16":           "8-delsfinaler",
+    "round of 16 - leg 1":   "8-delsfinaler",
     "quarter-final":         "Kvartfinaler",
     "quarter-finals":        "Kvartfinaler",
     "semi-final":            "Semifinaler",
@@ -75,11 +75,11 @@ RUNDE_MAP: dict[str, str] = {
     "final":                 "Finale",
 }
 
-RUNDE_ORDER = ["16-delsfinale", "8-delsfinale", "Kvartfinaler", "Semifinaler", "Bronsefinale", "Finale"]
+RUNDE_ORDER = ["16-delsfinaler", "8-delsfinaler", "Kvartfinaler", "Semifinaler", "Bronsefinale", "Finale"]
 
 RUNDE_TITLER = {
-    "16-delsfinale": "VM 2026 — 16-delsfinale",
-    "8-delsfinale":  "VM 2026 — 8-delsfinale",
+    "16-delsfinaler": "VM 2026 — 16-delsfinaler",
+    "8-delsfinaler":  "VM 2026 — 8-delsfinaler",
     "Kvartfinaler":  "VM 2026 — Kvartfinaler",
     "Semifinaler":   "VM 2026 — Semifinaler",
     "Bronsefinale":  "VM 2026 — Bronsefinale",
@@ -292,7 +292,7 @@ def skriv_ark(runder: dict, tilskuere: dict, stadioner: dict) -> None:
         kamper = runder.get(runde, [])
 
         # Slett gammelt ark (inkl. eventuelle utdaterte navn)
-        GAMLE_NAVN = {"16-delsfinale": ["32-delsfinale"]}
+        GAMLE_NAVN = {"16-delsfinaler": ["32-delsfinale", "16-delsfinale"], "8-delsfinaler": ["8-delsfinale"]}
         for gammelt in GAMLE_NAVN.get(runde, []):
             if gammelt in wb.sheetnames:
                 del wb[gammelt]
