@@ -278,8 +278,10 @@ def main():
     rader = bygg_data()
     print(f"  {len(rader)} kamper med tilskuertall")
     for r in rader:
+        att_str = f"{r['tilskuere']:6,}" if r['tilskuere'] is not None else "   N/A"
+        pct_str = f"{r['belegg_pct']:.1f}%" if r['belegg_pct'] is not None else "  N/A"
         print(f"  {r['dato']}  {r['gruppe']:9s}  {r['hjemme']:22s} {r['score']:5s} {r['borte']:22s}"
-              f"  {r['tilskuere']:6,}  {r['belegg_pct']:.1f}%")
+              f"  {att_str}  {pct_str}")
 
     print(f"\n[2/2] Skriver ark '{SHEET_NAME}'...")
     skriv_ark(rader)
