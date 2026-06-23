@@ -78,7 +78,7 @@ def bygg_data() -> list[dict]:
             info = STADION_INFO.get(stadion_key, {})
             kap = info.get("kap")
             att = t["att"]
-            pct = (att / kap * 100) if kap else None
+            pct = (att / kap * 100) if (kap and att is not None) else None
 
             score_h = k.get("score_h")
             score_a = k.get("score_a")
