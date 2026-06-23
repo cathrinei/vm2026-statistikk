@@ -60,7 +60,7 @@ CLUB_COUNTRY = {
     # Spain
     'Barcelona': 'Spain', 'Atlético de Madrid': 'Spain', 'Real Madrid': 'Spain',
     'Real Betis': 'Spain', 'Villarreal': 'Spain', 'Real Sociedad': 'Spain',
-    'Athletic Bilbao': 'Spain', 'Sevilla': 'Spain', 'Celta de Vigo': 'Spain',
+    'Athletic Club': 'Spain', 'Athletic Bilbao': 'Spain', 'Sevilla': 'Spain', 'Celta de Vigo': 'Spain',
     'Osasuna': 'Spain', 'Rayo Vallecano': 'Spain', 'Villarreal CF': 'Spain',
     'FC Barcelona': 'Spain', 'FC Sevilla': 'Spain', 'Real Oviedo': 'Spain',
     'Valencia': 'Spain', 'Cultural Leonesa': 'Spain',

@@ -145,6 +145,8 @@
   body.dark-mode .dropdown-panel a:hover { background: #253350; }
   body.dark-mode .dropdown-panel button:hover { background: #253350; }
   body.dark-mode .dropdown-panel button.aktiv { background: #3b6fb5; color: #fff; }
+  .dropdown-label { display: block; padding: 6px 16px 3px; font-size: 7.5pt; font-weight: bold; letter-spacing: 0.08em; text-transform: uppercase; color: #1A3C6B; background: #f0f4f8; border-bottom: 1px solid #eef0f5; pointer-events: none; }
+  body.dark-mode .dropdown-label { background: #0f1219; color: #7eb3f5; border-color: #2d3a52; }
 </style>
 </head>
 <body>
@@ -445,10 +447,21 @@ function byggDropdownNav() {
     nav.appendChild(div);
   });
 
-  // Historikk — hardkodet dropdown med lenker til separate sider
-  var historikkItems = [
-    { navn: '🏆 VM-vinnere', url: 'vm_vinnere.html' },
-    { navn: '📊 All-time rekorder', url: 'historikk_rekorder.html' },
+  // Historikk — hardkodet dropdown med grupper og lenker til separate sider
+  var historikkGrupper = [
+    {
+      gruppe: 'Spillere',
+      items: [
+        { navn: '📊 All-time rekorder', url: 'historikk_rekorder.html' },
+      ]
+    },
+    {
+      gruppe: 'Lag',
+      items: [
+        { navn: '🏆 VM-vinnere', url: 'vm_vinnere.html' },
+        { navn: '📋 Rekordresultater', url: 'historikk_rekorder.html#rekordresultater' },
+      ]
+    },
   ];
   var hdiv = document.createElement('div');
   hdiv.className = 'dropdown';
@@ -463,11 +476,17 @@ function byggDropdownNav() {
   };
   var hpanel = document.createElement('div');
   hpanel.className = 'dropdown-panel';
-  historikkItems.forEach(function(item) {
-    var a = document.createElement('a');
-    a.href = item.url;
-    a.textContent = item.navn;
-    hpanel.appendChild(a);
+  historikkGrupper.forEach(function(grp) {
+    var lbl = document.createElement('span');
+    lbl.className = 'dropdown-label';
+    lbl.textContent = grp.gruppe;
+    hpanel.appendChild(lbl);
+    grp.items.forEach(function(item) {
+      var a = document.createElement('a');
+      a.href = item.url;
+      a.textContent = item.navn;
+      hpanel.appendChild(a);
+    });
   });
   hdiv.appendChild(htrigger);
   hdiv.appendChild(hpanel);
