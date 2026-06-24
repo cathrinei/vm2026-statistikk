@@ -805,10 +805,12 @@
       "borte": "DR Kongo",
       "hjemme_en": "Colombia",
       "borte_en": "DR Congo",
-      "score_h": null,
-      "score_a": null,
-      "spilt": false,
-      "tid": "04:00"
+      "score_h": 1,
+      "score_a": 0,
+      "spilt": true,
+      "tid": "04:00",
+      "id": "400021501",
+      "dommer": "Maurizio MARIANI"
     },
     {
       "dato": "2026-06-28",
@@ -866,10 +868,12 @@
       "borte": "Ghana",
       "hjemme_en": "England",
       "borte_en": "Ghana",
-      "score_h": null,
-      "score_a": null,
-      "spilt": false,
-      "tid": "22:00"
+      "score_h": 0,
+      "score_a": 0,
+      "spilt": true,
+      "tid": "22:00",
+      "id": "400021506",
+      "dommer": "Said MARTINEZ"
     },
     {
       "dato": "2026-06-24",
@@ -877,10 +881,12 @@
       "borte": "Kroatia",
       "hjemme_en": "Panama",
       "borte_en": "Croatia",
-      "score_h": null,
-      "score_a": null,
-      "spilt": false,
-      "tid": "01:00"
+      "score_h": 0,
+      "score_a": 1,
+      "spilt": true,
+      "tid": "01:00",
+      "id": "400021511",
+      "dommer": "Pierre ATCHO"
     },
     {
       "dato": "2026-06-27",
