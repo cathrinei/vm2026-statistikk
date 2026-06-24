@@ -147,6 +147,31 @@
 
   .note { font-size: 11px; color: var(--text-secondary); margin-top: 14px; line-height: 1.7; }
 
+  .tab-bar {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+  .tab-btn {
+    padding: 7px 18px;
+    border: 0.5px solid var(--border);
+    border-radius: 20px;
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.12s, color 0.12s;
+  }
+  .tab-btn.aktiv {
+    background: #185FA5;
+    color: #fff;
+    border-color: #185FA5;
+  }
+  @media (prefers-color-scheme: dark) {
+    .tab-btn.aktiv { background: #85B7EB; color: #1e1e1c; border-color: #85B7EB; }
+  }
+
   @media (max-width: 480px) {
     body { padding: 20px 16px; }
     header h1 { font-size: 17px; }
@@ -155,6 +180,7 @@
     .section { padding: 14px; }
     th, td { padding: 6px 7px; font-size: 12px; }
     .active-badge { font-size: 9px; padding: 1px 5px; }
+    .tab-btn { font-size: 12px; padding: 6px 14px; }
   }
 </style>
 </head>
@@ -165,6 +191,11 @@
   <h1>All-time VM-rekorder</h1>
   <p>Toppscorere, flest kamper, yngste/eldste scorere og rekordresultater &mdash; oppdatert 24. june 2026</p>
 </header>
+
+<div class="tab-bar">
+  <button class="tab-btn aktiv" onclick="byttFane('person', this)">Personrekorder</button>
+  <button class="tab-btn" onclick="byttFane('lag', this)">Lagrekorder</button>
+</div>
 
 <div class="metrics">
   <div class="metric-card blue">
@@ -190,7 +221,7 @@
 </div>
 
 <!-- TOPPSCORERE -->
-<div class="section">
+<div class="section" data-category="person">
   <div class="section-header">
     Toppscorere alle tider
     <span class="section-sub">— inkl. VM 2026</span>
@@ -343,7 +374,7 @@
 </div>
 
 <!-- FLEST KAMPER -->
-<div class="section">
+<div class="section" data-category="person">
   <div class="section-header">
     Flest kamper alle tider
     <span class="section-sub">— topp 15, inkl. VM 2026</span>
@@ -488,7 +519,7 @@
 </div>
 
 <!-- YNGSTE SCORERE -->
-<div class="section">
+<div class="section" data-category="person">
   <div class="section-header">
     Yngste scorere alle tider
     <span class="section-sub">— topp 10</span>
@@ -594,7 +625,7 @@
 </div>
 
 <!-- ELDSTE SCORERE -->
-<div class="section">
+<div class="section" data-category="person">
   <div class="section-header">
     Eldste scorere alle tider
     <span class="section-sub">— topp 10</span>
@@ -700,7 +731,7 @@
 </div>
 
 <!-- REKORDRESULTATER -->
-<div class="section" id="rekordresultater">
+<div class="section" id="rekordresultater" data-category="lag">
   <div class="section-header">
     Rekordresultater
   </div>
@@ -851,6 +882,17 @@
     <br>Kilder: FIFA.com, Olympics.com, Opta Analyst, Guinness World Records.
   </p>
 </div>
+
+
+<script>
+function byttFane(kategori, knapp) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('aktiv'));
+  knapp.classList.add('aktiv');
+  document.querySelectorAll('.section[data-category]').forEach(s => {
+    s.style.display = s.dataset.category === kategori ? '' : 'none';
+  });
+}
+</script>
 
 </body>
 </html>
