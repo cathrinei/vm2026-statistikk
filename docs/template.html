@@ -9,10 +9,11 @@
 <style>
   /* ── Grunnstiler (ikke rediger under her) ───────────────────── */
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  button, a { touch-action: manipulation; }
   body { font-family: Calibri, 'Segoe UI', Arial, sans-serif; font-size: 10pt; background: #f4f6f9; color: #1a1a2e; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
   .nav-wrapper { position: sticky; top: 0; z-index: 100; }
   .tab-bar { display: flex; flex-wrap: wrap; gap: 3px; padding: 10px 12px 0; background: #1A3C6B; }
-  .tab-bar button { background: rgba(255,255,255,0.15); color: #fff; border: none; padding: 8px 12px; min-height: 44px; cursor: pointer; border-radius: 4px 4px 0 0; font-size: 9pt; font-family: inherit; white-space: nowrap; transition: background 0.15s; }
+  .tab-bar button { background: rgba(255,255,255,0.15); color: #fff; border: none; padding: 8px 12px; min-height: 44px; cursor: pointer; border-radius: 4px 4px 0 0; font-size: 9pt; font-family: inherit; white-space: nowrap; transition: background 0.15s; touch-action: manipulation; }
   @media (max-width: 768px), (orientation: landscape) and (max-height: 500px) {
     .tab-bar { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
     .tab-bar::-webkit-scrollbar { display: none; }
@@ -27,7 +28,7 @@
   .tab-bar button:hover { background: rgba(255,255,255,0.3); }
   .tab-bar button.aktiv { background: #fff; color: #0F2044; font-weight: bold; }
   .sok-rad { display: flex; align-items: center; gap: 8px; padding: 6px 12px; background: #0F2044; }
-  #sokefelt { flex: 1; padding: 7px 12px; border: none; border-radius: 20px; font-size: 10pt; font-family: inherit; background: rgba(255,255,255,0.12); color: #fff; outline: none; }
+  #sokefelt { flex: 1; padding: 7px 12px; border: none; border-radius: 20px; font-size: 10pt; font-family: inherit; background: rgba(255,255,255,0.12); color: #fff; outline: none; touch-action: manipulation; }
   #sokefelt::placeholder { color: rgba(255,255,255,0.45); }
   #sokefelt:focus { background: rgba(255,255,255,0.22); }
   #sok-info { color: rgba(255,255,255,0.55); font-size: 8.5pt; white-space: nowrap; min-width: 38px; text-align: right; }
@@ -37,12 +38,12 @@
   .fane-overlay.synlig { display: flex; align-items: flex-end; }
   .fane-overlay-innhold { background: #fff; width: 100%; max-height: 85vh; overflow-y: auto; border-radius: 16px 16px 0 0; padding-bottom: env(safe-area-inset-bottom, 0px); }
   .fane-overlay-topp { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; border-bottom: 1px solid #e0e8f0; font-weight: bold; color: #0F2044; font-size: 1.05em; position: sticky; top: 0; background: #fff; z-index: 1; }
-  .fane-overlay-topp button { background: #f0f4f8; border: none; border-radius: 50%; width: 30px; height: 30px; font-size: 1em; cursor: pointer; color: #0F2044; line-height: 1; }
+  .fane-overlay-topp button { background: #f0f4f8; border: none; border-radius: 50%; width: 36px; height: 36px; font-size: 1.1em; cursor: pointer; color: #0F2044; line-height: 1; touch-action: manipulation; }
   .fane-gruppe { padding: 12px 16px 4px; }
   .fane-gruppe-tittel { font-size: 7.5pt; font-weight: bold; letter-spacing: 0.08em; color: #1A3C6B; text-transform: uppercase; margin-bottom: 8px; }
   .fane-gruppe-knapper { display: flex; flex-wrap: wrap; gap: 6px; padding-bottom: 12px; border-bottom: 1px solid #edf0f5; }
   .fane-gruppe:last-child .fane-gruppe-knapper { border-bottom: none; }
-  .fane-gruppe-knapper button { background: #f0f4f8; border: none; border-radius: 20px; padding: 7px 14px; font-size: 9.5pt; font-family: inherit; cursor: pointer; color: #1a1a2e; }
+  .fane-gruppe-knapper button { background: #f0f4f8; border: none; border-radius: 20px; padding: 9px 16px; font-size: 10pt; font-family: inherit; cursor: pointer; color: #1a1a2e; min-height: 44px; touch-action: manipulation; }
   .fane-gruppe-knapper button.aktiv { background: #0F2044; color: #fff; font-weight: bold; }
   .ark-innhold { padding: 16px 12px; }
   .ark-innhold h2 { font-size: 1.1em; color: #0F2044; margin-bottom: 10px; padding-bottom: 5px; border-bottom: 2px solid #1A3C6B; }
@@ -52,10 +53,12 @@
   tr:last-child td { border-bottom: none; }
   td:last-child { border-right: none; }
   @media (max-width: 600px) {
-    header { padding: 12px 16px 10px; }
-    header h1 { font-size: 1.2em; }
+    header { padding: 10px 14px 10px; flex-direction: column; gap: 8px; align-items: flex-start; }
+    header h1 { font-size: 1.15em; }
+    header > div:last-child { display: flex; gap: 6px; flex-wrap: wrap; }
     .ark-innhold { padding: 10px 8px; }
     td { padding: 4px 5px; font-size: 9pt; }
+    #sokefelt { font-size: 16px; } /* Hindrer iOS-zoom ved fokus */
   }
 
   .lagstat-nav { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:14px; padding-bottom:10px; border-bottom:2px solid #1A3C6B; }
@@ -87,7 +90,7 @@
   #sok-panel { display: none; position: absolute; left: 0; right: 0; top: 100%; background: #fff; border: 1px solid #d0d8e8; border-top: none; max-height: 60vh; overflow-y: auto; z-index: 150; box-shadow: 0 4px 12px rgba(0,0,0,0.18); }
   #sok-panel.synlig { display: block; }
   .sok-panel-gruppe-tittel { padding: 7px 14px 4px; font-size: 8pt; font-weight: bold; letter-spacing: 0.07em; text-transform: uppercase; color: #1A3C6B; background: #f0f4f8; border-bottom: 1px solid #e0e8f0; position: sticky; top: 0; }
-  .sok-panel-rad { padding: 6px 14px; cursor: pointer; font-size: 9.5pt; border-bottom: 1px solid #f0f4f8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #1a1a2e; }
+  .sok-panel-rad { padding: 9px 14px; cursor: pointer; font-size: 9.5pt; border-bottom: 1px solid #f0f4f8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #1a1a2e; min-height: 44px; display: flex; align-items: center; }
   .sok-panel-rad:hover { background: #eef3fa; }
   .sok-panel-rad .sok-mark { pointer-events: none; }
   .sok-panel-mer { padding: 4px 14px 8px; font-size: 8.5pt; color: #888; font-style: italic; }
@@ -118,6 +121,13 @@
   body.dark-mode .sok-panel-mer { color: #6b7a99; }
   body.dark-mode .sok-panel-tom { color: #6b7a99; }
   body.dark-mode footer { color: #4a5568; }
+  body.dark-mode .fane-overlay-innhold { background: #1a2235; }
+  body.dark-mode .fane-overlay-topp { background: #1a2235; color: #dde3f0; border-color: #2d3a52; }
+  body.dark-mode .fane-overlay-topp button { background: #253350; color: #dde3f0; }
+  body.dark-mode .fane-gruppe-tittel { color: #7eb3f5; }
+  body.dark-mode .fane-gruppe-knapper { border-color: #2d3a52; }
+  body.dark-mode .fane-gruppe-knapper button { background: #253350; color: #dde3f0; }
+  body.dark-mode .fane-gruppe-knapper button.aktiv { background: #3b6fb5; color: #fff; }
 
   /* ── Åpningsside ─────────────────────────────────────────── */
   .hjem-omslag { max-width: 900px; margin: 0 auto; padding: 24px 16px; }
@@ -136,6 +146,12 @@
   body.dark-mode .hjem-knapp:hover { background: #3b6fb5; border-color: #3b6fb5; color: #fff; }
   body.dark-mode .hjem-lenke { background: #1e3356; }
   body.dark-mode .hjem-lenke:hover { background: #3b6fb5; }
+  @media (max-width: 600px) {
+    .hjem-omslag { padding: 16px 10px; }
+    .hjem-knapp { padding: 11px 16px; font-size: 10pt; min-height: 44px; }
+    .hjem-lenke { padding: 11px 18px; font-size: 10pt; min-height: 44px; display: flex; align-items: center; }
+    .hjem-kategori { margin-bottom: 20px; }
+  }
 
   /* ── Dropdown-navigasjon ─────────────────────────────────────── */
   .tab-bar { display: none !important; }
@@ -143,7 +159,7 @@
   .fane-meny-knapp { display: none !important; }
   .dropdown-nav { display: flex; flex-wrap: wrap; gap: 2px; padding: 8px 10px 0; background: #1A3C6B; }
   .dropdown { position: relative; }
-  .dropdown-trigger { background: rgba(255,255,255,0.15); color: #fff; border: none; padding: 9px 14px; min-height: 44px; font-size: 9.5pt; font-weight: 600; font-family: inherit; cursor: pointer; border-radius: 4px 4px 0 0; white-space: nowrap; transition: background 0.15s; }
+  .dropdown-trigger { background: rgba(255,255,255,0.15); color: #fff; border: none; padding: 9px 14px; min-height: 44px; font-size: 9.5pt; font-weight: 600; font-family: inherit; cursor: pointer; border-radius: 4px 4px 0 0; white-space: nowrap; transition: background 0.15s; touch-action: manipulation; }
   .dropdown-trigger:hover { background: rgba(255,255,255,0.28); }
   .dropdown-trigger.aktiv { background: #fff; color: #0F2044; }
   .dropdown-pil { font-size: 9pt; margin-left: 5px; opacity: 0.75; display: inline-block; transition: transform 0.15s; }
@@ -165,6 +181,18 @@
   body.dark-mode .dropdown-panel button.aktiv { background: #3b6fb5; color: #fff; }
   .dropdown-label { display: block; padding: 6px 16px 3px; font-size: 7.5pt; font-weight: bold; letter-spacing: 0.08em; text-transform: uppercase; color: #1A3C6B; background: #f0f4f8; border-bottom: 1px solid #eef0f5; pointer-events: none; }
   body.dark-mode .dropdown-label { background: #0f1219; color: #7eb3f5; border-color: #2d3a52; }
+
+  /* ── Mobil-navigasjonslinje (vises bare på telefon, ≤600px) ─── */
+  .mobil-nav-rad { display: none; align-items: center; gap: 8px; padding: 8px 12px; background: #0F2044; min-height: 44px; }
+  .mobil-nav-gjeldende { color: rgba(255,255,255,0.9); font-size: 10pt; font-weight: 600; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .mobil-meny-knapp { background: rgba(255,255,255,0.18); color: #fff; border: none; border-radius: 6px; padding: 8px 14px; font-size: 10pt; font-family: inherit; cursor: pointer; white-space: nowrap; flex-shrink: 0; touch-action: manipulation; min-height: 40px; }
+  .mobil-meny-knapp:active { background: rgba(255,255,255,0.32); }
+  @media (max-width: 600px) {
+    .dropdown-nav { display: none !important; }
+    .mobil-nav-rad { display: flex; }
+  }
+  body.dark-mode .mobil-nav-rad { background: #0a0e17; }
+  body.dark-mode .mobil-nav-gjeldende { color: rgba(255,255,255,0.8); }
 </style>
 </head>
 <body>
@@ -184,6 +212,10 @@
 <!-- ── NAVIGASJON: fanene + søk genereres automatisk ────────── -->
 <div class="nav-wrapper">
   <div class="dropdown-nav" id="dropdown-nav"></div>
+  <div class="mobil-nav-rad" id="mobil-nav-rad">
+    <span class="mobil-nav-gjeldende" id="mobil-nav-gjeldende">⚽ Hjem</span>
+    <button class="mobil-meny-knapp" onclick="toggleFaneMeny()" aria-label="Åpne navigasjonsmeny">☰ Meny</button>
+  </div>
   <div class="tab-bar-omslag">
     <div class="tab-bar">
 <!-- TABS -->
@@ -200,8 +232,8 @@
 </div>
 
 <!-- ── FANE-OVERLAY (kun mobil) ──────────────────────────────── -->
-<div id="fane-overlay" class="fane-overlay" role="dialog" aria-modal="true">
-  <div class="fane-overlay-innhold">
+<div id="fane-overlay" class="fane-overlay" role="dialog" aria-modal="true" onclick="toggleFaneMeny()">
+  <div class="fane-overlay-innhold" onclick="event.stopPropagation()">
     <div class="fane-overlay-topp">
       <span>Velg fane</span>
       <button onclick="toggleFaneMeny()" aria-label="Lukk">✕</button>
@@ -257,6 +289,11 @@ function visArk(id, oppdaterHash = true) {
   const sok = document.getElementById('sokefelt');
   if (sok) { sok.value = ''; sokITabell(''); }
   lukkSokPanel();
+  const mobilLabel = document.getElementById('mobil-nav-gjeldende');
+  if (mobilLabel) {
+    const dpKnappNavn = document.querySelector('.dropdown-panel button[data-id="' + id + '"]');
+    mobilLabel.textContent = dpKnappNavn ? dpKnappNavn.textContent.trim() : (id === 'hjem' ? '⚽ Hjem' : id.replace(/_/g, ' '));
+  }
   if (oppdaterHash) history.replaceState(null, '', '#' + id);
 }
 
@@ -381,7 +418,9 @@ function visSokPanel(resultater, tekst) {
 }
 
 function toggleFaneMeny() {
-  document.getElementById('fane-overlay').classList.toggle('synlig');
+  const overlay = document.getElementById('fane-overlay');
+  overlay.classList.toggle('synlig');
+  document.body.style.overflow = overlay.classList.contains('synlig') ? 'hidden' : '';
 }
 
 function byggFaneMeny() {
