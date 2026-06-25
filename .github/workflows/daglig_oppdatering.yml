@@ -31,12 +31,8 @@ jobs:
         run: pip install openpyxl requests
 
       - name: Oppdater data og Excel
-        if: github.event_name != 'push'
+        if: github.event_name != 'push' || contains(toJSON(github.event.commits.*.modified), 'wc2026_stats3.json')
         run: python oppdater.py 2>&1 | tee oppdater_logg.txt; exit ${PIPESTATUS[0]}
-
-      - name: Oppdater ballbesittelse-ark (ved push av wc2026_stats3.json)
-        if: github.event_name == 'push'
-        run: python add_ballbesittelse_sheet.py 2>&1 | tee ballbesittelse_logg.txt; exit ${PIPESTATUS[0]}
 
       - name: Generer HTML
         run: python excel_til_html.py 2>&1 | tee html_logg.txt; exit ${PIPESTATUS[0]}
