@@ -31,7 +31,7 @@ jobs:
         run: pip install openpyxl requests
 
       - name: Oppdater data og Excel
-        if: github.event_name != 'push' || contains(toJSON(github.event.commits.*.modified), 'wc2026_stats3.json')
+        if: github.event_name != 'push' || contains(github.event.head_commit.modified, 'wc2026_stats3.json')
         run: python oppdater.py 2>&1 | tee oppdater_logg.txt; exit ${PIPESTATUS[0]}
 
       - name: Generer HTML
