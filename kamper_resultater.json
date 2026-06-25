@@ -58,10 +58,12 @@
       "borte": "Mexico",
       "hjemme_en": "Czechia",
       "borte_en": "Mexico",
-      "score_h": null,
-      "score_a": null,
-      "spilt": false,
-      "tid": "03:00"
+      "score_h": 0,
+      "score_a": 3,
+      "spilt": true,
+      "tid": "03:00",
+      "id": "400021444",
+      "dommer": "Yael FALCON PEREZ"
     },
     {
       "dato": "2026-06-25",
@@ -69,10 +71,12 @@
       "borte": "Sør-Korea",
       "hjemme_en": "South Africa",
       "borte_en": "South Korea",
-      "score_h": null,
-      "score_a": null,
-      "spilt": false,
-      "tid": "03:00"
+      "score_h": 1,
+      "score_a": 0,
+      "spilt": true,
+      "tid": "03:00",
+      "id": "400021445",
+      "dommer": "Facundo TELLO"
     }
   ],
   "Gruppe B": [
@@ -134,10 +138,12 @@
       "borte": "Canada",
       "hjemme_en": "Switzerland",
       "borte_en": "Canada",
-      "score_h": null,
-      "score_a": null,
-      "spilt": false,
-      "tid": "21:00"
+      "score_h": 2,
+      "score_a": 1,
+      "spilt": true,
+      "tid": "21:00",
+      "id": "400021451",
+      "dommer": "Ramon ABATTI"
     },
     {
       "dato": "2026-06-24",
@@ -145,10 +151,12 @@
       "borte": "Qatar",
       "hjemme_en": "Bosnia and Herzegovina",
       "borte_en": "Qatar",
-      "score_h": null,
-      "score_a": null,
-      "spilt": false,
-      "tid": "21:00"
+      "score_h": 3,
+      "score_a": 1,
+      "spilt": true,
+      "tid": "21:00",
+      "id": "400021448",
+      "dommer": "Jesus VALENZUELA"
     }
   ],
   "Gruppe C": [
@@ -210,10 +218,12 @@
       "borte": "Brasil",
       "hjemme_en": "Scotland",
       "borte_en": "Brazil",
-      "score_h": null,
-      "score_a": null,
-      "spilt": false,
-      "tid": "00:00"
+      "score_h": 0,
+      "score_a": 3,
+      "spilt": true,
+      "tid": "00:00",
+      "id": "400021455",
+      "dommer": "Cesar RAMOS"
     },
     {
       "dato": "2026-06-25",
@@ -221,10 +231,12 @@
       "borte": "Haiti",
       "hjemme_en": "Morocco",
       "borte_en": "Haiti",
-      "score_h": null,
-      "score_a": null,
-      "spilt": false,
-      "tid": "00:00"
+      "score_h": 4,
+      "score_a": 2,
+      "spilt": true,
+      "tid": "00:00",
+      "id": "400021452",
+      "dommer": "Danny MAKKELIE"
     }
   ],
   "Gruppe D": [
