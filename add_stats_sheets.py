@@ -301,6 +301,10 @@ def main():
     lag_data = bygg_aldersfordeling()
     skriv_aldersfordeling(wb, lag_data)
 
+    print("\n[2/2] Bygger klubbdominans...")
+    klub_data = bygg_klubbdominans()
+    skriv_klubbdominans(wb, klub_data)
+
     try:
         wb.save(EXCEL_PATH)
         print(f"\nLagret: {EXCEL_PATH}")
