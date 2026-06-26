@@ -210,9 +210,9 @@ new Chart(document.getElementById('bubbleChart'), {
       },
       {
         label: '1 kamp spilt',
-        data: oneGame.map(toPoint),
-        backgroundColor: oneGame.map(bgColor),
-        borderColor:     oneGame.map(bdColor),
+        data: oneGame.filter(d => d.y > 0).map(toPoint),
+        backgroundColor: oneGame.filter(d => d.y > 0).map(bgColor),
+        borderColor:     oneGame.filter(d => d.y > 0).map(bdColor),
         borderWidth: 1.5,
       }
     ]
