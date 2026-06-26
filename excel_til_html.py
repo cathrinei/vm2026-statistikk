@@ -20,7 +20,7 @@ UTDATA_FIL = os.path.join(UTDATA_DIR, "index.html")
 HOPP_OVER_ARK = set()
 
 # Disse arkene vises alltid sist, i denne rekkefølgen
-SIST = ["Spillere etter klubbland", "Klubber", "Nivå 2 og lavere", "Aldersfordeling", "Alder"]
+SIST = ["Klubbdominans", "Spillere etter klubbland", "Klubber", "Nivå 2 og lavere", "Aldersfordeling", "Alder"]
 
 # Maks kolonner å vise per ark (None = alle)
 MAKS_KOLS = None
