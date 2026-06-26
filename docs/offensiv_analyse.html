@@ -133,24 +133,6 @@
       aria-label="Boblediagram: skudd per kamp (x-akse) mot mål per kamp (y-akse). Boblestørrelse viser treffprosent.">
     </canvas>
   </div>
-  <div class="legend">
-    <div class="legend-item">
-      <span class="legend-dot" style="background:rgba(50,102,173,0.65);border-color:#185FA5"></span>
-      2 kamper spilt
-    </div>
-    <div class="legend-item">
-      <span class="legend-dot" style="background:rgba(29,158,117,0.45);border-color:#0F6E56"></span>
-      1 kamp spilt
-    </div>
-    <div class="legend-item">
-      <span class="legend-dot" style="background:rgba(194,57,43,0.7);border-color:#a32d2d"></span>
-      0 mål — flest skudd
-    </div>
-    <div class="legend-item">
-      <span class="legend-dot" style="background:rgba(136,135,128,0.55);border-color:#5F5E5A"></span>
-      0 mål — øvrige
-    </div>
-  </div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
@@ -202,17 +184,10 @@ new Chart(document.getElementById('bubbleChart'), {
   data: {
     datasets: [
       {
-        label: '2 kamper spilt',
-        data: twoGames.map(toPoint),
-        backgroundColor: twoGames.map(bgColor),
-        borderColor:     twoGames.map(bdColor),
-        borderWidth: 1.5,
-      },
-      {
-        label: '1 kamp spilt',
-        data: oneGame.filter(d => d.y > 0).map(toPoint),
-        backgroundColor: oneGame.filter(d => d.y > 0).map(bgColor),
-        borderColor:     oneGame.filter(d => d.y > 0).map(bdColor),
+        label: 'Lag',
+        data: twoGames.filter(d => d.type === 'blue').map(toPoint),
+        backgroundColor: 'rgba(50,102,173,0.65)',
+        borderColor:     '#185FA5',
         borderWidth: 1.5,
       }
     ]
