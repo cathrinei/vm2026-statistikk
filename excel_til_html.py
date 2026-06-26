@@ -211,59 +211,60 @@ def generer_lagstat_nav(seksjoner):
     return f'<nav class="lagstat-nav">{lenker}</nav>'
 
 
-# Kolonnene: (wc_rang, fifa_rang, land, gruppe)
+# Kolonnene: (wc_rang, fifa_rang, land, gruppe, delta)
 # wc_rang   = rangering blant de 48 VM-lagene (1–48)
 # fifa_rang  = faktisk FIFA-verdensrangering (11. juni 2026)
+# delta     = endring siden forrige rangering (1. april 2026); positivt = opp
 # Kilde: https://inside.fifa.com/fifa-world-ranking/men
 FIFA_RANKING = [
-    (1,  1,  "Argentina",          "J"),
-    (2,  2,  "Spania",             "G"),
-    (3,  3,  "Frankrike",          "I"),
-    (4,  4,  "England",            "J"),
-    (5,  5,  "Portugal",           "K"),
-    (6,  6,  "Brasil",             "C"),
-    (7,  7,  "Marokko",            "C"),
-    (8,  8,  "Nederland",          "H"),
-    (9,  9,  "Belgia",             "H"),
-    (10, 10, "Tyskland",           "E"),
-    (11, 11, "Kroatia",            "K"),
-    (12, 13, "Colombia",           "I"),
-    (13, 14, "Mexico",             "A"),
-    (14, 15, "Senegal",            "I"),
-    (15, 16, "Uruguay",            "G"),
-    (16, 17, "USA",                "D"),
-    (17, 18, "Japan",              "F"),
-    (18, 19, "Sveits",             "B"),
-    (19, 20, "Iran",               "K"),
-    (20, 22, "Tyrkia",             "D"),
-    (21, 23, "Ecuador",            "E"),
-    (22, 24, "Østerrike",          "L"),
-    (23, 25, "Sør-Korea",          "A"),
-    (24, 27, "Australia",          "D"),
-    (25, 28, "Algerie",            "J"),
-    (26, 29, "Egypt",              "H"),
-    (27, 30, "Canada",             "B"),
-    (28, 31, "Norge",              "I"),
-    (29, 33, "Elfenbenskysten",    "E"),
-    (30, 34, "Panama",             "J"),
-    (31, 38, "Sverige",            "F"),
-    (32, 40, "Tsjekkia",           "A"),
-    (33, 41, "Paraguay",           "D"),
-    (34, 42, "Skottland",          "C"),
-    (35, 45, "Tunisia",            "F"),
-    (36, 46, "DR Kongo",           "L"),
-    (37, 50, "Usbekistan",         "L"),
-    (38, 56, "Qatar",              "B"),
-    (39, 57, "Irak",               "K"),
-    (40, 60, "Sør-Afrika",         "A"),
-    (41, 61, "Saudi-Arabia",       "G"),
-    (42, 63, "Jordan",             "H"),
-    (43, 64, "Bosnia-Hercegovina", "B"),
-    (44, 67, "Kapp Verde",         "G"),
-    (45, 73, "Ghana",              "L"),
-    (46, 82, "Curaçao",            "E"),
-    (47, 83, "Haiti",              "C"),
-    (48, 85, "New Zealand",        "F"),
+    (1,  1,  "Argentina",          "J", +2),
+    (2,  2,  "Spania",             "G",  0),
+    (3,  3,  "Frankrike",          "I", -2),
+    (4,  4,  "England",            "J",  0),
+    (5,  5,  "Portugal",           "K",  0),
+    (6,  6,  "Brasil",             "C",  0),
+    (7,  7,  "Marokko",            "C", +1),
+    (8,  8,  "Nederland",          "H", -1),
+    (9,  9,  "Belgia",             "H",  0),
+    (10, 10, "Tyskland",           "E",  0),
+    (11, 11, "Kroatia",            "K",  0),
+    (12, 13, "Colombia",           "I",  0),
+    (13, 14, "Mexico",             "A", +1),
+    (14, 15, "Senegal",            "I", -1),
+    (15, 16, "Uruguay",            "G", +1),
+    (16, 17, "USA",                "D", -1),
+    (17, 18, "Japan",              "F",  0),
+    (18, 19, "Sveits",             "B",  0),
+    (19, 20, "Iran",               "K", +1),
+    (20, 22, "Tyrkia",             "D",  0),
+    (21, 23, "Ecuador",            "E",  0),
+    (22, 24, "Østerrike",          "L",  0),
+    (23, 25, "Sør-Korea",          "A",  0),
+    (24, 27, "Australia",          "D",  0),
+    (25, 28, "Algerie",            "J",  0),
+    (26, 29, "Egypt",              "H",  0),
+    (27, 30, "Canada",             "B",  0),
+    (28, 31, "Norge",              "I",  0),
+    (29, 33, "Elfenbenskysten",    "E", +1),
+    (30, 34, "Panama",             "J", -1),
+    (31, 38, "Sverige",            "F",  0),
+    (32, 40, "Tsjekkia",           "A", +1),
+    (33, 41, "Paraguay",           "D", -1),
+    (34, 42, "Skottland",          "C", +1),
+    (35, 45, "Tunisia",            "F", -1),
+    (36, 46, "DR Kongo",           "L",  0),
+    (37, 50, "Usbekistan",         "L",  0),
+    (38, 56, "Qatar",              "B", -1),
+    (39, 57, "Irak",               "K",  0),
+    (40, 60, "Sør-Afrika",         "A",  0),
+    (41, 61, "Saudi-Arabia",       "G",  0),
+    (42, 63, "Jordan",             "H",  0),
+    (43, 64, "Bosnia-Hercegovina", "B", +1),
+    (44, 67, "Kapp Verde",         "G", +2),
+    (45, 73, "Ghana",              "L", +1),
+    (46, 82, "Curaçao",            "E",  0),
+    (47, 83, "Haiti",              "C",  0),
+    (48, 85, "New Zealand",        "F",  0),
 ]
 
 
@@ -285,13 +286,20 @@ IKKE_KVALIFISERT_TOPP48 = [
 
 def generer_fifa_ranking_seksjon():
     rader = []
-    for i, (wc_rang, fifa_rang, land, gruppe) in enumerate(FIFA_RANKING):
+    for i, (wc_rang, fifa_rang, land, gruppe, delta) in enumerate(FIFA_RANKING):
         bg = "#FFFFFF" if i % 2 == 0 else "#F0F5FB"
+        if delta > 0:
+            delta_html = f'<span style="color:#1a7a3a;font-weight:bold">▲ {delta}</span>'
+        elif delta < 0:
+            delta_html = f'<span style="color:#c0392b;font-weight:bold">▼ {abs(delta)}</span>'
+        else:
+            delta_html = '<span style="color:#888">—</span>'
         rader.append(
             f'<tr>'
             f'<td style="background:{bg};font-weight:bold;color:#1A1A2E;text-align:center">{wc_rang}</td>'
             f'<td style="background:{bg};font-weight:bold;color:#1A1A2E;text-align:center">{fifa_rang}</td>'
             f'<td style="background:{bg};color:#1A1A2E">{escape(land)}</td>'
+            f'<td style="background:{bg};text-align:center">{delta_html}</td>'
             f'<td style="background:{bg};color:#1A1A2E;text-align:center">{gruppe}</td>'
             f'</tr>'
         )
@@ -316,20 +324,22 @@ def generer_fifa_ranking_seksjon():
         '<col style="width:50px">'
         '<col style="width:90px">'
         '<col style="width:200px">'
+        '<col style="width:70px">'
         '<col style="width:80px">'
         '</colgroup>\n'
-        '<tr><td colspan="4" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">'
+        '<tr><td colspan="5" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">'
         'VM 2026 — FIFA-verdensranking (48 lag)</td></tr>\n'
         '<tr>'
         '<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">#</td>'
         '<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">FIFA-rang</td>'
         '<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF">Land</td>'
+        '<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Endring</td>'
         '<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">Gruppe</td>'
         '</tr>\n'
         + rader_html + '\n'
-        '<tr><td colspan="4" style="font-style:italic;color:#6B7A99;font-size:9pt">'
-        '* FIFA-verdensrangering pr. 11. juni 2026. Kilde: inside.fifa.com/fifa-world-ranking/men. '
-        '# = rangering blant VM-lagene.</td></tr>\n'
+        '<tr><td colspan="5" style="font-style:italic;color:#6B7A99;font-size:9pt">'
+        '* FIFA-verdensrangering pr. 11. juni 2026. Endring siden 1. april 2026. '
+        'Kilde: inside.fifa.com/fifa-world-ranking/men. # = rangering blant VM-lagene.</td></tr>\n'
         '</table></div>\n'
         '<div class="tabell-wrapper" style="margin-top:18px"><table>\n'
         '<colgroup>'
