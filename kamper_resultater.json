@@ -690,10 +690,12 @@
       "borte": "Frankrike",
       "hjemme_en": "Norway",
       "borte_en": "France",
-      "score_h": null,
-      "score_a": null,
-      "spilt": false,
-      "tid": "21:00"
+      "score_h": 1,
+      "score_a": 4,
+      "spilt": true,
+      "tid": "21:00",
+      "id": "400021489",
+      "dommer": "Michael OLIVER"
     },
     {
       "dato": "2026-06-26",
@@ -701,10 +703,12 @@
       "borte": "Irak",
       "hjemme_en": "Senegal",
       "borte_en": "Iraq",
-      "score_h": null,
-      "score_a": null,
-      "spilt": false,
-      "tid": "21:00"
+      "score_h": 5,
+      "score_a": 0,
+      "spilt": true,
+      "tid": "21:00",
+      "id": "400021493",
+      "dommer": "Anthony TAYLOR"
     }
   ],
   "Gruppe J": [
