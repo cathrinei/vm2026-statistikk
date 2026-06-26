@@ -30,8 +30,18 @@ jobs:
       - name: Installer avhengigheter
         run: pip install openpyxl requests
 
+      - name: Sjekk om wc2026_stats3.json er endret
+        id: sjekk_stats
+        if: github.event_name == 'push'
+        run: |
+          if git diff HEAD^ HEAD --name-only | grep -q 'wc2026_stats3.json'; then
+            echo "endret=true" >> $GITHUB_OUTPUT
+          else
+            echo "endret=false" >> $GITHUB_OUTPUT
+          fi
+
       - name: Oppdater data og Excel
-        if: github.event_name != 'push' || contains(github.event.head_commit.modified, 'wc2026_stats3.json')
+        if: github.event_name != 'push' || steps.sjekk_stats.outputs.endret == 'true'
         run: python oppdater.py 2>&1 | tee oppdater_logg.txt; exit ${PIPESTATUS[0]}
 
       - name: Generer HTML
