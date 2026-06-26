@@ -133,6 +133,16 @@
       aria-label="Boblediagram: skudd per kamp (x-akse) mot mål per kamp (y-akse). Boblestørrelse viser treffprosent.">
     </canvas>
   </div>
+  <div class="legend">
+    <div class="legend-item">
+      <span class="legend-dot" style="background:rgba(50,102,173,0.65);border-color:#185FA5"></span>
+      3 kamper spilt
+    </div>
+    <div class="legend-item">
+      <span class="legend-dot" style="background:rgba(29,158,117,0.45);border-color:#0F6E56"></span>
+      2 kamper spilt
+    </div>
+  </div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
@@ -145,22 +155,21 @@ document.getElementById('chart-hint').textContent =
   isMobile ? 'Trykk på en boble for detaljer.' : 'Hover over en boble for detaljer.';
 
 const twoGames = [
-  {label:"Norge",x:12.0,y:3.5,r:50,type:"blue"},
   {label:"Tyskland",x:17.7,y:3.33,r:42,type:"blue"},
   {label:"Nederland",x:13.3,y:3.33,r:50,type:"blue"},
-  {label:"Frankrike",x:15.0,y:3.0,r:43,type:"blue"},
-  {label:"Portugal",x:12.0,y:3.0,r:42,type:"blue"},
   {label:"Canada",x:19.7,y:2.67,r:37,type:"blue"},
   {label:"USA",x:14.7,y:2.67,r:34,type:"blue"},
-  {label:"Argentina",x:11.0,y:2.5,r:50,type:"blue"},
   {label:"Sveits",x:15.0,y:2.33,r:40,type:"blue"},
   {label:"Brasil",x:13.3,y:2.33,r:45,type:"blue"},
   {label:"Sverige",x:13.3,y:2.33,r:50,type:"blue"},
-  {label:"Japan",x:9.0,y:2.33,r:33,type:"blue"},
-  {label:"Panama",x:9.5,y:0.0,r:26,type:"red"}
+  {label:"Japan",x:9.0,y:2.33,r:33,type:"blue"}
 ];
 const oneGame  = [
-
+  {label:"Norge",x:12.0,y:3.5,r:50,type:"blue"},
+  {label:"Frankrike",x:15.0,y:3.0,r:43,type:"blue"},
+  {label:"Portugal",x:12.0,y:3.0,r:42,type:"blue"},
+  {label:"Argentina",x:11.0,y:2.5,r:50,type:"blue"},
+  {label:"Panama",x:9.5,y:0.0,r:26,type:"red"}
 ];
 
 function bgColor(d) {
@@ -184,10 +193,17 @@ new Chart(document.getElementById('bubbleChart'), {
   data: {
     datasets: [
       {
-        label: 'Lag',
-        data: twoGames.filter(d => d.type === 'blue').map(toPoint),
-        backgroundColor: 'rgba(50,102,173,0.65)',
-        borderColor:     '#185FA5',
+        label: '3 kamper spilt',
+        data: twoGames.map(toPoint),
+        backgroundColor: twoGames.map(bgColor),
+        borderColor:     twoGames.map(bdColor),
+        borderWidth: 1.5,
+      },
+      {
+        label: '2 kamper spilt',
+        data: oneGame.filter(d => d.y > 0).map(toPoint),
+        backgroundColor: oneGame.filter(d => d.y > 0).map(bgColor),
+        borderColor:     oneGame.filter(d => d.y > 0).map(bdColor),
         borderWidth: 1.5,
       }
     ]

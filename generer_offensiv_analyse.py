@@ -127,15 +127,19 @@ def velg_chart_lag(lag_data):
     """Velg alltid et fast antall lag uansett turneringsstadium."""
     med_maal  = sorted([d for d in lag_data if d["maal"] > 0],
                        key=lambda d: (-d["y"], -d["skudd"]))[:TOPP_SCORERE]
-    nullmaal  = sorted([d for d in lag_data if d["maal"] == 0],
+    # Utelat lag med 1 kamp spilt og 0 mål — for lite data til å si noe
+    nullmaal  = sorted([d for d in lag_data if d["maal"] == 0 and d["kamper"] > 1],
                        key=lambda d: -d["skudd"])[:TOPP_NULLMAAL]
     return med_maal + nullmaal
 
 
 def generer_html(lag_data, metrikker, tidspunkt):
     chart_data = velg_chart_lag(lag_data)
-    to_games = [d for d in chart_data if d["kamper"] >= 2]
-    one_game = [d for d in chart_data if d["kamper"] == 1]
+    max_kamper = max((d["kamper"] for d in chart_data), default=1)
+    to_games = [d for d in chart_data if d["kamper"] == max_kamper]
+    one_game = [d for d in chart_data if d["kamper"] < max_kamper]
+    label_many = f"{max_kamper} kamper spilt"
+    label_few  = f"{max_kamper - 1} kamp{'er' if max_kamper - 1 > 1 else ''} spilt"
 
     def js_arr(data):
         items = []
@@ -302,20 +306,12 @@ def generer_html(lag_data, metrikker, tidspunkt):
   <div class="legend">
     <div class="legend-item">
       <span class="legend-dot" style="background:rgba(50,102,173,0.65);border-color:#185FA5"></span>
-      2 kamper spilt
-    </div>
+      {label_many}
+    </div>{"" if not one_game else f'''
     <div class="legend-item">
       <span class="legend-dot" style="background:rgba(29,158,117,0.45);border-color:#0F6E56"></span>
-      1 kamp spilt
-    </div>
-    <div class="legend-item">
-      <span class="legend-dot" style="background:rgba(194,57,43,0.7);border-color:#a32d2d"></span>
-      0 mål — flest skudd
-    </div>
-    <div class="legend-item">
-      <span class="legend-dot" style="background:rgba(136,135,128,0.55);border-color:#5F5E5A"></span>
-      0 mål — øvrige
-    </div>
+      {label_few}
+    </div>'''}
   </div>
 </div>
 
@@ -352,17 +348,17 @@ new Chart(document.getElementById('bubbleChart'), {{
   data: {{
     datasets: [
       {{
-        label: '2 kamper spilt',
+        label: '{label_many}',
         data: twoGames.map(toPoint),
         backgroundColor: twoGames.map(bgColor),
         borderColor:     twoGames.map(bdColor),
         borderWidth: 1.5,
       }},
       {{
-        label: '1 kamp spilt',
-        data: oneGame.map(toPoint),
-        backgroundColor: oneGame.map(bgColor),
-        borderColor:     oneGame.map(bdColor),
+        label: '{label_few}',
+        data: oneGame.filter(d => d.y > 0).map(toPoint),
+        backgroundColor: oneGame.filter(d => d.y > 0).map(bgColor),
+        borderColor:     oneGame.filter(d => d.y > 0).map(bdColor),
         borderWidth: 1.5,
       }}
     ]
