@@ -298,10 +298,12 @@
       "borte": "USA",
       "hjemme_en": "Turkey",
       "borte_en": "United States",
-      "score_h": null,
-      "score_a": null,
-      "spilt": false,
-      "tid": "04:00"
+      "score_h": 3,
+      "score_a": 2,
+      "spilt": true,
+      "tid": "04:00",
+      "id": "400021459",
+      "dommer": "Mustapha GHORBAL"
     },
     {
       "dato": "2026-06-26",
@@ -309,10 +311,12 @@
       "borte": "Australia",
       "hjemme_en": "Paraguay",
       "borte_en": "Australia",
-      "score_h": null,
-      "score_a": null,
-      "spilt": false,
-      "tid": "04:00"
+      "score_h": 0,
+      "score_a": 0,
+      "spilt": true,
+      "tid": "04:00",
+      "id": "400021461",
+      "dommer": "Clement TURPIN"
     }
   ],
   "Gruppe E": [
@@ -374,10 +378,12 @@
       "borte": "Tyskland",
       "hjemme_en": "Ecuador",
       "borte_en": "Germany",
-      "score_h": null,
-      "score_a": null,
-      "spilt": false,
-      "tid": "22:00"
+      "score_h": 2,
+      "score_a": 1,
+      "spilt": true,
+      "tid": "22:00",
+      "id": "400021466",
+      "dommer": "Tori PENSO"
     },
     {
       "dato": "2026-06-25",
@@ -385,10 +391,12 @@
       "borte": "Elfenbenskysten",
       "hjemme_en": "Curacao",
       "borte_en": "Ivory Coast",
-      "score_h": null,
-      "score_a": null,
-      "spilt": false,
-      "tid": "22:00"
+      "score_h": 0,
+      "score_a": 2,
+      "spilt": true,
+      "tid": "22:00",
+      "id": "400021468",
+      "dommer": "Glenn NYBERG"
     }
   ],
   "Gruppe F": [
@@ -450,10 +458,12 @@
       "borte": "Nederland",
       "hjemme_en": "Tunisia",
       "borte_en": "Netherlands",
-      "score_h": null,
-      "score_a": null,
-      "spilt": false,
-      "tid": "01:00"
+      "score_h": 1,
+      "score_a": 3,
+      "spilt": true,
+      "tid": "01:00",
+      "id": "400021473",
+      "dommer": ""
     },
     {
       "dato": "2026-06-26",
@@ -461,10 +471,12 @@
       "borte": "Sverige",
       "hjemme_en": "Japan",
       "borte_en": "Sweden",
-      "score_h": null,
-      "score_a": null,
-      "spilt": false,
-      "tid": "01:00"
+      "score_h": 1,
+      "score_a": 1,
+      "spilt": true,
+      "tid": "01:00",
+      "id": "400021471",
+      "dommer": ""
     }
   ],
   "Gruppe G": [
