@@ -137,7 +137,8 @@ def generer_html(lag_data, metrikker, tidspunkt):
     chart_data = velg_chart_lag(lag_data)
     max_kamper = max((d["kamper"] for d in chart_data), default=1)
     to_games = [d for d in chart_data if d["kamper"] == max_kamper]
-    one_game = [d for d in chart_data if d["kamper"] < max_kamper]
+    one_game = [{**d, "type": "green" if d["maal"] > 0 else d["type"]}
+                for d in chart_data if d["kamper"] < max_kamper]
     label_many = f"{max_kamper} kamper spilt"
     label_few  = f"{max_kamper - 1} kamp{'er' if max_kamper - 1 > 1 else ''} spilt"
 
