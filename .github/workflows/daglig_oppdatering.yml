@@ -11,6 +11,7 @@ on:
     paths:
       - "docs/template.html"  # regenerer index.html automatisk ved template-endring
       - "excel_til_html.py"   # regenerer index.html ved endringer i konverteringsskriptet
+      - "*.xlsx"              # regenerer index.html ved endringer i Excel-filen
       - "wc2026_stats3.json"  # oppdater ballbesittelse-ark ved manuell stats-oppdatering
 
 jobs:
