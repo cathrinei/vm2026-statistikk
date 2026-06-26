@@ -211,6 +211,8 @@ def generer_lagstat_nav(seksjoner):
     return f'<nav class="lagstat-nav">{lenker}</nav>'
 
 
+FIFA_RANKING_DATO = "26. juni 2026"  # oppdater denne når rankingen oppdateres
+
 # Kolonnene: (wc_rang, fifa_rang, land, gruppe, delta)
 # wc_rang   = rangering blant de 48 VM-lagene (live, pr. 26. juni 2026)
 # fifa_rang  = live FIFA-verdensrangering (pr. 26. juni 2026, ikke offisielt godkjent)
@@ -328,7 +330,7 @@ def generer_fifa_ranking_seksjon():
         '<col style="width:80px">'
         '</colgroup>\n'
         '<tr><td colspan="5" style="background:#0F2044;font-weight:bold;color:#FFFFFF;font-size:13pt">'
-        'VM 2026 — FIFA-verdensranking (48 lag)</td></tr>\n'
+        f'VM 2026 — FIFA-verdensranking (48 lag) &nbsp;<span style="font-size:10pt;font-weight:normal;opacity:0.8">Sist oppdatert: {FIFA_RANKING_DATO}</span></td></tr>\n'
         '<tr>'
         '<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">#</td>'
         '<td style="background:#1A3C6B;font-weight:bold;color:#FFFFFF;text-align:center">FIFA-rang</td>'
@@ -338,7 +340,7 @@ def generer_fifa_ranking_seksjon():
         '</tr>\n'
         + rader_html + '\n'
         '<tr><td colspan="5" style="font-style:italic;color:#6B7A99;font-size:9pt">'
-        '* FIFA-verdensrangering pr. 11. juni 2026. Endring = live-bevegelse under VM (pr. 26. juni 2026) vs. offisiell rangering 11. juni. '
+        f'* Live FIFA-verdensrangering pr. {FIFA_RANKING_DATO} (ikke offisielt godkjent før VM er ferdig). Endring vs. offisiell rangering 11. juni 2026. '
         'Kilde: inside.fifa.com/fifa-world-ranking/men. # = rangering blant VM-lagene.</td></tr>\n'
         '</table></div>\n'
         '<div class="tabell-wrapper" style="margin-top:18px"><table>\n'
