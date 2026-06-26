@@ -148,29 +148,29 @@
 <header>
   <a href="index.html" style="display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--text-secondary);text-decoration:none;margin-bottom:10px;padding:4px 0;">← Tilbake til oversikten</a>
   <h1>VM 2026 — Offensiv dominans og effektivitet</h1>
-  <p>Basert på gruppespilldata per 21. juni 2026 · Boblestørrelse = treff% (skudd på mål)</p>
+  <p>Basert på gruppespilldata per 26. juni 2026 · Boblestørrelse = treff% (skudd på mål)</p>
 </header>
 
 <div class="metrics">
   <div class="metric-card blue">
     <div class="metric-label">Mest mål per kamp</div>
-    <div class="metric-value">4,5</div>
-    <div class="metric-sub">Tyskland · 9 mål på 2 kamper</div>
+    <div class="metric-value">3,5</div>
+    <div class="metric-sub">Norge · 7 mål på 2 kamper</div>
   </div>
   <div class="metric-card green">
     <div class="metric-label">Beste treff%</div>
-    <div class="metric-value">73%</div>
-    <div class="metric-sub">Frankrike · 8 av 11 skudd på mål</div>
+    <div class="metric-value">51%</div>
+    <div class="metric-sub">Sverige · 22 av 43 skudd på mål</div>
   </div>
   <div class="metric-card red">
-    <div class="metric-label">Skudd uten mål</div>
-    <div class="metric-value">62</div>
-    <div class="metric-sub">Tyrkia · 31 skudd/kamp · 0 mål</div>
+    <div class="metric-label">Mest skudd/kamp</div>
+    <div class="metric-value">23,7</div>
+    <div class="metric-sub">Tyrkia · 71 skudd på 3 kamper</div>
   </div>
   <div class="metric-card amber">
     <div class="metric-label">Mest effektiv</div>
-    <div class="metric-value">35%</div>
-    <div class="metric-sub">Nederland · mål per skudd</div>
+    <div class="metric-value">29%</div>
+    <div class="metric-sub">Norge · mål per skudd</div>
   </div>
 </div>
 
@@ -181,9 +181,19 @@
   <div class="chart-wrap">
     <canvas id="bubbleChart"
       role="img"
-      aria-label="Boblediagram: skudd per kamp (x-akse) mot mål per kamp (y-akse). Boblestørrelse viser treffprosent. Tyrkia skiller seg ut med 31 skudd/kamp og 0 mål. Nederland og Japan er mest kliniske.">
-      Tyrkia: 31 skudd/kamp, 0 mål. Nederland: 10 skudd/kamp, 3,5 mål. Japan: 9,5 skudd/kamp, 3 mål. Deutschland: 21 skudd/kamp, 4,5 mål.
+      aria-label="Boblediagram: skudd per kamp (x-akse) mot mål per kamp (y-akse). Boblestørrelse viser treffprosent. Tyrkia skiller seg ut med 23,7 skudd/kamp. Norge leder på mål per kamp med 3,5.">
+      Norge: 12 skudd/kamp, 3,5 mål. Tyskland: 17,7 skudd/kamp, 3,3 mål. Tyrkia: 23,7 skudd/kamp, 1,0 mål.
     </canvas>
+  </div>
+  <div class="legend">
+    <div class="legend-item">
+      <span class="legend-dot" style="background:rgba(50,102,173,0.65);border-color:#185FA5"></span>
+      3 kamper spilt
+    </div>
+    <div class="legend-item">
+      <span class="legend-dot" style="background:rgba(29,158,117,0.45);border-color:#0F6E56"></span>
+      2 kamper spilt
+    </div>
   </div>
 </div>
 
@@ -196,25 +206,25 @@ const textColor  = isDark ? '#a0a09a' : '#5f5e5a';
 const gridColor  = isDark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.07)';
 document.getElementById('chart-hint').textContent = isMobile ? 'Trykk på en boble for detaljer.' : 'Hover over en boble for detaljer.';
 
-const twoGames = [
-  {label:'Tyskland',   x:21,   y:4.5, r:45, type:'blue'},
-  {label:'Canada',     x:23,   y:3.5, r:33, type:'blue'},
-  {label:'Nederland',  x:10,   y:3.5, r:65, type:'blue'},
-  {label:'Sverige',    x:14.5, y:3.0, r:52, type:'blue'},
-  {label:'USA',        x:13,   y:3.0, r:31, type:'blue'},
-  {label:'Japan',      x:9.5,  y:3.0, r:32, type:'blue'},
-  {label:'Sveits',     x:19.5, y:2.5, r:36, type:'blue'},
-  {label:'Brasil',     x:9.5,  y:2.0, r:47, type:'blue'},
-  {label:'Tyrkia',     x:31,   y:0.0, r:19, type:'red'},
-  {label:'Ecuador',    x:19.5, y:0.0, r:41, type:'gray'},
+const threeGames = [
+  {label:'Tyskland',   x:17.7, y:3.3, r:40},
+  {label:'Canada',     x:19.0, y:2.7, r:35},
+  {label:'Nederland',  x:14.0, y:3.3, r:48},
+  {label:'Sverige',    x:14.3, y:2.3, r:51},
+  {label:'USA',        x:14.7, y:2.7, r:34},
+  {label:'Japan',      x:8.7,  y:2.3, r:42},
+  {label:'Sveits',     x:15.3, y:2.3, r:48},
+  {label:'Brasil',     x:12.7, y:2.3, r:47},
+  {label:'Tyrkia',     x:23.7, y:1.0, r:24},
+  {label:'Ecuador',    x:14.7, y:0.7, r:43},
 ];
 
-const oneGame = [
-  {label:'Norge',      x:11, y:4.0, r:45, type:'green'},
-  {label:'England',    x:22, y:4.0, r:50, type:'green'},
-  {label:'Frankrike',  x:11, y:3.0, r:73, type:'green'},
-  {label:'Argentina',  x:10, y:3.0, r:60, type:'green'},
-  {label:'Østerrike',  x:10, y:3.0, r:40, type:'green'},
+const twoGames = [
+  {label:'Norge',      x:12.0, y:3.5, r:50},
+  {label:'England',    x:19.5, y:2.0, r:41},
+  {label:'Frankrike',  x:15.5, y:3.0, r:45},
+  {label:'Argentina',  x:10.5, y:2.5, r:43},
+  {label:'Østerrike',  x:7.5,  y:1.5, r:27},
 ];
 
 function bgColor(d) {
@@ -239,10 +249,17 @@ new Chart(document.getElementById('bubbleChart'), {
   data: {
     datasets: [
       {
-        label: 'Lag',
-        data: twoGames.filter(d => d.type === 'blue').map(toPoint),
+        label: '3 kamper spilt',
+        data: threeGames.map(toPoint),
         backgroundColor: 'rgba(50,102,173,0.65)',
         borderColor:     '#185FA5',
+        borderWidth: 1.5,
+      },
+      {
+        label: '2 kamper spilt',
+        data: twoGames.map(toPoint),
+        backgroundColor: 'rgba(29,158,117,0.45)',
+        borderColor:     '#0F6E56',
         borderWidth: 1.5,
       }
     ]
