@@ -30,10 +30,11 @@ try:
 except ImportError as e:
     sys.exit(f"Mangler pakke: {e}")
 
-EXCEL_PATH   = BASE_DIR / "VM2026_avansert_gruppetabeller_og_sluttspill.xlsx"
-CACHE_PATH   = BASE_DIR / "kamper_resultater.json"
-STAT_CACHE   = BASE_DIR / "lagstatistikk_cache.json"
-LIVE_CACHE   = BASE_DIR / "live_cache.json"
+EXCEL_PATH       = BASE_DIR / "VM2026_avansert_gruppetabeller_og_sluttspill.xlsx"
+CACHE_PATH       = BASE_DIR / "kamper_resultater.json"
+SLUTTSPILL_CACHE = BASE_DIR / "sluttspill_cache.json"
+STAT_CACHE       = BASE_DIR / "lagstatistikk_cache.json"
+LIVE_CACHE       = BASE_DIR / "live_cache.json"
 
 _FIFA_BASE   = "https://api.fifa.com/api/v3"
 _FIFA_COMP   = "17"
@@ -77,49 +78,58 @@ def no(name): return NORSK.get(name, name)
 
 def bygg_maal_og_nullere() -> tuple[list[dict], list[dict], list[dict]]:
     with open(CACHE_PATH, encoding="utf-8") as f:
-        cache = json.load(f)
+        gruppe_cache = json.load(f)
+
+    sluttspill_kamper: list = []
+    if SLUTTSPILL_CACHE.exists():
+        with open(SLUTTSPILL_CACHE, encoding="utf-8") as f:
+            for kampeliste in json.load(f).values():
+                sluttspill_kamper.extend(kampeliste)
 
     lag_stats: dict[str, dict] = {}
     kamper: list[dict] = []
 
     def get_lag(navn):
         if navn not in lag_stats:
-            gruppe = neste_gruppe.get(navn, "?")
-            lag_stats[navn] = {"lag": navn, "gruppe": gruppe,
-                               "kamper": 0, "mf": 0, "mm": 0, "nullere": 0}
+            lag_stats[navn] = {"lag": navn, "kamper": 0, "mf": 0, "mm": 0, "nullere": 0}
         return lag_stats[navn]
 
-    neste_gruppe: dict[str, str] = {}
-    for gruppe, kampeliste in cache.items():
-        for k in kampeliste:
-            neste_gruppe[k["hjemme"]] = gruppe
-            neste_gruppe[k["borte"]]  = gruppe
-
-    for gruppe, kampeliste in cache.items():
+    # Gruppespill
+    for kampeliste in gruppe_cache.values():
         for k in kampeliste:
             if not k.get("spilt"):
                 continue
             h = k["hjemme"]; b = k["borte"]
             sh = k["score_h"]; sa = k["score_a"]
-            dato = k.get("dato", "")
-
             get_lag(h)["kamper"] += 1
             get_lag(h)["mf"]     += sh
             get_lag(h)["mm"]     += sa
             if sa == 0: get_lag(h)["nullere"] += 1
-
             get_lag(b)["kamper"] += 1
             get_lag(b)["mf"]     += sa
             get_lag(b)["mm"]     += sh
             if sh == 0: get_lag(b)["nullere"] += 1
+            kamper.append({"hjemme": h, "borte": b,
+                           "score": f"{sh}–{sa}", "totalt": sh + sa, "dato": k.get("dato", "")})
 
-            kamper.append({
-                "hjemme": h, "borte": b,
-                "score":  f"{sh}–{sa}",
-                "totalt": sh + sa,
-                "dato":   dato,
-                "gruppe": gruppe,
-            })
+    # Sluttspill
+    for k in sluttspill_kamper:
+        if not k.get("spilt"):
+            continue
+        h = k["hjemme"]; b = k["borte"]
+        sh = k["score_h"]; sa = k["score_a"]
+        if sh is None or sa is None:
+            continue
+        get_lag(h)["kamper"] += 1
+        get_lag(h)["mf"]     += sh
+        get_lag(h)["mm"]     += sa
+        if sa == 0: get_lag(h)["nullere"] += 1
+        get_lag(b)["kamper"] += 1
+        get_lag(b)["mf"]     += sa
+        get_lag(b)["mm"]     += sh
+        if sh == 0: get_lag(b)["nullere"] += 1
+        kamper.append({"hjemme": h, "borte": b,
+                       "score": f"{sh}–{sa}", "totalt": sh + sa, "dato": k.get("dato", "")})
 
     for s in lag_stats.values():
         k = s["kamper"] or 1
@@ -584,7 +594,6 @@ def skriv_lagstatistikk(maal, nullere, kamper, straffe, selvmål, skudd, formasj
     maal_defs = [
         ("#",        5,  S["ctr"]),
         ("Lag",     22,  S["lft"]),
-        ("Gruppe",   9,  S["ctr"]),
         ("Kamper",   8,  S["ctr"]),
         ("Mål for",  8,  S["ctr"]),
         ("MF/kamp",  9,  S["ctr"]),
@@ -614,7 +623,7 @@ def skriv_lagstatistikk(maal, nullere, kamper, straffe, selvmål, skudd, formasj
         if i > 0 and lag["mf"] != maal[i-1]["mf"]:
             rang = i + 1
         _data_row(ws, S, row,
-                  [rang, lag["lag"], lag["gruppe"], lag["kamper"],
+                  [rang, lag["lag"], lag["kamper"],
                    lag["mf"], lag["mf_str"], lag["mm"], lag["mm_str"]],
                   maal_defs, rang if rang <= 3 else None)
         row += 1
@@ -624,7 +633,6 @@ def skriv_lagstatistikk(maal, nullere, kamper, straffe, selvmål, skudd, formasj
     sub_defs = [
         ("#",        5,  S["ctr"]),
         ("Hjemmelag",22, S["lft"]),
-        ("Gruppe",   9,  S["ctr"]),
         ("Resultat", 8,  S["ctr"]),
         ("Bortelag", 22, S["lft"]),
         ("Dato",     9,  S["ctr"]),
@@ -640,7 +648,7 @@ def skriv_lagstatistikk(maal, nullere, kamper, straffe, selvmål, skudd, formasj
             rang = i + 1
         dato_fmt = k["dato"][8:10] + "." + k["dato"][5:7] if len(k.get("dato","")) >= 10 else ""
         _data_row(ws, S, row,
-                  [rang, k["hjemme"], k["gruppe"], k["score"], k["borte"], dato_fmt, k["totalt"]],
+                  [rang, k["hjemme"], k["score"], k["borte"], dato_fmt, k["totalt"]],
                   sub_defs, rang if rang <= 3 else None)
         row += 1
 
@@ -650,7 +658,6 @@ def skriv_lagstatistikk(maal, nullere, kamper, straffe, selvmål, skudd, formasj
     null_defs = [
         ("#",            5,  S["ctr"]),
         ("Lag",         22,  S["lft"]),
-        ("Gruppe",       9,  S["ctr"]),
         ("Kamper",       8,  S["ctr"]),
         ("Clean sheet", 13, S["ctr"]),
         ("Andel",        9,  S["ctr"]),
@@ -666,8 +673,7 @@ def skriv_lagstatistikk(maal, nullere, kamper, straffe, selvmål, skudd, formasj
             rang = i + 1
         andel = f"{lag['nullere']}/{lag['kamper']}"
         _data_row(ws, S, row,
-                  [rang, lag["lag"], lag["gruppe"],
-                   lag["kamper"], lag["nullere"], andel],
+                  [rang, lag["lag"], lag["kamper"], lag["nullere"], andel],
                   null_defs, rang if rang <= 3 else None)
         row += 1
 
