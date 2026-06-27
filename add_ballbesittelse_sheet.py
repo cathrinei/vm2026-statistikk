@@ -15,10 +15,11 @@ try:
 except ImportError as e:
     sys.exit(f"Mangler pakke: {e}")
 
-EXCEL_PATH = BASE_DIR / "VM2026_avansert_gruppetabeller_og_sluttspill.xlsx"
-STATS_PATH = BASE_DIR / "wc2026_stats3.json"
-CACHE_PATH = BASE_DIR / "kamper_resultater.json"
-SHEET_NAME = "Ballbesittelse"
+EXCEL_PATH      = BASE_DIR / "VM2026_avansert_gruppetabeller_og_sluttspill.xlsx"
+STATS_PATH      = BASE_DIR / "wc2026_stats3.json"
+CACHE_PATH      = BASE_DIR / "kamper_resultater.json"
+SLUTTSPILL_PATH = BASE_DIR / "sluttspill_cache.json"
+SHEET_NAME      = "Ballbesittelse"
 
 NORSK = {
     "Mexico": "Mexico", "South Africa": "Sør-Afrika", "Korea Republic": "Sør-Korea",
@@ -74,6 +75,16 @@ def bygg_data() -> list[dict]:
             key = _norm(k["hjemme"]) + "|" + _norm(k["borte"])
             kamp_idx[key] = {"gruppe": gruppe, "hjemme": k["hjemme"], "borte": k["borte"]}
 
+    if SLUTTSPILL_PATH.exists():
+        with open(SLUTTSPILL_PATH, encoding="utf-8") as f:
+            sluttspill = json.load(f)
+        for runde, kamper in sluttspill.items():
+            for k in kamper:
+                h, b = k.get("hjemme", ""), k.get("borte", "")
+                if h and b and h != "TBA" and b != "TBA":
+                    key = _norm(h) + "|" + _norm(b)
+                    kamp_idx[key] = {"gruppe": runde, "hjemme": h, "borte": b}
+
     rader = []
     ikke_matchet = []
     for entry in stats.values():
@@ -120,6 +131,8 @@ def bygg_data() -> list[dict]:
         print(f"  ADVARSEL: {len(ikke_matchet)} ikke matchet: {', '.join(ikke_matchet)}")
 
     gruppe_order = {f"Gruppe {x}": i for i, x in enumerate("ABCDEFGHIJKL")}
+    sluttspill_order = {"16-delsfinaler": 20, "8-delsfinaler": 21, "Kvartfinaler": 22, "Semifinaler": 23, "Bronsefinale": 24, "Finale": 25}
+    gruppe_order.update(sluttspill_order)
     rader.sort(key=lambda r: (gruppe_order.get(r["gruppe"], 99), r["hjemme"]))
     return rader
 
