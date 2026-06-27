@@ -614,6 +614,7 @@ def skriv_kamper_til_excel(grupper: dict[str, list[dict]],
         ws.row_dimensions[11].height = 20
         tab_cols = [
             ("Lag",  22, S["lft"]),
+            ("P",     6, S["ctr"]),
             ("K",     5, S["ctr"]),
             ("V",     5, S["ctr"]),
             ("U",     5, S["ctr"]),
@@ -621,7 +622,6 @@ def skriv_kamper_til_excel(grupper: dict[str, list[dict]],
             ("MF",    6, S["ctr"]),
             ("MM",    6, S["ctr"]),
             ("MD",    6, S["ctr"]),
-            ("P",     6, S["ctr"]),
         ]
         for col, (label, _, al) in enumerate(tab_cols, 1):
             c = ws.cell(row=11, column=col, value=label)
@@ -651,6 +651,7 @@ def skriv_kamper_til_excel(grupper: dict[str, list[dict]],
             md_str = (f"+{md}" if md > 0 else str(md)) if played else None
             vals = [
                 row_data["lag"],
+                row_data["p"]  if played else None,
                 row_data["k"]  if played else None,
                 row_data["v"]  if played else None,
                 row_data["u"]  if played else None,
@@ -658,14 +659,13 @@ def skriv_kamper_til_excel(grupper: dict[str, list[dict]],
                 row_data["mf"] if played else None,
                 row_data["mm"] if played else None,
                 md_str,
-                row_data["p"]  if played else None,
             ]
             for col, (val, (_, _, al)) in enumerate(zip(vals, tab_cols), 1):
                 c = ws.cell(row=row, column=col, value=val)
                 c.fill = bg
                 c.border = S["bot"]
                 c.alignment = al
-                if col == 9 and row_data["k"] > 0:
+                if col == 2 and row_data["k"] > 0:
                     c.font = S["f_score"]
                 elif col == 1:
                     c.font = S["f_data"]
