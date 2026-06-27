@@ -268,7 +268,7 @@ def hent_resultater(grupper: dict[str, list[dict]]) -> set[str]:
                 k["id"]      = m.get("IdMatch", "")
                 officials = m.get("Officials") or []
                 k["dommer"] = next(
-                    (next((n["Description"] for n in (o.get("NameShort") or [])
+                    (next((n["Description"] for n in (o.get("Name") or [])
                            if n.get("Locale") == "en-GB"), "")
                      for o in officials if o.get("OfficialType") == 1),
                     ""
