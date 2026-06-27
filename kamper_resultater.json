@@ -538,10 +538,12 @@
       "borte": "Belgia",
       "hjemme_en": "New Zealand",
       "borte_en": "Belgium",
-      "score_h": null,
-      "score_a": null,
-      "spilt": false,
-      "tid": "05:00"
+      "score_h": 1,
+      "score_a": 5,
+      "spilt": true,
+      "tid": "05:00",
+      "id": "400021481",
+      "dommer": "Adham MAKHADMEH"
     },
     {
       "dato": "2026-06-27",
@@ -549,10 +551,12 @@
       "borte": "Iran",
       "hjemme_en": "Egypt",
       "borte_en": "Iran",
-      "score_h": null,
-      "score_a": null,
-      "spilt": false,
-      "tid": "05:00"
+      "score_h": 1,
+      "score_a": 1,
+      "spilt": true,
+      "tid": "05:00",
+      "id": "400021479",
+      "dommer": "Szymon MARCINIAK"
     }
   ],
   "Gruppe H": [
@@ -614,10 +618,12 @@
       "borte": "Spania",
       "hjemme_en": "Uruguay",
       "borte_en": "Spain",
-      "score_h": null,
-      "score_a": null,
-      "spilt": false,
-      "tid": "02:00"
+      "score_h": 0,
+      "score_a": 1,
+      "spilt": true,
+      "tid": "02:00",
+      "id": "400021484",
+      "dommer": "Ismail ELFATH"
     },
     {
       "dato": "2026-06-27",
@@ -625,10 +631,12 @@
       "borte": "Saudi-Arabia",
       "hjemme_en": "Cape Verde",
       "borte_en": "Saudi Arabia",
-      "score_h": null,
-      "score_a": null,
-      "spilt": false,
-      "tid": "02:00"
+      "score_h": 0,
+      "score_a": 0,
+      "spilt": true,
+      "tid": "02:00",
+      "id": "400021485",
+      "dommer": "Francois LETEXIER"
     }
   ],
   "Gruppe I": [
