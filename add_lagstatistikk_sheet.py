@@ -30,10 +30,11 @@ try:
 except ImportError as e:
     sys.exit(f"Mangler pakke: {e}")
 
-EXCEL_PATH   = BASE_DIR / "VM2026_avansert_gruppetabeller_og_sluttspill.xlsx"
-CACHE_PATH   = BASE_DIR / "kamper_resultater.json"
-STAT_CACHE   = BASE_DIR / "lagstatistikk_cache.json"
-LIVE_CACHE   = BASE_DIR / "live_cache.json"
+EXCEL_PATH       = BASE_DIR / "VM2026_avansert_gruppetabeller_og_sluttspill.xlsx"
+CACHE_PATH       = BASE_DIR / "kamper_resultater.json"
+SLUTTSPILL_CACHE = BASE_DIR / "sluttspill_cache.json"
+STAT_CACHE       = BASE_DIR / "lagstatistikk_cache.json"
+LIVE_CACHE       = BASE_DIR / "live_cache.json"
 
 _FIFA_BASE   = "https://api.fifa.com/api/v3"
 _FIFA_COMP   = "17"
@@ -77,49 +78,58 @@ def no(name): return NORSK.get(name, name)
 
 def bygg_maal_og_nullere() -> tuple[list[dict], list[dict], list[dict]]:
     with open(CACHE_PATH, encoding="utf-8") as f:
-        cache = json.load(f)
+        gruppe_cache = json.load(f)
+
+    sluttspill_kamper: list = []
+    if SLUTTSPILL_CACHE.exists():
+        with open(SLUTTSPILL_CACHE, encoding="utf-8") as f:
+            for kampeliste in json.load(f).values():
+                sluttspill_kamper.extend(kampeliste)
 
     lag_stats: dict[str, dict] = {}
     kamper: list[dict] = []
 
     def get_lag(navn):
         if navn not in lag_stats:
-            gruppe = neste_gruppe.get(navn, "?")
-            lag_stats[navn] = {"lag": navn, "gruppe": gruppe,
-                               "kamper": 0, "mf": 0, "mm": 0, "nullere": 0}
+            lag_stats[navn] = {"lag": navn, "kamper": 0, "mf": 0, "mm": 0, "nullere": 0}
         return lag_stats[navn]
 
-    neste_gruppe: dict[str, str] = {}
-    for gruppe, kampeliste in cache.items():
-        for k in kampeliste:
-            neste_gruppe[k["hjemme"]] = gruppe
-            neste_gruppe[k["borte"]]  = gruppe
-
-    for gruppe, kampeliste in cache.items():
+    # Gruppespill
+    for kampeliste in gruppe_cache.values():
         for k in kampeliste:
             if not k.get("spilt"):
                 continue
             h = k["hjemme"]; b = k["borte"]
             sh = k["score_h"]; sa = k["score_a"]
-            dato = k.get("dato", "")
-
             get_lag(h)["kamper"] += 1
             get_lag(h)["mf"]     += sh
             get_lag(h)["mm"]     += sa
             if sa == 0: get_lag(h)["nullere"] += 1
-
             get_lag(b)["kamper"] += 1
             get_lag(b)["mf"]     += sa
             get_lag(b)["mm"]     += sh
             if sh == 0: get_lag(b)["nullere"] += 1
+            kamper.append({"hjemme": h, "borte": b,
+                           "score": f"{sh}–{sa}", "totalt": sh + sa, "dato": k.get("dato", "")})
 
-            kamper.append({
-                "hjemme": h, "borte": b,
-                "score":  f"{sh}–{sa}",
-                "totalt": sh + sa,
-                "dato":   dato,
-                "gruppe": gruppe,
-            })
+    # Sluttspill
+    for k in sluttspill_kamper:
+        if not k.get("spilt"):
+            continue
+        h = k["hjemme"]; b = k["borte"]
+        sh = k["score_h"]; sa = k["score_a"]
+        if sh is None or sa is None:
+            continue
+        get_lag(h)["kamper"] += 1
+        get_lag(h)["mf"]     += sh
+        get_lag(h)["mm"]     += sa
+        if sa == 0: get_lag(h)["nullere"] += 1
+        get_lag(b)["kamper"] += 1
+        get_lag(b)["mf"]     += sa
+        get_lag(b)["mm"]     += sh
+        if sh == 0: get_lag(b)["nullere"] += 1
+        kamper.append({"hjemme": h, "borte": b,
+                       "score": f"{sh}–{sa}", "totalt": sh + sa, "dato": k.get("dato", "")})
 
     for s in lag_stats.values():
         k = s["kamper"] or 1
@@ -220,14 +230,17 @@ def _hent_og_cache_events():
                     events = (r2.json() or {}).get("Event") or []
                     stat_cache[mid] = [
                         {
-                            "Type":          ev.get("Type"),
-                            "TypeLocalized": _loc(ev),
-                            "IdTeam":        ev.get("IdTeam", ""),
-                            "IdPlayer":      ev.get("IdPlayer", ""),
-                            "PlayerName":    _player_name(ev),
-                            "MatchMinute":   ev.get("MatchMinute", ""),
-                            "HomeGoals":     ev.get("HomeGoals"),
-                            "AwayGoals":     ev.get("AwayGoals"),
+                            "Type":             ev.get("Type"),
+                            "TypeLocalized":    _loc(ev),
+                            "IdTeam":           ev.get("IdTeam", ""),
+                            "IdPlayer":         ev.get("IdPlayer", ""),
+                            "PlayerName":       _player_name(ev),
+                            "MatchMinute":      ev.get("MatchMinute", ""),
+                            "Period":           ev.get("Period"),
+                            "HomeGoals":        ev.get("HomeGoals"),
+                            "AwayGoals":        ev.get("AwayGoals"),
+                            "HomePenaltyGoals": ev.get("HomePenaltyGoals"),
+                            "AwayPenaltyGoals": ev.get("AwayPenaltyGoals"),
                         }
                         for ev in events
                     ]
@@ -251,8 +264,25 @@ def _hent_og_cache_events():
 
 # ── Seksjon 3: Straffespark ───────────────────────────────────────────────────
 
-def bygg_straffespark(played, team_names, stat_cache, gruppe_for_lag) -> list[dict]:
-    lag_straffe: dict[str, dict] = defaultdict(lambda: {"tilkjente": 0, "scoret": 0})
+# Period-verdier i FIFA API (2026): 3=1.omgang, 5=2.omgang, 6=ET 1.omgang,
+# 7=ET 2.omgang, 9=straffesparkkonkurranse, 10=slutt.
+# Eksisterende cache-oppføringer uten Period-felt regnes som kampstraffer.
+_SHOOTOUT_PERIOD = 9
+
+
+def _er_shootout(ev: dict) -> bool:
+    p = ev.get("Period")
+    return p is not None and p >= _SHOOTOUT_PERIOD
+
+
+def bygg_straffespark(played, team_names, stat_cache) -> tuple[list[dict], list[dict], list[dict]]:
+    """Returnerer (lag_kamp, spiller_kamp, spiller_shootout).
+    Kampstraffer = straffer i ordinær tid + ekstraomganger (Period < 9).
+    Shootout = straffesparkkonkurransen (Period >= 9).
+    """
+    lag_kamp: dict[str, dict] = defaultdict(lambda: {"tilkjente": 0, "scoret": 0})
+    spiller_kamp: dict[str, dict] = defaultdict(lambda: defaultdict(lambda: {"scoret": 0, "brent": 0}))
+    spiller_shootout: dict[str, dict] = defaultdict(lambda: defaultdict(lambda: {"scoret": 0, "brent": 0}))
 
     for m in played:
         mid = m["IdMatch"]
@@ -260,32 +290,63 @@ def bygg_straffespark(played, team_names, stat_cache, gruppe_for_lag) -> list[di
             loc     = (ev.get("TypeLocalized") or "").lower()
             ev_team = ev.get("IdTeam", "")
             lag_no  = team_names.get(ev_team, ev_team)
+            spiller = " ".join(w.capitalize() for w in (ev.get("PlayerName") or "").split())
+            shootout = _er_shootout(ev)
 
-            if loc == "penalty awarded":
-                lag_straffe[lag_no]["tilkjente"] += 1
+            if loc == "penalty awarded" and not shootout:
+                lag_kamp[lag_no]["tilkjente"] += 1
             elif loc == "penalty goal":
-                lag_straffe[lag_no]["scoret"] += 1
+                if shootout:
+                    if spiller:
+                        spiller_shootout[lag_no][spiller]["scoret"] += 1
+                else:
+                    lag_kamp[lag_no]["scoret"] += 1
+                    if spiller:
+                        spiller_kamp[lag_no][spiller]["scoret"] += 1
+            elif loc in ("penalty missed", "penalty saved"):
+                if shootout:
+                    if spiller:
+                        spiller_shootout[lag_no][spiller]["brent"] += 1
+                else:
+                    if spiller:
+                        spiller_kamp[lag_no][spiller]["brent"] += 1
 
-    result = []
-    for lag, s in lag_straffe.items():
-        if s["tilkjente"] == 0:
-            continue
-        ikke_scoret = s["tilkjente"] - s["scoret"]
-        result.append({
-            "lag":         lag,
-            "gruppe":      gruppe_for_lag.get(lag, "?"),
-            "tilkjente":   s["tilkjente"],
-            "scoret":      s["scoret"],
-            "ikke_scoret": ikke_scoret,
-            "andel":       f"{s['scoret']}/{s['tilkjente']}",
-        })
+    def _lag_result(lag_dict):
+        result = []
+        for lag, s in lag_dict.items():
+            if s["tilkjente"] == 0:
+                continue
+            ikke_scoret = s["tilkjente"] - s["scoret"]
+            result.append({
+                "lag":         lag,
+                "tilkjente":   s["tilkjente"],
+                "scoret":      s["scoret"],
+                "ikke_scoret": ikke_scoret,
+                "andel":       f"{s['scoret']}/{s['tilkjente']}",
+            })
+        return sorted(result, key=lambda x: (-x["tilkjente"], -x["scoret"]))
 
-    return sorted(result, key=lambda x: (-x["tilkjente"], -x["scoret"]))
+    def _spiller_result(spiller_dict):
+        result = []
+        for lag, spillere in spiller_dict.items():
+            for spiller, tall in spillere.items():
+                tot = tall["scoret"] + tall["brent"]
+                result.append({
+                    "lag":     lag,
+                    "spiller": spiller,
+                    "scoret":  tall["scoret"],
+                    "brent":   tall["brent"],
+                    "forsøkt": tot,
+                    "andel":   f"{tall['scoret']}/{tot}",
+                })
+        return sorted(result, key=lambda x: (-x["forsøkt"], -x["scoret"], x["lag"]))
+
+    return _lag_result(lag_kamp), _spiller_result(spiller_kamp), _spiller_result(spiller_shootout)
 
 
 # ── Seksjon 4: Selvmål ────────────────────────────────────────────────────────
 
-def bygg_selvmål(played, team_names, stat_cache, gruppe_for_lag, match_info) -> list[dict]:
+def bygg_selvmål(played, team_names, stat_cache, match_info) -> list[dict]:
     selvmål = []
 
     for m in played:
@@ -302,11 +363,10 @@ def bygg_selvmål(played, team_names, stat_cache, gruppe_for_lag, match_info) ->
             spiller = ev.get("PlayerName", "") or "?"
             minutt  = ev.get("MatchMinute", "")
             selvmål.append({
-                "lag":    lag,
-                "gruppe": gruppe_for_lag.get(lag, "?"),
+                "lag":     lag,
                 "spiller": spiller,
-                "kamp":   kamp_str,
-                "minutt": f"{minutt}'" if minutt else "",
+                "kamp":    kamp_str,
+                "minutt":  f"{minutt}'" if minutt else "",
             })
 
     lag_count: dict[str, int] = defaultdict(int)
@@ -362,7 +422,7 @@ def _hent_live_data(played: list, team_names: dict) -> dict:
 
 # ── Seksjon 5: Skudd ─────────────────────────────────────────────────────────
 
-def bygg_skudd(team_names: dict, gruppe_for_lag: dict, kamper_per_lag: dict) -> list[dict]:
+def bygg_skudd(team_names: dict, kamper_per_lag: dict) -> list[dict]:
     """Henter spillerstatistikk fra FIFA og aggregerer skudd/skudd-på-mål per lag."""
     try:
         r = requests.get(
@@ -394,7 +454,6 @@ def bygg_skudd(team_names: dict, gruppe_for_lag: dict, kamper_per_lag: dict) -> 
         på_mål = s["på_mål"]
         result.append({
             "lag":         lag,
-            "gruppe":      gruppe_for_lag.get(lag, "?"),
             "kamper":      kamper,
             "skudd":       skudd,
             "skudd_snitt": f"{skudd/kamper:.1f}".replace(".", ",") if kamper else "0,0",
@@ -407,8 +466,7 @@ def bygg_skudd(team_names: dict, gruppe_for_lag: dict, kamper_per_lag: dict) -> 
 
 # ── Seksjon 6: Formasjoner ────────────────────────────────────────────────────
 
-def bygg_formasjoner(played: list, team_names: dict,
-                     live_cache: dict, gruppe_for_lag: dict) -> list[dict]:
+def bygg_formasjoner(played: list, team_names: dict, live_cache: dict) -> list[dict]:
     """Per lag: hvilke formasjoner de har brukt (fra live-API Tactics-felt)."""
     from collections import Counter
     lag_form: dict[str, Counter] = defaultdict(Counter)
@@ -437,7 +495,6 @@ def bygg_formasjoner(played: list, team_names: dict,
         )
         result.append({
             "lag":       lag,
-            "gruppe":    gruppe_for_lag.get(lag, "?"),
             "kamper":    sum(counter.values()),
             "primær":    primary,
             "formasjon": alle,
@@ -463,8 +520,7 @@ def _parse_min(s: str):
         return None
 
 
-def bygg_spillerbytter(played: list, team_names: dict,
-                       stat_cache: dict, gruppe_for_lag: dict) -> list[dict]:
+def bygg_spillerbytter(played: list, team_names: dict, stat_cache: dict) -> list[dict]:
     """Per lag: total bytter, bytter/kamp, snitt-minutt, tidligste bytte."""
     lag_minutter: dict[str, list] = defaultdict(list)
     lag_kamper:   dict[str, int]  = defaultdict(int)
@@ -499,7 +555,6 @@ def bygg_spillerbytter(played: list, team_names: dict,
         tidlig = min(minutter) if minutter else None
         result.append({
             "lag":          lag,
-            "gruppe":       gruppe_for_lag.get(lag, "?"),
             "kamper":       kamper,
             "bytter":       tot,
             "bytter_snitt": f"{tot/kamper:.1f}".replace(".", ","),
@@ -561,7 +616,7 @@ def _data_row(ws, S, row, vals, col_defs, rang=None):
         c.font = f0 if col == 1 else S["f_data"]
 
 
-def skriv_lagstatistikk(maal, nullere, kamper, straffe, selvmål, skudd, formasjoner, bytter):
+def skriv_lagstatistikk(maal, nullere, kamper, straffe, straffe_spillere, shootout_spillere, selvmål, skudd, formasjoner, bytter):
     S = _styles()
     ncols = 8
 
@@ -584,7 +639,6 @@ def skriv_lagstatistikk(maal, nullere, kamper, straffe, selvmål, skudd, formasj
     maal_defs = [
         ("#",        5,  S["ctr"]),
         ("Lag",     22,  S["lft"]),
-        ("Gruppe",   9,  S["ctr"]),
         ("Kamper",   8,  S["ctr"]),
         ("Mål for",  8,  S["ctr"]),
         ("MF/kamp",  9,  S["ctr"]),
@@ -614,7 +668,7 @@ def skriv_lagstatistikk(maal, nullere, kamper, straffe, selvmål, skudd, formasj
         if i > 0 and lag["mf"] != maal[i-1]["mf"]:
             rang = i + 1
         _data_row(ws, S, row,
-                  [rang, lag["lag"], lag["gruppe"], lag["kamper"],
+                  [rang, lag["lag"], lag["kamper"],
                    lag["mf"], lag["mf_str"], lag["mm"], lag["mm_str"]],
                   maal_defs, rang if rang <= 3 else None)
         row += 1
@@ -624,7 +678,6 @@ def skriv_lagstatistikk(maal, nullere, kamper, straffe, selvmål, skudd, formasj
     sub_defs = [
         ("#",        5,  S["ctr"]),
         ("Hjemmelag",22, S["lft"]),
-        ("Gruppe",   9,  S["ctr"]),
         ("Resultat", 8,  S["ctr"]),
         ("Bortelag", 22, S["lft"]),
         ("Dato",     9,  S["ctr"]),
@@ -640,7 +693,7 @@ def skriv_lagstatistikk(maal, nullere, kamper, straffe, selvmål, skudd, formasj
             rang = i + 1
         dato_fmt = k["dato"][8:10] + "." + k["dato"][5:7] if len(k.get("dato","")) >= 10 else ""
         _data_row(ws, S, row,
-                  [rang, k["hjemme"], k["gruppe"], k["score"], k["borte"], dato_fmt, k["totalt"]],
+                  [rang, k["hjemme"], k["score"], k["borte"], dato_fmt, k["totalt"]],
                   sub_defs, rang if rang <= 3 else None)
         row += 1
 
@@ -650,7 +703,6 @@ def skriv_lagstatistikk(maal, nullere, kamper, straffe, selvmål, skudd, formasj
     null_defs = [
         ("#",            5,  S["ctr"]),
         ("Lag",         22,  S["lft"]),
-        ("Gruppe",       9,  S["ctr"]),
         ("Kamper",       8,  S["ctr"]),
         ("Clean sheet", 13, S["ctr"]),
         ("Andel",        9,  S["ctr"]),
@@ -666,8 +718,7 @@ def skriv_lagstatistikk(maal, nullere, kamper, straffe, selvmål, skudd, formasj
             rang = i + 1
         andel = f"{lag['nullere']}/{lag['kamper']}"
         _data_row(ws, S, row,
-                  [rang, lag["lag"], lag["gruppe"],
-                   lag["kamper"], lag["nullere"], andel],
+                  [rang, lag["lag"], lag["kamper"], lag["nullere"], andel],
                   null_defs, rang if rang <= 3 else None)
         row += 1
 
@@ -677,25 +728,55 @@ def skriv_lagstatistikk(maal, nullere, kamper, straffe, selvmål, skudd, formasj
     str_defs = [
         ("#",           5,  S["ctr"]),
         ("Lag",        22,  S["lft"]),
-        ("Gruppe",      9,  S["ctr"]),
         ("Tilkjente",   9,  S["ctr"]),
         ("Scoret",      8,  S["ctr"]),
         ("Ikke scoret", 11, S["ctr"]),
         ("Andel",       8,  S["ctr"]),
     ]
+    str_spiller_defs = [
+        ("#",        5,  S["ctr"]),
+        ("Spiller", 26,  S["lft"]),
+        ("Lag",     22,  S["lft"]),
+        ("Scoret",   8,  S["ctr"]),
+        ("Forsøkt",  8,  S["ctr"]),
+        ("Andel",    8,  S["ctr"]),
+    ]
 
     if straffe:
-        _title_row(ws, S, row, ncols, "VM 2026 — Straffespark"); row += 1
+        _title_row(ws, S, row, ncols, "VM 2026 — Straffespark per lag (ordinær tid + ekstraomganger)"); row += 1
         _header_row(ws, S, row, str_defs); row += 1
         rang = 1
         for i, s in enumerate(straffe):
             if i > 0 and s["tilkjente"] != straffe[i-1]["tilkjente"]:
                 rang = i + 1
             _data_row(ws, S, row,
-                      [rang, s["lag"], s["gruppe"],
-                       s["tilkjente"], s["scoret"], s["ikke_scoret"], s["andel"]],
+                      [rang, s["lag"], s["tilkjente"], s["scoret"], s["ikke_scoret"], s["andel"]],
                       str_defs, rang if rang <= 3 else None)
             row += 1
+        if straffe_spillere:
+            row += 1
+            _title_row(ws, S, row, ncols, "VM 2026 — Kampstraffer per spiller (ordinær tid + ekstraomganger)"); row += 1
+            _header_row(ws, S, row, str_spiller_defs); row += 1
+            rang = 1
+            for i, s in enumerate(straffe_spillere):
+                if i > 0 and s["forsøkt"] != straffe_spillere[i-1]["forsøkt"]:
+                    rang = i + 1
+                _data_row(ws, S, row,
+                          [rang, s["spiller"], s["lag"], s["scoret"], s["forsøkt"], s["andel"]],
+                          str_spiller_defs, rang if rang <= 3 else None)
+                row += 1
+        if shootout_spillere:
+            row += 1
+            _title_row(ws, S, row, ncols, "VM 2026 — Straffesparkkonkurranse per spiller"); row += 1
+            _header_row(ws, S, row, str_spiller_defs); row += 1
+            rang = 1
+            for i, s in enumerate(shootout_spillere):
+                if i > 0 and s["forsøkt"] != shootout_spillere[i-1]["forsøkt"]:
+                    rang = i + 1
+                _data_row(ws, S, row,
+                          [rang, s["spiller"], s["lag"], s["scoret"], s["forsøkt"], s["andel"]],
+                          str_spiller_defs, rang if rang <= 3 else None)
+                row += 1
     else:
         _title_row(ws, S, row, ncols, "VM 2026 — Straffespark"); row += 1
         ws.cell(row=row, column=1, value="Straffespark: ingen data tilgjengelig fra FIFA API.")
@@ -708,7 +789,6 @@ def skriv_lagstatistikk(maal, nullere, kamper, straffe, selvmål, skudd, formasj
     og_defs = [
         ("#",        5,  S["ctr"]),
         ("Lag",     22,  S["lft"]),
-        ("Gruppe",   9,  S["ctr"]),
         ("Spiller", 26,  S["lft"]),
         ("Kamp",    30,  S["lft"]),
         ("Minutt",   8,  S["ctr"]),
@@ -729,7 +809,7 @@ def skriv_lagstatistikk(maal, nullere, kamper, straffe, selvmål, skudd, formasj
             r_lag = lag_rang[s["lag"]]
             spiller_fmt = " ".join(w.capitalize() for w in s["spiller"].split())
             _data_row(ws, S, row,
-                      [r_lag, s["lag"], s["gruppe"], spiller_fmt, s["kamp"], s["minutt"]],
+                      [r_lag, s["lag"], spiller_fmt, s["kamp"], s["minutt"]],
                       og_defs, r_lag if r_lag <= 3 else None)
             row += 1
     else:
@@ -743,7 +823,6 @@ def skriv_lagstatistikk(maal, nullere, kamper, straffe, selvmål, skudd, formasj
     skudd_defs = [
         ("#",           5,  S["ctr"]),
         ("Lag",        22,  S["lft"]),
-        ("Gruppe",      9,  S["ctr"]),
         ("Kamper",      8,  S["ctr"]),
         ("Skudd",       8,  S["ctr"]),
         ("Skudd/kamp",  9,  S["ctr"]),
@@ -760,7 +839,7 @@ def skriv_lagstatistikk(maal, nullere, kamper, straffe, selvmål, skudd, formasj
             if i > 0 and s["skudd"] != skudd[i-1]["skudd"]:
                 rang = i + 1
             _data_row(ws, S, row,
-                      [rang, s["lag"], s["gruppe"], s["kamper"],
+                      [rang, s["lag"], s["kamper"],
                        s["skudd"], s["skudd_snitt"], s["på_mål"], s["treff_pst"]],
                       skudd_defs, rang if rang <= 3 else None)
             row += 1
@@ -775,7 +854,6 @@ def skriv_lagstatistikk(maal, nullere, kamper, straffe, selvmål, skudd, formasj
     form_defs = [
         ("#",            5,  S["ctr"]),
         ("Lag",         22,  S["lft"]),
-        ("Gruppe",       9,  S["ctr"]),
         ("Kamper",       8,  S["ctr"]),
         ("Formasjon(er)",14, S["lft"]),
     ]
@@ -790,7 +868,7 @@ def skriv_lagstatistikk(maal, nullere, kamper, straffe, selvmål, skudd, formasj
             if prev_form is not None and f["primær"] != prev_form:
                 rang = i + 1
             _data_row(ws, S, row,
-                      [rang, f["lag"], f["gruppe"], f["kamper"], f["formasjon"]],
+                      [rang, f["lag"], f["kamper"], f["formasjon"]],
                       form_defs, None)
             prev_form = f["primær"]
             row += 1
@@ -805,7 +883,6 @@ def skriv_lagstatistikk(maal, nullere, kamper, straffe, selvmål, skudd, formasj
     bytte_defs = [
         ("#",         5,  S["ctr"]),
         ("Lag",      22,  S["lft"]),
-        ("Gruppe",    9,  S["ctr"]),
         ("Kamper",    8,  S["ctr"]),
         ("Bytter",   14,  S["ctr"]),
         ("B/kamp",    9,  S["ctr"]),
@@ -819,7 +896,7 @@ def skriv_lagstatistikk(maal, nullere, kamper, straffe, selvmål, skudd, formasj
         _header_row(ws, S, row, bytte_defs); row += 1
         for i, b in enumerate(bytter):
             _data_row(ws, S, row,
-                      [i + 1, b["lag"], b["gruppe"], b["kamper"],
+                      [i + 1, b["lag"], b["kamper"],
                        b["bytter"], b["bytter_snitt"], b["snitt_min"], b["tidligste"]],
                       bytte_defs, None)
             row += 1
@@ -848,29 +925,30 @@ def main():
     print(f"  {len(maal)} lag, {len(kamper)} kamper")
 
     print("\n[2/7] Henter timeline-data fra FIFA API...")
-    played, team_names, stat_cache, gruppe_for_lag, match_info = _hent_og_cache_events()
+    played, team_names, stat_cache, _, match_info = _hent_og_cache_events()
 
     print("\n[3/7] Prosesserer straffespark og selvmål...")
-    straffe = bygg_straffespark(played, team_names, stat_cache, gruppe_for_lag)
-    selvmål = bygg_selvmål(played, team_names, stat_cache, gruppe_for_lag, match_info)
-    print(f"  {len(straffe)} lag med straffespark, {len(selvmål)} selvmål")
+    straffe, straffe_spillere, shootout_spillere = bygg_straffespark(played, team_names, stat_cache)
+    selvmål = bygg_selvmål(played, team_names, stat_cache, match_info)
+    print(f"  {len(straffe)} lag med kampstraffer, {len(straffe_spillere)} spiller(e), "
+          f"{len(shootout_spillere)} shootout-spiller(e), {len(selvmål)} selvmål")
 
     print("\n[4/7] Henter skuddstatistikk fra FIFA API...")
     kamper_per_lag = {m["lag"]: m["kamper"] for m in maal}
-    skudd = bygg_skudd(team_names, gruppe_for_lag, kamper_per_lag)
+    skudd = bygg_skudd(team_names, kamper_per_lag)
     print(f"  {len(skudd)} lag med skudddata")
 
     print("\n[5/7] Henter formasjonsdata fra FIFA live-API...")
     live_cache   = _hent_live_data(played, team_names)
-    formasjoner  = bygg_formasjoner(played, team_names, live_cache, gruppe_for_lag)
+    formasjoner  = bygg_formasjoner(played, team_names, live_cache)
     print(f"  {len(formasjoner)} lag med formasjonsdata")
 
     print("\n[6/7] Beregner spillerbytte-timing...")
-    bytter = bygg_spillerbytter(played, team_names, stat_cache, gruppe_for_lag)
+    bytter = bygg_spillerbytter(played, team_names, stat_cache)
     print(f"  {len(bytter)} lag med bytte-data")
 
     print("\n[7/7] Skriver Excel-ark...")
-    skriv_lagstatistikk(maal, nullere, kamper, straffe, selvmål, skudd, formasjoner, bytter)
+    skriv_lagstatistikk(maal, nullere, kamper, straffe, straffe_spillere, shootout_spillere, selvmål, skudd, formasjoner, bytter)
 
     print("\nFerdig.")
 

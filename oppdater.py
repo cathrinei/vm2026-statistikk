@@ -52,12 +52,13 @@ BASE_DIR = Path(__file__).parent
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
 PYTHON          = sys.executable
-CACHE_PATH      = Path(BASE_DIR / "kamper_resultater.json")
-CLUBS_JSON      = Path(BASE_DIR / "clubs_new.json")
-PLAYERS_JSON    = Path(BASE_DIR / "players.json")
-TOP_DIVISION_PY = Path(BASE_DIR / "top_division.py")
-LEVEL_MAP_PY    = Path(BASE_DIR / "level_map.py")
-EXCEL_PATH      = Path(BASE_DIR / "VM2026_avansert_gruppetabeller_og_sluttspill.xlsx")
+CACHE_PATH           = Path(BASE_DIR / "kamper_resultater.json")
+SLUTTSPILL_CACHE     = Path(BASE_DIR / "sluttspill_cache.json")
+CLUBS_JSON           = Path(BASE_DIR / "clubs_new.json")
+PLAYERS_JSON         = Path(BASE_DIR / "players.json")
+TOP_DIVISION_PY      = Path(BASE_DIR / "top_division.py")
+LEVEL_MAP_PY         = Path(BASE_DIR / "level_map.py")
+EXCEL_PATH           = Path(BASE_DIR / "VM2026_avansert_gruppetabeller_og_sluttspill.xlsx")
 
 
 def log(melding: str, level: str = "INFO"):
@@ -79,6 +80,14 @@ def count_spilte() -> int:
     with open(CACHE_PATH, encoding="utf-8") as f:
         cache = json.load(f)
     return sum(1 for g in cache.values() for k in g if k.get("spilt"))
+
+
+def count_spilte_sluttspill() -> int:
+    if not SLUTTSPILL_CACHE.exists():
+        return 0
+    with open(SLUTTSPILL_CACHE, encoding="utf-8") as f:
+        cache = json.load(f)
+    return sum(1 for runde in cache.values() for k in runde if k.get("spilt"))
 
 
 def kjør_steg(navn, cmd, stopp_ved_feil=True) -> str:
@@ -132,29 +141,37 @@ def main():
         kjør_steg("Hent alle fødselsdatoer", [PYTHON, "fetch_alle_fodselsdatoer.py"])
 
     # ── Steg 1: Kampresultater ────────────────────────────────────────────────
-    spilte_før = count_spilte()
+    spilte_gruppe_før      = count_spilte()
+    spilte_sluttspill_før  = count_spilte_sluttspill()
 
     kamper_cmd = [PYTHON, "add_kamper_sheets.py"] + (["--full"] if full else [])
     kamper_output = kjør_steg("Kampresultater + gruppetabeller", kamper_cmd)
 
-    spilte_etter = count_spilte()
-    nye_kamper   = spilte_etter - spilte_før
-
     # ── Steg 2: Sluttspill-ark (alltid) ─────────────────────────────────────
     kjør_steg("Sluttspill-ark", [PYTHON, "add_sluttspill_sheet.py"])
 
-    # ── Steg 3–6: kun ved nye kamper ─────────────────────────────────────────
-    if nye_kamper == 0 and not full:
-        print(f"\n  Ingen nye kamper siden sist ({spilte_etter} totalt) — "
-              f"hopper over statistikk-oppdatering.")
-    else:
-        if nye_kamper > 0:
-            print(f"\n  {nye_kamper} ny{'e' if nye_kamper > 1 else ''} kamp{'er' if nye_kamper > 1 else ''} — oppdaterer statistikk...")
+    spilte_gruppe_etter     = count_spilte()
+    spilte_sluttspill_etter = count_spilte_sluttspill()
+    nye_kamper              = spilte_gruppe_etter - spilte_gruppe_før
+    nye_sluttspill          = spilte_sluttspill_etter - spilte_sluttspill_før
+    spilte_etter            = spilte_gruppe_etter  # for summary
 
-        kjør_steg("Mål, assist og kort",             [PYTHON, "check_avvik.py", "--fix"])
+    # ── Steg 3: check_avvik — ved nye kamper (gruppe eller sluttspill) ───────
+    if nye_kamper > 0 or nye_sluttspill > 0 or full:
+        antall = nye_kamper + nye_sluttspill
+        print(f"\n  {antall} ny{'e' if antall != 1 else ''} kamp{'er' if antall != 1 else ''} "
+              f"({nye_kamper} gruppe, {nye_sluttspill} sluttspill) — oppdaterer statistikk...")
+        kjør_steg("Mål, assist og kort", [PYTHON, "check_avvik.py", "--fix"])
+    else:
+        print(f"\n  Ingen nye kamper siden sist — hopper over check_avvik.")
+
+    # ── Steg 4–6: kun ved nye gruppekamper ───────────────────────────────────
+    if nye_kamper > 0 or full:
         kjør_steg("Fødselsdatoer + Alder-ark",       [PYTHON, "add_alder_sheet.py"])
         kjør_steg("Fødselsdato-kolonne i gruppeark", [PYTHON, "add_birthdate_column.py"])
         kjør_steg("Minutter spilt i gruppeark",      [PYTHON, "add_minutter_column.py"])
+    elif nye_sluttspill == 0:
+        print(f"\n  Ingen nye gruppe-kamper — hopper over alder/fødselsdato/minutter.")
 
     # ── Steg 7: Lagstatistikk (alltid — caches internt) ──────────────────────
     kjør_steg("Lagstatistikk", [PYTHON, "add_lagstatistikk_sheet.py"])
