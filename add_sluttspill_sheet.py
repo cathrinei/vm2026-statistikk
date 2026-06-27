@@ -149,12 +149,15 @@ def hent_sluttspill() -> dict[str, list[dict]]:
         score_h  = (m.get("Home") or {}).get("Score") if spilt else None
         score_a  = (m.get("Away") or {}).get("Score") if spilt else None
 
-        # Hent dommer
+        # Hent dommer (Name gir korrekte spesialtegn, NameShort gir ASCII-variant)
         officials = m.get("Officials") or []
         dommer = next(
-            (_loc(o.get("NameShort")) for o in officials if o.get("OfficialType") == 1),
+            (_loc(o.get("Name")) for o in officials if o.get("OfficialType") == 1),
             ""
         )
+
+        # Hent stadion fra kalender-API (tilgjengelig også for uspilte kamper)
+        stadion = _loc((m.get("Stadium") or {}).get("Name"))
 
         runder[runde].append({
             "id":      m.get("IdMatch", ""),
@@ -165,6 +168,7 @@ def hent_sluttspill() -> dict[str, list[dict]]:
             "score_a": score_a,
             "spilt":   spilt,
             "dommer":  dommer,
+            "stadion": stadion,
         })
 
     for runde in runder:
@@ -342,7 +346,7 @@ def skriv_ark(runder: dict, tilskuere: dict, stadioner: dict) -> None:
             mid   = k.get("id", "")
             att   = tilskuere.get(mid)
             att_str     = f"{att:,}".replace(",", " ") if att else ""
-            stadion_str = stadioner.get(mid, "") or ""
+            stadion_str = stadioner.get(mid) or k.get("stadion", "") or ""
             dommer_str  = _tittel(k.get("dommer", "") or "")
 
             vals = [
