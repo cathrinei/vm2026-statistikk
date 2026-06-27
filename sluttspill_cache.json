@@ -8,7 +8,9 @@
       "score_h": null,
       "score_a": null,
       "spilt": false,
-      "dommer": "Joao PINHEIRO"
+      "tid": "21:00",
+      "dommer": "João Pedro Silva Pinheiro",
+      "stadion": "Los Angeles Stadium"
     },
     {
       "id": "400021516",
@@ -18,7 +20,9 @@
       "score_h": null,
       "score_a": null,
       "spilt": false,
-      "dommer": ""
+      "tid": "19:00",
+      "dommer": "",
+      "stadion": "Houston Stadium"
     },
     {
       "id": "400021513",
@@ -28,17 +32,21 @@
       "score_h": null,
       "score_a": null,
       "spilt": false,
-      "dommer": ""
+      "tid": "22:30",
+      "dommer": "",
+      "stadion": "Boston Stadium"
     },
     {
       "id": "400021522",
-      "dato": "2026-06-29",
+      "dato": "2026-06-30",
       "hjemme": "Nederland",
       "borte": "Marokko",
       "score_h": null,
       "score_a": null,
       "spilt": false,
-      "dommer": ""
+      "tid": "03:00",
+      "dommer": "",
+      "stadion": "Monterrey Stadium"
     },
     {
       "id": "400021514",
@@ -48,7 +56,9 @@
       "score_h": null,
       "score_a": null,
       "spilt": false,
-      "dommer": ""
+      "tid": "19:00",
+      "dommer": "",
+      "stadion": "Dallas Stadium"
     },
     {
       "id": "400021523",
@@ -58,17 +68,21 @@
       "score_h": null,
       "score_a": null,
       "spilt": false,
-      "dommer": ""
+      "tid": "23:00",
+      "dommer": "",
+      "stadion": "New York/New Jersey Stadium"
     },
     {
       "id": "400021520",
-      "dato": "2026-06-30",
+      "dato": "2026-07-01",
       "hjemme": "Mexico",
       "borte": "TBA",
       "score_h": null,
       "score_a": null,
       "spilt": false,
-      "dommer": ""
+      "tid": "03:00",
+      "dommer": "",
+      "stadion": "Mexico City Stadium"
     },
     {
       "id": "400021512",
@@ -78,7 +92,9 @@
       "score_h": null,
       "score_a": null,
       "spilt": false,
-      "dommer": ""
+      "tid": "18:00",
+      "dommer": "",
+      "stadion": "Atlanta Stadium"
     },
     {
       "id": "400021525",
@@ -88,17 +104,21 @@
       "score_h": null,
       "score_a": null,
       "spilt": false,
-      "dommer": ""
+      "tid": "22:00",
+      "dommer": "",
+      "stadion": "Seattle Stadium"
     },
     {
       "id": "400021524",
-      "dato": "2026-07-01",
+      "dato": "2026-07-02",
       "hjemme": "USA",
       "borte": "Bosnia-Hercegovina",
       "score_h": null,
       "score_a": null,
       "spilt": false,
-      "dommer": ""
+      "tid": "02:00",
+      "dommer": "",
+      "stadion": "San Francisco Bay Area Stadium"
     },
     {
       "id": "400021519",
@@ -108,27 +128,33 @@
       "score_h": null,
       "score_a": null,
       "spilt": false,
-      "dommer": ""
+      "tid": "21:00",
+      "dommer": "",
+      "stadion": "Los Angeles Stadium"
     },
     {
       "id": "400021526",
-      "dato": "2026-07-02",
+      "dato": "2026-07-03",
       "hjemme": "TBA",
       "borte": "TBA",
       "score_h": null,
       "score_a": null,
       "spilt": false,
-      "dommer": ""
+      "tid": "01:00",
+      "dommer": "",
+      "stadion": "Toronto Stadium"
     },
     {
       "id": "400021527",
-      "dato": "2026-07-02",
+      "dato": "2026-07-03",
       "hjemme": "Sveits",
       "borte": "TBA",
       "score_h": null,
       "score_a": null,
       "spilt": false,
-      "dommer": ""
+      "tid": "05:00",
+      "dommer": "",
+      "stadion": "BC Place Vancouver"
     },
     {
       "id": "400021515",
@@ -138,27 +164,33 @@
       "score_h": null,
       "score_a": null,
       "spilt": false,
-      "dommer": ""
+      "tid": "20:00",
+      "dommer": "",
+      "stadion": "Dallas Stadium"
     },
     {
       "id": "400021521",
-      "dato": "2026-07-03",
+      "dato": "2026-07-04",
       "hjemme": "Argentina",
       "borte": "Kapp Verde",
       "score_h": null,
       "score_a": null,
       "spilt": false,
-      "dommer": ""
+      "tid": "00:00",
+      "dommer": "",
+      "stadion": "Miami Stadium"
     },
     {
       "id": "400021517",
-      "dato": "2026-07-03",
+      "dato": "2026-07-04",
       "hjemme": "TBA",
       "borte": "TBA",
       "score_h": null,
       "score_a": null,
       "spilt": false,
-      "dommer": ""
+      "tid": "03:30",
+      "dommer": "",
+      "stadion": "Kansas City Stadium"
     }
   ],
   "8-delsfinaler": [
@@ -170,7 +202,9 @@
       "score_h": null,
       "score_a": null,
       "spilt": false,
-      "dommer": ""
+      "tid": "19:00",
+      "dommer": "",
+      "stadion": "Houston Stadium"
     },
     {
       "id": "400021533",
@@ -180,7 +214,9 @@
       "score_h": null,
       "score_a": null,
       "spilt": false,
-      "dommer": ""
+      "tid": "23:00",
+      "dommer": "",
+      "stadion": "Philadelphia Stadium"
     },
     {
       "id": "400021532",
@@ -190,17 +226,21 @@
       "score_h": null,
       "score_a": null,
       "spilt": false,
-      "dommer": ""
+      "tid": "22:00",
+      "dommer": "",
+      "stadion": "New York/New Jersey Stadium"
     },
     {
       "id": "400021531",
-      "dato": "2026-07-05",
+      "dato": "2026-07-06",
       "hjemme": "TBA",
       "borte": "TBA",
       "score_h": null,
       "score_a": null,
       "spilt": false,
-      "dommer": ""
+      "tid": "02:00",
+      "dommer": "",
+      "stadion": "Mexico City Stadium"
     },
     {
       "id": "400021529",
@@ -210,17 +250,21 @@
       "score_h": null,
       "score_a": null,
       "spilt": false,
-      "dommer": ""
+      "tid": "21:00",
+      "dommer": "",
+      "stadion": "Dallas Stadium"
     },
     {
       "id": "400021534",
-      "dato": "2026-07-06",
+      "dato": "2026-07-07",
       "hjemme": "TBA",
       "borte": "TBA",
       "score_h": null,
       "score_a": null,
       "spilt": false,
-      "dommer": ""
+      "tid": "02:00",
+      "dommer": "",
+      "stadion": "Seattle Stadium"
     },
     {
       "id": "400021528",
@@ -230,7 +274,9 @@
       "score_h": null,
       "score_a": null,
       "spilt": false,
-      "dommer": ""
+      "tid": "18:00",
+      "dommer": "",
+      "stadion": "Atlanta Stadium"
     },
     {
       "id": "400021535",
@@ -240,7 +286,9 @@
       "score_h": null,
       "score_a": null,
       "spilt": false,
-      "dommer": ""
+      "tid": "22:00",
+      "dommer": "",
+      "stadion": "BC Place Vancouver"
     }
   ],
   "Kvartfinaler": [
@@ -252,7 +300,9 @@
       "score_h": null,
       "score_a": null,
       "spilt": false,
-      "dommer": ""
+      "tid": "22:00",
+      "dommer": "",
+      "stadion": "Boston Stadium"
     },
     {
       "id": "400021538",
@@ -262,7 +312,9 @@
       "score_h": null,
       "score_a": null,
       "spilt": false,
-      "dommer": ""
+      "tid": "21:00",
+      "dommer": "",
+      "stadion": "Los Angeles Stadium"
     },
     {
       "id": "400021539",
@@ -272,17 +324,21 @@
       "score_h": null,
       "score_a": null,
       "spilt": false,
-      "dommer": ""
+      "tid": "23:00",
+      "dommer": "",
+      "stadion": "Miami Stadium"
     },
     {
       "id": "400021537",
-      "dato": "2026-07-11",
+      "dato": "2026-07-12",
       "hjemme": "TBA",
       "borte": "TBA",
       "score_h": null,
       "score_a": null,
       "spilt": false,
-      "dommer": ""
+      "tid": "03:00",
+      "dommer": "",
+      "stadion": "Kansas City Stadium"
     }
   ],
   "Semifinaler": [
@@ -294,7 +350,9 @@
       "score_h": null,
       "score_a": null,
       "spilt": false,
-      "dommer": ""
+      "tid": "21:00",
+      "dommer": "",
+      "stadion": "Dallas Stadium"
     },
     {
       "id": "400021540",
@@ -304,7 +362,9 @@
       "score_h": null,
       "score_a": null,
       "spilt": false,
-      "dommer": ""
+      "tid": "21:00",
+      "dommer": "",
+      "stadion": "Atlanta Stadium"
     }
   ],
   "Bronsefinale": [
@@ -316,7 +376,9 @@
       "score_h": null,
       "score_a": null,
       "spilt": false,
-      "dommer": ""
+      "tid": "23:00",
+      "dommer": "",
+      "stadion": "Miami Stadium"
     }
   ],
   "Finale": [
@@ -328,7 +390,9 @@
       "score_h": null,
       "score_a": null,
       "spilt": false,
-      "dommer": ""
+      "tid": "21:00",
+      "dommer": "",
+      "stadion": "New York/New Jersey Stadium"
     }
   ]
 }
