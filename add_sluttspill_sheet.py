@@ -174,6 +174,8 @@ def hent_sluttspill() -> dict[str, list[dict]]:
 
         runder[runde].append({
             "id":          m.get("IdMatch", ""),
+            "hjemme_id":   (m.get("Home") or {}).get("IdTeam", ""),
+            "borte_id":    (m.get("Away") or {}).get("IdTeam", ""),
             "dato":        dato_raw,
             "hjemme":      home_no,
             "borte":       away_no,

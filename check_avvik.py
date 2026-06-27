@@ -120,7 +120,7 @@ NORSK: dict[str, str] = {
 
 # ── Hent FIFA-data ────────────────────────────────────────────────────────────
 
-def hent_fifa() -> tuple[list[dict] | None, str]:
+def hent_fifa() -> tuple[list[dict] | None, list[dict] | None, list[dict], str]:
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/125.0.0.0 Safari/537.36",
         "Accept": "application/json",
@@ -142,7 +142,17 @@ def hent_fifa() -> tuple[list[dict] | None, str]:
         return None, f"Feil ved henting av kamper: {e}"
 
     if not played:
-        return None, "Ingen spillte kamper funnet i FIFA API"
+        return None, None, [], "Ingen spillte kamper funnet i FIFA API"
+
+    # Last gruppe-kamp-IDer for å skille gruppe vs. sluttspill
+    gruppe_ids: set[str] = set()
+    _kamper_cache = BASE_DIR / "kamper_resultater.json"
+    if _kamper_cache.exists():
+        with open(_kamper_cache, encoding="utf-8") as _f:
+            for _kamper in json.load(_f).values():
+                for _k in _kamper:
+                    if _k.get("id"):
+                        gruppe_ids.add(_k["id"])
 
     # Step 1b: Build team name lookup from match data
     team_names: dict[str, str] = {}
@@ -173,6 +183,11 @@ def hent_fifa() -> tuple[list[dict] | None, str]:
     player_yellow_red: dict[str, int] = defaultdict(int)
     player_team:       dict[str, str] = {}
     player_ids: set[str] = set()
+    # Gruppe-only (for avvik-sjekk mot gruppe-ark)
+    gruppe_player_goals:   dict[str, int] = defaultdict(int)
+    gruppe_player_assists: dict[str, int] = defaultdict(int)
+    gruppe_player_yellow:  dict[str, int] = defaultdict(int)
+    gruppe_player_red:     dict[str, int] = defaultdict(int)
     goal_event_types: dict[int, int] = defaultdict(int)
     all_event_types:  dict[int, int] = defaultdict(int)
 
@@ -214,12 +229,16 @@ def hent_fifa() -> tuple[list[dict] | None, str]:
             if ev_type is not None:
                 all_event_types[ev_type] += 1
 
+            er_gruppe = mid in gruppe_ids
+
             # Card tracking — Type 2 = Yellow, Type 3 = Red
             if ev_type in (2, 3) and pid:
                 if ev_type == 2:
                     player_yellow[pid] += 1
+                    if er_gruppe: gruppe_player_yellow[pid] += 1
                 else:
                     player_red[pid] += 1
+                    if er_gruppe: gruppe_player_red[pid] += 1
                 player_ids.add(pid)
                 if pid not in player_team and ev_team:
                     player_team[pid] = ev_team
@@ -244,11 +263,13 @@ def hent_fifa() -> tuple[list[dict] | None, str]:
 
             if pid:
                 player_goals[pid] += 1
+                if er_gruppe: gruppe_player_goals[pid] += 1
                 player_ids.add(pid)
                 if pid not in player_team and ev_team:
                     player_team[pid] = ev_team
             if sub_pid:
                 player_assists[sub_pid] += 1
+                if er_gruppe: gruppe_player_assists[sub_pid] += 1
                 player_ids.add(sub_pid)
                 if sub_pid not in player_team and ev_team:
                     player_team[sub_pid] = ev_team
@@ -304,8 +325,9 @@ def hent_fifa() -> tuple[list[dict] | None, str]:
     except Exception:
         pass
 
-    result = []
-    kort_result = []
+    result_alle   = []
+    result_gruppe = []
+    kort_result   = []
     for pid in player_ids:
         name = player_names.get(pid, pid)
         land = team_names.get(player_team.get(pid, ""), "")
@@ -313,11 +335,24 @@ def hent_fifa() -> tuple[list[dict] | None, str]:
         a  = player_assists.get(pid, 0)
         gy = player_yellow.get(pid, 0)
         gr = player_red.get(pid, 0)
+        gg = gruppe_player_goals.get(pid, 0)
+        ga = gruppe_player_assists.get(pid, 0)
+        ggy = gruppe_player_yellow.get(pid, 0)
+        ggr = gruppe_player_red.get(pid, 0)
         if g > 0 or a > 0:
-            result.append({
+            result_alle.append({
                 "name":    name,
                 "goals":   g,
                 "assists": a,
+                "key":     normalize(name),
+                "lag":     "",
+                "land":    land,
+            })
+        if gg > 0 or ga > 0:
+            result_gruppe.append({
+                "name":    name,
+                "goals":   gg,
+                "assists": ga,
                 "key":     normalize(name),
                 "lag":     "",
                 "land":    land,
@@ -331,10 +366,10 @@ def hent_fifa() -> tuple[list[dict] | None, str]:
                 "gule_rode": 0,
             })
 
-    if not result and not kort_result:
-        return None, [], "Ingen spillere funnet i FIFA API"
+    if not result_alle and not kort_result:
+        return None, None, [], "Ingen spillere funnet i FIFA API"
 
-    return result, kort_result, f"{len(played)} kamper"
+    return result_alle, result_gruppe, kort_result, f"{len(played)} kamper"
 
 # ── Felles designstiler ───────────────────────────────────────────────────────
 
@@ -644,7 +679,7 @@ def skriv_toppscore_sheets(excel: list[dict]) -> None:
     n_assists = sum(p["assists"] for p in med_statistikk)
     _write_sheet(
         "Scorere og assists", scorere_og_assists,
-        f"VM 2026 — Scorere og assists   {n_mål} mål · {n_assists} assists",
+        f"VM 2026 — Scorere og assists (gruppe + sluttspill)   {n_mål} mål · {n_assists} assists",
         rank_key=lambda p: p["goals"],
     )
 
@@ -748,11 +783,11 @@ def main():
         print(f"      {p['name']:<30} mål={p['goals']}  assist={p['assists']}  ({p['lag']})")
 
     print("\n[2/3] Henter FIFA-statistikk (kan ta 30–60 sek)...")
-    fifa, kort, err = hent_fifa()
-    if fifa:
-        status = f"✅ {len(fifa)} spillere hentet ({err})"
+    fifa_alle, fifa_gruppe, kort, err = hent_fifa()
+    if fifa_alle:
+        status = f"✅ {len(fifa_alle)} spillere hentet ({err}), {len(fifa_gruppe or [])} med gruppe-mål/assist"
         print(f"      {status}")
-        for p in sorted(fifa, key=lambda x: (-x["goals"], -x["assists"]))[:20]:
+        for p in sorted(fifa_alle, key=lambda x: (-x["goals"], -x["assists"]))[:20]:
             print(f"      {p['name']:<30} mål={p['goals']}  assist={p['assists']}  ({p.get('land', '')})")
         print(f"      {len(kort)} spillere med kort")
     else:
@@ -761,8 +796,8 @@ def main():
         kort = []
 
     print("\n[3/3] Sammenligner...")
-    if fifa:
-        avvik = sammenlign(excel, fifa, kort)
+    if fifa_gruppe:
+        avvik = sammenlign(excel, fifa_gruppe, kort)
         if avvik:
             print(f"      {len(avvik)} avvik:")
             for a in avvik:
@@ -772,16 +807,15 @@ def main():
     else:
         avvik = []
 
-    skriv_rapport(excel, fifa, avvik, status)
+    skriv_rapport(excel, fifa_alle, avvik, status)
 
-    if args.fix and fifa:
+    if args.fix and fifa_alle:
         print("\n[Fix] Oppdaterer Excel...")
         n = oppdater_excel(avvik)
         print(f"      ✅ {n} celler oppdatert (mål/assist/gule/røde kort)" if n else "      Ingen celler å oppdatere")
         if kort:
             skriv_kort_sheet(kort)
-        excel_oppdatert = les_excel()
-        skriv_toppscore_sheets(excel_oppdatert)
+        skriv_toppscore_sheets(fifa_alle)
 
     print("\nFerdig.")
 

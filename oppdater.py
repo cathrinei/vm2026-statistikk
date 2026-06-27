@@ -176,6 +176,9 @@ def main():
     # ── Steg 7: Lagstatistikk (alltid — caches internt) ──────────────────────
     kjør_steg("Lagstatistikk", [PYTHON, "add_lagstatistikk_sheet.py"])
 
+    # ── Steg 7b: Sluttspill-spillere (alltid — henter fra cacher) ────────────
+    kjør_steg("Sluttspill – spillerstatistikk", [PYTHON, "add_sluttspill_spillere_sheet.py"])
+
     # ── Steg 8: Scoringstidspunkt (alltid — leser fra lagstatistikk_cache.json) ──
     kjør_steg("Scoringstidspunkt", [PYTHON, "add_scoringstidspunkt_sheet.py"])
 
