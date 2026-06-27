@@ -727,8 +727,9 @@ def skriv_lagstatistikk(maal, nullere, kamper, straffe, selvmål, skudd, formasj
 
         for s in selvmål:
             r_lag = lag_rang[s["lag"]]
+            spiller_fmt = " ".join(w.capitalize() for w in s["spiller"].split())
             _data_row(ws, S, row,
-                      [r_lag, s["lag"], s["gruppe"], s["spiller"], s["kamp"], s["minutt"]],
+                      [r_lag, s["lag"], s["gruppe"], spiller_fmt, s["kamp"], s["minutt"]],
                       og_defs, r_lag if r_lag <= 3 else None)
             row += 1
     else:
