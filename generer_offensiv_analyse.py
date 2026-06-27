@@ -20,18 +20,18 @@ def les_lagstatistikk():
     maal  = {}   # lag → {kamper, maal_for, maal_per_kamp}
     skudd = {}   # lag → {skudd, skudd_per_kamp, paa_maal, treff_pct}
 
-    # --- Mål per kamp-tabell (starter på rad 3, header på rad 2) ---
+    # --- Mål per kamp-tabell ---
+    # Kolonner: #(0), Lag(1), Kamper(2), Mål for(3), MF/kamp(4), Mål mot(5), MM/kamp(6)
     i = 0
     while i < len(rows):
         r = rows[i]
-        if r[0] == "#" and r[1] == "Lag" and r[4] == "Mål for":
+        if r[0] == "#" and r[1] == "Lag" and r[3] == "Mål for":
             i += 1
             while i < len(rows) and isinstance(rows[i][0], int):
                 r = rows[i]
-                lag     = r[1]
-                kamper  = r[3]
-                maal_for = r[4]
-                # MF/kamp er lagret som streng med komma, beregn fra tall
+                lag      = r[1]
+                kamper   = r[2]
+                maal_for = r[3]
                 mpc = round(maal_for / kamper, 2) if kamper else 0
                 maal[lag] = {"kamper": kamper, "maal_for": maal_for, "maal_per_kamp": mpc}
                 i += 1
@@ -39,18 +39,19 @@ def les_lagstatistikk():
         i += 1
 
     # --- Skudd per lag-tabell ---
+    # Kolonner: #(0), Lag(1), Kamper(2), Skudd(3), Skudd/kamp(4), På mål(5), Treff%(6)
     i = 0
     while i < len(rows):
         r = rows[i]
-        if r[0] == "#" and r[1] == "Lag" and r[4] == "Skudd":
+        if r[0] == "#" and r[1] == "Lag" and r[3] == "Skudd":
             i += 1
             while i < len(rows) and isinstance(rows[i][0], int):
                 r = rows[i]
                 lag  = r[1]
-                sk   = r[4]
-                spk  = round(sk / r[3], 1) if r[3] else 0
-                pm   = r[6]
-                pct  = int(r[7].rstrip("%")) if isinstance(r[7], str) else int(r[7] * 100)
+                sk   = r[3]
+                spk  = round(sk / r[2], 1) if r[2] else 0
+                pm   = r[5]
+                pct  = int(r[6].rstrip("%")) if isinstance(r[6], str) else int(r[6] * 100)
                 skudd[lag] = {"skudd": sk, "skudd_per_kamp": spk, "paa_maal": pm, "treff_pct": pct}
                 i += 1
             break
