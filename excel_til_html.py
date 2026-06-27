@@ -271,18 +271,19 @@ FIFA_RANKING = [
 
 
 IKKE_KVALIFISERT_TOPP48 = [
-    (12, "Italia"),
-    (21, "Danmark"),
-    (26, "Nigeria"),
-    (32, "Ukraina"),
-    (35, "Russland"),
-    (36, "Polen"),
-    (37, "Wales"),
+    (14, "Italia"),
+    (20, "Danmark"),
+    (25, "Nigeria"),
+    (33, "Ukraina"),
+    (34, "Russland"),
+    (35, "Polen"),
+    (38, "Wales"),
     (39, "Ungarn"),
-    (43, "Serbia"),
-    (44, "Kamerun"),
-    (47, "Slovakia"),
-    (48, "Hellas"),
+    (40, "Serbia"),
+    (43, "Kamerun"),
+    (44, "Slovakia"),
+    (45, "Hellas"),
+    (47, "Venezuela"),
 ]
 
 
