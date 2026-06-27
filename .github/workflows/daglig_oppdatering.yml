@@ -23,6 +23,8 @@ jobs:
     steps:
       - name: Hent repo
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
 
       - name: Sett opp Python
         uses: actions/setup-python@v5
