@@ -8,7 +8,7 @@ Henter kampdata fra FIFA API. Fremtidige kamper vises med "TBA" som lagnavn.
 Cache: sluttspill_cache.json
 """
 import io, json, shutil, sys, time
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 BASE_DIR = Path(__file__).parent
@@ -145,6 +145,16 @@ def hent_sluttspill() -> dict[str, list[dict]]:
         away_no = til_norsk(away_en) if away_en else "TBA"
 
         dato_raw = (m.get("LocalDate") or m.get("Date") or "")[:10]
+        tid_raw  = ""
+        dato_utc = m.get("Date", "")
+        if dato_utc and len(dato_utc) >= 19:
+            try:
+                dt_utc  = datetime.strptime(dato_utc[:19], "%Y-%m-%dT%H:%M:%S")
+                dt_no   = dt_utc + timedelta(hours=2)
+                dato_raw = dt_no.strftime("%Y-%m-%d")
+                tid_raw  = dt_no.strftime("%H:%M")
+            except Exception:
+                pass
         spilt    = m.get("MatchStatus") == 0
         score_h  = (m.get("Home") or {}).get("Score") if spilt else None
         score_a  = (m.get("Away") or {}).get("Score") if spilt else None
@@ -167,6 +177,7 @@ def hent_sluttspill() -> dict[str, list[dict]]:
             "score_h": score_h,
             "score_a": score_a,
             "spilt":   spilt,
+            "tid":     tid_raw,
             "dommer":  dommer,
             "stadion": stadion,
         })
@@ -232,11 +243,12 @@ def _hent_tilskuere(runder: dict) -> tuple[dict, dict]:
     return tilskuere, stadioner
 
 
-def _fmt_dato(dato_str: str) -> str:
+def _fmt_dato(dato_str: str, tid_str: str = "") -> str:
     try:
-        return datetime.strptime(dato_str[:10], "%Y-%m-%d").strftime("%d.%m")
+        dato = datetime.strptime(dato_str[:10], "%Y-%m-%d").strftime("%d.%m")
     except Exception:
-        return dato_str or ""
+        dato = dato_str or ""
+    return f"{dato} {tid_str}" if tid_str else dato
 
 def _fmt_resultat(k: dict) -> str:
     if k["spilt"]:
@@ -274,8 +286,8 @@ def skriv_ark(runder: dict, tilskuere: dict, stadioner: dict) -> None:
         "bot":     Border(bottom=Side(style="thin", color="E2E8F0")),
     }
 
-    COL_WIDTHS = [8, 20, 10, 20, 12, 24, 18]  # Dato, Hjemme, Res, Borte, Tilskuere, Stadion, Dommer
-    HDR_LABELS = ["Dato", "Hjemmelag", "Resultat", "Bortelag", "Tilskuere", "Stadion", "Dommer"]
+    COL_WIDTHS = [14, 20, 10, 20, 12, 24, 18]  # Dato og kl.slett, Hjemme, Res, Borte, Tilskuere, Stadion, Dommer
+    HDR_LABELS = ["Dato og kl.slett", "Hjemmelag", "Resultat", "Bortelag", "Tilskuere", "Stadion", "Dommer"]
 
     backup = Path(str(EXCEL_PATH) + ".bak")
     shutil.copy2(EXCEL_PATH, backup)
@@ -350,7 +362,7 @@ def skriv_ark(runder: dict, tilskuere: dict, stadioner: dict) -> None:
             dommer_str  = _tittel(k.get("dommer", "") or "")
 
             vals = [
-                _fmt_dato(k["dato"]) if k["dato"] else "",
+                _fmt_dato(k["dato"], k.get("tid", "")) if k["dato"] else "",
                 k["hjemme"],
                 res,
                 k["borte"],
