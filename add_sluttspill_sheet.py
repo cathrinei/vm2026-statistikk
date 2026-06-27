@@ -155,9 +155,12 @@ def hent_sluttspill() -> dict[str, list[dict]]:
                 tid_raw  = dt_no.strftime("%H:%M")
             except Exception:
                 pass
-        spilt    = m.get("MatchStatus") == 0
-        score_h  = (m.get("Home") or {}).get("Score") if spilt else None
-        score_a  = (m.get("Away") or {}).get("Score") if spilt else None
+        spilt       = m.get("MatchStatus") == 0
+        score_h     = (m.get("Home") or {}).get("Score") if spilt else None
+        score_a     = (m.get("Away") or {}).get("Score") if spilt else None
+        pen_h       = m.get("HomeTeamPenaltyScore") if spilt else None
+        pen_a       = m.get("AwayTeamPenaltyScore") if spilt else None
+        result_type = m.get("ResultType") if spilt else None  # 1=90min, 2=e.o., 3=e.str.
 
         # Hent dommer (Name gir korrekte spesialtegn, NameShort gir ASCII-variant)
         officials = m.get("Officials") or []
@@ -170,16 +173,19 @@ def hent_sluttspill() -> dict[str, list[dict]]:
         stadion = _loc((m.get("Stadium") or {}).get("Name"))
 
         runder[runde].append({
-            "id":      m.get("IdMatch", ""),
-            "dato":    dato_raw,
-            "hjemme":  home_no,
-            "borte":   away_no,
-            "score_h": score_h,
-            "score_a": score_a,
-            "spilt":   spilt,
-            "tid":     tid_raw,
-            "dommer":  dommer,
-            "stadion": stadion,
+            "id":          m.get("IdMatch", ""),
+            "dato":        dato_raw,
+            "hjemme":      home_no,
+            "borte":       away_no,
+            "score_h":     score_h,
+            "score_a":     score_a,
+            "pen_h":       pen_h,
+            "pen_a":       pen_a,
+            "result_type": result_type,
+            "spilt":       spilt,
+            "tid":         tid_raw,
+            "dommer":      dommer,
+            "stadion":     stadion,
         })
 
     for runde in runder:
@@ -254,7 +260,13 @@ def _fmt_resultat(k: dict) -> str:
     if k["spilt"]:
         h = k["score_h"] if k["score_h"] is not None else "?"
         a = k["score_a"] if k["score_a"] is not None else "?"
-        return f"{h} – {a}"
+        score = f"{h} – {a}"
+        rt = k.get("result_type")
+        if rt == 3 and k.get("pen_h") is not None and k.get("pen_a") is not None:
+            return f"{score}  (e.str. {k['pen_h']}–{k['pen_a']})"
+        if rt == 2:
+            return f"{score}  (e.o.)"
+        return score
     if k["dato"]:
         try:
             if datetime.strptime(k["dato"][:10], "%Y-%m-%d").date() <= datetime.now().date():
@@ -286,7 +298,7 @@ def skriv_ark(runder: dict, tilskuere: dict, stadioner: dict) -> None:
         "bot":     Border(bottom=Side(style="thin", color="E2E8F0")),
     }
 
-    COL_WIDTHS = [14, 20, 10, 20, 12, 24, 18]  # Dato og kl.slett, Hjemme, Res, Borte, Tilskuere, Stadion, Dommer
+    COL_WIDTHS = [14, 20, 22, 20, 12, 24, 18]  # Dato og kl.slett, Hjemme, Res, Borte, Tilskuere, Stadion, Dommer
     HDR_LABELS = ["Dato og kl.slett", "Hjemmelag", "Resultat", "Bortelag", "Tilskuere", "Stadion", "Dommer"]
 
     backup = Path(str(EXCEL_PATH) + ".bak")
