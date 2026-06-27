@@ -267,12 +267,17 @@ def hent_resultater(grupper: dict[str, list[dict]]) -> set[str]:
                 k["spilt"]   = True
                 k["id"]      = m.get("IdMatch", "")
                 officials = m.get("Officials") or []
-                k["dommer"] = next(
-                    (next((n["Description"] for n in (o.get("Name") or [])
-                           if n.get("Locale") == "en-GB"), "")
-                     for o in officials if o.get("OfficialType") == 1),
-                    ""
-                )
+                def _dommer_navn(o):
+                    import unicodedata
+                    def norm(s): return unicodedata.normalize("NFD", s).encode("ascii", "ignore").decode().lower().replace(" ", "")
+                    short = next((n["Description"] for n in (o.get("NameShort") or []) if n.get("Locale") == "en-GB"), "")
+                    name  = next((n["Description"] for n in (o.get("Name")      or []) if n.get("Locale") == "en-GB"), "")
+                    short_fmt = " ".join(w.capitalize() for w in short.split()) if short else ""
+                    name_fmt  = " ".join(w.capitalize() for w in name.split())  if name  else ""
+                    if short_fmt and name_fmt and norm(short_fmt) == norm(name_fmt):
+                        return name_fmt  # samme navn, men name_fmt har spesialtegn (æøå osv.)
+                    return short_fmt or name_fmt
+                k["dommer"] = next((_dommer_navn(o) for o in officials if o.get("OfficialType") == 1), "")
 
     print(f"  {treff}/{kamper_n} kamper matchet mot FIFA API")
     spilt = sum(1 for km in grupper.values() for k in km if k["spilt"])
