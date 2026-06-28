@@ -778,10 +778,12 @@
       "borte": "Argentina",
       "hjemme_en": "Jordan",
       "borte_en": "Argentina",
-      "score_h": null,
-      "score_a": null,
-      "spilt": false,
-      "tid": "04:00"
+      "score_h": 1,
+      "score_a": 3,
+      "spilt": true,
+      "tid": "04:00",
+      "id": "400021495",
+      "dommer": "Istvan Kovacs"
     },
     {
       "dato": "2026-06-28",
@@ -789,10 +791,12 @@
       "borte": "Østerrike",
       "hjemme_en": "Algeria",
       "borte_en": "Austria",
-      "score_h": null,
-      "score_a": null,
-      "spilt": false,
-      "tid": "04:00"
+      "score_h": 3,
+      "score_a": 3,
+      "spilt": true,
+      "tid": "04:00",
+      "id": "400021497",
+      "dommer": "Ilgiz Tantashev"
     }
   ],
   "Gruppe K": [
@@ -854,10 +858,12 @@
       "borte": "Portugal",
       "hjemme_en": "Colombia",
       "borte_en": "Portugal",
-      "score_h": null,
-      "score_a": null,
-      "spilt": false,
-      "tid": "01:30"
+      "score_h": 0,
+      "score_a": 0,
+      "spilt": true,
+      "tid": "01:30",
+      "id": "400021505",
+      "dommer": "Alireza Faghani"
     },
     {
       "dato": "2026-06-28",
@@ -865,10 +871,12 @@
       "borte": "Usbekistan",
       "hjemme_en": "DR Congo",
       "borte_en": "Uzbekistan",
-      "score_h": null,
-      "score_a": null,
-      "spilt": false,
-      "tid": "01:30"
+      "score_h": 3,
+      "score_a": 1,
+      "spilt": true,
+      "tid": "01:30",
+      "id": "400021500",
+      "dommer": "Felix Zwayer"
     }
   ],
   "Gruppe L": [
@@ -930,10 +938,12 @@
       "borte": "England",
       "hjemme_en": "Panama",
       "borte_en": "England",
-      "score_h": null,
-      "score_a": null,
-      "spilt": false,
-      "tid": "23:00"
+      "score_h": 0,
+      "score_a": 2,
+      "spilt": true,
+      "tid": "23:00",
+      "id": "400021508",
+      "dommer": "Abdulrahman Al Jassim"
     },
     {
       "dato": "2026-06-27",
@@ -941,10 +951,12 @@
       "borte": "Ghana",
       "hjemme_en": "Croatia",
       "borte_en": "Ghana",
-      "score_h": null,
-      "score_a": null,
-      "spilt": false,
-      "tid": "23:00"
+      "score_h": 2,
+      "score_a": 1,
+      "spilt": true,
+      "tid": "23:00",
+      "id": "400021509",
+      "dommer": "Drew Fischer"
     }
   ]
 }

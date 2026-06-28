@@ -2,6 +2,8 @@
   "16-delsfinaler": [
     {
       "id": "400021518",
+      "hjemme_id": "43883",
+      "borte_id": "43899",
       "dato": "2026-06-28",
       "hjemme": "Sør-Afrika",
       "borte": "Canada",
@@ -17,6 +19,8 @@
     },
     {
       "id": "400021516",
+      "hjemme_id": "43924",
+      "borte_id": "43819",
       "dato": "2026-06-29",
       "hjemme": "Brasil",
       "borte": "Japan",
@@ -27,11 +31,13 @@
       "result_type": null,
       "spilt": false,
       "tid": "19:00",
-      "dommer": "",
+      "dommer": "Maurizio Mariani",
       "stadion": "Houston Stadium"
     },
     {
       "id": "400021513",
+      "hjemme_id": "43948",
+      "borte_id": "43928",
       "dato": "2026-06-29",
       "hjemme": "Tyskland",
       "borte": "Paraguay",
@@ -42,11 +48,13 @@
       "result_type": null,
       "spilt": false,
       "tid": "22:30",
-      "dommer": "",
+      "dommer": "Jalal Jayed",
       "stadion": "Boston Stadium"
     },
     {
       "id": "400021522",
+      "hjemme_id": "43960",
+      "borte_id": "43872",
       "dato": "2026-06-30",
       "hjemme": "Nederland",
       "borte": "Marokko",
@@ -57,11 +65,13 @@
       "result_type": null,
       "spilt": false,
       "tid": "03:00",
-      "dommer": "",
+      "dommer": "Wilton SAMPAIO",
       "stadion": "Monterrey Stadium"
     },
     {
       "id": "400021514",
+      "hjemme_id": "43854",
+      "borte_id": "43961",
       "dato": "2026-06-30",
       "hjemme": "Elfenbenskysten",
       "borte": "Norge",
@@ -77,6 +87,8 @@
     },
     {
       "id": "400021523",
+      "hjemme_id": "43946",
+      "borte_id": "43970",
       "dato": "2026-06-30",
       "hjemme": "Frankrike",
       "borte": "Sverige",
@@ -92,9 +104,11 @@
     },
     {
       "id": "400021520",
+      "hjemme_id": "43911",
+      "borte_id": "43927",
       "dato": "2026-07-01",
       "hjemme": "Mexico",
-      "borte": "TBA",
+      "borte": "Ecuador",
       "score_h": null,
       "score_a": null,
       "pen_h": null,
@@ -107,9 +121,11 @@
     },
     {
       "id": "400021512",
+      "hjemme_id": "43942",
+      "borte_id": "20014",
       "dato": "2026-07-01",
-      "hjemme": "TBA",
-      "borte": "TBA",
+      "hjemme": "England",
+      "borte": "DR Kongo",
       "score_h": null,
       "score_a": null,
       "pen_h": null,
@@ -122,9 +138,11 @@
     },
     {
       "id": "400021525",
+      "hjemme_id": "43935",
+      "borte_id": "43879",
       "dato": "2026-07-01",
       "hjemme": "Belgia",
-      "borte": "TBA",
+      "borte": "Senegal",
       "score_h": null,
       "score_a": null,
       "pen_h": null,
@@ -137,6 +155,8 @@
     },
     {
       "id": "400021524",
+      "hjemme_id": "43921",
+      "borte_id": "44037",
       "dato": "2026-07-02",
       "hjemme": "USA",
       "borte": "Bosnia-Hercegovina",
@@ -152,9 +172,11 @@
     },
     {
       "id": "400021519",
+      "hjemme_id": "43969",
+      "borte_id": "43934",
       "dato": "2026-07-02",
       "hjemme": "Spania",
-      "borte": "TBA",
+      "borte": "Østerrike",
       "score_h": null,
       "score_a": null,
       "pen_h": null,
@@ -167,9 +189,11 @@
     },
     {
       "id": "400021526",
+      "hjemme_id": "43963",
+      "borte_id": "43938",
       "dato": "2026-07-03",
-      "hjemme": "TBA",
-      "borte": "TBA",
+      "hjemme": "Portugal",
+      "borte": "Kroatia",
       "score_h": null,
       "score_a": null,
       "pen_h": null,
@@ -182,9 +206,11 @@
     },
     {
       "id": "400021527",
+      "hjemme_id": "43971",
+      "borte_id": "43843",
       "dato": "2026-07-03",
       "hjemme": "Sveits",
-      "borte": "TBA",
+      "borte": "Algerie",
       "score_h": null,
       "score_a": null,
       "pen_h": null,
@@ -197,6 +223,8 @@
     },
     {
       "id": "400021515",
+      "hjemme_id": "43976",
+      "borte_id": "43855",
       "dato": "2026-07-03",
       "hjemme": "Australia",
       "borte": "Egypt",
@@ -212,6 +240,8 @@
     },
     {
       "id": "400021521",
+      "hjemme_id": "43922",
+      "borte_id": "43850",
       "dato": "2026-07-04",
       "hjemme": "Argentina",
       "borte": "Kapp Verde",
@@ -227,9 +257,11 @@
     },
     {
       "id": "400021517",
+      "hjemme_id": "43926",
+      "borte_id": "43860",
       "dato": "2026-07-04",
-      "hjemme": "TBA",
-      "borte": "TBA",
+      "hjemme": "Colombia",
+      "borte": "Ghana",
       "score_h": null,
       "score_a": null,
       "pen_h": null,
@@ -244,6 +276,8 @@
   "8-delsfinaler": [
     {
       "id": "400021530",
+      "hjemme_id": "",
+      "borte_id": "",
       "dato": "2026-07-04",
       "hjemme": "TBA",
       "borte": "TBA",
@@ -259,6 +293,8 @@
     },
     {
       "id": "400021533",
+      "hjemme_id": "",
+      "borte_id": "",
       "dato": "2026-07-04",
       "hjemme": "TBA",
       "borte": "TBA",
@@ -274,6 +310,8 @@
     },
     {
       "id": "400021532",
+      "hjemme_id": "",
+      "borte_id": "",
       "dato": "2026-07-05",
       "hjemme": "TBA",
       "borte": "TBA",
@@ -289,6 +327,8 @@
     },
     {
       "id": "400021531",
+      "hjemme_id": "",
+      "borte_id": "",
       "dato": "2026-07-06",
       "hjemme": "TBA",
       "borte": "TBA",
@@ -304,6 +344,8 @@
     },
     {
       "id": "400021529",
+      "hjemme_id": "",
+      "borte_id": "",
       "dato": "2026-07-06",
       "hjemme": "TBA",
       "borte": "TBA",
@@ -319,6 +361,8 @@
     },
     {
       "id": "400021534",
+      "hjemme_id": "",
+      "borte_id": "",
       "dato": "2026-07-07",
       "hjemme": "TBA",
       "borte": "TBA",
@@ -334,6 +378,8 @@
     },
     {
       "id": "400021528",
+      "hjemme_id": "",
+      "borte_id": "",
       "dato": "2026-07-07",
       "hjemme": "TBA",
       "borte": "TBA",
@@ -349,6 +395,8 @@
     },
     {
       "id": "400021535",
+      "hjemme_id": "",
+      "borte_id": "",
       "dato": "2026-07-07",
       "hjemme": "TBA",
       "borte": "TBA",
@@ -366,6 +414,8 @@
   "Kvartfinaler": [
     {
       "id": "400021536",
+      "hjemme_id": "",
+      "borte_id": "",
       "dato": "2026-07-09",
       "hjemme": "TBA",
       "borte": "TBA",
@@ -381,6 +431,8 @@
     },
     {
       "id": "400021538",
+      "hjemme_id": "",
+      "borte_id": "",
       "dato": "2026-07-10",
       "hjemme": "TBA",
       "borte": "TBA",
@@ -396,6 +448,8 @@
     },
     {
       "id": "400021539",
+      "hjemme_id": "",
+      "borte_id": "",
       "dato": "2026-07-11",
       "hjemme": "TBA",
       "borte": "TBA",
@@ -411,6 +465,8 @@
     },
     {
       "id": "400021537",
+      "hjemme_id": "",
+      "borte_id": "",
       "dato": "2026-07-12",
       "hjemme": "TBA",
       "borte": "TBA",
@@ -428,6 +484,8 @@
   "Semifinaler": [
     {
       "id": "400021541",
+      "hjemme_id": "",
+      "borte_id": "",
       "dato": "2026-07-14",
       "hjemme": "TBA",
       "borte": "TBA",
@@ -443,6 +501,8 @@
     },
     {
       "id": "400021540",
+      "hjemme_id": "",
+      "borte_id": "",
       "dato": "2026-07-15",
       "hjemme": "TBA",
       "borte": "TBA",
@@ -460,6 +520,8 @@
   "Bronsefinale": [
     {
       "id": "400021542",
+      "hjemme_id": "",
+      "borte_id": "",
       "dato": "2026-07-18",
       "hjemme": "TBA",
       "borte": "TBA",
@@ -477,6 +539,8 @@
   "Finale": [
     {
       "id": "400021543",
+      "hjemme_id": "",
+      "borte_id": "",
       "dato": "2026-07-19",
       "hjemme": "TBA",
       "borte": "TBA",
