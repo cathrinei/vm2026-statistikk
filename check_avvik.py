@@ -5,7 +5,7 @@ Sjekker avvik mellom Excel-data og offisiell VM-statistikk (mål/assist).
 Kilde: FIFA API  https://api.fifa.com/api/v3/
 """
 
-import argparse, io, re, shutil, sys, time, unicodedata
+import argparse, io, json, re, shutil, sys, time, unicodedata
 from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
