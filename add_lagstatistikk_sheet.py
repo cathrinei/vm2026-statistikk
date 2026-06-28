@@ -234,6 +234,7 @@ def _hent_og_cache_events():
                             "TypeLocalized":    _loc(ev),
                             "IdTeam":           ev.get("IdTeam", ""),
                             "IdPlayer":         ev.get("IdPlayer", ""),
+                            "IdSubPlayer":      ev.get("IdSubPlayer"),
                             "PlayerName":       _player_name(ev),
                             "MatchMinute":      ev.get("MatchMinute", ""),
                             "Period":           ev.get("Period"),

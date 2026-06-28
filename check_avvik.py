@@ -325,9 +325,10 @@ def hent_fifa() -> tuple[list[dict] | None, list[dict] | None, list[dict], str]:
     except Exception:
         pass
 
-    result_alle   = []
-    result_gruppe = []
-    kort_result   = []
+    result_alle        = []
+    result_gruppe      = []
+    kort_result        = []
+    kort_gruppe_result = []
     for pid in player_ids:
         name = player_names.get(pid, pid)
         land = team_names.get(player_team.get(pid, ""), "")
@@ -335,8 +336,8 @@ def hent_fifa() -> tuple[list[dict] | None, list[dict] | None, list[dict], str]:
         a  = player_assists.get(pid, 0)
         gy = player_yellow.get(pid, 0)
         gr = player_red.get(pid, 0)
-        gg = gruppe_player_goals.get(pid, 0)
-        ga = gruppe_player_assists.get(pid, 0)
+        gg  = gruppe_player_goals.get(pid, 0)
+        ga  = gruppe_player_assists.get(pid, 0)
         ggy = gruppe_player_yellow.get(pid, 0)
         ggr = gruppe_player_red.get(pid, 0)
         if g > 0 or a > 0:
@@ -365,11 +366,19 @@ def hent_fifa() -> tuple[list[dict] | None, list[dict] | None, list[dict], str]:
                 "rode":      gr,
                 "gule_rode": 0,
             })
+        if ggy > 0 or ggr > 0:
+            kort_gruppe_result.append({
+                "name":      name,
+                "land":      land,
+                "gule":      ggy,
+                "rode":      ggr,
+                "gule_rode": 0,
+            })
 
     if not result_alle and not kort_result:
-        return None, None, [], "Ingen spillere funnet i FIFA API"
+        return None, None, [], [], "Ingen spillere funnet i FIFA API"
 
-    return result_alle, result_gruppe, kort_result, f"{len(played)} kamper"
+    return result_alle, result_gruppe, kort_result, kort_gruppe_result, f"{len(played)} kamper"
 
 # ── Felles designstiler ───────────────────────────────────────────────────────
 
@@ -783,7 +792,7 @@ def main():
         print(f"      {p['name']:<30} mål={p['goals']}  assist={p['assists']}  ({p['lag']})")
 
     print("\n[2/3] Henter FIFA-statistikk (kan ta 30–60 sek)...")
-    fifa_alle, fifa_gruppe, kort, err = hent_fifa()
+    fifa_alle, fifa_gruppe, kort, kort_gruppe, err = hent_fifa()
     if fifa_alle:
         status = f"✅ {len(fifa_alle)} spillere hentet ({err}), {len(fifa_gruppe or [])} med gruppe-mål/assist"
         print(f"      {status}")
@@ -797,7 +806,7 @@ def main():
 
     print("\n[3/3] Sammenligner...")
     if fifa_gruppe:
-        avvik = sammenlign(excel, fifa_gruppe, kort)
+        avvik = sammenlign(excel, fifa_gruppe, kort_gruppe)
         if avvik:
             print(f"      {len(avvik)} avvik:")
             for a in avvik:
