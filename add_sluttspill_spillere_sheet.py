@@ -194,11 +194,11 @@ def skriv_ark(scorere: list[dict], kort_liste: list[dict]) -> None:
     if sheet_name in wb.sheetnames:
         del wb[sheet_name]
 
-    # Plasser arket etter "Sluttspill" hvis det finnes
+    # Plasser arket rett før "16-delsfinaler"
     idx = None
-    for probe in ("Sluttspill", "Lagstatistikk"):
+    for probe in ("16-delsfinaler",):
         if probe in wb.sheetnames:
-            idx = wb.sheetnames.index(probe) + 1
+            idx = wb.sheetnames.index(probe)
             break
     ws = wb.create_sheet(sheet_name, idx)
 
