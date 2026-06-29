@@ -666,7 +666,7 @@ def skriv_toppscore_sheets(excel: list[dict]) -> None:
             else:
                 bg, f_rank = (S["EVEN"] if i % 2 == 0 else S["ODD"]), S["f_muted"]
 
-            vals = [rang, p["name"], p["lag"],
+            vals = [rang, p["name"], p.get("lag") or p.get("land", ""),
                     p["goals"] or None, p["assists"] or None]
             for col, (val, (_, _, _)) in enumerate(zip(vals, col_defs), 1):
                 c = ws.cell(row=r, column=col, value=val)
@@ -824,6 +824,13 @@ def main():
         print(f"      ✅ {n} celler oppdatert (mål/assist/gule/røde kort)" if n else "      Ingen celler å oppdatere")
         if kort:
             skriv_kort_sheet(kort)
+        # Erstatt FIFA API-navn (mangler spesialtegn) med Excel-navn og lag der de matcher
+        excel_info_map = {p["key"]: {"name": p["name"], "lag": p["lag"]} for p in excel}
+        for p in fifa_alle:
+            if p["key"] in excel_info_map:
+                p["name"] = excel_info_map[p["key"]]["name"]
+                if not p.get("lag"):
+                    p["lag"] = excel_info_map[p["key"]]["lag"]
         skriv_toppscore_sheets(fifa_alle)
 
     print("\nFerdig.")
