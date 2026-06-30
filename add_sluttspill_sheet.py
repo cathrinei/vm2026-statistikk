@@ -264,8 +264,10 @@ def _fmt_resultat(k: dict) -> str:
         a = k["score_a"] if k["score_a"] is not None else "?"
         score = f"{h} – {a}"
         rt = k.get("result_type")
-        if rt == 3 and k.get("pen_h") is not None and k.get("pen_a") is not None:
-            return f"{score}  (e.str. {k['pen_h']}–{k['pen_a']})"
+        pen_h, pen_a = k.get("pen_h"), k.get("pen_a")
+        # FIFA API kan returnere result_type 2 (e.o.) selv når det ble straffespark
+        if pen_h is not None and pen_a is not None:
+            return f"{score}  (e.str. {pen_h}–{pen_a})"
         if rt == 2:
             return f"{score}  (e.o.)"
         return score
