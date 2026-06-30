@@ -31717,6 +31717,9 @@ function sokITabell(q) {
   let treff = 0, total = 0;
   const regex = tekst ? new RegExp(escapeRegex(tekst), 'gi') : null;
   synligArk.querySelectorAll('tr').forEach(rad => {
+    // Hopp over rader i skjulte underseksjoner (kampdata/tropp-splitten)
+    const foreldreDiv = rad.closest('.gruppe-kampdata, .gruppe-tropp');
+    if (foreldreDiv && foreldreDiv.style.display === 'none') return;
     if (rad.querySelector('th')) { rad.style.display = ''; return; }
     total++;
     if (!tekst || rad.textContent.toLowerCase().includes(tekst)) {
@@ -31754,21 +31757,45 @@ function finnFaneNavn(arkId) {
 function sokAlleArk(q) {
   const tekst = q.toLowerCase().trim();
   if (!tekst) { lukkSokPanel(); return; }
-  const MAX_PER_FANE = 8;
   const resultater = [];
   document.querySelectorAll('.ark-innhold').forEach(ark => {
     const arkId = ark.id.replace('ark_', '');
-    const treff = [];
-    ark.querySelectorAll('tr').forEach(rad => {
-      if (rad.querySelector('th')) return;
-      const celler = rad.querySelectorAll('td');
-      if (!celler.length) return;
-      if (rad.textContent.toLowerCase().includes(tekst)) {
-        const radTekst = Array.from(celler).slice(0, 6).map(td => td.textContent.trim()).filter(Boolean).join(' · ');
-        treff.push(radTekst);
-      }
-    });
-    if (treff.length) resultater.push({ arkId, faneTekst: finnFaneNavn(arkId), treff });
+    const kampDiv = ark.querySelector('.gruppe-kampdata');
+    const troppDiv = ark.querySelector('.gruppe-tropp');
+    if (kampDiv && troppDiv) {
+      // Gruppe-ark: søk i hver underseksjon separat
+      const treffKamp = [], treffTropp = [];
+      kampDiv.querySelectorAll('tr').forEach(rad => {
+        if (rad.querySelector('th')) return;
+        const celler = rad.querySelectorAll('td');
+        if (!celler.length) return;
+        if (rad.textContent.toLowerCase().includes(tekst)) {
+          treffKamp.push(Array.from(celler).slice(0, 6).map(td => td.textContent.trim()).filter(Boolean).join(' · '));
+        }
+      });
+      troppDiv.querySelectorAll('tr').forEach(rad => {
+        if (rad.querySelector('th')) return;
+        const celler = rad.querySelectorAll('td');
+        if (!celler.length) return;
+        if (rad.textContent.toLowerCase().includes(tekst)) {
+          treffTropp.push(Array.from(celler).slice(0, 6).map(td => td.textContent.trim()).filter(Boolean).join(' · '));
+        }
+      });
+      const faneNavn = finnFaneNavn(arkId);
+      if (treffKamp.length) resultater.push({ arkId, faneTekst: faneNavn + ' – kamper/tabell', treff: treffKamp, modus: 'kampdata' });
+      if (treffTropp.length) resultater.push({ arkId, faneTekst: faneNavn + ' – spillertropp', treff: treffTropp, modus: 'tropp' });
+    } else {
+      const treff = [];
+      ark.querySelectorAll('tr').forEach(rad => {
+        if (rad.querySelector('th')) return;
+        const celler = rad.querySelectorAll('td');
+        if (!celler.length) return;
+        if (rad.textContent.toLowerCase().includes(tekst)) {
+          treff.push(Array.from(celler).slice(0, 6).map(td => td.textContent.trim()).filter(Boolean).join(' · '));
+        }
+      });
+      if (treff.length) resultater.push({ arkId, faneTekst: finnFaneNavn(arkId), treff });
+    }
   });
   visSokPanel(resultater, tekst);
 }
@@ -31788,7 +31815,8 @@ function visSokPanel(resultater, tekst) {
     html += '<div class="sok-panel-gruppe-tittel">' + faneTekst + ' (' + treff.length + ')</div>';
     treff.slice(0, MAX_PER_FANE).forEach(radTekst => {
       const hl = radTekst.replace(regex, m => '<mark class="sok-mark">' + m + '</mark>');
-      html += '<div class="sok-panel-rad" onclick="visArk(\'' + arkId + '\')">' + hl + '</div>';
+      const modusArg = modus ? ', false, \'' + modus + '\'' : '';
+      html += '<div class="sok-panel-rad" onclick="visArk(\'' + arkId + '\'' + modusArg + ')">' + hl + '</div>';
     });
     if (treff.length > MAX_PER_FANE) {
       html += '<div class="sok-panel-mer">… og ' + (treff.length - MAX_PER_FANE) + ' til</div>';
