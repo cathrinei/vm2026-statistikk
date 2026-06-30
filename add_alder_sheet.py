@@ -79,6 +79,25 @@ def _norm(s, special=_SPECIAL):
     s = " ".join(s.lower().split())
     return _JR_RE.sub("junior", s)
 
+# Kart: norm(excel-navn) → korrekt excel-navn med spesialtegn (bygges ved import)
+def _bygg_excel_navnmap() -> dict[str, str]:
+    try:
+        with open(PLAYERS_JSON, encoding="utf-8") as _f:
+            _data = json.load(_f)
+        return {_norm(p["name"]): p["name"]
+                for _gruppe in _data.values()
+                for _lag in _gruppe.values()
+                for p in _lag}
+    except Exception:
+        return {}
+
+_EXCEL_NAVNMAP: dict[str, str] = _bygg_excel_navnmap()
+
+def _excel_navn(fifa_navn: str, fallback: str = "") -> str:
+    """Returnerer korrekt Excel-navn med spesialtegn, eller fallback/title-case."""
+    n = _norm(fifa_navn)
+    return _EXCEL_NAVNMAP.get(n) or _EXCEL_NAVNMAP.get(_ALIASES.get(n, "")) or (fallback or fifa_navn.title() if fifa_navn else fallback)
+
 # Excel-navn (players.json) → FIFA API-navn (alder-cache)
 _ALIASES: dict[str, str] = {
     _norm(a): _norm(b) for a, b in [
@@ -250,7 +269,7 @@ def hent_spillere_fra_kamper(spilte: list) -> dict[str, dict]:
                     )
                     spillere_i_kamp.append({
                         "pid":    pid,
-                        "name":   name.title() if name else pid,
+                        "name":   _excel_navn(name, pid) if name else pid,
                         "land":   land_no,
                         "gruppe": gruppe,
                     })
@@ -299,7 +318,7 @@ def hent_aldere(spillere: dict[str, dict]) -> dict[str, dict]:
                     ""
                 )
                 cache[pid] = {
-                    "name":      name.title() if name else spillere[pid]["name"],
+                    "name":      _excel_navn(name, spillere[pid]["name"]) if name else spillere[pid]["name"],
                     "birthdate": data.get("BirthDate", ""),
                 }
         except Exception:
