@@ -31860,10 +31860,11 @@ function toggleFaneMeny() {
 
 function byggFaneMeny() {
   const kategorier = [
-    { navn: 'Gruppespill og spillertropper', test: function(n) { return /^Gruppe [A-L]$/.test(n); } },
-    { navn: 'Sluttspill',                    test: function(n) { return /(delsfinale|kvartfinaler|semifinaler|bronsefinale|^finale$)/i.test(n); } },
-    { navn: 'Spillere',                      test: function(n) { return /^(Alder|Spillere etter land|Kort|Scorere og assists|Aldersfordeling|Niv.+ 2 og lavere)$/i.test(n); } },
-    { navn: 'Lag',                           test: function() { return true; } },
+    { navn: 'Gruppespill',    test: function(n) { return /^Gruppe [A-L]$/.test(n); }, duplikat: true },
+    { navn: 'Spillertropper', test: function(n) { return /^Gruppe [A-L]$/.test(n); }, duplikat: true },
+    { navn: 'Sluttspill',     test: function(n) { return /(delsfinale|kvartfinaler|semifinaler|bronsefinale|^finale$)/i.test(n); } },
+    { navn: 'Spillere',       test: function(n) { return /^(Alder|Spillere etter land|Kort|Scorere og assists|Aldersfordeling|Niv.+ 2 og lavere)$/i.test(n); } },
+    { navn: 'Lag',            test: function() { return true; } },
   ];
   var data = [];
   document.querySelectorAll('.tab-bar button').forEach(function(k) {
@@ -31885,8 +31886,8 @@ function byggFaneMeny() {
   container.appendChild(hjemSeksjon);
   var brukte = new Set();
   kategorier.forEach(function(kat) {
-    var btns = data.filter(function(d) { return !brukte.has(d.id) && kat.test(d.navn); });
-    btns.forEach(function(d) { brukte.add(d.id); });
+    var btns = data.filter(function(d) { return (kat.duplikat || !brukte.has(d.id)) && kat.test(d.navn); });
+    if (!kat.duplikat) btns.forEach(function(d) { brukte.add(d.id); });
     if (!btns.length) return;
     var seksjon = document.createElement('div');
     seksjon.className = 'fane-gruppe';
@@ -31910,10 +31911,11 @@ function byggFaneMeny() {
 
 function byggDropdownNav() {
   var kategorier = [
-    { navn: 'Gruppespill og spillertropper', test: function(n) { return /^Gruppe [A-L]$/.test(n); } },
-    { navn: 'Sluttspill',                    test: function(n) { return /(delsfinale|kvartfinaler|semifinaler|bronsefinale|^finale$)/i.test(n); } },
-    { navn: 'Spillere',                      test: function(n) { return /^(Alder|Spillere etter land|Kort|Scorere og assists|Aldersfordeling|Niv.+ 2 og lavere)$/i.test(n); } },
-    { navn: 'Lag',                           test: function() { return true; } },
+    { navn: 'Gruppespill',    test: function(n) { return /^Gruppe [A-L]$/.test(n); }, duplikat: true },
+    { navn: 'Spillertropper', test: function(n) { return /^Gruppe [A-L]$/.test(n); }, duplikat: true },
+    { navn: 'Sluttspill',     test: function(n) { return /(delsfinale|kvartfinaler|semifinaler|bronsefinale|^finale$)/i.test(n); } },
+    { navn: 'Spillere',       test: function(n) { return /^(Alder|Spillere etter land|Kort|Scorere og assists|Aldersfordeling|Niv.+ 2 og lavere)$/i.test(n); } },
+    { navn: 'Lag',            test: function() { return true; } },
   ];
   var data = [];
   document.querySelectorAll('.tab-bar button').forEach(function(k) {
@@ -31933,8 +31935,8 @@ function byggDropdownNav() {
   nav.appendChild(hjemDiv);
   var brukte = new Set();
   kategorier.forEach(function(kat) {
-    var btns = data.filter(function(d) { return !brukte.has(d.id) && kat.test(d.navn); });
-    btns.forEach(function(d) { brukte.add(d.id); });
+    var btns = data.filter(function(d) { return (kat.duplikat || !brukte.has(d.id)) && kat.test(d.navn); });
+    if (!kat.duplikat) btns.forEach(function(d) { brukte.add(d.id); });
     if (!btns.length) return;
     var harAktiv = btns.some(function(d) { return d.aktiv; });
     var div = document.createElement('div');
@@ -32039,10 +32041,11 @@ function toggleDarkMode() {
 
 function byggHjemseksjon() {
   var kategorier = [
-    { navn: 'Gruppespill og spillertropper', test: function(n) { return /^Gruppe [A-L]$/.test(n); } },
-    { navn: 'Sluttspill',                    test: function(n) { return /(delsfinale|kvartfinaler|semifinaler|bronsefinale|^finale$)/i.test(n); } },
-    { navn: 'Spillere',                      test: function(n) { return /^(Alder|Spillere etter land|Kort|Scorere og assists|Aldersfordeling|Niv.+ 2 og lavere)$/i.test(n); } },
-    { navn: 'Lag',                           test: function() { return true; } },
+    { navn: 'Gruppespill',    test: function(n) { return /^Gruppe [A-L]$/.test(n); }, duplikat: true },
+    { navn: 'Spillertropper', test: function(n) { return /^Gruppe [A-L]$/.test(n); }, duplikat: true },
+    { navn: 'Sluttspill',     test: function(n) { return /(delsfinale|kvartfinaler|semifinaler|bronsefinale|^finale$)/i.test(n); } },
+    { navn: 'Spillere',       test: function(n) { return /^(Alder|Spillere etter land|Kort|Scorere og assists|Aldersfordeling|Niv.+ 2 og lavere)$/i.test(n); } },
+    { navn: 'Lag',            test: function() { return true; } },
   ];
   var data = [];
   document.querySelectorAll('.tab-bar button').forEach(function(k) {
@@ -32054,8 +32057,8 @@ function byggHjemseksjon() {
   var html = '<p class="hjem-ingress">Velg en kategori nedenfor for å gå direkte til ønsket statistikk.</p>';
   var brukte = new Set();
   kategorier.forEach(function(kat) {
-    var btns = data.filter(function(d) { return !brukte.has(d.id) && kat.test(d.navn); });
-    btns.forEach(function(d) { brukte.add(d.id); });
+    var btns = data.filter(function(d) { return (kat.duplikat || !brukte.has(d.id)) && kat.test(d.navn); });
+    if (!kat.duplikat) btns.forEach(function(d) { brukte.add(d.id); });
     if (!btns.length) return;
     html += '<div class="hjem-kategori"><div class="hjem-kategori-tittel">' + kat.navn + '</div><div class="hjem-knapper">';
     btns.forEach(function(d) {
