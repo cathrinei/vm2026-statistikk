@@ -17,7 +17,7 @@ UTDATA_DIR = "docs"
 UTDATA_FIL = os.path.join(UTDATA_DIR, "index.html")
 
 # Ark som skal hoppes over (interne/tomme)
-HOPP_OVER_ARK = set()
+HOPP_OVER_ARK = {"Sluttspill – spillere"}
 
 # Disse arkene vises alltid sist, i denne rekkefølgen
 SIST = ["Klubbdominans", "Spillere etter klubbland", "Klubber", "Nivå 2 og lavere", "Aldersfordeling", "Alder"]
