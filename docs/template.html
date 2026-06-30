@@ -289,7 +289,15 @@ function visArk(id, oppdaterHash = true, modus = null) {
   if (overlayKnapp) overlayKnapp.classList.add('aktiv');
   document.querySelectorAll('.dropdown-trigger').forEach(t => t.classList.remove('aktiv'));
   document.querySelectorAll('.dropdown-panel button').forEach(b => b.classList.remove('aktiv'));
-  const dpKnapp = document.querySelector('.dropdown-panel button[data-id="' + id + '"]');
+  // Finn riktig panel-knapp: ved modus='tropp' foretrekk knapp med data-modus="tropp",
+  // ved modus='kampdata' foretrekk data-modus="kampdata", ellers ta første treff.
+  const alleDpKnapper = Array.from(document.querySelectorAll('.dropdown-panel button[data-id="' + id + '"]'));
+  let dpKnapp = null;
+  if (modus && alleDpKnapper.length > 1) {
+    dpKnapp = alleDpKnapper.find(b => b.dataset.modus === modus) || alleDpKnapper[0];
+  } else {
+    dpKnapp = alleDpKnapper[0] || null;
+  }
   if (dpKnapp) {
     dpKnapp.classList.add('aktiv');
     dpKnapp.closest('.dropdown').querySelector('.dropdown-trigger').classList.add('aktiv');
@@ -536,6 +544,8 @@ function byggDropdownNav() {
       var b = document.createElement('button');
       b.textContent = d.navn;
       b.dataset.id = d.id;
+      var bModus = kat.modusFn ? kat.modusFn(d.navn) : (kat.modus || null);
+      if (bModus) b.dataset.modus = bModus;
       if (d.aktiv) b.classList.add('aktiv');
       b.onclick = (function(id, modus) { return function(e) {
         e.stopPropagation();
