@@ -36,8 +36,17 @@ def _bygg_excel_navnmap() -> dict[str, str]:
 
 _EXCEL_NAVNMAP: dict[str, str] = _bygg_excel_navnmap()
 
+# FIFA API-navn → Excel-navn for spillere med avvikende stavemåte (ikke i players.json)
+_NAVN_ALIAS: dict[str, str] = {
+    _norm_n("Meschack Elia"):   "Meschak Elia",
+    _norm_n("Ehsan Haddad"):    "Ihsan Haddad",
+    _norm_n("Juan Quintero"):   "Juan Fernando Quintero",
+    _norm_n("Mousa Altamari"):  "Musa Al-Taamari",
+}
+
 def _excel_navn(fifa_navn: str, fallback: str = "") -> str:
-    return _EXCEL_NAVNMAP.get(_norm_n(fifa_navn)) or (fallback or fifa_navn.title() if fifa_navn else fallback)
+    nk = _norm_n(fifa_navn)
+    return _EXCEL_NAVNMAP.get(nk) or _NAVN_ALIAS.get(nk) or (fallback or fifa_navn.title() if fifa_navn else fallback)
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
