@@ -170,10 +170,14 @@ def main():
     else:
         print(f"\n  Ingen nye kamper siden sist — hopper over check_avvik.")
 
-    # ── Steg 4–6: kun ved nye gruppekamper ───────────────────────────────────
+    # ── Steg 4–6: kun ved nye gruppekamper (eller full) ─────────────────────
+    # Steg 6 (minutter) kjøres også i sluttspillfasen — spillere akkumulerer
+    # minutter gjennom hele VM, ikke bare i gruppespillet.
     if nye_kamper > 0 or full:
         kjør_steg("Fødselsdatoer + Alder-ark",       [PYTHON, "add_alder_sheet.py"])
         kjør_steg("Fødselsdato-kolonne i gruppeark", [PYTHON, "add_birthdate_column.py"])
+        kjør_steg("Minutter spilt i gruppeark",      [PYTHON, "add_minutter_column.py"])
+    elif spilte_sluttspill_etter > 0:
         kjør_steg("Minutter spilt i gruppeark",      [PYTHON, "add_minutter_column.py"])
     elif nye_sluttspill == 0:
         print(f"\n  Ingen nye gruppe-kamper — hopper over alder/fødselsdato/minutter.")
