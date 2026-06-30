@@ -805,8 +805,8 @@ def main():
         kort = []
 
     print("\n[3/3] Sammenligner...")
-    if fifa_gruppe:
-        avvik = sammenlign(excel, fifa_gruppe, kort_gruppe)
+    if fifa_alle:
+        avvik = sammenlign(excel, fifa_alle, kort)
         if avvik:
             print(f"      {len(avvik)} avvik:")
             for a in avvik:
