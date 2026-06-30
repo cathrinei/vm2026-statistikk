@@ -15,9 +15,10 @@ try:
 except ImportError as e:
     sys.exit(f"Mangler pakke: {e}")
 
-EXCEL_PATH    = BASE_DIR / "VM2026_avansert_gruppetabeller_og_sluttspill.xlsx"
-KAMPER_PATH   = BASE_DIR / "kamper_resultater.json"
-TILSKUERE_PATH = BASE_DIR / "tilskuere_cache.json"
+EXCEL_PATH       = BASE_DIR / "VM2026_avansert_gruppetabeller_og_sluttspill.xlsx"
+KAMPER_PATH      = BASE_DIR / "kamper_resultater.json"
+SLUTTSPILL_PATH  = BASE_DIR / "sluttspill_cache.json"
+TILSKUERE_PATH   = BASE_DIR / "tilskuere_cache.json"
 SHEET_NAME    = "Stadionoversikt"
 
 STADION_INFO = {
@@ -57,6 +58,45 @@ def _belegg_fill_font(pct: float):
         return PatternFill("solid", fgColor="FFF3CD"), Font(name="Calibri", bold=True, size=10, color="856404")
 
 
+RUNDE_ORDER = {
+    "16-delsfinaler": 100,
+    "8-delsfinaler":  101,
+    "Kvartfinaler":   102,
+    "Semifinaler":    103,
+    "Bronsefinale":   104,
+    "Finale":         105,
+}
+
+
+def _lag_rad(gruppe: str, k: dict, tilskuere: dict, grp_idx: int) -> dict | None:
+    mid = k.get("id")
+    if not mid or mid not in tilskuere:
+        return None
+    t = tilskuere[mid]
+    stadion_key = t["stadion"]
+    info = STADION_INFO.get(stadion_key, {})
+    kap = info.get("kap")
+    att = t["att"]
+    pct = (att / kap * 100) if (kap and att is not None) else None
+    score_h = k.get("score_h")
+    score_a = k.get("score_a")
+    score_str = f"{score_h}–{score_a}" if score_h is not None else "–"
+    return {
+        "gruppe":     gruppe,
+        "dato":       k["dato"],
+        "hjemme":     k["hjemme"],
+        "borte":      k["borte"],
+        "score":      score_str,
+        "arena":      info.get("navn", stadion_key),
+        "by":         info.get("by", ""),
+        "land":       info.get("land", ""),
+        "tilskuere":  att,
+        "kapasitet":  kap,
+        "belegg_pct": pct,
+        "grp_idx":    grp_idx,
+    }
+
+
 def bygg_data() -> list[dict]:
     with open(KAMPER_PATH, encoding="utf-8") as f:
         kamper = json.load(f)
@@ -68,36 +108,23 @@ def bygg_data() -> list[dict]:
 
     for gruppe, kamp_liste in kamper.items():
         for k in kamp_liste:
-            if not k.get("spilt") or not k.get("id"):
+            if not k.get("spilt"):
                 continue
-            mid = k["id"]
-            if mid not in tilskuere:
-                continue
-            t = tilskuere[mid]
-            stadion_key = t["stadion"]
-            info = STADION_INFO.get(stadion_key, {})
-            kap = info.get("kap")
-            att = t["att"]
-            pct = (att / kap * 100) if (kap and att is not None) else None
+            rad = _lag_rad(gruppe, k, tilskuere, gruppe_order.get(gruppe, 99))
+            if rad:
+                rader.append(rad)
 
-            score_h = k.get("score_h")
-            score_a = k.get("score_a")
-            score_str = f"{score_h}–{score_a}" if score_h is not None else "–"
-
-            rader.append({
-                "gruppe":     gruppe,
-                "dato":       k["dato"],
-                "hjemme":     k["hjemme"],
-                "borte":      k["borte"],
-                "score":      score_str,
-                "arena":      info.get("navn", stadion_key),
-                "by":         info.get("by", ""),
-                "land":       info.get("land", ""),
-                "tilskuere":  att,
-                "kapasitet":  kap,
-                "belegg_pct": pct,
-                "grp_idx":    gruppe_order.get(gruppe, 99),
-            })
+    if SLUTTSPILL_PATH.exists():
+        with open(SLUTTSPILL_PATH, encoding="utf-8") as f:
+            sluttspill = json.load(f)
+        for runde, kamp_liste in sluttspill.items():
+            grp_idx = RUNDE_ORDER.get(runde, 200)
+            for k in kamp_liste:
+                if not k.get("spilt"):
+                    continue
+                rad = _lag_rad(runde, k, tilskuere, grp_idx)
+                if rad:
+                    rader.append(rad)
 
     rader.sort(key=lambda r: (r["dato"], r["grp_idx"]))
     return rader
