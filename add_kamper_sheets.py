@@ -192,7 +192,7 @@ def hent_resultater(grupper: dict[str, list[dict]]) -> set[str]:
         alle = r.json().get("Results", [])
     except Exception as e:
         print(f"  ⚠️  Kunne ikke hente FIFA-data: {e}")
-        return set()
+        return set(), {}
 
     # Bygg oppslag: norm(hjemme)|norm(borte) → match-objekt
     fifa_idx: dict[str, dict] = {}
