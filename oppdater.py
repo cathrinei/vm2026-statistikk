@@ -156,11 +156,16 @@ def main():
     nye_sluttspill          = spilte_sluttspill_etter - spilte_sluttspill_før
     spilte_etter            = spilte_gruppe_etter  # for summary
 
-    # ── Steg 3: check_avvik — ved nye kamper (gruppe eller sluttspill) ───────
-    if nye_kamper > 0 or nye_sluttspill > 0 or full:
+    # ── Steg 3: check_avvik — ved nye kamper ELLER i sluttspillfasen ────────
+    # Kjøres alltid når det finnes spilte sluttspill-kamper, slik at gruppe-arkene
+    # alltid viser totalstatistikk (gruppe + sluttspill), ikke bare gruppespillmål.
+    if nye_kamper > 0 or nye_sluttspill > 0 or spilte_sluttspill_etter > 0 or full:
         antall = nye_kamper + nye_sluttspill
-        print(f"\n  {antall} ny{'e' if antall != 1 else ''} kamp{'er' if antall != 1 else ''} "
-              f"({nye_kamper} gruppe, {nye_sluttspill} sluttspill) — oppdaterer statistikk...")
+        if antall > 0:
+            print(f"\n  {antall} ny{'e' if antall != 1 else ''} kamp{'er' if antall != 1 else ''} "
+                  f"({nye_kamper} gruppe, {nye_sluttspill} sluttspill) — oppdaterer statistikk...")
+        else:
+            print(f"\n  Sluttspillfase aktiv — oppdaterer totalstatistikk i gruppe-ark...")
         kjør_steg("Mål, assist og kort", [PYTHON, "check_avvik.py", "--fix"])
     else:
         print(f"\n  Ingen nye kamper siden sist — hopper over check_avvik.")
