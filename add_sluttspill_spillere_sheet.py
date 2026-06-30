@@ -17,6 +17,7 @@ BASE_DIR   = Path(__file__).parent
 EXCEL_PATH = BASE_DIR / "VM2026_avansert_gruppetabeller_og_sluttspill.xlsx"
 SLUTTSPILL_CACHE  = BASE_DIR / "sluttspill_cache.json"
 LAGSTATS_CACHE    = BASE_DIR / "lagstatistikk_cache.json"
+PLAYER_ALDER      = BASE_DIR / "player_alder.json"
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
@@ -81,6 +82,11 @@ def bygg_spillerstats(match_ids: set[str], team_names: dict[str, str]) -> tuple[
 
     with open(LAGSTATS_CACHE, encoding="utf-8") as f:
         cache = json.load(f)
+
+    player_alder: dict[str, str] = {}
+    if PLAYER_ALDER.exists():
+        with open(PLAYER_ALDER, encoding="utf-8") as f:
+            player_alder = {k: v.get("name", "") for k, v in json.load(f).items()}
 
     goals:   defaultdict[str, int] = defaultdict(int)
     assists: defaultdict[str, int] = defaultdict(int)
@@ -149,7 +155,7 @@ def bygg_spillerstats(match_ids: set[str], team_names: dict[str, str]) -> tuple[
                 kamper[sub_pid].add(match_id)
                 # Prøv å hente navn for sub_pid fra samme event hvis tilgjengelig
                 if sub_pid not in navn:
-                    navn[sub_pid] = sub_name or sub_pid
+                    navn[sub_pid] = sub_name or player_alder.get(sub_pid, sub_pid)
                 if ev_team and sub_pid not in lag:
                     lag[sub_pid] = team_names.get(ev_team, ev_team)
 
