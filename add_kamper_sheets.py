@@ -27,6 +27,7 @@ EXCEL_PATH        = BASE_DIR / "VM2026_avansert_gruppetabeller_og_sluttspill.xls
 KAMPER_PATH       = BASE_DIR / "VM_fotball_menn_2026_kamper.xlsx"
 CACHE_PATH        = BASE_DIR / "kamper_resultater.json"
 TILSKUERE_CACHE   = BASE_DIR / "tilskuere_cache.json"
+TEAM_ID_CACHE     = BASE_DIR / "team_id_cache.json"
 
 _FIFA_BASE   = "https://api.fifa.com/api/v3"
 _FIFA_COMP   = "17"
@@ -176,7 +177,17 @@ def lagre_cache(grupper: dict[str, list[dict]]) -> None:
 
 def hent_resultater(grupper: dict[str, list[dict]]) -> set[str]:
     """Henter ferske resultater fra FIFA API.
-    Returnerer settet av gruppenavn der noe endret seg."""
+    Returnerer settet av gruppenavn der noe endret seg.
+    Hvis alle 48 gruppe-kamper allerede er spilt, hoppes API-kallet over
+    og team-ID-map leses fra lokal cache."""
+    alle_spilt = all(k["spilt"] for km in grupper.values() for k in km)
+    if alle_spilt and TEAM_ID_CACHE.exists():
+        with open(TEAM_ID_CACHE, encoding="utf-8") as f:
+            team_id_map = json.load(f)
+        spilt = sum(1 for km in grupper.values() for k in km if k["spilt"])
+        print(f"  Alle {spilt} gruppe-kamper er ferdigspilt — hopper over FIFA API-kall.")
+        return set(), team_id_map
+
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
         "Accept": "application/json",
@@ -229,6 +240,10 @@ def hent_resultater(grupper: dict[str, list[dict]]) -> set[str]:
     for excel_name, fifa_name in _EXCEL_ALIASES.items():
         if fifa_name in team_id_map:
             team_id_map[excel_name] = team_id_map[fifa_name]
+
+    # Lagre team-ID-map til cache så fremtidige kjøringer kan hoppe over API-kallet
+    with open(TEAM_ID_CACHE, "w", encoding="utf-8") as f:
+        json.dump(team_id_map, f, ensure_ascii=False, indent=2)
 
     kamper_n = treff = 0
     endrede_grupper: set[str] = set()
