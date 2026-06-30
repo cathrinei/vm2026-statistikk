@@ -436,7 +436,7 @@ function byggFaneMeny() {
     { navn: 'Gruppespill',    test: function(n) { return /^Gruppe [A-L]$/.test(n); }, duplikat: true, modus: 'kampdata' },
     { navn: 'Sluttspill',     test: function(n) { return /(delsfinale|kvartfinaler|semifinaler|bronsefinale|^finale$)/i.test(n); } },
     { navn: 'Spillere',       test: function(n) { return /^(Alder|Spillere etter land|Kort|Scorere og assists|Aldersfordeling|Niv.+ 2 og lavere|Gruppe [A-L])$/i.test(n); }, modusFn: function(n) { return /^Gruppe [A-L]$/.test(n) ? 'tropp' : null; } },
-    { navn: 'Lag',            test: function(n) { return n !== 'Sluttspill - spillere'; } },
+    { navn: 'Lag',            test: function(n) { return n !== 'Sluttspill - spillere' && !/^Gruppe [A-L]$/.test(n); } },
   ];
   var data = [];
   document.querySelectorAll('.tab-bar button').forEach(function(k) {
@@ -487,7 +487,7 @@ function byggDropdownNav() {
     { navn: 'Gruppespill',    test: function(n) { return /^Gruppe [A-L]$/.test(n); }, duplikat: true, modus: 'kampdata' },
     { navn: 'Sluttspill',     test: function(n) { return /(delsfinale|kvartfinaler|semifinaler|bronsefinale|^finale$)/i.test(n); } },
     { navn: 'Spillere',       test: function(n) { return /^(Alder|Spillere etter land|Kort|Scorere og assists|Aldersfordeling|Niv.+ 2 og lavere|Gruppe [A-L])$/i.test(n); }, modusFn: function(n) { return /^Gruppe [A-L]$/.test(n) ? 'tropp' : null; } },
-    { navn: 'Lag',            test: function(n) { return n !== 'Sluttspill - spillere'; } },
+    { navn: 'Lag',            test: function(n) { return n !== 'Sluttspill - spillere' && !/^Gruppe [A-L]$/.test(n); } },
   ];
   var data = [];
   document.querySelectorAll('.tab-bar button').forEach(function(k) {
@@ -617,7 +617,7 @@ function byggHjemseksjon() {
     { navn: 'Gruppespill',    test: function(n) { return /^Gruppe [A-L]$/.test(n); }, duplikat: true, modus: 'kampdata' },
     { navn: 'Sluttspill',     test: function(n) { return /(delsfinale|kvartfinaler|semifinaler|bronsefinale|^finale$)/i.test(n); } },
     { navn: 'Spillere',       test: function(n) { return /^(Alder|Spillere etter land|Kort|Scorere og assists|Aldersfordeling|Niv.+ 2 og lavere|Gruppe [A-L])$/i.test(n); }, modusFn: function(n) { return /^Gruppe [A-L]$/.test(n) ? 'tropp' : null; } },
-    { navn: 'Lag',            test: function(n) { return n !== 'Sluttspill - spillere'; } },
+    { navn: 'Lag',            test: function(n) { return n !== 'Sluttspill - spillere' && !/^Gruppe [A-L]$/.test(n); } },
   ];
   var data = [];
   document.querySelectorAll('.tab-bar button').forEach(function(k) {
