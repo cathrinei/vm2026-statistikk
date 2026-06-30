@@ -24,12 +24,12 @@
       "dato": "2026-06-29",
       "hjemme": "Brasil",
       "borte": "Japan",
-      "score_h": null,
-      "score_a": null,
+      "score_h": 2,
+      "score_a": 1,
       "pen_h": null,
       "pen_a": null,
-      "result_type": null,
-      "spilt": false,
+      "result_type": 1,
+      "spilt": true,
       "tid": "19:00",
       "dommer": "Maurizio Mariani",
       "stadion": "Houston Stadium"
@@ -41,12 +41,12 @@
       "dato": "2026-06-29",
       "hjemme": "Tyskland",
       "borte": "Paraguay",
-      "score_h": null,
-      "score_a": null,
-      "pen_h": null,
-      "pen_a": null,
-      "result_type": null,
-      "spilt": false,
+      "score_h": 1,
+      "score_a": 1,
+      "pen_h": 3,
+      "pen_a": 4,
+      "result_type": 2,
+      "spilt": true,
       "tid": "22:30",
       "dommer": "Jalal Jayed",
       "stadion": "Boston Stadium"
@@ -58,12 +58,12 @@
       "dato": "2026-06-30",
       "hjemme": "Nederland",
       "borte": "Marokko",
-      "score_h": null,
-      "score_a": null,
-      "pen_h": null,
-      "pen_a": null,
-      "result_type": null,
-      "spilt": false,
+      "score_h": 1,
+      "score_a": 1,
+      "pen_h": 2,
+      "pen_a": 3,
+      "result_type": 2,
+      "spilt": true,
       "tid": "03:00",
       "dommer": "Wilton SAMPAIO",
       "stadion": "Monterrey Stadium"
@@ -133,7 +133,7 @@
       "result_type": null,
       "spilt": false,
       "tid": "18:00",
-      "dommer": "",
+      "dommer": "Adham Mohammad Tumah Makhadmeh",
       "stadion": "Atlanta Stadium"
     },
     {
@@ -150,7 +150,7 @@
       "result_type": null,
       "spilt": false,
       "tid": "22:00",
-      "dommer": "",
+      "dommer": "Said MARTINEZ",
       "stadion": "Seattle Stadium"
     },
     {
@@ -167,7 +167,7 @@
       "result_type": null,
       "spilt": false,
       "tid": "02:00",
-      "dommer": "",
+      "dommer": "Raphael Claus",
       "stadion": "San Francisco Bay Area Stadium"
     },
     {
@@ -184,7 +184,7 @@
       "result_type": null,
       "spilt": false,
       "tid": "21:00",
-      "dommer": "",
+      "dommer": "Glenn Nyberg",
       "stadion": "Los Angeles Stadium"
     },
     {
@@ -201,7 +201,7 @@
       "result_type": null,
       "spilt": false,
       "tid": "01:00",
-      "dommer": "",
+      "dommer": "Espen Eskås",
       "stadion": "Toronto Stadium"
     },
     {
@@ -218,7 +218,7 @@
       "result_type": null,
       "spilt": false,
       "tid": "05:00",
-      "dommer": "",
+      "dommer": "Yael Falcón Pérez",
       "stadion": "BC Place Vancouver"
     },
     {
@@ -277,10 +277,10 @@
     {
       "id": "400021530",
       "hjemme_id": "43899",
-      "borte_id": "",
+      "borte_id": "43872",
       "dato": "2026-07-04",
       "hjemme": "Canada",
-      "borte": "TBA",
+      "borte": "Marokko",
       "score_h": null,
       "score_a": null,
       "pen_h": null,
@@ -293,10 +293,10 @@
     },
     {
       "id": "400021533",
-      "hjemme_id": "",
+      "hjemme_id": "43928",
       "borte_id": "",
       "dato": "2026-07-04",
-      "hjemme": "TBA",
+      "hjemme": "Paraguay",
       "borte": "TBA",
       "score_h": null,
       "score_a": null,
@@ -310,10 +310,10 @@
     },
     {
       "id": "400021532",
-      "hjemme_id": "",
+      "hjemme_id": "43924",
       "borte_id": "",
       "dato": "2026-07-05",
-      "hjemme": "TBA",
+      "hjemme": "Brasil",
       "borte": "TBA",
       "score_h": null,
       "score_a": null,
