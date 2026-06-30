@@ -12,6 +12,7 @@ Kjørerekkefølge:
   5. add_birthdate_column.py        — fyll inn fødselsdatoer i gruppearkene (ev. nye spillere)
   6. add_minutter_column.py         — minutter spilt per spiller i gruppearkene
   7. add_lagstatistikk_sheet.py     — mål/nullere/straffespark/selvmål/skudd/formasjoner/bytter
+ 7b. add_sluttspill_spillere_sheet.py — scorere/assistenter i sluttspill (alltid)
   8. add_scoringstidspunkt_sheet.py — mål per 15-min intervall + søylediagram
   9. add_heatmap_sheet.py           — mål per minutt som fargekodet heatmap
  10. add_ballbesittelse_sheet.py    — ballbesittelse og skudd per kamp (leser wc2026_stats3.json)
