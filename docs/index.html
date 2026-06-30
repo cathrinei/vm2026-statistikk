@@ -31905,12 +31905,19 @@ function visArk(id, oppdaterHash = true, modus = null) {
     const dpKnappNavn = document.querySelector('.dropdown-panel button[data-id="' + id + '"]');
     mobilLabel.textContent = dpKnappNavn ? dpKnappNavn.textContent.trim() : (id === 'hjem' ? '⚽ Hjem' : id.replace(/_/g, ' '));
   }
-  if (oppdaterHash) history.replaceState(null, '', '#' + id);
+  if (oppdaterHash) {
+    var hashId = (modus === 'tropp' && /^Gruppe_[A-L]$/.test(id)) ? id + '_spillere' : id;
+    history.replaceState(null, '', '#' + hashId);
+  }
 }
 
 function navigerTilHash(hash) {
   if (!hash || hash === '#') return;
   const id = hash.replace(/^#/, '');
+  if (/^Gruppe_[A-L]_spillere$/.test(id)) {
+    const baseId = id.replace('_spillere', '');
+    if (document.getElementById('ark_' + baseId)) { visArk(baseId, false, 'tropp'); return; }
+  }
   if (document.getElementById('ark_' + id)) {
     visArk(id, false);
     return;
