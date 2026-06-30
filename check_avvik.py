@@ -90,6 +90,11 @@ NAME_ALIASES: dict[str, str] = {
         ("Aria Yousefi",               "Arya Yousefi"),
         ("Amirmohammad Razzaghinia",   "Amirmohammad Razaghinia"),
         ("Shahriyar Moghanlou",        "Shahriyar Moghanloo"),
+        # Sluttspill — oppdaget ved avvik-rapport 2026-06-30
+        ("Meschak Elia",               "Meschack Elia"),
+        ("Ihsan Haddad",               "Ehsan Haddad"),
+        ("Juan Fernando Quintero",     "Juan Quintero"),
+        ("Musa Al-Taamari",            "Mousa Altamari"),
     ]
 }
 
