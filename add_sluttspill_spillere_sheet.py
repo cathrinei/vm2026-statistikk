@@ -9,7 +9,7 @@ Datakilder:
   lagstatistikk_cache.json — timeline-events per kamp (PlayerName, IdTeam, Type, Period, HomeGoals, AwayGoals)
 """
 
-import io, json, shutil, sys
+import io, json, re, shutil, sys, unicodedata
 from collections import defaultdict
 from pathlib import Path
 
@@ -18,6 +18,26 @@ EXCEL_PATH = BASE_DIR / "VM2026_avansert_gruppetabeller_og_sluttspill.xlsx"
 SLUTTSPILL_CACHE  = BASE_DIR / "sluttspill_cache.json"
 LAGSTATS_CACHE    = BASE_DIR / "lagstatistikk_cache.json"
 PLAYER_ALDER      = BASE_DIR / "player_alder.json"
+_PLAYERS_JSON     = BASE_DIR / "players.json"
+
+def _norm_n(s: str) -> str:
+    s = unicodedata.normalize("NFD", (s or "").lower())
+    s = "".join(c for c in s if unicodedata.category(c) != "Mn")
+    return re.sub(r"[^a-z0-9]", "", s)
+
+def _bygg_excel_navnmap() -> dict[str, str]:
+    try:
+        with open(_PLAYERS_JSON, encoding="utf-8") as _f:
+            _data = json.load(_f)
+        return {_norm_n(p["name"]): p["name"]
+                for _g in _data.values() for _l in _g.values() for p in _l}
+    except Exception:
+        return {}
+
+_EXCEL_NAVNMAP: dict[str, str] = _bygg_excel_navnmap()
+
+def _excel_navn(fifa_navn: str, fallback: str = "") -> str:
+    return _EXCEL_NAVNMAP.get(_norm_n(fifa_navn)) or (fallback or fifa_navn.title() if fifa_navn else fallback)
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
@@ -120,7 +140,7 @@ def bygg_spillerstats(match_ids: set[str], team_names: dict[str, str]) -> tuple[
 
             # Lagre navn og lag
             if pname and pid not in navn:
-                navn[pid] = pname.title()
+                navn[pid] = _excel_navn(pname)
             if ev_team and pid not in lag:
                 lag[pid] = team_names.get(ev_team, ev_team)
 
@@ -155,7 +175,8 @@ def bygg_spillerstats(match_ids: set[str], team_names: dict[str, str]) -> tuple[
                 kamper[sub_pid].add(match_id)
                 # Prøv å hente navn for sub_pid fra samme event hvis tilgjengelig
                 if sub_pid not in navn:
-                    navn[sub_pid] = sub_name or player_alder.get(sub_pid, sub_pid)
+                    raw = sub_name or player_alder.get(sub_pid, "")
+                    navn[sub_pid] = _excel_navn(raw, sub_pid) if raw else sub_pid
                 if ev_team and sub_pid not in lag:
                     lag[sub_pid] = team_names.get(ev_team, ev_team)
 

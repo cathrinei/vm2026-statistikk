@@ -35,6 +35,28 @@ CACHE_PATH       = BASE_DIR / "kamper_resultater.json"
 SLUTTSPILL_CACHE = BASE_DIR / "sluttspill_cache.json"
 STAT_CACHE       = BASE_DIR / "lagstatistikk_cache.json"
 LIVE_CACHE       = BASE_DIR / "live_cache.json"
+_PLAYERS_JSON    = BASE_DIR / "players.json"
+
+import unicodedata as _ud, re as _re
+def _norm_n(s: str) -> str:
+    s = _ud.normalize("NFD", (s or "").lower())
+    s = "".join(c for c in s if _ud.category(c) != "Mn")
+    return _re.sub(r"[^a-z0-9]", "", s)
+
+def _bygg_excel_navnmap() -> dict[str, str]:
+    try:
+        import json as _j
+        with open(_PLAYERS_JSON, encoding="utf-8") as _f:
+            _data = _j.load(_f)
+        return {_norm_n(p["name"]): p["name"]
+                for _g in _data.values() for _l in _g.values() for p in _l}
+    except Exception:
+        return {}
+
+_EXCEL_NAVNMAP: dict[str, str] = _bygg_excel_navnmap()
+
+def _excel_navn(fifa_navn: str) -> str:
+    return _EXCEL_NAVNMAP.get(_norm_n(fifa_navn)) or " ".join(w.capitalize() for w in (fifa_navn or "").split()) or "?"
 
 _FIFA_BASE   = "https://api.fifa.com/api/v3"
 _FIFA_COMP   = "17"
@@ -361,7 +383,7 @@ def bygg_selvmål(played, team_names, stat_cache, match_info) -> list[dict]:
                 continue
             ev_team = ev.get("IdTeam", "")
             lag     = team_names.get(ev_team, ev_team)
-            spiller = ev.get("PlayerName", "") or "?"
+            spiller = _excel_navn(ev.get("PlayerName", ""))
             minutt  = ev.get("MatchMinute", "")
             selvmål.append({
                 "lag":     lag,
@@ -808,7 +830,7 @@ def skriv_lagstatistikk(maal, nullere, kamper, straffe, straffe_spillere, shooto
 
         for s in selvmål:
             r_lag = lag_rang[s["lag"]]
-            spiller_fmt = " ".join(w.capitalize() for w in s["spiller"].split())
+            spiller_fmt = s["spiller"]
             _data_row(ws, S, row,
                       [r_lag, s["lag"], spiller_fmt, s["kamp"], s["minutt"]],
                       og_defs, r_lag if r_lag <= 3 else None)
