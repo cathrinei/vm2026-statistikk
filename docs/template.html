@@ -269,11 +269,19 @@ function finnTabKnapp(id) {
   return null;
 }
 
-function visArk(id, oppdaterHash = true) {
+function visArk(id, oppdaterHash = true, modus = null) {
   document.querySelectorAll('.ark-innhold').forEach(el => el.style.display = 'none');
   document.querySelectorAll('.tab-bar button').forEach(b => b.classList.remove('aktiv'));
   const ark = document.getElementById('ark_' + id);
-  if (ark) ark.style.display = 'block';
+  if (ark) {
+    ark.style.display = 'block';
+    const kd = ark.querySelector('.gruppe-kampdata');
+    const tr = ark.querySelector('.gruppe-tropp');
+    if (kd && tr) {
+      kd.style.display = modus === 'tropp'    ? 'none' : '';
+      tr.style.display = modus === 'kampdata' ? 'none' : '';
+    }
+  }
   const knapp = finnTabKnapp(id);
   if (knapp) knapp.classList.add('aktiv');
   document.querySelectorAll('.fane-gruppe-knapper button').forEach(b => b.classList.remove('aktiv'));
@@ -425,8 +433,8 @@ function toggleFaneMeny() {
 
 function byggFaneMeny() {
   const kategorier = [
-    { navn: 'Gruppespill',    test: function(n) { return /^Gruppe [A-L]$/.test(n); }, duplikat: true },
-    { navn: 'Spillertropper', test: function(n) { return /^Gruppe [A-L]$/.test(n); }, duplikat: true },
+    { navn: 'Gruppespill',    test: function(n) { return /^Gruppe [A-L]$/.test(n); }, duplikat: true, modus: 'kampdata' },
+    { navn: 'Spillertropper', test: function(n) { return /^Gruppe [A-L]$/.test(n); }, duplikat: true, modus: 'tropp' },
     { navn: 'Sluttspill',     test: function(n) { return /(delsfinale|kvartfinaler|semifinaler|bronsefinale|^finale$)/i.test(n); } },
     { navn: 'Spillere',       test: function(n) { return /^(Alder|Spillere etter land|Kort|Scorere og assists|Aldersfordeling|Niv.+ 2 og lavere)$/i.test(n); } },
     { navn: 'Lag',            test: function() { return true; } },
@@ -464,7 +472,7 @@ function byggFaneMeny() {
       b.textContent = d.navn;
       b.dataset.id = d.id;
       if (d.aktiv) b.classList.add('aktiv');
-      b.onclick = function() { visArk(d.id); toggleFaneMeny(); };
+      b.onclick = (function(id, modus) { return function() { visArk(id, true, modus || null); toggleFaneMeny(); }; })(d.id, kat.modus);
       rad.appendChild(b);
     });
     seksjon.appendChild(rad);
@@ -476,8 +484,8 @@ function byggFaneMeny() {
 
 function byggDropdownNav() {
   var kategorier = [
-    { navn: 'Gruppespill',    test: function(n) { return /^Gruppe [A-L]$/.test(n); }, duplikat: true },
-    { navn: 'Spillertropper', test: function(n) { return /^Gruppe [A-L]$/.test(n); }, duplikat: true },
+    { navn: 'Gruppespill',    test: function(n) { return /^Gruppe [A-L]$/.test(n); }, duplikat: true, modus: 'kampdata' },
+    { navn: 'Spillertropper', test: function(n) { return /^Gruppe [A-L]$/.test(n); }, duplikat: true, modus: 'tropp' },
     { navn: 'Sluttspill',     test: function(n) { return /(delsfinale|kvartfinaler|semifinaler|bronsefinale|^finale$)/i.test(n); } },
     { navn: 'Spillere',       test: function(n) { return /^(Alder|Spillere etter land|Kort|Scorere og assists|Aldersfordeling|Niv.+ 2 og lavere)$/i.test(n); } },
     { navn: 'Lag',            test: function() { return true; } },
@@ -522,11 +530,11 @@ function byggDropdownNav() {
       b.textContent = d.navn;
       b.dataset.id = d.id;
       if (d.aktiv) b.classList.add('aktiv');
-      b.onclick = function(e) {
+      b.onclick = (function(id, modus) { return function(e) {
         e.stopPropagation();
-        visArk(d.id);
+        visArk(id, true, modus || null);
         document.querySelectorAll('.dropdown.open').forEach(function(dd) { dd.classList.remove('open'); });
-      };
+      }; })(d.id, kat.modus);
       panel.appendChild(b);
     });
     div.appendChild(trigger);
@@ -606,8 +614,8 @@ function toggleDarkMode() {
 
 function byggHjemseksjon() {
   var kategorier = [
-    { navn: 'Gruppespill',    test: function(n) { return /^Gruppe [A-L]$/.test(n); }, duplikat: true },
-    { navn: 'Spillertropper', test: function(n) { return /^Gruppe [A-L]$/.test(n); }, duplikat: true },
+    { navn: 'Gruppespill',    test: function(n) { return /^Gruppe [A-L]$/.test(n); }, duplikat: true, modus: 'kampdata' },
+    { navn: 'Spillertropper', test: function(n) { return /^Gruppe [A-L]$/.test(n); }, duplikat: true, modus: 'tropp' },
     { navn: 'Sluttspill',     test: function(n) { return /(delsfinale|kvartfinaler|semifinaler|bronsefinale|^finale$)/i.test(n); } },
     { navn: 'Spillere',       test: function(n) { return /^(Alder|Spillere etter land|Kort|Scorere og assists|Aldersfordeling|Niv.+ 2 og lavere)$/i.test(n); } },
     { navn: 'Lag',            test: function() { return true; } },
@@ -627,7 +635,8 @@ function byggHjemseksjon() {
     if (!btns.length) return;
     html += '<div class="hjem-kategori"><div class="hjem-kategori-tittel">' + kat.navn + '</div><div class="hjem-knapper">';
     btns.forEach(function(d) {
-      html += '<button class="hjem-knapp" onclick="visArk(\'' + d.id + '\')">' + d.navn + '</button>';
+      var modusArg = kat.modus ? ', true, \'' + kat.modus + '\'' : '';
+      html += '<button class="hjem-knapp" onclick="visArk(\'' + d.id + '\'' + modusArg + ')">' + d.navn + '</button>';
     });
     html += '</div></div>';
   });

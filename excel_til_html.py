@@ -73,11 +73,14 @@ def formater_verdi(celle):
     return str(v)
 
 
-def bygg_tabell(ws, legg_til_anker=False):
-    """Bygger HTML-tabell fra et ark. Med legg_til_anker=True returneres (html, seksjoner)."""
+GRUPPE_TROPP_RAD = 17  # Første rad med spillertropp i Gruppe A-L ark (fra BLOCKS[0][0])
+
+def bygg_tabell(ws, legg_til_anker=False, rad_fra=None, rad_til=None):
+    """Bygger HTML-tabell fra et ark. Med legg_til_anker=True returneres (html, seksjoner).
+    rad_fra/rad_til begrenser hvilke rader som inkluderes (1-basert, inklusiv)."""
     # Finn brukt område
-    min_rad = ws.min_row or 1
-    max_rad = ws.max_row or 1
+    min_rad = rad_fra or ws.min_row or 1
+    max_rad = rad_til or ws.max_row or 1
     min_kol = ws.min_column or 1
     max_kol = ws.max_column or 1
 
@@ -383,6 +386,13 @@ def main():
             tabell_html, seksjoner = bygg_tabell(ws, legg_til_anker=True)
             nav_html = generer_lagstat_nav(seksjoner)
             ark_html[navn] = nav_html + "\n" + tabell_html
+        elif re.match(r'^Gruppe [A-L]$', navn):
+            kampdata = bygg_tabell(ws, rad_til=GRUPPE_TROPP_RAD - 1)
+            tropp    = bygg_tabell(ws, rad_fra=GRUPPE_TROPP_RAD)
+            ark_html[navn] = (
+                f'<div class="gruppe-kampdata">{kampdata}</div>\n'
+                f'<div class="gruppe-tropp">{tropp}</div>'
+            )
         else:
             ark_html[navn] = bygg_tabell(ws)
 
