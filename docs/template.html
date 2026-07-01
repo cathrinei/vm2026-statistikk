@@ -453,7 +453,7 @@ function visSokPanel(resultater, tekst) {
   }
   const MAX_PER_FANE = 8;
   let html = '<div class="sok-panel-hint">Trykk på et treff for å hoppe til fanen &nbsp;·&nbsp; Esc for å lukke</div>';
-  resultater.forEach(({ arkId, faneTekst, treff }) => {
+  resultater.forEach(({ arkId, faneTekst, treff, modus }) => {
     html += '<div class="sok-panel-gruppe-tittel">' + faneTekst + ' (' + treff.length + ')</div>';
     treff.slice(0, MAX_PER_FANE).forEach(radTekst => {
       const hl = radTekst.replace(regex, m => '<mark class="sok-mark">' + m + '</mark>');
