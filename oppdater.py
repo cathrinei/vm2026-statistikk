@@ -155,7 +155,6 @@ def main():
     spilte_sluttspill_etter = count_spilte_sluttspill()
     nye_kamper              = spilte_gruppe_etter - spilte_gruppe_før
     nye_sluttspill          = spilte_sluttspill_etter - spilte_sluttspill_før
-    spilte_etter            = spilte_gruppe_etter  # for summary
 
     # ── Steg 3: check_avvik — ved nye kamper ELLER i sluttspillfasen ────────
     # Kjøres alltid når det finnes spilte sluttspill-kamper, slik at gruppe-arkene
@@ -241,17 +240,18 @@ def main():
         (l.strip().split("Endringer i: ", 1)[1] for l in kamper_output.splitlines() if "Endringer i:" in l),
         None
     )
+    nye_totalt = nye_kamper + nye_sluttspill
     summary = [
         f"## VM 2026 oppdatering {datetime.now().strftime('%Y-%m-%d')}",
         f"- **Trigger:** `{os.environ.get('GITHUB_EVENT_NAME', 'lokal')}`",
         f"- **Kjøretid:** {elapsed:.0f}s",
-        f"- **Kamper totalt:** {spilte_etter}",
+        f"- **Kamper totalt:** {spilte_gruppe_etter + spilte_sluttspill_etter}",
     ]
-    if nye_kamper > 0:
-        summary.append(f"- **Nye kamper:** {nye_kamper}")
+    if nye_totalt > 0:
+        summary.append(f"- **Nye kamper:** {nye_totalt} ({nye_kamper} gruppe, {nye_sluttspill} sluttspill)")
     if endrede_grupper:
         summary.append(f"- **Oppdaterte grupper:** {endrede_grupper}")
-    elif nye_kamper == 0:
+    elif nye_totalt == 0:
         summary.append("- Ingen nye kamper siden sist")
     skriv_github_summary(summary)
 
