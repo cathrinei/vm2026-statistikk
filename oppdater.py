@@ -8,6 +8,7 @@ Kjørerekkefølge:
   2. add_sluttspill_sheet.py        — sluttspill-ark (16-delsfinale → Finale); alltid
   3–6. (hoppes over hvis ingen nye kamper siden sist)
   3. check_avvik.py --fix           — mål, assist, gule/røde kort; Scorere og assists/Kort-ark
+ 3b. valider_maltotal.py            — sjekker måltotal per kamp mot FIFA (stopper ved avvik)
   4. add_alder_sheet.py             — oppdaterer Alder-ark; henter dato for ev. nye spillere
   5. add_birthdate_column.py        — fyll inn fødselsdatoer i gruppearkene (ev. nye spillere)
   6. add_minutter_column.py         — minutter spilt per spiller i gruppearkene
@@ -169,6 +170,9 @@ def main():
         kjør_steg("Mål, assist og kort", [PYTHON, "check_avvik.py", "--fix"])
     else:
         print(f"\n  Ingen nye kamper siden sist — hopper over check_avvik.")
+
+    # ── Steg 3b: Valider måltotal mot FIFA (alltid — rene lokale JSON-sjekker) ──
+    kjør_steg("Valider måltotal mot FIFA", [PYTHON, "valider_maltotal.py"])
 
     # ── Steg 4–6: kun ved nye gruppekamper (eller full) ─────────────────────
     # Steg 6 (minutter) kjøres også i sluttspillfasen — spillere akkumulerer
