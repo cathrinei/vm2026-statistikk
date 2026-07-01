@@ -649,7 +649,7 @@ def generer_html(
     </tbody>
   </table>
   <p class="note">
-    Pelé er den eneste spilleren i VM-historien som scoret før fylte 18 år. To nye spillere fra VM 2026 (Mbaye og Yamal) har allerede entret topp 10. Messi er unik på listen — han er #9 blant de yngste og #3 blant de eldste.
+    Pelé er den eneste spilleren i VM-historien som scoret før fylte 18 år. To nye spillere fra VM 2026 (Mbaye og Yamal) har allerede entret topp 10. Messi er unik på listen — han er #9 blant de yngste og #4 blant de eldste.
     <br>Kilder: FIFA.com, beIN Sports, ESPN.
   </p>
 </div>
@@ -676,7 +676,7 @@ def generer_html(
     </tbody>
   </table>
   <p class="note">
-    Roger Millas rekord fra 1994 er trolig uslåelig — han ble faktisk bragt tilbake av Kamerun etter å ha pensjonert seg. VM 2026 bidro med to nye innslag: Messi (#3) og Arnautovic (#8). Messi er også unik som den eneste på begge listene (yngste og eldste).
+    Roger Millas rekord fra 1994 er trolig uslåelig — han ble faktisk bragt tilbake av Kamerun etter å ha pensjonert seg. VM 2026 bidro med tre nye innslag: Ronaldo satte ny personlig rekord (#2, mot Usbekistan) og Messi (#4) og Arnautovic (#8) entret listen. Messi er også unik som den eneste på begge listene (yngste og eldste).
     <br>Kilder: Opta Analyst, ESPN, FIFA.com.
   </p>
 </div>
