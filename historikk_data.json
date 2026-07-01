@@ -38,23 +38,19 @@
     {"spiller": "Pelé",         "land": "Brasil",          "alder": "17 år, 239 dager", "motstander": "Wales",        "ar": 1958},
     {"spiller": "Manuel Rosas",      "land": "Mexico",          "alder": "18 år, 93 dager",  "motstander": "Argentina",    "ar": 1930},
     {"spiller": "Gavi",              "land": "Spania",          "alder": "18 år, 110 dager", "motstander": "Costa Rica",   "ar": 2022},
-    {"spiller": "Iliman Mbaye",      "land": "Senegal",         "alder": "18 år, 143 dager", "motstander": "Frankrike",    "ar": 2026, "aktiv_2026": true},
     {"spiller": "Michael Owen",      "land": "England",         "alder": "18 år, 190 dager", "motstander": "Romania",      "ar": 1998},
     {"spiller": "Nicolae Kovács","land": "Romania",        "alder": "18 år, 197 dager", "motstander": "—",       "ar": 1930},
     {"spiller": "Dmitri Sychev",     "land": "Russland",        "alder": "18 år, 231 dager", "motstander": "—",       "ar": 2002},
-    {"spiller": "Lamine Yamal",      "land": "Spania",          "alder": "18 år, 343 dager", "motstander": "—",       "ar": 2026, "aktiv_2026": true},
     {"spiller": "Lionel Messi",      "land": "Argentina",       "alder": "18 år, 357 dager", "motstander": "—",       "ar": 2006},
     {"spiller": "Julian Green",      "land": "USA",             "alder": "19 år, 25 dager",  "motstander": "—",       "ar": 2014}
   ],
   "eldste_scorere": [
     {"spiller": "Roger Milla",       "land": "Kamerun",         "alder": "42 år, 39 dager",  "motstander": "Russland",     "ar": 1994},
     {"spiller": "Pepe",              "land": "Portugal",        "alder": "39 år, 283 dager", "motstander": "Sveits",       "ar": 2022},
-    {"spiller": "Lionel Messi",      "land": "Argentina",       "alder": "38 år, 363 dager", "motstander": "Østerrike","ar": 2026, "aktiv_2026": true},
     {"spiller": "Cristiano Ronaldo", "land": "Portugal",        "alder": "37 år, 292 dager", "motstander": "Ghana",        "ar": 2022},
     {"spiller": "Gunnar Gren",       "land": "Sverige",         "alder": "37 år, 236 dager", "motstander": "Vest-Tyskland","ar": 1958},
     {"spiller": "Cuauhtémoc Blanco","land": "Mexico",      "alder": "37 år, 151 dager", "motstander": "Frankrike",    "ar": 2010},
     {"spiller": "Felipe Baloy",      "land": "Panama",          "alder": "37 år, 120 dager", "motstander": "England",      "ar": 2018},
-    {"spiller": "Marko Arnautovic",  "land": "Østerrike",  "alder": "37 år, 59 dager",  "motstander": "Jordan",       "ar": 2026, "aktiv_2026": true},
     {"spiller": "Obdulio Varela",    "land": "Uruguay",         "alder": "36 år, 279 dager", "motstander": "England",      "ar": 1954},
     {"spiller": "Martín Palermo","land": "Argentina",      "alder": "36 år, 227 dager", "motstander": "Hellas",       "ar": 2010}
   ],
