@@ -5,9 +5,15 @@ Dynamiske seksjoner:
   - Toppscorere: pre-2026 mål fra JSON + 2026-mål fra Excel
   - Flest kamper: pre-2026 kamper fra JSON + 2026-kamper fra kamper_resultater.json
   - Rekordresultater: sjekker om 2026-kamper brøt historiske rekorder
+  - Yngste/eldste scorere: pre-2026-baseline fra JSON + alder-ved-scoring beregnet
+    fra fødselsdato (player_alder.json) og måldato (avvik_timeline_cache.json).
+    Et 2026-mål telles bare hvis antall mål-hendelser i timeline-cachen stemmer
+    nøyaktig med det verifiserte måltallet fra Excel (se les_2026_alder_kandidater) —
+    dette filtrerer bort kjente datakvalitetsfeil i FIFA sin live-cache
+    (f.eks. mål som dukker opp i to ulike kamper, eller mål uten dekning i
+    "Scorere og assists"-arket).
 
 Statiske seksjoner (bare fra JSON):
-  - Yngste/eldste scorere
   - Raskeste mål
 
 Kjøres av daglig_oppdatering.yml etter oppdater.py.
@@ -16,22 +22,33 @@ Kjøres av daglig_oppdatering.yml etter oppdater.py.
 import io
 import json
 import os
+import re
 import sys
-from datetime import datetime, timezone
+import unicodedata
+from datetime import date, datetime, timezone
 from pathlib import Path
 from openpyxl import load_workbook
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
-BASE_DIR      = Path(__file__).parent
-JSON_FIL      = BASE_DIR / "historikk_data.json"
-EXCEL_FIL     = BASE_DIR / "VM2026_avansert_gruppetabeller_og_sluttspill.xlsx"
-KAMPER_FIL    = BASE_DIR / "kamper_resultater.json"
-UTDATA        = BASE_DIR / "docs" / "historikk_rekorder.html"
+BASE_DIR       = Path(__file__).parent
+JSON_FIL       = BASE_DIR / "historikk_data.json"
+EXCEL_FIL      = BASE_DIR / "VM2026_avansert_gruppetabeller_og_sluttspill.xlsx"
+KAMPER_FIL     = BASE_DIR / "kamper_resultater.json"
+TIMELINE_FIL   = BASE_DIR / "avvik_timeline_cache.json"
+FODSELSDATO_FIL = BASE_DIR / "player_alder.json"
+NAVN_CACHE_FIL = BASE_DIR / "player_names_cache.json"
+TEAM_ID_FIL    = BASE_DIR / "team_id_cache.json"
+UTDATA         = BASE_DIR / "docs" / "historikk_rekorder.html"
 
 BLOCKS        = [(17, 19, 44), (46, 48, 73), (75, 77, 102), (104, 106, 131)]
 COL_NAVN      = 2
 COL_MÅL       = 6
+
+# FIFA-eventtyper i avvik_timeline_cache.json som representerer et mål scoret
+# av IdPlayer selv (Type 34 = selvmål, telles IKKE som spillerens eget mål).
+MÅL_TYPER     = (0, 41)
+SELVMÅL_TYPE  = 34
 
 
 # ── Datainnlesing ──────────────────────────────────────────────────────────────
@@ -100,6 +117,181 @@ def les_2026_kamper_for_rekorder() -> list[dict]:
                 "ar":       int(dato[:4]) if dato else 2026,
             })
     return kamper
+
+
+def norm(navn: str) -> str:
+    """Normaliserer et navn for fuzzy-matching (fjerner aksenter/bindestrek/case)."""
+    s = unicodedata.normalize("NFKD", navn)
+    s = "".join(c for c in s if not unicodedata.combining(c))
+    s = re.sub(r"[-'.]", " ", s)
+    s = re.sub(r"\s+", " ", s).strip().lower()
+    return s
+
+
+def parse_alder(alder_str: str) -> tuple[int, int]:
+    m = re.match(r"(\d+)\s*år,\s*(\d+)\s*dager", alder_str)
+    return (int(m.group(1)), int(m.group(2))) if m else (0, 0)
+
+
+def format_alder(years: int, days: int) -> str:
+    return f"{years} år, {days} dager"
+
+
+def beregn_alder_ved(fodselsdato: date, ved_dato: date) -> tuple[int, int]:
+    """Alder (år, dager) på en gitt dato, robust mot 29. februar-bursdager."""
+    try:
+        siste_bursdag = date(ved_dato.year, fodselsdato.month, fodselsdato.day)
+    except ValueError:
+        siste_bursdag = date(ved_dato.year, fodselsdato.month, 28)
+    if siste_bursdag > ved_dato:
+        try:
+            siste_bursdag = date(ved_dato.year - 1, fodselsdato.month, fodselsdato.day)
+        except ValueError:
+            siste_bursdag = date(ved_dato.year - 1, fodselsdato.month, 28)
+    years = siste_bursdag.year - fodselsdato.year
+    days = (ved_dato - siste_bursdag).days
+    return years, days
+
+
+def les_2026_alder_kandidater(mål_2026: dict[str, int]) -> tuple[dict, dict]:
+    """
+    Beregner alder-ved-scoring for hvert VM 2026-mål og returnerer
+    (eldste_kandidater, yngste_kandidater): navn → beste 2026-rad for spilleren.
+
+    Bruker kun mål der antall mål-hendelser i timeline-cachen stemmer nøyaktig
+    med det verifiserte måltallet fra Excel — se modul-docstring.
+    """
+    if not (TIMELINE_FIL.exists() and FODSELSDATO_FIL.exists() and TEAM_ID_FIL.exists()):
+        return {}, {}
+
+    with open(TIMELINE_FIL, encoding="utf-8") as f:
+        timeline = json.load(f)
+    with open(FODSELSDATO_FIL, encoding="utf-8") as f:
+        fodselsdatoer = json.load(f)
+    with open(TEAM_ID_FIL, encoding="utf-8") as f:
+        team_id = json.load(f)
+    with open(NAVN_CACHE_FIL, encoding="utf-8") as f:
+        navn_cache = json.load(f) if NAVN_CACHE_FIL.exists() else {}
+    with open(KAMPER_FIL, encoding="utf-8") as f:
+        kamper_raw = json.load(f)
+
+    kamp_for_id = {}
+    for liste in kamper_raw.values():
+        for k in liste:
+            if k.get("spilt") and k.get("dato"):
+                kamp_for_id[k["id"]] = k
+
+    excel_oppslag = {}
+    for navn, mål in mål_2026.items():
+        if mål > 0:
+            excel_oppslag[norm(navn)] = (navn, mål)
+
+    # Alle mål-hendelser per spiller (med duplikater, for validering mot Excel)
+    hendelser_per_spiller: dict[str, list[str]] = {}
+    for matchid, events in timeline.items():
+        if matchid not in kamp_for_id:
+            continue
+        for e in events:
+            if e.get("Type") in MÅL_TYPER and e.get("IdPlayer"):
+                hendelser_per_spiller.setdefault(e["IdPlayer"], []).append(matchid)
+
+    eldste_kandidater: dict[str, dict] = {}
+    yngste_kandidater: dict[str, dict] = {}
+
+    for pid, matchids in hendelser_per_spiller.items():
+        info = fodselsdatoer.get(pid)
+        ascii_navn = info["name"] if info else navn_cache.get(pid)
+        if not ascii_navn:
+            continue
+        match = excel_oppslag.get(norm(ascii_navn))
+        if not match:
+            continue
+        excel_navn, excel_mål = match
+        if len(matchids) != excel_mål:
+            continue  # timeline stemmer ikke med verifisert måltall — hopp over
+        if not info:
+            continue
+        try:
+            fodselsdato = date.fromisoformat(info["birthdate"][:10])
+        except ValueError:
+            continue
+
+        for matchid in set(matchids):
+            kamp = kamp_for_id[matchid]
+            try:
+                måldato = date.fromisoformat(kamp["dato"])
+            except ValueError:
+                continue
+
+            hjemme_id = team_id.get(kamp.get("hjemme")) or team_id.get(kamp.get("hjemme_en"))
+            borte_id  = team_id.get(kamp.get("borte"))  or team_id.get(kamp.get("borte_en"))
+            teamid = next(
+                (e["IdTeam"] for e in timeline[matchid]
+                 if e.get("Type") in MÅL_TYPER and e.get("IdPlayer") == pid),
+                None,
+            )
+            if teamid == hjemme_id:
+                land, motstander = kamp["hjemme"], kamp["borte"]
+            elif teamid == borte_id:
+                land, motstander = kamp["borte"], kamp["hjemme"]
+            else:
+                continue
+
+            years, days = beregn_alder_ved(fodselsdato, måldato)
+            rad = {
+                "spiller": excel_navn,
+                "land": land,
+                "alder": format_alder(years, days),
+                "motstander": motstander,
+                "ar": 2026,
+                "aktiv_2026": True,
+                "_dager": (years, days),
+            }
+
+            gjeldende_eldst = eldste_kandidater.get(excel_navn)
+            if gjeldende_eldst is None or rad["_dager"] > gjeldende_eldst["_dager"]:
+                eldste_kandidater[excel_navn] = rad
+
+            gjeldende_yngst = yngste_kandidater.get(excel_navn)
+            if gjeldende_yngst is None or rad["_dager"] < gjeldende_yngst["_dager"]:
+                yngste_kandidater[excel_navn] = dict(rad)
+
+    return eldste_kandidater, yngste_kandidater
+
+
+def slå_sammen_alder_rekord(baseline: list[dict], kandidater: dict, retning: str) -> list[dict]:
+    """Slår sammen historisk baseline med 2026-kandidater, dedupliserer per spiller."""
+    beste: dict[str, dict] = {}
+    for rad in baseline:
+        rad = dict(rad)
+        rad["_dager"] = parse_alder(rad["alder"])
+        beste[rad["spiller"]] = rad
+    for navn, kandidat in kandidater.items():
+        gjeldende = beste.get(navn)
+        if gjeldende is None:
+            beste[navn] = kandidat
+        else:
+            bedre = kandidat["_dager"] > gjeldende["_dager"] if retning == "eldste" \
+                else kandidat["_dager"] < gjeldende["_dager"]
+            if bedre:
+                beste[navn] = kandidat
+    resultat = list(beste.values())
+    resultat.sort(key=lambda r: r["_dager"], reverse=(retning == "eldste"))
+    for r in resultat:
+        r.pop("_dager", None)
+    return resultat[:10]
+
+
+def bygg_alder_note(liste: list[dict], fast_intro: str, kilder: str, felles_navn: str = None) -> str:
+    nye = [(i, s) for i, s in enumerate(liste, 1) if s.get("aktiv_2026")]
+    linjer = [fast_intro]
+    if nye:
+        innslag = ", ".join(f'{s["spiller"].split()[-1]} (#{i})' for i, s in nye)
+        linjer.append(f"VM 2026 bidro med {len(nye)} innslag på topp 10: {innslag}.")
+    if felles_navn:
+        linjer.append(felles_navn)
+    linjer.append(f"Kilder: {kilder}.")
+    return " ".join(linjer)
 
 
 # ── Beregninger ────────────────────────────────────────────────────────────────
@@ -245,6 +437,8 @@ def generer_html(
     data: dict,
     høyest_score: list,
     størst_seier: list,
+    yngste_scorere: list,
+    eldste_scorere: list,
 ) -> str:
     now  = datetime.now(timezone.utc)
     dato_raw = now.strftime("%B %Y")
@@ -284,7 +478,7 @@ def generer_html(
 
     # Yngste scorere
     yngste_rader = []
-    for i, s in enumerate(data["yngste_scorere"], 1):
+    for i, s in enumerate(yngste_scorere, 1):
         aktiv = s.get("aktiv_2026")
         cls   = ' class="row-active"' if aktiv else ""
         yngste_rader.append(
@@ -301,7 +495,7 @@ def generer_html(
 
     # Eldste scorere
     eldste_rader = []
-    for i, s in enumerate(data["eldste_scorere"], 1):
+    for i, s in enumerate(eldste_scorere, 1):
         aktiv = s.get("aktiv_2026")
         cls   = ' class="row-active"' if aktiv else ""
         eldste_rader.append(
@@ -315,6 +509,28 @@ def generer_html(
             f'      </tr>'
         )
     eldste_rader_str = "\n".join(eldste_rader)
+
+    # Notes for yngste/eldste — flagg spillere som finnes på begge lister
+    yngste_navn = {s["spiller"] for s in yngste_scorere}
+    eldste_navn = {s["spiller"] for s in eldste_scorere}
+    felles = yngste_navn & eldste_navn
+    felles_note = None
+    if felles:
+        navn = ", ".join(sorted(felles))
+        verb = "er unik" if len(felles) == 1 else "er unike"
+        felles_note = f"{navn} {verb} — finnes på begge listene (yngste og eldste)."
+
+    yngste_note = bygg_alder_note(
+        yngste_scorere,
+        "Pelé er den eneste spilleren i VM-historien som scoret før fylte 18 år.",
+        "FIFA.com, beIN Sports, ESPN",
+    )
+    eldste_note = bygg_alder_note(
+        eldste_scorere,
+        "Roger Millas rekord fra 1994 er trolig uslåelig — han ble faktisk bragt tilbake av Kamerun etter å ha pensjonert seg.",
+        "Opta Analyst, ESPN, FIFA.com",
+        felles_navn=felles_note,
+    )
 
     # Rekordresultater
     score_rader = "\n".join(tr_kamp_rekord(r, k, "totalt") for r, k in rang_liste(høyest_score, "totalt"))
@@ -649,8 +865,7 @@ def generer_html(
     </tbody>
   </table>
   <p class="note">
-    Pelé er den eneste spilleren i VM-historien som scoret før fylte 18 år. To nye spillere fra VM 2026 (Mbaye og Yamal) har allerede entret topp 10. Messi er unik på listen — han er #9 blant de yngste og #4 blant de eldste.
-    <br>Kilder: FIFA.com, beIN Sports, ESPN.
+    {yngste_note}
   </p>
 </div>
 
@@ -676,8 +891,7 @@ def generer_html(
     </tbody>
   </table>
   <p class="note">
-    Roger Millas rekord fra 1994 er trolig uslåelig — han ble faktisk bragt tilbake av Kamerun etter å ha pensjonert seg. VM 2026 bidro med tre nye innslag: Ronaldo satte ny personlig rekord (#2, mot Usbekistan) og Messi (#4) og Arnautovic (#8) entret listen. Messi er også unik som den eneste på begge listene (yngste og eldste).
-    <br>Kilder: Opta Analyst, ESPN, FIFA.com.
+    {eldste_note}
   </p>
 </div>
 
@@ -765,23 +979,29 @@ def main():
     with open(JSON_FIL, encoding="utf-8") as f:
         data = json.load(f)
 
-    print("[1/4] Leser 2026-mål fra Excel...")
+    print("[1/5] Leser 2026-mål fra Excel...")
     mål_2026 = les_2026_mål()
     aktive_mål = {k: v for k, v in mål_2026.items() if v > 0}
     print(f"  {len(aktive_mål)} spillere med mål i 2026")
 
-    print("[2/4] Leser kampresultater...")
+    print("[2/5] Leser kampresultater...")
     kamper_per_lag  = les_2026_kamper_per_lag()
     kamper_for_rek  = les_2026_kamper_for_rekorder()
     print(f"  {len(kamper_for_rek)} spilte kamper")
 
-    print("[3/4] Beregner rangeringer...")
+    print("[3/5] Beregner rangeringer...")
     toppscorere  = beregn_toppscorere(data, mål_2026)
     flest_kamper = beregn_flest_kamper(data, kamper_per_lag)
     høyest, seier = beregn_rekordresultater(data, kamper_for_rek)
 
-    print("[4/4] Genererer HTML...")
-    html = generer_html(toppscorere, flest_kamper, data, høyest, seier)
+    print("[4/5] Beregner alder ved scoring (yngste/eldste)...")
+    eldste_kand, yngste_kand = les_2026_alder_kandidater(mål_2026)
+    yngste_scorere = slå_sammen_alder_rekord(data["yngste_scorere"], yngste_kand, "yngste")
+    eldste_scorere = slå_sammen_alder_rekord(data["eldste_scorere"], eldste_kand, "eldste")
+    print(f"  {len(yngste_kand)} validerte 2026-kandidater (yngste), {len(eldste_kand)} (eldste)")
+
+    print("[5/5] Genererer HTML...")
+    html = generer_html(toppscorere, flest_kamper, data, høyest, seier, yngste_scorere, eldste_scorere)
     UTDATA.write_text(html, encoding="utf-8")
     print(f"  → {UTDATA} skrevet ({len(html):,} tegn)")
 
@@ -798,6 +1018,18 @@ def main():
     for r, s in rang_liste(top3_k, "kamper_total"):
         aktiv = "+" if "aktiv_2026_lag" in s else ""
         print(f"    {r}. {s['spiller']}: {s['kamper_total']}{aktiv} kamper")
+
+    print()
+    nye_eldste = [(i, s) for i, s in enumerate(eldste_scorere, 1) if s.get("aktiv_2026")]
+    if nye_eldste:
+        print("  Nye/oppdaterte 2026-innslag i 'Eldste scorere':")
+        for r, s in nye_eldste:
+            print(f"    #{r}. {s['spiller']}: {s['alder']} mot {s['motstander']}")
+    nye_yngste = [(i, s) for i, s in enumerate(yngste_scorere, 1) if s.get("aktiv_2026")]
+    if nye_yngste:
+        print("  Nye/oppdaterte 2026-innslag i 'Yngste scorere':")
+        for r, s in nye_yngste:
+            print(f"    #{r}. {s['spiller']}: {s['alder']} mot {s['motstander']}")
 
     print()
     print("=" * 50)
