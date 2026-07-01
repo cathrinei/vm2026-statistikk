@@ -35,6 +35,7 @@ BASE_DIR       = Path(__file__).parent
 JSON_FIL       = BASE_DIR / "historikk_data.json"
 EXCEL_FIL      = BASE_DIR / "VM2026_avansert_gruppetabeller_og_sluttspill.xlsx"
 KAMPER_FIL     = BASE_DIR / "kamper_resultater.json"
+SLUTTSPILL_FIL = BASE_DIR / "sluttspill_cache.json"
 TIMELINE_FIL   = BASE_DIR / "avvik_timeline_cache.json"
 FODSELSDATO_FIL = BASE_DIR / "player_alder.json"
 NAVN_CACHE_FIL = BASE_DIR / "player_names_cache.json"
@@ -174,9 +175,13 @@ def les_2026_alder_kandidater(mål_2026: dict[str, int]) -> tuple[dict, dict]:
         navn_cache = json.load(f) if NAVN_CACHE_FIL.exists() else {}
     with open(KAMPER_FIL, encoding="utf-8") as f:
         kamper_raw = json.load(f)
+    sluttspill_raw = {}
+    if SLUTTSPILL_FIL.exists():
+        with open(SLUTTSPILL_FIL, encoding="utf-8") as f:
+            sluttspill_raw = json.load(f)
 
     kamp_for_id = {}
-    for liste in kamper_raw.values():
+    for liste in list(kamper_raw.values()) + list(sluttspill_raw.values()):
         for k in liste:
             if k.get("spilt") and k.get("dato"):
                 kamp_for_id[k["id"]] = k
@@ -186,14 +191,21 @@ def les_2026_alder_kandidater(mål_2026: dict[str, int]) -> tuple[dict, dict]:
         if mål > 0:
             excel_oppslag[norm(navn)] = (navn, mål)
 
-    # Alle mål-hendelser per spiller (med duplikater, for validering mot Excel)
+    # Alle mål-hendelser per spiller (med duplikater, for validering mot Excel).
+    # Type 41 dekker både ekte mål og straffesparkkonkurranse-forsøk (der IdSubPlayer
+    # er motstanderens keeper og stillingen ikke endres) — krever derfor at
+    # HomeGoals/AwayGoals faktisk øker for at hendelsen skal telles som et mål.
     hendelser_per_spiller: dict[str, list[str]] = {}
     for matchid, events in timeline.items():
         if matchid not in kamp_for_id:
             continue
+        prev_h, prev_a = 0, 0
         for e in events:
-            if e.get("Type") in MÅL_TYPER and e.get("IdPlayer"):
+            cur_h = e["HomeGoals"] if e.get("HomeGoals") is not None else prev_h
+            cur_a = e["AwayGoals"] if e.get("AwayGoals") is not None else prev_a
+            if e.get("Type") in MÅL_TYPER and e.get("IdPlayer") and (cur_h > prev_h or cur_a > prev_a):
                 hendelser_per_spiller.setdefault(e["IdPlayer"], []).append(matchid)
+            prev_h, prev_a = cur_h, cur_a
 
     eldste_kandidater: dict[str, dict] = {}
     yngste_kandidater: dict[str, dict] = {}
