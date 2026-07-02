@@ -24,7 +24,7 @@ LAND_NO = {
     'Mexico':        'Mexico',
     'Morocco':       'Marokko',
     'Netherlands':   'Nederland',
-    'New Zealand':   'Ny-Zealand',
+    'New Zealand':   'New Zealand',
     'Norway':        'Norge',
     'Poland':        'Polen',
     'Romania':       'Romania',
