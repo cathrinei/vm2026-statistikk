@@ -827,8 +827,6 @@ def main():
         print("\n[Fix] Oppdaterer Excel...")
         n = oppdater_excel(avvik)
         print(f"      ✅ {n} celler oppdatert (mål/assist/gule/røde kort)" if n else "      Ingen celler å oppdatere")
-        if kort:
-            skriv_kort_sheet(kort)
         # Erstatt FIFA API-navn (mangler spesialtegn) med Excel-navn og lag der de matcher
         excel_info_map = {p["key"]: {"name": p["name"], "lag": p["lag"]} for p in excel}
         for p in fifa_alle:
@@ -836,6 +834,13 @@ def main():
                 p["name"] = excel_info_map[p["key"]]["name"]
                 if not p.get("lag"):
                     p["lag"] = excel_info_map[p["key"]]["lag"]
+        for p in kort:
+            info = excel_info_map.get(normalize(p["name"]))
+            if info:
+                p["name"] = info["name"]
+
+        if kort:
+            skriv_kort_sheet(kort)
         skriv_toppscore_sheets(fifa_alle)
 
     print("\nFerdig.")
